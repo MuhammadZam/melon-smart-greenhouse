@@ -1,0 +1,10 @@
+.git
+.github
+.env.backup
+.env.production
+.phpunit.result.cache
+node_modules
+npm-debug.log
+yarn-error.log
+/storage/*.key
+/vendor
