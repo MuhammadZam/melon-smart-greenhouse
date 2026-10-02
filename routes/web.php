@@ -26,8 +26,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Rute Khusus Administrator (Role Middleware Test)
+    // Menu Navigasi Terstruktur (Section Anchors ke Dashboard Phase 4)
+    Route::get('/monitorings', fn() => redirect('/dashboard#recent-table'))->name('monitorings.index');
+    Route::get('/plants', fn() => redirect('/dashboard#plant-summary'))->name('plants.index');
+    Route::get('/charts', fn() => redirect('/dashboard#charts'))->name('charts.index');
+    Route::get('/history', fn() => redirect('/dashboard#recent-table'))->name('history.index');
+
+    // Rute Khusus Administrator (Role Middleware Test & Navigation)
     Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/users', fn() => redirect('/dashboard#admin-section'))->name('users.index');
+        Route::get('/parameters', fn() => redirect('/dashboard#parameters-list'))->name('parameters.index');
         Route::get('/management-check', function () {
             return response()->json([
                 'status'  => 'success',

@@ -1,224 +1,504 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@extends('layouts.app')
 
-    <title>Dashboard - Azolla Monitoring System</title>
+@section('title', 'Dashboard Monitoring')
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+@section('content')
+<div class="space-y-6">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-emerald-500 selection:text-white flex flex-col justify-between">
-    <!-- Ambient Background Glow -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-        <div class="absolute -top-32 -left-32 w-96 h-96 bg-emerald-600/15 rounded-full blur-[120px]"></div>
-        <div class="absolute top-1/2 -right-32 w-96 h-96 bg-teal-500/10 rounded-full blur-[120px]"></div>
+    <!-- Top Action & Filter Bar -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 p-5 sm:p-6 rounded-3xl bg-slate-900/80 border border-slate-800 backdrop-blur-xl">
+        <div>
+            <div class="flex items-center gap-2 mb-1">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider {{ $user->isAdmin() ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-teal-500/10 text-teal-400 border border-teal-500/20' }}">
+                    <span class="w-1.5 h-1.5 rounded-full {{ $user->isAdmin() ? 'bg-emerald-400' : 'bg-teal-400' }} mr-1.5 animate-pulse"></span>
+                    {{ $user->isAdmin() ? 'Mode Administrator' : 'Mode Pengamat (User)' }}
+                </span>
+                <span class="text-xs text-slate-400">Database Live Sync</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                Ringkasan Pemantauan <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Tanaman Azolla</span>
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-400 mt-0.5">
+                Data aktual mikroklimat kolam, suhu, pH, dan kelembapan dari database MySQL.
+            </p>
+        </div>
+
+        <!-- Filter Tanaman Dropdown -->
+        <form method="GET" action="{{ route('dashboard') }}" class="flex items-center gap-2.5 self-start md:self-auto">
+            <label for="plant_filter" class="text-xs font-semibold text-slate-300 whitespace-nowrap flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                </svg>
+                <span>Filter Kolam:</span>
+            </label>
+            <div class="relative">
+                <select
+                    name="plant_id"
+                    id="plant_filter"
+                    onchange="this.form.submit()"
+                    class="appearance-none pl-3.5 pr-8 py-2 rounded-xl bg-slate-950 border border-slate-700/80 hover:border-emerald-500/50 text-white text-xs font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer transition-colors shadow-sm"
+                >
+                    <option value="all" {{ $selectedPlantId === 'all' ? 'selected' : '' }}>Semua Kolam (Akumulasi)</option>
+                    @foreach ($plants as $p)
+                        <option value="{{ $p->id }}" {{ (string)$selectedPlantId === (string)$p->id ? 'selected' : '' }}>
+                            {{ $p->name }}
+                        </option>
+                    @endforeach
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-slate-400">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+            </div>
+        </form>
     </div>
 
-    <!-- Navigation Header -->
-    <nav class="border-b border-slate-800 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <!-- Brand -->
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-500/20">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                    </svg>
-                </div>
-                <div>
-                    <span class="text-base font-bold bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Azolla Monitor</span>
-                    <span class="hidden sm:inline-block text-xs text-slate-400 ml-2">&bull; Dashboard</span>
-                </div>
-            </div>
+    <!-- 1. SUMMARY CARDS (Data Aktual dari MySQL) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Card 1: Total Tanaman -->
+        <x-summary-card
+            title="Total Tanaman"
+            :value="$totalPlants"
+            unit="Kolam"
+            color="emerald"
+        >
+            <x-slot:icon>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </x-slot:icon>
+            <x-slot:subtitle>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Terdaftar di database
+            </x-slot:subtitle>
+        </x-summary-card>
 
-            <!-- User Menu & Logout -->
-            <div class="flex items-center gap-4">
-                <!-- User Profile Pill -->
-                <div class="hidden sm:flex items-center gap-3 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
-                    <div class="w-7 h-7 rounded-lg {{ $user->isAdmin() ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-teal-500/20 text-teal-300 border border-teal-500/30' }} flex items-center justify-center text-xs font-bold uppercase">
-                        {{ substr($user->name, 0, 2) }}
-                    </div>
-                    <div class="text-left">
-                        <div class="text-xs font-semibold text-white leading-tight">{{ $user->name }}</div>
-                        <div class="text-[10px] text-slate-400 leading-tight">{{ $user->email }}</div>
-                    </div>
-                    <span class="ml-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase {{ $user->isAdmin() ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-teal-500/20 text-teal-400 border border-teal-500/30' }}">
-                        {{ $user->role }}
-                    </span>
-                </div>
+        <!-- Card 2: Total Monitoring -->
+        <x-summary-card
+            title="Total Monitoring"
+            :value="$totalMonitorings"
+            unit="Entri Rekaman"
+            color="teal"
+        >
+            <x-slot:icon>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+            </x-slot:icon>
+            <x-slot:subtitle>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+                Histori tercatat
+            </x-slot:subtitle>
+        </x-summary-card>
 
-                <!-- Form Logout -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button
-                        type="submit"
-                        class="px-3.5 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 hover:text-rose-300 border border-rose-500/25 text-xs font-medium flex items-center gap-1.5 transition-all shadow-sm"
-                        title="Keluar dari akun"
-                    >
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-                        </svg>
-                        <span>Keluar (Logout)</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-6">
-
-        <!-- Flash Message: Success -->
-        @if (session('success'))
-            <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center gap-3 text-emerald-300 text-sm shadow-sm">
-                <div class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center shrink-0">
-                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-                <span>{{ session('success') }}</span>
-            </div>
-        @endif
-
-        <!-- Welcome Banner -->
-        <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-800/80 border border-slate-800 relative overflow-hidden">
-            <div class="relative z-10">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold {{ $user->isAdmin() ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-teal-500/10 text-teal-400 border border-teal-500/20' }} mb-3">
-                    <span class="w-1.5 h-1.5 rounded-full {{ $user->isAdmin() ? 'bg-emerald-400' : 'bg-teal-400' }} animate-pulse"></span>
-                    Autentikasi Terverifikasi &bull; Role {{ ucfirst($user->role) }}
-                </div>
-                <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                    Halo, <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">{{ $user->name }}</span>!
-                </h1>
-                <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
-                    Anda berhasil masuk ke Sistem Monitoring Tanaman Azolla. Sesi login Anda tersimpan aman dan divalidasi oleh Role Middleware.
-                </p>
-            </div>
-        </div>
-
-        <!-- Role Authorization Demonstration Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <!-- User Status Card -->
-            <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800">
-                <h2 class="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4 flex items-center gap-2">
-                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                    </svg>
-                    Informasi Akun Anda
-                </h2>
-                <div class="space-y-3 text-sm">
-                    <div class="flex items-center justify-between py-2 border-b border-slate-800">
-                        <span class="text-slate-400 text-xs">Nama Lengkap</span>
-                        <span class="font-semibold text-white">{{ $user->name }}</span>
-                    </div>
-                    <div class="flex items-center justify-between py-2 border-b border-slate-800">
-                        <span class="text-slate-400 text-xs">Alamat Email</span>
-                        <span class="font-mono text-emerald-400 text-xs">{{ $user->email }}</span>
-                    </div>
-                    <div class="flex items-center justify-between py-2 border-b border-slate-800">
-                        <span class="text-slate-400 text-xs">Tingkat Hak Akses</span>
-                        <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase {{ $user->isAdmin() ? 'bg-emerald-500/20 text-emerald-300' : 'bg-teal-500/20 text-teal-300' }}">
-                            {{ $user->role }}
-                        </span>
-                    </div>
-                    <div class="flex items-center justify-between py-2">
-                        <span class="text-slate-400 text-xs">Status Autentikasi</span>
-                        <span class="text-emerald-400 text-xs font-medium flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                            Session Aktif
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Role Access Test Card -->
-            <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800">
-                <h2 class="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4 flex items-center gap-2">
-                    <svg class="w-4 h-4 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                    </svg>
-                    Uji Otorisasi Middleware
-                </h2>
-                
-                @if ($user->isAdmin())
-                    <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/25 mb-4">
-                        <div class="flex items-center gap-2 text-emerald-400 font-semibold text-xs mb-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Hak Akses Administrator Aktif
-                        </div>
-                        <p class="text-xs text-slate-300 leading-relaxed">
-                            Anda memiliki izin untuk mengelola seluruh data tanaman, mengubah parameter threshold, input data, serta manajemen akun user.
-                        </p>
-                    </div>
-                    <a
-                        href="{{ route('admin.check') }}"
-                        target="_blank"
-                        class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 text-xs font-semibold transition-all"
-                    >
-                        <span>Uji Endpoint Proteksi Role (Admin Only)</span>
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                        </svg>
-                    </a>
+        <!-- Card 3: Monitoring Terakhir -->
+        <x-summary-card
+            title="Monitoring Terakhir"
+            color="sky"
+        >
+            <x-slot:icon>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </x-slot:icon>
+            <div class="text-base sm:text-lg font-bold text-white tracking-tight truncate">
+                @if ($latestMonitoring)
+                    {{ $latestMonitoring->monitored_at->format('d M Y, H:i') }}
                 @else
-                    <div class="p-4 rounded-xl bg-teal-500/10 border border-teal-500/25 mb-4">
-                        <div class="flex items-center gap-2 text-teal-400 font-semibold text-xs mb-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                            </svg>
-                            Hak Akses Pengamat Lapangan (Read-Only)
-                        </div>
-                        <p class="text-xs text-slate-300 leading-relaxed">
-                            Sebagai Pengamat (User), Anda dapat melihat data dashboard, histori monitoring, dan grafik kondisi tanaman. Akses manajemen Admin diproteksi oleh <code class="bg-slate-800 px-1 py-0.5 rounded text-amber-300">RoleMiddleware</code>.
-                        </p>
-                    </div>
-                    <a
-                        href="{{ route('admin.check') }}"
-                        target="_blank"
-                        class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-rose-300 border border-slate-700 text-xs font-semibold transition-all"
-                    >
-                        <span>Uji Endpoint Admin (Akan Muncul 403 Forbidden)</span>
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                        </svg>
-                    </a>
+                    Belum Ada Data
                 @endif
             </div>
+            <div class="text-[11px] text-slate-400 mt-2 flex items-center gap-2">
+                @if ($latestMonitoring)
+                    <span class="text-emerald-400 font-mono font-semibold">{{ $latestMonitoring->temperature }}°C</span> &bull;
+                    <span class="text-teal-400 font-mono font-semibold">pH {{ $latestMonitoring->ph }}</span> &bull;
+                    <span class="text-sky-400 font-mono font-semibold">{{ $latestMonitoring->humidity }}%</span>
+                @else
+                    <span>Menunggu input pertama</span>
+                @endif
+            </div>
+        </x-summary-card>
+
+        <!-- Card 4: Status Tanaman (Active, Harvested, Inactive) -->
+        <x-summary-card
+            id="plant-summary"
+            title="Status Tanaman"
+            color="amber"
+        >
+            <x-slot:icon>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </x-slot:icon>
+            <div class="space-y-1.5">
+                <div class="flex items-center justify-between text-xs">
+                    <x-status-badge status="active" />
+                    <span class="font-bold text-white">{{ $plantStatusCounts['active'] }} Kolam</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                    <x-status-badge status="harvested" />
+                    <span class="font-semibold text-slate-300">{{ $plantStatusCounts['harvested'] }} Kolam</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                    <x-status-badge status="inactive" />
+                    <span class="font-semibold text-slate-300">{{ $plantStatusCounts['inactive'] }} Kolam</span>
+                </div>
+            </div>
+        </x-summary-card>
+
+    </div>
+
+    <!-- 2. GRAFIK MONITORING (CHART.JS DARI DATABASE) -->
+    <div id="charts" class="space-y-4">
+        <div class="flex items-center justify-between">
+            <div>
+                <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                    </svg>
+                    Grafik Tren Perkembangan Lingkungan Azolla
+                </h3>
+                <p class="text-xs text-slate-400">Visualisasi data berkala yang diambil langsung dari database MySQL.</p>
+            </div>
+            <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-slate-900 border border-slate-800 text-slate-300">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Chart.js Aktif
+            </span>
         </div>
 
-        <!-- Data Summary Cards (Database Integration Check) -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80">
-                <div class="text-xs text-slate-400 font-medium">Total Kolam Terdaftar</div>
-                <div class="text-2xl font-bold text-white mt-1">{{ $totalPlants }} <span class="text-xs font-normal text-slate-400">Kolam</span></div>
-                <p class="text-[11px] text-emerald-400 mt-1">Data aktif di MySQL</p>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            
+            <!-- Chart 1: Suhu Air (°C) -->
+            <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Perubahan Suhu Air</span>
+                        <span class="text-[11px] font-mono bg-emerald-500/10 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/20">°C</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mb-4">Rentang ideal: 20°C &ndash; 30°C</p>
+                </div>
+                <div class="relative h-60 w-full">
+                    <canvas id="tempChart"></canvas>
+                </div>
             </div>
-            <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80">
-                <div class="text-xs text-slate-400 font-medium">Total Rekaman Monitoring</div>
-                <div class="text-2xl font-bold text-white mt-1">{{ $totalMonitorings }} <span class="text-xs font-normal text-slate-400">Entri</span></div>
-                <p class="text-[11px] text-teal-400 mt-1">Siap untuk visualisasi grafik Phase 4</p>
+
+            <!-- Chart 2: Derajat Keasaman pH -->
+            <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-wider">Tingkat Keasaman (pH)</span>
+                        <span class="text-[11px] font-mono bg-teal-500/10 text-teal-300 px-2 py-0.5 rounded border border-teal-500/20">pH</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mb-4">Rentang ideal: 6.0 &ndash; 7.5</p>
+                </div>
+                <div class="relative h-60 w-full">
+                    <canvas id="phChart"></canvas>
+                </div>
             </div>
-            <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80">
-                <div class="text-xs text-slate-400 font-medium">Parameter Ambang Batas</div>
-                <div class="text-2xl font-bold text-white mt-1">{{ $totalParameters }} <span class="text-xs font-normal text-slate-400">Parameter</span></div>
-                <p class="text-[11px] text-emerald-400 mt-1">Suhu, pH, Kelembapan, dll.</p>
+
+            <!-- Chart 3: Kelembapan Udara (%) -->
+            <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Kelembapan Udara</span>
+                        <span class="text-[11px] font-mono bg-sky-500/10 text-sky-300 px-2 py-0.5 rounded border border-sky-500/20">% RH</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mb-4">Rentang ideal: 60% &ndash; 85%</p>
+                </div>
+                <div class="relative h-60 w-full">
+                    <canvas id="humidityChart"></canvas>
+                </div>
             </div>
+
+        </div>
+    </div>
+
+    <!-- 3. TABEL MONITORING TERBARU (Data Aktual) -->
+    <div id="recent-table" class="p-5 sm:p-6 rounded-3xl bg-slate-900/80 border border-slate-800 shadow-xl space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-4">
+            <div>
+                <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    Data Pengamatan Terkini (Monitoring Terbaru)
+                </h3>
+                <p class="text-xs text-slate-400 mt-0.5">Menampilkan hingga 8 catatan observasi terbaru yang tersimpan di MySQL.</p>
+            </div>
+            <span class="text-xs text-slate-400 font-mono">
+                Total Riwayat: <span class="text-white font-bold">{{ $totalMonitorings }}</span>
+            </span>
         </div>
 
-    </main>
+        <!-- Responsive Table Container -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs whitespace-nowrap">
+                <thead>
+                    <tr class="border-b border-slate-800 text-[11px] font-bold uppercase tracking-wider text-slate-400 bg-slate-950/40">
+                        <th class="py-3 px-4 rounded-l-xl">Tanaman / Kolam</th>
+                        <th class="py-3 px-4">Waktu Monitoring</th>
+                        <th class="py-3 px-4 text-center">Suhu</th>
+                        <th class="py-3 px-4 text-center">pH</th>
+                        <th class="py-3 px-4 text-center">Kelembapan</th>
+                        <th class="py-3 px-4">Kondisi &amp; Warna</th>
+                        <th class="py-3 px-4 text-center rounded-r-xl">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800/60">
+                    @forelse ($recentMonitorings as $item)
+                        <tr class="hover:bg-slate-800/40 transition-colors">
+                            <!-- Kolom Tanaman -->
+                            <td class="py-3 px-4">
+                                <div class="font-semibold text-white">{{ $item->plant->name ?? 'Tanaman #' . $item->plant_id }}</div>
+                                <div class="text-[10px] text-slate-400">{{ $item->plant->location ?? '-' }}</div>
+                            </td>
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-800/80 py-5 text-center text-xs text-slate-500">
-        <p>Sistem Web Monitoring Tanaman Azolla &copy; {{ date('Y') }} &bull; Phase 3 Selesai</p>
-    </footer>
-</body>
-</html>
+                            <!-- Kolom Waktu -->
+                            <td class="py-3 px-4 text-slate-300 font-mono text-[11px]">
+                                {{ $item->monitored_at->format('d M Y, H:i') }}
+                            </td>
+
+                            <!-- Kolom Suhu -->
+                            <td class="py-3 px-4 text-center font-mono">
+                                <span class="font-bold {{ $item->temperature >= 20 && $item->temperature <= 30 ? 'text-emerald-400' : 'text-amber-400' }}">
+                                    {{ number_format($item->temperature, 1) }}°C
+                                </span>
+                            </td>
+
+                            <!-- Kolom pH -->
+                            <td class="py-3 px-4 text-center font-mono">
+                                <span class="font-bold {{ $item->ph >= 6.0 && $item->ph <= 7.5 ? 'text-teal-400' : 'text-rose-400' }}">
+                                    {{ number_format($item->ph, 2) }}
+                                </span>
+                            </td>
+
+                            <!-- Kolom Kelembapan -->
+                            <td class="py-3 px-4 text-center font-mono">
+                                <span class="font-bold {{ $item->humidity >= 60 && $item->humidity <= 85 ? 'text-sky-400' : 'text-amber-400' }}">
+                                    {{ number_format($item->humidity, 0) }}%
+                                </span>
+                            </td>
+
+                            <!-- Kolom Kondisi Visual -->
+                            <td class="py-3 px-4">
+                                <div class="text-slate-200">{{ $item->plant_condition }}</div>
+                                <div class="text-[10px] text-slate-400">{{ $item->plant_color }}</div>
+                            </td>
+
+                            <!-- Kolom Status Badge -->
+                            <td class="py-3 px-4 text-center">
+                                <x-status-badge :status="$item->plant_condition" />
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="7" class="py-8 text-center text-slate-400">
+                                Belum ada data monitoring yang tercatat untuk filter ini.
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 4. SECTION KHUSUS ROLE ADMINISTRATOR -->
+    @if ($user->isAdmin())
+        <div id="admin-section" class="p-6 rounded-3xl bg-gradient-to-r from-emerald-950/30 via-slate-900 to-slate-900 border border-emerald-500/20 space-y-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-white">Panel Administrasi (Khusus Admin)</h4>
+                        <p class="text-xs text-slate-400">Parameter threshold acuan sistem monitoring Azolla.</p>
+                    </div>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono">
+                    ADMIN ONLY
+                </span>
+            </div>
+
+            <!-- Parameters Grid Table -->
+            <div id="parameters-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 pt-2">
+                @foreach ($parameters as $param)
+                    <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800">
+                        <div class="text-[11px] font-bold text-slate-300 truncate">{{ $param->parameter_name }}</div>
+                        <div class="text-base font-extrabold text-white mt-1">
+                            {{ $param->minimum_value }} &ndash; {{ $param->maximum_value }}
+                            <span class="text-[11px] font-normal text-slate-400">{{ $param->unit }}</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-1 line-clamp-1" title="{{ $param->description }}">
+                            {{ $param->description }}
+                        </p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endif
+
+</div>
+@endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Data dari Controller (Database MySQL)
+    const labels = @json($chartLabels);
+    const temperatures = @json($chartTemps);
+    const phValues = @json($chartPh);
+    const humidities = @json($chartHumidities);
+
+    // Opsi Global Chart.js
+    const commonOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                titleColor: '#e2e8f0',
+                bodyColor: '#38bdf8',
+                borderColor: '#334155',
+                borderWidth: 1,
+                padding: 10,
+                displayColors: false,
+            }
+        },
+        scales: {
+            x: {
+                grid: { color: 'rgba(51, 65, 85, 0.25)' },
+                ticks: { color: '#94a3b8', font: { size: 10 } }
+            },
+            y: {
+                grid: { color: 'rgba(51, 65, 85, 0.25)' },
+                ticks: { color: '#94a3b8', font: { size: 10 } }
+            }
+        }
+    };
+
+    // Chart 1: Suhu (°C)
+    const ctxTemp = document.getElementById('tempChart');
+    if (ctxTemp) {
+        new Chart(ctxTemp, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Suhu (°C)',
+                    data: temperatures,
+                    borderColor: '#10b981', // emerald-500
+                    backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                    fill: true,
+                    tension: 0.35,
+                    borderWidth: 2,
+                    pointBackgroundColor: '#10b981',
+                    pointRadius: 3,
+                    pointHoverRadius: 5,
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    ...commonOptions.scales,
+                    y: {
+                        ...commonOptions.scales.y,
+                        min: 18,
+                        max: 35,
+                        ticks: {
+                            ...commonOptions.scales.y.ticks,
+                            callback: (val) => val + '°C'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Chart 2: pH
+    const ctxPh = document.getElementById('phChart');
+    if (ctxPh) {
+        new Chart(ctxPh, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'pH Air',
+                    data: phValues,
+                    borderColor: '#14b8a6', // teal-500
+                    backgroundColor: 'rgba(20, 184, 166, 0.12)',
+                    fill: true,
+                    tension: 0.35,
+                    borderWidth: 2,
+                    pointBackgroundColor: '#14b8a6',
+                    pointRadius: 3,
+                    pointHoverRadius: 5,
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    ...commonOptions.scales,
+                    y: {
+                        ...commonOptions.scales.y,
+                        min: 5.0,
+                        max: 9.0,
+                        ticks: {
+                            ...commonOptions.scales.y.ticks,
+                            callback: (val) => val + ' pH'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Chart 3: Kelembapan (%)
+    const ctxHumidity = document.getElementById('humidityChart');
+    if (ctxHumidity) {
+        new Chart(ctxHumidity, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Kelembapan (%)',
+                    data: humidities,
+                    borderColor: '#0ea5e9', // sky-500
+                    backgroundColor: 'rgba(14, 165, 233, 0.12)',
+                    fill: true,
+                    tension: 0.35,
+                    borderWidth: 2,
+                    pointBackgroundColor: '#0ea5e9',
+                    pointRadius: 3,
+                    pointHoverRadius: 5,
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    ...commonOptions.scales,
+                    y: {
+                        ...commonOptions.scales.y,
+                        min: 40,
+                        max: 100,
+                        ticks: {
+                            ...commonOptions.scales.y.ticks,
+                            callback: (val) => val + '%'
+                        }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
+@endpush
