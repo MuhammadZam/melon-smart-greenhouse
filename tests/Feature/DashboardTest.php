@@ -159,4 +159,112 @@ class DashboardTest extends TestCase
         $this->actingAs($admin)->get('/admin/users')->assertRedirect('/dashboard#admin-section');
         $this->actingAs($admin)->get('/admin/parameters')->assertRedirect('/dashboard#parameters-list');
     }
+
+    /**
+     * Test 10: Phase 7 — Dashboard merender seluruh grafik pertumbuhan dan distribusi status.
+     */
+    public function test_dashboard_renders_growth_trends_and_distribution_charts(): void
+    {
+        $user = User::first();
+
+        $response = $this->actingAs($user)->get('/dashboard');
+
+        $response->assertStatus(200);
+        $response->assertSee('heightChart');
+        $response->assertSee('densityChart');
+        $response->assertSee('conditionChart');
+        $response->assertSee('statusChart');
+        $response->assertSee('frequencyChart');
+        $response->assertSee('Configured Monitoring Threshold');
+    }
+
+    /**
+     * Test 11: Phase 7 — Filter rentang tanggal (date_from & date_to) bekerja dengan benar.
+     */
+    public function test_dashboard_date_filter_works_properly(): void
+    {
+        $user = User::first();
+
+        $response = $this->actingAs($user)->get('/dashboard?date_from=2020-01-01&date_to=2030-12-31');
+
+        $response->assertStatus(200);
+        $response->assertSee('Filter Visualisasi');
+    }
+
+    /**
+     * Test 12: Phase 7 — Quick range filter (today, 7d, 30d, all) bekerja dengan benar.
+     */
+    public function test_dashboard_quick_range_filter_works(): void
+    {
+        $user = User::first();
+
+        foreach (['today', '7d', '30d', 'all'] as $range) {
+            $response = $this->actingAs($user)->get('/dashboard?range=' . $range);
+            $response->assertStatus(200);
+        }
+    }
+
+    /**
+     * Test 13: Phase 7 — Empty state ditampilkan dengan ramah jika filter tidak menghasilkan data.
+     */
+    public function test_dashboard_handles_empty_filtered_data_gracefully(): void
+    {
+        $user = User::first();
+
+        $response = $this->actingAs($user)->get('/dashboard?date_from=2099-01-01&date_to=2099-01-02');
+
+        $response->assertStatus(200);
+        $response->assertSee('Tidak ada data monitoring pada periode yang dipilih.');
+    }
+
+    /**
+     * Test 14: Phase 7 — Statistik agregasi parameter (AVG, MIN, MAX) ditampilkan di dashboard.
+     */
+    public function test_dashboard_displays_parameter_aggregations(): void
+    {
+        $user = User::first();
+
+        $response = $this->actingAs($user)->get('/dashboard');
+
+        $response->assertStatus(200);
+        $response->assertSee('Statistik Agregasi Parameter');
+        $response->assertSee('Suhu Udara');
+        $response->assertSee('pH Nutrisi');
+        $response->assertSee('Kelembapan');
+        $response->assertSee('Tinggi Tanaman');
+        $response->assertSee('Kerapatan Tajuk');
+        $response->assertSee('Rata-rata:');
+        $response->assertSee('Minimum:');
+        $response->assertSee('Maksimum:');
+    }
+
+    /**
+     * Test 15: Phase 7 — Validasi keamanan filter menolak parameter yang tidak valid.
+     */
+    public function test_dashboard_rejects_invalid_filter_parameters(): void
+    {
+        $user = User::first();
+
+        // Range tidak valid
+        $responseRange = $this->actingAs($user)->get('/dashboard?range=invalid_range');
+        $responseRange->assertSessionHasErrors(['range']);
+
+        // Plant ID tidak valid
+        $responsePlant = $this->actingAs($user)->get('/dashboard?plant_id=999999');
+        $responsePlant->assertSessionHasErrors(['plant_id']);
+    }
+
+    /**
+     * Test 16: Phase 7 — Halaman daftar monitoring memiliki tautan menuju analitik dashboard.
+     */
+    public function test_monitoring_index_has_link_to_dashboard_analytics(): void
+    {
+        $user = User::first();
+
+        $response = $this->actingAs($user)->get('/monitorings');
+
+        $response->assertStatus(200);
+        $response->assertSee('Lihat Analytics');
+        $response->assertSee(route('dashboard') . '#charts');
+    }
 }

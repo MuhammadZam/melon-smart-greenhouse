@@ -34,7 +34,17 @@
         </div>
 
         <!-- Tombol Aksi Utama -->
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2 sm:gap-3">
+            <a
+                href="{{ route('dashboard') }}#charts"
+                class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/80 text-xs font-semibold tracking-wide shadow-md transition-all hover:text-white"
+                title="Lihat Visualisasi Grafik Tren & Analytics"
+            >
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                </svg>
+                <span>Lihat Analytics</span>
+            </a>
             <a
                 href="{{ route('monitorings.create') }}"
                 class="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white text-xs font-bold tracking-wide shadow-lg shadow-emerald-600/25 hover:shadow-emerald-500/35 transition-all transform hover:-translate-y-0.5"
