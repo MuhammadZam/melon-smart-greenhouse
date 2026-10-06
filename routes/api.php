@@ -23,6 +23,7 @@ Route::prefix('plants')->group(function () {
 Route::prefix('monitorings')->group(function () {
     Route::get('/statistics', [MonitoringController::class, 'statistics'])->name('api.monitorings.statistics');
     Route::get('/', [MonitoringController::class, 'index'])->name('api.monitorings.index');
+    Route::post('/', [MonitoringController::class, 'store'])->name('api.monitorings.store');
     Route::get('/{monitoring}', [MonitoringController::class, 'show'])->name('api.monitorings.show');
 });
 

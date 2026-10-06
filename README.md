@@ -92,13 +92,50 @@ Format Gagal / Error:
 | `GET` | `/api/plants` | `status` (`active`,`harvested`,`inactive`,`all`), `search` | Mengambil seluruh daftar spesimen tanaman melon beserta jumlah observasi dan monitoring terakhir. |
 | `GET` | `/api/plants/{plant}` | - | Mengambil detail spesimen tanaman melon tertentu berdasarkan ID. |
 | `GET` | `/api/monitorings` | `plant_id`, `condition`, `date_from`, `date_to`, `search` | Mengambil riwayat observasi monitoring terurut kronologis terbaru. |
+| `POST` | `/api/monitorings` | - | Mengirimkan data pembacaan sensor baru (ingestion endpoint untuk IoT / simulator). |
 | `GET` | `/api/monitorings/{monitoring}` | - | Mengambil detail satu rekaman observasi parameter monitoring. |
 | `GET` | `/api/monitorings/statistics` | `plant_id`, `date_from`, `date_to` | Menghitung agregasi SQL (`AVG`, `MIN`, `MAX`) parameter suhu, pH, kelembapan, tinggi, dan kerapatan kanopi. |
 | `GET` | `/api/dashboard/summary` | - | Mengambil ringkasan metrik dashboard, distribusi status tanaman, observasi hari ini, dan kondisi fisik tanaman. |
 
 ### Contoh Permintaan & Respons
 
-#### 1. GET `/api/dashboard/summary`
+#### 1. POST `/api/monitorings` (Ingesti Data Sensor)
+Request:
+```json
+{
+  "plant_id": 1,
+  "monitored_at": "2026-10-07 08:30:00",
+  "temperature": 28.4,
+  "ph": 6.35,
+  "humidity": 74.5,
+  "plant_height": 82.0,
+  "canopy_density": 68.0,
+  "condition": "optimal",
+  "leaf_color": "Hijau Segar",
+  "notes": "Simulated sensor reading via IoT prototype"
+}
+```
+Response (`201 Created`):
+```json
+{
+  "success": true,
+  "message": "Data monitoring berhasil disimpan.",
+  "data": {
+    "id": 118,
+    "plant_id": 1,
+    "temperature": 28.4,
+    "ph": 6.35,
+    "humidity": 74.5,
+    "plant_height": 82.0,
+    "canopy_density": 68.0,
+    "condition": "optimal",
+    "leaf_color": "Hijau Segar",
+    "notes": "Simulated sensor reading via IoT prototype"
+  }
+}
+```
+
+#### 2. GET `/api/dashboard/summary`
 ```json
 {
   "success": true,
@@ -133,7 +170,7 @@ Format Gagal / Error:
 }
 ```
 
-#### 2. GET `/api/monitorings/statistics?plant_id=1`
+#### 3. GET `/api/monitorings/statistics?plant_id=1`
 ```json
 {
   "success": true,
@@ -161,7 +198,58 @@ Format Gagal / Error:
 
 ---
 
-## 6. Status Pengembangan
+## 6. IoT Data Simulation / Sensor Integration Prototype (Phase 9)
+
+Phase 9 menggunakan simulator data sensor sebagai prototype integrasi IoT karena perangkat sensor fisik belum tersedia.
+
+Simulator ini bertindak sebagai klien sensor eksternal yang mengirimkan data telemetri berkala (suhu, pH, kelembapan, tinggi, kerapatan tajuk) menuju REST API Laravel melalui protokol HTTP POST.
+
+### Arsitektur Alur Data
+```text
+Python Sensor Simulator (External Client)
+           │
+           │ HTTP POST (/api/monitorings)
+           ▼
+Laravel REST API
+           │
+           ▼
+StoreMonitoringApiRequest (Validation)
+           │
+           ▼
+Monitoring Model (Eloquent ORM)
+           │
+           ▼
+MySQL / SQLite Database
+           │
+           ▼
+Monitoring Dashboard & Chart.js Visualization
+```
+
+Arsitektur ini memastikan bahwa simulator Python nantinya dapat digantikan langsung oleh mikrokontroler fisik (misal: ESP32 + sensor DHT22 / pH probe) tanpa mengubah struktur database maupun logika dashboard monitoring.
+
+### Menjalankan Simulator
+Direktori simulator berada di `iot-simulator/`:
+
+1. **Instalasi dependensi (opsional):**
+   ```bash
+   pip install -r iot-simulator/requirements.txt
+   ```
+2. **Menjalankan pengiriman satu kali (`--once`):**
+   ```bash
+   python iot-simulator/simulator.py --once
+   ```
+3. **Menjalankan pengiriman berkala (`--interval`):**
+   ```bash
+   python iot-simulator/simulator.py --interval 10
+   ```
+4. **Menargetkan tanaman tertentu (`--plant-id`):**
+   ```bash
+   python iot-simulator/simulator.py --plant-id 2 --interval 10
+   ```
+
+---
+
+## 7. Status Pengembangan
 - Phase 1: Inisialisasi Project, UI Landing Page, Asset Setup ✅
 - Phase 2: Schema Database, Migrasi, Model Eloquent, Factory & Seeder ✅
 - Phase 3: Autentikasi, Role Middleware, Manajemen Sesi ✅
@@ -170,5 +258,7 @@ Format Gagal / Error:
 - Phase 5: Monitoring CRUD & Authorization ✅
 - Phase 6: Plant Management & Authorization ✅
 - Phase 7: Advanced Chart & Visualization ✅
-- **Phase 8: REST API Monitoring System (Selesai)** ✅
-- Phase 9: IoT / Real-Time Integration (Akan datang / Menunggu instruksi) ⏸️
+- Phase 8: REST API Monitoring System ✅
+- **Phase 9: IoT Data Simulation / Sensor Integration Prototype (Selesai)** ✅
+- Phase 10: Testing & Hardening (Akan datang / Menunggu instruksi) ⏳
+- Phase 11: Deployment — Opsional ⚪

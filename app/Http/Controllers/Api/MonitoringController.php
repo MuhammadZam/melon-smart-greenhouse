@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\StoreMonitoringApiRequest;
 use App\Http\Resources\MonitoringResource;
 use App\Models\Monitoring;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class MonitoringController extends Controller
 {
@@ -33,6 +35,45 @@ class MonitoringController extends Controller
             'message' => 'Data monitoring berhasil diambil.',
             'data'    => MonitoringResource::collection($monitorings),
         ], 200);
+    }
+
+    /**
+     * Menyimpan rekaman data monitoring baru dari sensor IoT / simulator data.
+     */
+    public function store(StoreMonitoringApiRequest $request): JsonResponse
+    {
+        $validated = $request->validated();
+
+        $plantDensity = $validated['canopy_density'] ?? $validated['plant_density'] ?? 0;
+        $condition    = $validated['condition'] ?? $validated['plant_condition'] ?? 'optimal';
+        $leafColor    = $validated['leaf_color'] ?? $validated['plant_color'] ?? 'Hijau';
+
+        $monitoring = Monitoring::create([
+            'plant_id'        => $validated['plant_id'],
+            'monitored_at'    => $validated['monitored_at'],
+            'temperature'     => (float) $validated['temperature'],
+            'ph'              => (float) $validated['ph'],
+            'humidity'        => (float) $validated['humidity'],
+            'plant_height'    => (float) $validated['plant_height'],
+            'plant_density'   => (float) $plantDensity,
+            'plant_condition' => $condition,
+            'plant_color'     => $leafColor,
+            'notes'           => $validated['notes'] ?? 'Simulated sensor data (IoT Prototype)',
+        ]);
+
+        $monitoring->load('plant');
+
+        Log::info('Data monitoring sensor berhasil di-ingest via REST API', [
+            'monitoring_id' => $monitoring->id,
+            'plant_id'      => $monitoring->plant_id,
+            'monitored_at'  => $monitoring->monitored_at?->toDateTimeString(),
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data monitoring berhasil disimpan.',
+            'data'    => new MonitoringResource($monitoring),
+        ], 201);
     }
 
     /**
