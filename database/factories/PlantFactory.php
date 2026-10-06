@@ -20,10 +20,10 @@ class PlantFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'        => 'Melon Greenhouse ' . fake()->unique()->randomElement(['A', 'B', 'C', 'D', 'E']),
-            'location'    => 'Greenhouse ' . fake()->numberBetween(1, 3) . ', Baris ' . fake()->numberBetween(1, 4),
+            'name'        => 'Melon ' . ucfirst(fake()->word()) . ' Plot ' . fake()->unique()->numberBetween(100, 99999),
+            'location'    => 'Greenhouse ' . fake()->numberBetween(1, 5) . ' - Sektor ' . fake()->randomElement(['Barat', 'Timur', 'Utara', 'Selatan']),
             'description' => 'Plot budidaya tanaman melon uji coba pengamatan mikroklimat.',
-            'status'      => 'active',
+            'status'      => fake()->randomElement(['active', 'harvested', 'inactive']),
         ];
     }
 }

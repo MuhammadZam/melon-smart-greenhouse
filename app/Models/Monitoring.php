@@ -52,4 +52,51 @@ class Monitoring extends Model
     {
         return $this->belongsTo(Plant::class);
     }
+
+    /**
+     * Scope query untuk filter dan pencarian monitoring melon.
+     */
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['plant_id'] ?? null, function ($q, $plantId) {
+            if ($plantId !== 'all' && !empty($plantId) && is_numeric($plantId)) {
+                $q->where('plant_id', $plantId);
+            }
+        });
+
+        $query->when($filters['condition'] ?? null, function ($q, $condition) {
+            if ($condition !== 'all' && !empty($condition)) {
+                $q->where('plant_condition', 'like', "%{$condition}%");
+            }
+        });
+
+        $query->when($filters['search'] ?? null, function ($q, $search) {
+            $search = trim($search);
+            if (!empty($search)) {
+                $q->where(function ($sub) use ($search) {
+                    $sub->where('notes', 'like', "%{$search}%")
+                        ->orWhere('plant_condition', 'like', "%{$search}%")
+                        ->orWhere('plant_color', 'like', "%{$search}%")
+                        ->orWhereHas('plant', function ($pq) use ($search) {
+                            $pq->where('name', 'like', "%{$search}%")
+                               ->orWhere('location', 'like', "%{$search}%");
+                        });
+                });
+            }
+        });
+
+        $query->when($filters['date_from'] ?? null, function ($q, $from) {
+            if (!empty($from)) {
+                $q->whereDate('monitored_at', '>=', $from);
+            }
+        });
+
+        $query->when($filters['date_to'] ?? null, function ($q, $to) {
+            if (!empty($to)) {
+                $q->whereDate('monitored_at', '<=', $to);
+            }
+        });
+
+        return $query;
+    }
 }

@@ -231,9 +231,28 @@
                 </h3>
                 <p class="text-xs text-slate-400 mt-0.5">Menampilkan hingga 8 catatan observasi terbaru yang tersimpan di MySQL.</p>
             </div>
-            <span class="text-xs text-slate-400 font-mono">
-                Total Riwayat: <span class="text-white font-bold">{{ $totalMonitorings }}</span>
-            </span>
+            <div class="flex items-center gap-2">
+                <a
+                    href="{{ route('monitorings.create') }}"
+                    class="px-3 py-1.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                    title="Tambah Catatan Monitoring Baru"
+                >
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    <span>+ Tambah</span>
+                </a>
+                <a
+                    href="{{ route('monitorings.index') }}"
+                    class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold flex items-center gap-1.5 transition-colors border border-slate-700/60"
+                    title="Buka Halaman Pengelolaan Monitoring Lengkap"
+                >
+                    <span>Semua Data ({{ $totalMonitorings }})</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
         </div>
 
         <!-- Responsive Table Container -->
@@ -247,7 +266,8 @@
                         <th class="py-3 px-4 text-center">pH</th>
                         <th class="py-3 px-4 text-center">Kelembapan</th>
                         <th class="py-3 px-4">Kondisi &amp; Warna</th>
-                        <th class="py-3 px-4 text-center rounded-r-xl">Status</th>
+                        <th class="py-3 px-4 text-center">Status</th>
+                        <th class="py-3 px-4 text-center rounded-r-xl">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-800/60">
@@ -295,10 +315,25 @@
                             <td class="py-3 px-4 text-center">
                                 <x-status-badge :status="$item->plant_condition" />
                             </td>
+
+                            <!-- Kolom Aksi -->
+                            <td class="py-3 px-4 text-center">
+                                <a
+                                    href="{{ route('monitorings.show', $item) }}"
+                                    class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors border border-slate-700/60 inline-flex items-center gap-1 text-[11px]"
+                                    title="Lihat Detail"
+                                >
+                                    <svg class="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                    </svg>
+                                    <span>Detail</span>
+                                </a>
+                            </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="py-8 text-center text-slate-400">
+                            <td colspan="8" class="py-8 text-center text-slate-400">
                                 Belum ada data monitoring yang tercatat untuk filter ini.
                             </td>
                         </tr>

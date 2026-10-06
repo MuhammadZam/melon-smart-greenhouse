@@ -137,8 +137,8 @@ class DashboardTest extends TestCase
     {
         $user = User::first();
 
-        $this->actingAs($user)->get('/monitorings')->assertRedirect('/dashboard#recent-table');
-        $this->actingAs($user)->get('/plants')->assertRedirect('/dashboard#plant-summary');
+        $this->actingAs($user)->get('/monitorings')->assertStatus(200);
+        $this->actingAs($user)->get('/plants')->assertStatus(200);
         $this->actingAs($user)->get('/charts')->assertRedirect('/dashboard#charts');
         $this->actingAs($user)->get('/history')->assertRedirect('/dashboard#recent-table');
     }

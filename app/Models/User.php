@@ -28,7 +28,7 @@ class User extends Authenticatable
      */
     public function isAdmin(): bool
     {
-        return $this->role === 'admin';
+        return strtolower((string)$this->role) === 'admin';
     }
 
     /**
@@ -36,7 +36,15 @@ class User extends Authenticatable
      */
     public function isUser(): bool
     {
-        return $this->role === 'user';
+        return in_array(strtolower((string)$this->role), ['user', 'pengamat'], true);
+    }
+
+    /**
+     * Alias pengecekan pengamat.
+     */
+    public function isPengamat(): bool
+    {
+        return in_array(strtolower((string)$this->role), ['user', 'pengamat'], true);
     }
 
     /**

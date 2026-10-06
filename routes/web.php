@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MonitoringController;
+use App\Http\Controllers\PlantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,9 +28,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Menu Navigasi Terstruktur (Section Anchors ke Dashboard Phase 4)
-    Route::get('/monitorings', fn() => redirect('/dashboard#recent-table'))->name('monitorings.index');
-    Route::get('/plants', fn() => redirect('/dashboard#plant-summary'))->name('plants.index');
+    // Phase 5: Monitoring CRUD & Authorization
+    Route::resource('monitorings', MonitoringController::class);
+
+    // Phase 6: Plant CRUD & Authorization
+    Route::resource('plants', PlantController::class);
+
+    // Menu Navigasi Terstruktur (Section Anchors)
     Route::get('/charts', fn() => redirect('/dashboard#charts'))->name('charts.index');
     Route::get('/history', fn() => redirect('/dashboard#recent-table'))->name('history.index');
 

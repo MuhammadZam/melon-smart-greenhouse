@@ -37,4 +37,29 @@ class Plant extends Model
     {
         return $this->hasOne(Monitoring::class)->latestOfMany('monitored_at');
     }
+
+    /**
+     * Scope query untuk filter dan pencarian data tanaman melon.
+     */
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? null, function ($q, $search) {
+            $search = trim($search);
+            if (!empty($search)) {
+                $q->where(function ($sub) use ($search) {
+                    $sub->where('name', 'like', "%{$search}%")
+                        ->orWhere('location', 'like', "%{$search}%")
+                        ->orWhere('description', 'like', "%{$search}%");
+                });
+            }
+        });
+
+        $query->when($filters['status'] ?? null, function ($q, $status) {
+            if ($status !== 'all' && !empty($status)) {
+                $q->where('status', $status);
+            }
+        });
+
+        return $query;
+    }
 }
