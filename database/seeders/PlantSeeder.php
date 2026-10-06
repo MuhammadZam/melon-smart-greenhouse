@@ -14,21 +14,21 @@ class PlantSeeder extends Seeder
     {
         $plants = [
             [
-                'name'        => 'Azolla Microphylla Kolam A',
-                'location'    => 'Greenhouse 1 - Bak Utama',
-                'description' => 'Kolam percontohan budidaya Azolla dengan penyinaran semi-tertutup.',
+                'name'        => 'Melon Golden Aroma - Greenhouse A',
+                'location'    => 'Greenhouse 1 - Sektor Timur',
+                'description' => 'Plot budidaya tanaman melon varietas Golden Aroma dengan sistem fertigasi presisi.',
                 'status'      => 'active',
             ],
             [
-                'name'        => 'Azolla Microphylla Kolam B',
-                'location'    => 'Greenhouse 1 - Bak Pembibitan',
-                'description' => 'Bak pembibitan dan pembiakan spora Azolla muda.',
+                'name'        => 'Melon Rock Action - Greenhouse B',
+                'location'    => 'Greenhouse 1 - Sektor Barat',
+                'description' => 'Plot pemeliharaan melon varietas Rock Action fase pertumbuhan vegetatif lanjut.',
                 'status'      => 'active',
             ],
             [
-                'name'        => 'Azolla Pinnata Kolam C',
-                'location'    => 'Outdoor - Kolam Terbuka 2',
-                'description' => 'Pengujian ketahanan Azolla varietas Pinnata di lingkungan kolam terbuka.',
+                'name'        => 'Melon Sky Rocket - Greenhouse C',
+                'location'    => 'Greenhouse 2 - Sektor Utama',
+                'description' => 'Plot observasi adaptasi melon varietas Sky Rocket di lingkungan greenhouse terkontrol.',
                 'status'      => 'active',
             ],
         ];

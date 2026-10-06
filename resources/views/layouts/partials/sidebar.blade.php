@@ -13,7 +13,7 @@
                     </svg>
                 </div>
                 <div>
-                    <span class="text-sm font-bold bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Azolla Monitor</span>
+                    <span class="text-sm font-bold bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Melon Monitor</span>
                     <span class="block text-[10px] text-slate-400 uppercase tracking-widest font-mono">Smart Agri</span>
                 </div>
             </a>

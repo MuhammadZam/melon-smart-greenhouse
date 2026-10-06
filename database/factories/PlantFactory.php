@@ -20,9 +20,9 @@ class PlantFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'        => 'Azolla Microphylla Kolam ' . fake()->unique()->randomElement(['A', 'B', 'C', 'D', 'E']),
-            'location'    => 'Greenhouse ' . fake()->numberBetween(1, 3) . ', Rak ' . fake()->numberBetween(1, 4),
-            'description' => 'Kolam budidaya Azolla uji coba pengamatan mikroklimat.',
+            'name'        => 'Melon Greenhouse ' . fake()->unique()->randomElement(['A', 'B', 'C', 'D', 'E']),
+            'location'    => 'Greenhouse ' . fake()->numberBetween(1, 3) . ', Baris ' . fake()->numberBetween(1, 4),
+            'description' => 'Plot budidaya tanaman melon uji coba pengamatan mikroklimat.',
             'status'      => 'active',
         ];
     }

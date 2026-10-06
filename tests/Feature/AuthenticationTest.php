@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
     public function test_admin_can_authenticate_and_redirected_to_dashboard(): void
     {
         $response = $this->post('/login', [
-            'email'    => 'admin@azolla.com',
+            'email'    => 'admin@melon.com',
             'password' => 'password123',
         ]);
 
@@ -40,7 +40,7 @@ class AuthenticationTest extends TestCase
     public function test_regular_user_can_authenticate_and_redirected_to_dashboard(): void
     {
         $response = $this->post('/login', [
-            'email'    => 'pengamat@azolla.com',
+            'email'    => 'pengamat@melon.com',
             'password' => 'password123',
         ]);
 
@@ -54,7 +54,7 @@ class AuthenticationTest extends TestCase
     public function test_users_cannot_authenticate_with_invalid_password(): void
     {
         $response = $this->post('/login', [
-            'email'    => 'admin@azolla.com',
+            'email'    => 'admin@melon.com',
             'password' => 'wrong-password-999',
         ]);
 
@@ -81,7 +81,7 @@ class AuthenticationTest extends TestCase
      */
     public function test_authenticated_user_can_logout(): void
     {
-        $user = User::where('email', 'admin@azolla.com')->first();
+        $user = User::where('email', 'admin@melon.com')->first();
 
         $response = $this->actingAs($user)->post('/logout');
 
@@ -104,7 +104,7 @@ class AuthenticationTest extends TestCase
      */
     public function test_admin_user_can_access_admin_route(): void
     {
-        $admin = User::where('email', 'admin@azolla.com')->first();
+        $admin = User::where('email', 'admin@melon.com')->first();
 
         $response = $this->actingAs($admin)->get('/admin/management-check');
 
@@ -119,7 +119,7 @@ class AuthenticationTest extends TestCase
      */
     public function test_regular_user_cannot_access_admin_route(): void
     {
-        $user = User::where('email', 'pengamat@azolla.com')->first();
+        $user = User::where('email', 'pengamat@melon.com')->first();
 
         $response = $this->actingAs($user)->get('/admin/management-check');
 

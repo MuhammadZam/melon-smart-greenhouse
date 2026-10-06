@@ -15,9 +15,9 @@ class UserSeeder extends Seeder
     {
         // 1. Akun Admin
         User::updateOrCreate(
-            ['email' => 'admin@azolla.com'],
+            ['email' => 'admin@melon.com'],
             [
-                'name'     => 'Administrator Azolla',
+                'name'     => 'Administrator Melon',
                 'password' => Hash::make('password123'),
                 'role'     => 'admin',
             ]
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
 
         // 2. Akun User / Pengamat
         User::updateOrCreate(
-            ['email' => 'pengamat@azolla.com'],
+            ['email' => 'pengamat@melon.com'],
             [
                 'name'     => 'Pengamat Lapangan',
                 'password' => Hash::make('password123'),

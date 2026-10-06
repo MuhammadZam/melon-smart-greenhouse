@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes - Sistem Monitoring Tanaman Azolla
+| Web Routes - Sistem Monitoring Tanaman Melon
 |--------------------------------------------------------------------------
 */
 

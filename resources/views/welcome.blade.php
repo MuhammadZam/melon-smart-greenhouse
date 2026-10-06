@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistem Monitoring Tanaman Azolla</title>
+    <title>Sistem Monitoring Tanaman Melon</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h1 class="text-base font-bold bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Azolla Monitor</h1>
+                    <h1 class="text-base font-bold bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Melon Monitor</h1>
                     <p class="text-xs text-slate-400">Smart Agriculture System</p>
                 </div>
             </div>
@@ -68,10 +68,10 @@
                 <span>Setup Lingkungan & Framework Berhasil Berjalan</span>
             </div>
             <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
-                Sistem Web Monitoring <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Tanaman Azolla</span>
+                Sistem Web Monitoring <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Tanaman Melon</span>
             </h2>
             <p class="text-slate-400 text-base sm:text-lg">
-                Platform pencatatan, pemantauan kondisi mikro-lingkungan, dan analisis perkembangan biomassa Azolla secara real-time dan terstruktur.
+                Platform pencatatan, pemantauan kondisi mikro-lingkungan, dan analisis perkembangan tanaman melon secara real-time dan terstruktur.
             </p>
         </div>
 
@@ -131,7 +131,7 @@
 
     <!-- Footer -->
     <footer class="border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
-        <p>Sistem Web Monitoring Tanaman Azolla &copy; {{ date('Y') }}. Dibangun dengan Laravel & Tailwind CSS.</p>
+        <p>Sistem Web Monitoring Tanaman Melon &copy; {{ date('Y') }}. Dibangun dengan Laravel & Tailwind CSS.</p>
     </footer>
 </body>
 </html>

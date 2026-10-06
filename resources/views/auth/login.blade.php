@@ -20,7 +20,7 @@
                 </svg>
             </div>
             <h2 class="text-2xl font-bold text-white tracking-tight">Selamat Datang</h2>
-            <p class="text-xs sm:text-sm text-slate-400 mt-1.5">Masuk untuk mengakses dashboard monitoring Azolla</p>
+            <p class="text-xs sm:text-sm text-slate-400 mt-1.5">Masuk untuk mengakses dashboard monitoring Melon</p>
         </div>
 
         <!-- Flash Notification: Success -->
@@ -66,7 +66,7 @@
                         required
                         autofocus
                         autocomplete="email"
-                        placeholder="nama@azolla.com"
+                        placeholder="nama@melon.com"
                         class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950/70 border @error('email') border-rose-500 focus:ring-rose-500 @else border-slate-700/80 focus:border-emerald-500 focus:ring-emerald-500 @enderror text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-offset-0 transition-colors"
                     >
                 </div>
@@ -152,7 +152,7 @@
         <div class="space-y-2.5">
             <button
                 type="button"
-                @click="fillCredentials('admin@azolla.com', 'password123')"
+                @click="fillCredentials('admin@melon.com', 'password123')"
                 class="w-full p-3 rounded-xl bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 hover:border-emerald-500/40 text-left flex items-center justify-between group transition-all"
             >
                 <div class="flex items-center gap-3">
@@ -161,7 +161,7 @@
                     </div>
                     <div>
                         <div class="text-xs font-semibold text-white group-hover:text-emerald-300 transition-colors">Role: Administrator</div>
-                        <div class="text-[11px] text-slate-400 font-mono">admin@azolla.com</div>
+                        <div class="text-[11px] text-slate-400 font-mono">admin@melon.com</div>
                     </div>
                 </div>
                 <span class="text-[11px] text-emerald-400/80 group-hover:text-emerald-300 font-medium flex items-center gap-1">
@@ -174,7 +174,7 @@
 
             <button
                 type="button"
-                @click="fillCredentials('pengamat@azolla.com', 'password123')"
+                @click="fillCredentials('pengamat@melon.com', 'password123')"
                 class="w-full p-3 rounded-xl bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 hover:border-teal-500/40 text-left flex items-center justify-between group transition-all"
             >
                 <div class="flex items-center gap-3">
@@ -183,7 +183,7 @@
                     </div>
                     <div>
                         <div class="text-xs font-semibold text-white group-hover:text-teal-300 transition-colors">Role: User / Pengamat</div>
-                        <div class="text-[11px] text-slate-400 font-mono">pengamat@azolla.com</div>
+                        <div class="text-[11px] text-slate-400 font-mono">pengamat@melon.com</div>
                     </div>
                 </div>
                 <span class="text-[11px] text-teal-400/80 group-hover:text-teal-300 font-medium flex items-center gap-1">

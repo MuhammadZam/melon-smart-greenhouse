@@ -58,6 +58,6 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('login')
-            ->with('success', 'Anda telah berhasil keluar dari sistem monitoring Azolla.');
+            ->with('success', 'Anda telah berhasil keluar dari sistem monitoring Melon.');
     }
 }

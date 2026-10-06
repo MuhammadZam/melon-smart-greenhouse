@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Dashboard') - Azolla Monitoring System</title>
+    <title>@yield('title', 'Dashboard') - Melon Monitoring System</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,7 +61,7 @@
         <!-- Footer -->
         <footer class="border-t border-slate-800/80 py-4 px-6 text-center text-xs text-slate-400">
             <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-                <span>Sistem Web Monitoring Tanaman Azolla &copy; {{ date('Y') }}</span>
+                <span>Sistem Web Monitoring Tanaman Melon &copy; {{ date('Y') }}</span>
                 <span class="text-slate-400">Laravel 11 &bull; Tailwind CSS &bull; Chart.js &bull; MySQL</span>
             </div>
         </footer>

@@ -18,7 +18,7 @@
             <!-- App Title & Breadcrumb -->
             <div>
                 <h1 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
-                    <span>Sistem Monitoring Azolla</span>
+                    <span>Sistem Monitoring Melon</span>
                     <span class="hidden md:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                         Live IoT Ready
                     </span>

@@ -34,7 +34,7 @@ class DashboardTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('Ringkasan Pemantauan');
-        $response->assertSee('Tanaman Azolla');
+        $response->assertSee('Tanaman Melon');
         $response->assertSee('Mode Pengamat (User)');
         $response->assertSee('Total Tanaman');
         $response->assertSee('Total Monitoring');

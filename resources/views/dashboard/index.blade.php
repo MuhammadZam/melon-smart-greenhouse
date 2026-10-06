@@ -16,10 +16,10 @@
                 <span class="text-xs text-slate-400">Database Live Sync</span>
             </div>
             <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                Ringkasan Pemantauan <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Tanaman Azolla</span>
+                Ringkasan Pemantauan <span class="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Tanaman Melon</span>
             </h2>
             <p class="text-xs sm:text-sm text-slate-400 mt-0.5">
-                Data aktual mikroklimat kolam, suhu, pH, dan kelembapan dari database MySQL.
+                Data aktual mikroklimat greenhouse, suhu, pH, dan kelembapan dari database MySQL.
             </p>
         </div>
 
@@ -29,7 +29,7 @@
                 <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
                 </svg>
-                <span>Filter Kolam:</span>
+                <span>Filter Tanaman:</span>
             </label>
             <div class="relative">
                 <select
@@ -38,7 +38,7 @@
                     onchange="this.form.submit()"
                     class="appearance-none pl-3.5 pr-8 py-2 rounded-xl bg-slate-950 border border-slate-700/80 hover:border-emerald-500/50 text-white text-xs font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer transition-colors shadow-sm"
                 >
-                    <option value="all" {{ $selectedPlantId === 'all' ? 'selected' : '' }}>Semua Kolam (Akumulasi)</option>
+                    <option value="all" {{ $selectedPlantId === 'all' ? 'selected' : '' }}>Semua Tanaman (Akumulasi)</option>
                     @foreach ($plants as $p)
                         <option value="{{ $p->id }}" {{ (string)$selectedPlantId === (string)$p->id ? 'selected' : '' }}>
                             {{ $p->name }}
@@ -61,7 +61,7 @@
         <x-summary-card
             title="Total Tanaman"
             :value="$totalPlants"
-            unit="Kolam"
+            unit="Tanaman"
             color="emerald"
         >
             <x-slot:icon>
@@ -139,15 +139,15 @@
             <div class="space-y-1.5">
                 <div class="flex items-center justify-between text-xs">
                     <x-status-badge status="active" />
-                    <span class="font-bold text-white">{{ $plantStatusCounts['active'] }} Kolam</span>
+                    <span class="font-bold text-white">{{ $plantStatusCounts['active'] }} Tanaman</span>
                 </div>
                 <div class="flex items-center justify-between text-xs">
                     <x-status-badge status="harvested" />
-                    <span class="font-semibold text-slate-300">{{ $plantStatusCounts['harvested'] }} Kolam</span>
+                    <span class="font-semibold text-slate-300">{{ $plantStatusCounts['harvested'] }} Tanaman</span>
                 </div>
                 <div class="flex items-center justify-between text-xs">
                     <x-status-badge status="inactive" />
-                    <span class="font-semibold text-slate-300">{{ $plantStatusCounts['inactive'] }} Kolam</span>
+                    <span class="font-semibold text-slate-300">{{ $plantStatusCounts['inactive'] }} Tanaman</span>
                 </div>
             </div>
         </x-summary-card>
@@ -162,7 +162,7 @@
                     <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
                     </svg>
-                    Grafik Tren Perkembangan Lingkungan Azolla
+                    Grafik Tren Perkembangan Lingkungan Tanaman Melon
                 </h3>
                 <p class="text-xs text-slate-400">Visualisasi data berkala yang diambil langsung dari database MySQL.</p>
             </div>
@@ -174,14 +174,14 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
             
-            <!-- Chart 1: Suhu Air (°C) -->
+            <!-- Chart 1: Suhu Lingkungan (°C) -->
             <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Perubahan Suhu Air</span>
+                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Monitoring Suhu Lingkungan</span>
                         <span class="text-[11px] font-mono bg-emerald-500/10 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/20">°C</span>
                     </div>
-                    <p class="text-[11px] text-slate-400 mb-4">Rentang ideal: 20°C &ndash; 30°C</p>
+                    <p class="text-[11px] text-slate-400 mb-4">Ambang batas konfigurasi: 20°C &ndash; 32°C</p>
                 </div>
                 <div class="relative h-60 w-full">
                     <canvas id="tempChart"></canvas>
@@ -192,10 +192,10 @@
             <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold text-teal-400 uppercase tracking-wider">Tingkat Keasaman (pH)</span>
+                        <span class="text-xs font-bold text-teal-400 uppercase tracking-wider">Monitoring pH Nutrisi / Media</span>
                         <span class="text-[11px] font-mono bg-teal-500/10 text-teal-300 px-2 py-0.5 rounded border border-teal-500/20">pH</span>
                     </div>
-                    <p class="text-[11px] text-slate-400 mb-4">Rentang ideal: 6.0 &ndash; 7.5</p>
+                    <p class="text-[11px] text-slate-400 mb-4">Ambang batas konfigurasi: 5.8 &ndash; 7.2</p>
                 </div>
                 <div class="relative h-60 w-full">
                     <canvas id="phChart"></canvas>
@@ -206,10 +206,10 @@
             <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Kelembapan Udara</span>
+                        <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Monitoring Kelembapan Udara</span>
                         <span class="text-[11px] font-mono bg-sky-500/10 text-sky-300 px-2 py-0.5 rounded border border-sky-500/20">% RH</span>
                     </div>
-                    <p class="text-[11px] text-slate-400 mb-4">Rentang ideal: 60% &ndash; 85%</p>
+                    <p class="text-[11px] text-slate-400 mb-4">Ambang batas konfigurasi: 60% &ndash; 85%</p>
                 </div>
                 <div class="relative h-60 w-full">
                     <canvas id="humidityChart"></canvas>
@@ -241,7 +241,7 @@
             <table class="w-full text-left text-xs whitespace-nowrap">
                 <thead>
                     <tr class="border-b border-slate-800 text-[11px] font-bold uppercase tracking-wider text-slate-400 bg-slate-950/40">
-                        <th class="py-3 px-4 rounded-l-xl">Tanaman / Kolam</th>
+                        <th class="py-3 px-4 rounded-l-xl">Tanaman / Lokasi</th>
                         <th class="py-3 px-4">Waktu Monitoring</th>
                         <th class="py-3 px-4 text-center">Suhu</th>
                         <th class="py-3 px-4 text-center">pH</th>
@@ -320,7 +320,7 @@
                     </div>
                     <div>
                         <h4 class="text-sm font-bold text-white">Panel Administrasi (Khusus Admin)</h4>
-                        <p class="text-xs text-slate-400">Parameter threshold acuan sistem monitoring Azolla.</p>
+                        <p class="text-xs text-slate-400">Parameter threshold acuan sistem monitoring Melon.</p>
                     </div>
                 </div>
                 <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono">
@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Suhu (°C)',
+                    label: 'Suhu Lingkungan (°C)',
                     data: temperatures,
                     borderColor: '#10b981', // emerald-500
                     backgroundColor: 'rgba(16, 185, 129, 0.12)',
@@ -432,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'pH Air',
+                    label: 'pH Nutrisi/Media',
                     data: phValues,
                     borderColor: '#14b8a6', // teal-500
                     backgroundColor: 'rgba(20, 184, 166, 0.12)',
@@ -470,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Kelembapan (%)',
+                    label: 'Kelembapan Udara (%)',
                     data: humidities,
                     borderColor: '#0ea5e9', // sky-500
                     backgroundColor: 'rgba(14, 165, 233, 0.12)',

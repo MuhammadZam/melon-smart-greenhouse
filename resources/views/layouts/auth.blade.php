@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Masuk ke Sistem') - Azolla Monitoring</title>
+    <title>@yield('title', 'Masuk ke Sistem') - Melon Monitoring</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@
                 </svg>
             </div>
             <div>
-                <span class="text-base font-bold bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Azolla Monitor</span>
+                <span class="text-base font-bold bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">Melon Monitor</span>
                 <span class="block text-xs text-slate-400">Smart Agriculture</span>
             </div>
         </a>
@@ -51,7 +51,7 @@
 
     <!-- Footer -->
     <footer class="w-full border-t border-slate-800/80 py-5 text-center text-xs text-slate-500">
-        <p>Sistem Web Monitoring Tanaman Azolla &copy; {{ date('Y') }} &bull; Phase 3 Authentication</p>
+        <p>Sistem Web Monitoring Tanaman Melon &copy; {{ date('Y') }}</p>
     </footer>
 </body>
 </html>

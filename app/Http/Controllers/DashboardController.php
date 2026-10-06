@@ -12,7 +12,7 @@ use Illuminate\View\View;
 class DashboardController extends Controller
 {
     /**
-     * Menampilkan dashboard utama monitoring Azolla dengan data aktual dari database.
+     * Menampilkan dashboard utama monitoring Melon dengan data aktual dari database.
      */
     public function index(Request $request): View
     {
