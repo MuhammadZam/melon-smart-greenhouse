@@ -1,0 +1,2 @@
+import fs from 'node:fs';
+for(const file of fs.readdirSync('resources/views',{recursive:true}).filter(p=>p.endsWith('.blade.php')&&!p.endsWith('monitoring_pdf.blade.php'))){const path=`resources/views/${file}`;let text=fs.readFileSync(path,'utf8');text=text.replace(/<a\b[\s\S]*?<\/a>/g,tag=>/route\('(?:plants|monitorings)\.edit'/.test(tag)?tag.replaceAll('bg-warning-soft','bg-surface').replaceAll('text-warning','text-muted').replaceAll('border-warning/25','border-line'):tag);fs.writeFileSync(path,text);}

@@ -2,7 +2,7 @@
 
 @php
     $normalized = strtolower(trim($status));
-    
+
     // Default mapping
     $dot = 'bg-surface';
     $bg = 'bg-surface';

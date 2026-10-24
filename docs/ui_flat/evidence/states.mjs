@@ -1,0 +1,31 @@
+import {chromium} from 'playwright';import fs from 'node:fs';
+const dir='docs/ui_flat',base='http://127.0.0.1:8020',credentials=JSON.parse(fs.readFileSync(`${dir}/evidence/credentials.json`)),browser=await chromium.launch({channel:'msedge',headless:true}),out={checks:[],errors:[]};
+const save=()=>fs.writeFileSync(`${dir}/evidence/component-states.json`,JSON.stringify(out,null,2));const check=(name,pass,detail)=>{out.checks.push({name,pass:!!pass,detail});save();};
+try {
+ const page=await browser.newPage({viewport:{width:1366,height:768}});await page.goto(base+'/login');const button=page.locator('button[type=submit]');
+ const style=()=>button.evaluate(e=>{const s=getComputedStyle(e);return{background:s.backgroundColor,radius:s.borderRadius,outline:s.outlineStyle,opacity:s.opacity,cursor:s.cursor,transform:s.transform}});
+ await page.mouse.move(1,1);const normal=await style();check('primary default palette and radius',normal.background==='rgb(23, 107, 80)'&&normal.radius==='4px',normal);
+ await button.hover();await page.waitForTimeout(200);const hover=await style();check('primary hover feedback',hover.background==='rgb(18, 84, 63)',hover);
+ await page.mouse.down();await page.waitForTimeout(180);const pressed=await style();check('primary pressed feedback',pressed.transform.startsWith('matrix(0.98'),pressed);await page.mouse.up();
+ await button.focus();await page.keyboard.press('Tab');await page.keyboard.press('Shift+Tab');check('keyboard focus visible',await button.evaluate(e=>getComputedStyle(e).outlineStyle==='solid'));
+ await page.mouse.move(1,1);await button.evaluate(e=>e.disabled=true);const disabled=await style();check('disabled feedback',disabled.opacity==='0.5'&&disabled.cursor==='not-allowed',disabled);await button.evaluate(e=>e.disabled=false);
+ await page.fill('#email',credentials.email);await page.fill('#password',credentials.password);
+ await page.route('**/login',async r=>{if(r.request().method()==='POST')await new Promise(resolve=>setTimeout(resolve,700));await r.continue();});
+ const loading=await page.evaluate(()=>{const form=document.querySelector('#email').form,button=form.querySelector('button[type=submit]');form.requestSubmit(button);return{disabled:button.disabled,busy:button.getAttribute('aria-busy'),text:button.textContent};});check('login loading feedback',loading.disabled&&loading.busy==='true'&&loading.text==='Memproses...',loading);await page.waitForURL('**/dashboard');await page.unroute('**/login');
+ await page.goto(base+'/plants/create');const fixture=`UI flat verification ${Date.now()}`;await page.fill('#name',fixture);await page.fill('#location','Isolated browser test database');
+ await Promise.all([page.waitForNavigation(),page.locator('main button[type=submit]').click()]);check('plant create feedback',await page.getByRole('status').isVisible());
+ await page.fill('#search',fixture);await Promise.all([page.waitForNavigation(),page.getByRole('button',{name:'Terapkan Filter',exact:true}).click()]);
+ const row=page.locator('tbody tr').filter({hasText:fixture}),hrefs=await row.locator('a').evaluateAll(nodes=>nodes.map(n=>n.href));const detail=hrefs.find(h=>/\/plants\/\d+$/.test(h));if(!detail)throw Error('New isolated fixture detail link missing');
+ await page.goto(detail+'/edit');await page.fill('#description','Temporary UI verification on disposable database');await Promise.all([page.waitForNavigation(),page.locator('main button[type=submit]').click()]);check('plant edit feedback',await page.getByRole('status').isVisible());
+ await page.goto(detail);const deletion=page.locator('main form').filter({has:page.locator('input[name=_method][value=DELETE]')}).locator('button[type=submit]');
+ let prompted=false;page.once('dialog',async dialog=>{prompted=true;await dialog.dismiss();});await deletion.click();check('delete cancellation asks confirmation',prompted&&new URL(page.url()).href===detail);
+ await page.screenshot({path:`${dir}/screenshots/after/1366_plant_detail.png`});
+ page.once('dialog',dialog=>dialog.accept());await Promise.all([page.waitForNavigation(),deletion.click()]);check('confirmed fixture delete feedback',await page.getByRole('status').isVisible());
+ await page.emulateMedia({reducedMotion:'reduce'});await page.goto(base+'/dashboard');check('reduced motion respected',await page.locator('#navigation-toggle').evaluate(e=>getComputedStyle(e).transitionDuration==='0s'));
+ check('sensor cards share neutral presentation',await page.locator('.ui-sensor-grid > div').evaluateAll(nodes=>nodes.length===8&&nodes.every(n=>getComputedStyle(n).backgroundColor==='rgb(255, 255, 255)'&&getComputedStyle(n.querySelector('svg')).color==='rgb(102, 102, 102)')));
+ check('eight sensor timestamps retained',await page.locator('.ui-sensor-grid time').count()===8);
+ check('null sensor values remain unavailable',await page.locator('.ui-sensor-grid').getByText('N/A',{exact:true}).count()>0);
+ check('charts use consistent flat palette',await page.locator('#tempChart').evaluate(c=>Chart.getChart(c).data.datasets[0].borderColor==='#176b50'));
+ const context=await browser.newContext({viewport:{width:375,height:812}}),mobile=await context.newPage();await mobile.goto(base+'/');check('public home primary navigation',await mobile.getByRole('link',{name:'Masuk',exact:true}).getAttribute('href')===base+'/login');await context.close();
+}catch(error){out.errors.push(String(error));process.exitCode=1;}finally{out.pass=!out.errors.length&&out.checks.every(c=>c.pass);save();await browser.close();}
+console.log(JSON.stringify(out,null,2));

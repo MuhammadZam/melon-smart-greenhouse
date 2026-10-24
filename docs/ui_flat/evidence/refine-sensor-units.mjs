@@ -1,0 +1,5 @@
+import fs from 'node:fs';
+const path='resources/views/dashboard/index.blade.php';let text=fs.readFileSync(path,'utf8');let start=text.indexOf('<!-- 8 Sensor Parameters Grid -->'),end=text.indexOf('<!-- ALARM & NOTIFICATION PANEL');let sensor=text.slice(start,end);
+const units={temperature:[1,'°C'],humidity:[0,'%'],soil_moisture:[0,'%'],ph:[1,''],ec:[2,'mS/cm'],light_intensity:[0,'lux'],nutrient_temperature:[1,'°C'],tank_level:[0,'%']};let replaced=0;
+sensor=sensor.replace(/<div class="text-2xl[^\"]*">\s*\{\{ \$latestMonitoring && \$latestMonitoring->(\w+)[\s\S]*?\}\}\s*<\/div>/g,(all,field)=>{if(!units[field])return all;replaced++;return `<x-sensor-reading :value="$latestMonitoring?->${field}" :precision="${units[field][0]}" unit="${units[field][1]}" />`;});
+if(replaced!==8)throw Error(`Expected eight sensor readings, found ${replaced}`);text=text.slice(0,start)+sensor+text.slice(end);fs.writeFileSync(path,text);console.log('Eight sensor values now share a consistent value/unit component.');

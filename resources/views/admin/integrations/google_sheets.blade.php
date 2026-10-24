@@ -34,9 +34,9 @@
                 <button
                     type="submit"
                     :disabled="syncing"
-                    class="inline-flex items-center gap-2 px-4 py-2 rounded-[2px] text-xs sm:text-sm font-semibold text-current transition-all focus:ring-2 focus:ring-accent"
+                    class="ui-button-primary inline-flex items-center gap-2 px-4 py-2 rounded-[4px] text-sm font-medium transition-colors focus-visible:outline"
                 >
-                    <svg class="w-4 h-4 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                     </svg>
                     <span x-text="syncing ? 'Menyinkronkan...' : 'Sinkronkan Sekarang'">Sinkronkan Sekarang</span>
@@ -87,9 +87,9 @@
     <!-- 4 Metrik Status Ringkasan -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- 1. Total Data Diimpor -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  relative overflow-hidden">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line relative overflow-hidden">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-muted  ">Data Ingested</span>
+                <span class="text-xs font-semibold text-muted">Data Ingested</span>
                 <span class="p-2 rounded-[2px] bg-accent-soft text-accent border border-line">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
@@ -107,9 +107,9 @@
         </div>
 
         <!-- 2. Status Kesegaran Data -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  relative overflow-hidden">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line relative overflow-hidden">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-muted  ">Kesegaran Data</span>
+                <span class="text-xs font-semibold text-muted">Kesegaran Data</span>
                 @if ($freshnessStatus === 'connected')
                     <span class="p-2 rounded-[2px] bg-accent-soft text-accent border border-line">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,9 +145,9 @@
         </div>
 
         <!-- 3. Deduplikasi & Idempotensi -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  relative overflow-hidden">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line relative overflow-hidden">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-muted  ">Record Dilewati</span>
+                <span class="text-xs font-semibold text-muted">Record Dilewati</span>
                 <span class="p-2 rounded-[2px] bg-surface text-muted border border-line">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
@@ -164,9 +164,9 @@
         </div>
 
         <!-- 4. Keamanan Perangkat IoT -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  relative overflow-hidden">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line relative overflow-hidden">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-muted  ">Device Security</span>
+                <span class="text-xs font-semibold text-muted">Device Security</span>
                 <span class="p-2 rounded-[2px] bg-surface text-muted border border-line">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
@@ -186,7 +186,7 @@
     <!-- Section: Konfigurasi Integrasi & Disclaimer Arsitektur -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Kartu Detail Konfigurasi -->
-        <div class="lg:col-span-2 p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+        <div class="lg:col-span-2 p-6 rounded-[2px] bg-canvas border border-line space-y-4">
             <div class="flex items-center justify-between border-b border-line pb-3">
                 <h2 class="text-sm font-semibold text-current flex items-center gap-2">
                     <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -253,7 +253,7 @@
         </div>
 
         <!-- Kartu Catatan Arsitektur & Kepatuhan Kontrak -->
-        <div class="p-6 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-6 rounded-[2px] bg-canvas border border-line space-y-3">
             <h3 class="text-sm font-semibold text-current flex items-center gap-2">
                 <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -270,7 +270,7 @@
     </div>
 
     <!-- Section: Registrasi & Keamanan Perangkat IoT -->
-    <div class="p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+    <div class="p-6 rounded-[2px] bg-canvas border border-line space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-line pb-3">
             <div>
                 <h2 class="text-sm font-semibold text-current flex items-center gap-2">
@@ -392,7 +392,7 @@
     </div>
 
     <!-- Section: Riwayat Log Sinkronisasi Google Sheets -->
-    <div class="p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+    <div class="p-6 rounded-[2px] bg-canvas border border-line space-y-4">
         <div class="flex items-center justify-between border-b border-line pb-3">
             <h2 class="text-sm font-semibold text-current flex items-center gap-2">
                 <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">

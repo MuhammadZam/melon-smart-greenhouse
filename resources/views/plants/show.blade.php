@@ -67,9 +67,9 @@
             @if (auth()->user()->isAdmin())
                 <a
                     href="{{ route('plants.edit', $plant) }}"
-                    class="px-4 py-2 rounded-[2px] bg-warning-soft hover:bg-warning-soft text-warning border border-warning/25 text-xs font-semibold transition-colors flex items-center gap-2"
+                    class="px-4 py-2 rounded-[2px] bg-surface hover:bg-surface text-muted border border-line text-xs font-semibold transition-colors flex items-center gap-2"
                 >
-                    <svg class="w-4 h-4 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                     </svg>
                     <span>Edit Tanaman</span>
@@ -79,7 +79,7 @@
                     <button
                         type="button"
                         onclick="alert('Tanaman tidak dapat dihapus karena masih memiliki data monitoring.')"
-                        class="px-4 py-2 rounded-[2px] bg-surface text-muted border border-line text-xs font-semibold cursor-not-allowed opacity-60 flex items-center gap-2"
+                        class="px-4 py-2 rounded-[2px] bg-surface text-muted border border-line text-xs font-semibold cursor-help flex items-center gap-2"
                         title="Dilindungi: Memiliki riwayat monitoring"
                     >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,10 +113,10 @@
 
     <!-- Informasi Profil Master Tanaman -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        
+
         <!-- Kartu 1: Status & Lokasi -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
-            <div class="text-xs font-semibold   text-accent flex items-center gap-1.5">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
+            <div class="text-xs font-semibold text-accent flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-[2px] bg-accent-soft"></span>
                 Status Budidaya &amp; Lokasi
             </div>
@@ -131,8 +131,8 @@
         </div>
 
         <!-- Kartu 2: Volume Data Monitoring -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
-            <div class="text-xs font-semibold   text-accent flex items-center gap-1.5">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
+            <div class="text-xs font-semibold text-accent flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-[2px] bg-accent-soft"></span>
                 Volume Data Monitoring
             </div>
@@ -146,8 +146,8 @@
         </div>
 
         <!-- Kartu 3: Deskripsi Plot -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-2">
-            <div class="text-xs font-semibold   text-muted">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-2">
+            <div class="text-xs font-semibold text-muted">
                 Deskripsi Plot Budidaya
             </div>
             <div class="text-xs text-ink leading-relaxed">
@@ -163,11 +163,11 @@
 
     <!-- Highlight: Data Pengamatan Terakhir (Jika Ada) -->
     @if ($latestMonitoring)
-        <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+        <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-line pb-3">
                 <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-[2px] bg-accent-soft "></span>
-                    <h3 class="text-sm font-semibold text-current  ">
+                    <span class="w-2 h-2 rounded-[2px] bg-accent-soft"></span>
+                    <h3 class="text-sm font-semibold text-current">
                         Hasil Pemantauan Terkini (Monitoring Terakhir)
                     </h3>
                 </div>
@@ -177,34 +177,34 @@
             </div>
 
             <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
-                
+
                 <!-- Suhu -->
                 <div class="p-3 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs font-semibold   text-muted block">Suhu Udara</span>
+                    <span class="text-xs font-semibold text-muted block">Suhu Udara</span>
                     <span class="text-lg font-semibold tabular-nums text-accent">{{ number_format($latestMonitoring->temperature, 1) }}°C</span>
                 </div>
 
                 <!-- pH -->
                 <div class="p-3 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs font-semibold   text-muted block">pH Media</span>
+                    <span class="text-xs font-semibold text-muted block">pH Media</span>
                     <span class="text-lg font-semibold tabular-nums text-accent">{{ number_format($latestMonitoring->ph, 2) }}</span>
                 </div>
 
                 <!-- Kelembapan -->
                 <div class="p-3 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs font-semibold   text-muted block">Kelembapan</span>
+                    <span class="text-xs font-semibold text-muted block">Kelembapan</span>
                     <span class="text-lg font-semibold tabular-nums text-muted">{{ number_format($latestMonitoring->humidity, 0) }}%</span>
                 </div>
 
                 <!-- Tinggi -->
                 <div class="p-3 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs font-semibold   text-muted block">Tinggi Tajuk</span>
+                    <span class="text-xs font-semibold text-muted block">Tinggi Tajuk</span>
                     <span class="text-lg font-semibold tabular-nums text-current">{{ $latestMonitoring->plant_height ? $latestMonitoring->plant_height . ' cm' : '-' }}</span>
                 </div>
 
                 <!-- Kondisi -->
                 <div class="p-3 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs font-semibold   text-muted block mb-1">Kondisi</span>
+                    <span class="text-xs font-semibold text-muted block mb-1">Kondisi</span>
                     <x-status-badge :status="$latestMonitoring->plant_condition" />
                 </div>
 
@@ -226,7 +226,7 @@
     @endif
 
     <!-- Riwayat Pengamatan Berkala Tanaman Ini (Relationship hasMany) -->
-    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-line pb-3">
             <div>
                 <h3 class="text-base font-semibold text-current flex items-center gap-2">
@@ -237,7 +237,7 @@
                 </h3>
                 <p class="text-xs text-muted mt-0.5">Daftar observasi mikroklimat yang terkait langsung dengan plot tanaman melon ini.</p>
             </div>
-            
+
             <a
                 href="{{ route('monitorings.index', ['plant_id' => $plant->id]) }}"
                 class="text-xs font-semibold text-accent hover:text-accent transition-colors flex items-center gap-1 self-start sm:self-auto"
@@ -252,7 +252,7 @@
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs whitespace-nowrap">
                 <thead>
-                    <tr class="border-b border-line text-xs font-semibold   text-muted bg-canvas">
+                    <tr class="border-b border-line text-xs font-semibold text-muted bg-canvas">
                         <th class="py-3 px-4 rounded-l-xl">ID</th>
                         <th class="py-3 px-4">Waktu Pengamatan</th>
                         <th class="py-3 px-4 text-center">Suhu (°C)</th>

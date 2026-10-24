@@ -16,7 +16,7 @@
     @keydown.escape.window="sidebarOpen = false"
 >
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-canvas focus:p-3 focus:rounded-[2px]">Lewati navigasi</a>
-    
+
 
     <!-- Include Sidebar -->
     @include('layouts.partials.sidebar')
@@ -30,7 +30,7 @@
         <main id="main-content" tabindex="-1" class="flex-1 p-4 sm:p-6 lg:p-8 space-y-6 max-w-7xl w-full mx-auto">
             <!-- Flash Message: Success -->
             @if (session('success'))
-                <div role="status" class="p-4 rounded-[2px] bg-accent-soft border border-line flex items-center gap-3 text-accent text-sm ">
+                <div role="status" class="p-4 rounded-[2px] bg-accent-soft border border-line flex items-center gap-3 text-accent text-sm">
                     <svg class="w-5 h-5 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
@@ -40,7 +40,7 @@
 
             <!-- Flash Message: Error -->
             @if (session('error'))
-                <div role="alert" class="p-4 rounded-[2px] bg-danger-soft border border-danger/25 flex items-center gap-3 text-danger text-sm ">
+                <div role="alert" class="p-4 rounded-[2px] bg-danger-soft border border-danger/25 flex items-center gap-3 text-danger text-sm">
                     <svg class="w-5 h-5 text-danger shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>

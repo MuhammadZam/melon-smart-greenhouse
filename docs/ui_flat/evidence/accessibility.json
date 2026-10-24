@@ -1,0 +1,199 @@
+[
+  {
+    "path": "/",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 1
+      }
+    ],
+    "passes": 18
+  },
+  {
+    "path": "/login",
+    "violations": [],
+    "incomplete": [],
+    "passes": 20
+  },
+  {
+    "path": "/dashboard",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 55
+      }
+    ],
+    "passes": 29
+  },
+  {
+    "path": "/monitorings",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 63
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/plants",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 32
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/charts",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 55
+      }
+    ],
+    "passes": 29
+  },
+  {
+    "path": "/alarms",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 9
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/fuzzy/history",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 67
+      }
+    ],
+    "passes": 29
+  },
+  {
+    "path": "/actuators",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 1
+      }
+    ],
+    "passes": 23
+  },
+  {
+    "path": "/admin/integrations/google-sheets",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 3
+      }
+    ],
+    "passes": 29
+  },
+  {
+    "path": "/reports/monitoring",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 1
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/plants/create",
+    "violations": [],
+    "incomplete": [],
+    "passes": 21
+  },
+  {
+    "path": "/monitorings/create",
+    "violations": [],
+    "incomplete": [],
+    "passes": 21
+  },
+  {
+    "path": "/plants/1",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 30
+      }
+    ],
+    "passes": 24
+  },
+  {
+    "path": "/plants/1/edit",
+    "violations": [],
+    "incomplete": [],
+    "passes": 21
+  },
+  {
+    "path": "/monitorings/1",
+    "violations": [],
+    "incomplete": [],
+    "passes": 18
+  },
+  {
+    "path": "/monitorings/1/edit",
+    "violations": [],
+    "incomplete": [],
+    "passes": 21
+  },
+  {
+    "path": "/alarms/379",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 12
+      }
+    ],
+    "passes": 18
+  },
+  {
+    "path": "/fuzzy/history/1",
+    "violations": [],
+    "incomplete": [],
+    "passes": 18
+  },
+  {
+    "path": "/admin/thresholds",
+    "violations": [],
+    "incomplete": [],
+    "passes": 20
+  },
+  {
+    "path": "/admin/fuzzy/config",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 111
+      }
+    ],
+    "passes": 24
+  },
+  {
+    "path": "/actuators/history",
+    "violations": [],
+    "incomplete": [],
+    "passes": 27
+  }
+]

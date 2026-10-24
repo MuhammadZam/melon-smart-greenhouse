@@ -89,9 +89,9 @@
             @php
                 $isAlarmEligible = \App\Services\MonitoringAlarmService::isAlarmEligible($param->parameter_key);
             @endphp
-            <div class="rounded-[2px] bg-canvas border border-line overflow-hidden  hover:border-line transition-colors"
+            <div class="rounded-[2px] bg-canvas border border-line overflow-hidden hover:border-line transition-colors"
                  id="param-card-{{ $param->id }}">
-                
+
                 {{-- Card Header --}}
                 <div class="p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-canvas">
                     <div class="space-y-1">
@@ -125,14 +125,14 @@
                     {{-- Current Values Summary --}}
                     <div class="flex items-center gap-3 shrink-0">
                         <div class="px-3 py-1.5 rounded-[2px] bg-surface border border-line text-center">
-                            <span class="block text-xs   text-muted font-semibold">Rentang Normal</span>
+                            <span class="block text-xs text-muted font-semibold">Rentang Normal</span>
                             <span class="text-xs tabular-nums font-semibold text-accent">
                                 {{ number_format($param->minimum_value, 2) }} - {{ number_format($param->maximum_value, 2) }} {{ $param->unit }}
                             </span>
                         </div>
 
                         <div class="px-3 py-1.5 rounded-[2px] bg-surface border border-line text-center">
-                            <span class="block text-xs   text-muted font-semibold">Batas Kritis</span>
+                            <span class="block text-xs text-muted font-semibold">Batas Kritis</span>
                             <span class="text-xs tabular-nums font-semibold text-danger">
                                 @if($param->critical_min_value !== null || $param->critical_max_value !== null)
                                     {{ $param->critical_min_value !== null ? '< ' . number_format($param->critical_min_value, 2) : '-' }}
@@ -160,7 +160,7 @@
                      x-collapse
                      class="p-4 sm:p-5 border-t border-line bg-canvas"
                      style="display: none;">
-                    
+
                     <form method="POST" action="{{ route('alarms.thresholds.update', $param->id) }}" class="space-y-4">
                         @csrf
                         @method('PATCH')

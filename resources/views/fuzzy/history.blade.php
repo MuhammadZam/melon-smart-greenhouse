@@ -9,14 +9,14 @@
     <div class="ui-page-header flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
             <div class="flex items-center gap-2 mb-1">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-[2px] text-xs font-semibold   bg-surface text-muted border border-line">
-                    <span class="w-1.5 h-1.5 rounded-[2px] bg-surface mr-1.5 "></span>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-[2px] text-xs font-semibold bg-surface text-muted border border-line">
+                    <span class="w-1.5 h-1.5 rounded-[2px] bg-surface mr-1.5"></span>
                     Mamdani Inference Engine
                 </span>
                 <span class="text-xs text-muted">Versi: {{ config('fuzzy.rule_version', 'v1.0-provisional') }}</span>
             </div>
             <h2 class="ui-page-title text-xl sm:text-2xl font-semibold text-current tracking-tight">
-                Riwayat Analisis <span class="    text-ink">Kondisi Greenhouse</span>
+                Riwayat Analisis <span class="text-ink">Kondisi Greenhouse</span>
             </h2>
             <p class="text-xs sm:text-sm text-muted mt-0.5">
                 Audit trail komprehensif evaluasi multi-parameter lingkungan melon menggunakan Logika Fuzzy.
@@ -38,12 +38,12 @@
     </div>
 
     {{-- Alert Banner: Status Provisional --}}
-    <div class="p-4 rounded-[2px] bg-warning-soft border border-warning/25 flex items-start gap-3 text-warning text-xs ">
+    <div class="p-4 rounded-[2px] bg-warning-soft border border-warning/25 flex items-start gap-3 text-warning text-xs">
         <svg class="w-5 h-5 text-warning shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
         <div>
-            <span class="font-semibold tracking-wide ">Pemberitahuan Status Model:</span>
+            <span class="font-semibold tracking-wide">Pemberitahuan Status Model:</span>
             Aturan Fuzzy Simulasi — Belum Divalidasi Tim Elektro.
             <span class="text-warning block mt-0.5">
                 Seluruh batas fungsi keanggotaan dan matriks inferensi berstatus provisional untuk verifikasi teknis perangkat lunak dan bukan diagnosis agronomis resmi.
@@ -54,10 +54,10 @@
     {{-- Summary KPI Cards --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {{-- Total Inferences --}}
-        <div class="rounded-[2px] bg-canvas border border-line p-5  relative overflow-hidden">
+        <div class="rounded-[2px] bg-canvas border border-line p-5 relative overflow-hidden">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-xs font-semibold   text-muted">Total Evaluasi</p>
+                    <p class="text-xs font-semibold text-muted">Total Evaluasi</p>
                     <p class="text-3xl font-semibold text-current mt-1">{{ number_format($totalEvaluations) }}</p>
                     <p class="text-xs text-muted mt-1">Audit trail tersimpan</p>
                 </div>
@@ -70,10 +70,10 @@
         </div>
 
         {{-- Baik --}}
-        <div class="rounded-[2px] bg-canvas border border-line p-5  relative overflow-hidden">
+        <div class="rounded-[2px] bg-canvas border border-line p-5 relative overflow-hidden">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-xs font-semibold   text-accent">Kondisi Baik</p>
+                    <p class="text-xs font-semibold text-accent">Kondisi Baik</p>
                     <p class="text-3xl font-semibold text-accent mt-1">{{ number_format($countBaik) }}</p>
                     <p class="text-xs text-muted mt-1">Skor &ge; 65.0</p>
                 </div>
@@ -86,10 +86,10 @@
         </div>
 
         {{-- Perlu Perhatian --}}
-        <div class="rounded-[2px] bg-canvas border border-warning/25 p-5  relative overflow-hidden">
+        <div class="rounded-[2px] bg-canvas border border-warning/25 p-5 relative overflow-hidden">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-xs font-semibold   text-warning">Perlu Perhatian</p>
+                    <p class="text-xs font-semibold text-warning">Perlu Perhatian</p>
                     <p class="text-3xl font-semibold text-warning mt-1">{{ number_format($countPerhatian) }}</p>
                     <p class="text-xs text-muted mt-1">Skor 40.0 - 64.99</p>
                 </div>
@@ -102,10 +102,10 @@
         </div>
 
         {{-- Buruk & Avg Score --}}
-        <div class="rounded-[2px] bg-canvas border border-danger/25 p-5  relative overflow-hidden">
+        <div class="rounded-[2px] bg-canvas border border-danger/25 p-5 relative overflow-hidden">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-xs font-semibold   text-danger">Kondisi Buruk</p>
+                    <p class="text-xs font-semibold text-danger">Kondisi Buruk</p>
                     <p class="text-3xl font-semibold text-danger mt-1">{{ number_format($countBuruk) }}</p>
                     <p class="text-xs text-muted mt-1">Rata-rata: <strong class="text-current">{{ $avgScore !== null ? number_format($avgScore, 1) : '-' }}</strong></p>
                 </div>
@@ -120,7 +120,7 @@
 
     {{-- Grafik Tren Skor Fuzzy --}}
     @if(!empty($chartScores))
-    <div class="rounded-[2px] bg-canvas border border-line p-5 sm:p-6  ">
+    <div class="rounded-[2px] bg-canvas border border-line p-5 sm:p-6">
         <div class="flex items-center justify-between mb-4">
             <div>
                 <h3 class="text-sm font-semibold text-current flex items-center gap-2">
@@ -142,11 +142,11 @@
     @endif
 
     {{-- Filter Bar --}}
-    <div class="rounded-[2px] bg-canvas border border-line p-5 sm:p-6  ">
+    <div class="rounded-[2px] bg-canvas border border-line p-5 sm:p-6">
         <form method="GET" action="{{ route('fuzzy.history') }}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3.5">
             {{-- Filter Tanaman --}}
             <div>
-                <label for="filter-plant_id" class="block text-xs font-semibold   text-muted mb-1.5">Tanaman</label>
+                <label for="filter-plant_id" class="block text-xs font-semibold text-muted mb-1.5">Tanaman</label>
                 <select id="filter-plant_id" name="plant_id" class="w-full bg-surface border border-line rounded-[2px] px-3 py-2 text-xs text-ink focus:outline-none focus:border-line">
                     <option value="all">Semua Tanaman</option>
                     @foreach($plants as $plant)
@@ -159,7 +159,7 @@
 
             {{-- Filter Kategori --}}
             <div>
-                <label for="filter-category" class="block text-xs font-semibold   text-muted mb-1.5">Kategori</label>
+                <label for="filter-category" class="block text-xs font-semibold text-muted mb-1.5">Kategori</label>
                 <select id="filter-category" name="category" class="w-full bg-surface border border-line rounded-[2px] px-3 py-2 text-xs text-ink focus:outline-none focus:border-line">
                     <option value="all">Semua Kategori</option>
                     <option value="BAIK" {{ ($validated['category'] ?? '') === 'BAIK' ? 'selected' : '' }}>BAIK</option>
@@ -170,7 +170,7 @@
 
             {{-- Filter Status --}}
             <div>
-                <label for="filter-status" class="block text-xs font-semibold   text-muted mb-1.5">Status</label>
+                <label for="filter-status" class="block text-xs font-semibold text-muted mb-1.5">Status</label>
                 <select id="filter-status" name="status" class="w-full bg-surface border border-line rounded-[2px] px-3 py-2 text-xs text-ink focus:outline-none focus:border-line">
                     <option value="all">Semua Status</option>
                     <option value="AVAILABLE" {{ ($validated['status'] ?? '') === 'AVAILABLE' ? 'selected' : '' }}>AVAILABLE</option>
@@ -183,14 +183,14 @@
 
             {{-- Date From --}}
             <div>
-                <label for="filter-date_from" class="block text-xs font-semibold   text-muted mb-1.5">Dari Tanggal</label>
+                <label for="filter-date_from" class="block text-xs font-semibold text-muted mb-1.5">Dari Tanggal</label>
                 <input id="filter-date_from" type="date" name="date_from" value="{{ $validated['date_from'] ?? '' }}"
                        class="w-full bg-surface border border-line rounded-[2px] px-3 py-2 text-xs text-ink focus:outline-none focus:border-line">
             </div>
 
             {{-- Date To --}}
             <div>
-                <label for="filter-date_to" class="block text-xs font-semibold   text-muted mb-1.5">Sampai Tanggal</label>
+                <label for="filter-date_to" class="block text-xs font-semibold text-muted mb-1.5">Sampai Tanggal</label>
                 <input id="filter-date_to" type="date" name="date_to" value="{{ $validated['date_to'] ?? '' }}"
                        class="w-full bg-surface border border-line rounded-[2px] px-3 py-2 text-xs text-ink focus:outline-none focus:border-line">
             </div>
@@ -213,11 +213,11 @@
     </div>
 
     {{-- Tabel Riwayat Inferensi --}}
-    <div class="rounded-[2px] bg-canvas border border-line overflow-hidden  ">
+    <div class="rounded-[2px] bg-canvas border border-line overflow-hidden">
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse text-xs">
                 <thead>
-                    <tr class="border-b border-line bg-canvas text-muted text-xs font-semibold  ">
+                    <tr class="border-b border-line bg-canvas text-muted text-xs font-semibold">
                         <th class="py-3.5 px-4">Waktu &amp; Tanaman</th>
                         <th class="py-3.5 px-4">Input Sensor</th>
                         <th class="py-3.5 px-4">Skor &amp; Kategori</th>
@@ -234,7 +234,7 @@
                             <div class="font-semibold text-current">{{ $item->plant->name ?? 'Tanaman #' . $item->plant_id }}</div>
                             <div class="text-xs text-muted">{{ $item->inferred_at ? $item->inferred_at->format('d M Y H:i:s') : '-' }}</div>
                             <span class="inline-block mt-1 px-2 py-0.5 rounded-[2px] text-xs tabular-nums
-                                {{ $item->inference_status === 'AVAILABLE' ? 'bg-accent-soft text-accent border border-line' : ($item->inference_status === 'STALE' ? 'bg-warning-soft text-warning border border-warning/25' : 'bg-surface text-ink') }}">
+ {{ $item->inference_status === 'AVAILABLE' ? 'bg-accent-soft text-accent border border-line' : ($item->inference_status === 'STALE' ? 'bg-warning-soft text-warning border border-warning/25' : 'bg-surface text-ink') }}">
                                 {{ $item->inference_status }}
                             </span>
                         </td>

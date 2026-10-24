@@ -20,7 +20,7 @@ Chart.register({
         options.plugins.tooltip = { ...options.plugins.tooltip, backgroundColor: '#ffffff', titleColor: '#171717', bodyColor: '#666666', borderColor: '#e5e7eb', borderWidth: 1, cornerRadius: 4, padding: 10 };
         Object.values(options.scales || {}).forEach(scale => {
             scale.grid = { ...scale.grid, color: '#e5e7eb' };
-            scale.ticks = { ...scale.ticks, color: '#666666', font: { size: 11 }, maxRotation: 30, maxTicksLimit: 5 };
+            scale.ticks = { ...scale.ticks, color: '#666666', font: { size: 12 }, maxRotation: 30, maxTicksLimit: 5 };
         });
         chart.data.datasets.forEach((dataset, index) => {
             if (['doughnut', 'pie'].includes(chart.config.type)) {
@@ -66,6 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
         update();
     });
     document.querySelectorAll('main table thead th:not([scope])').forEach(th => th.setAttribute('scope', 'col'));
+    document.querySelectorAll('main table').forEach(table => {
+        const headers = [...(table.tHead?.rows[table.tHead.rows.length - 1]?.cells || [])];
+        headers.forEach((header, index) => {
+            if (!/^(suhu|lembap|tanah|ph|ec|cahaya|tandon|kelembapan|tinggi|kerapatan|skor|rata-rata|minimum|maksimum)\b/i.test(header.textContent.trim())) return;
+            header.classList.add('ui-number-cell');
+            [...table.tBodies].flatMap(body => [...body.rows]).forEach(row => {
+                if (row.cells.length === headers.length) row.cells[index]?.classList.add('ui-number-cell');
+            });
+        });
+    });
 });
 
 // Keep keyboard focus inside the mobile drawer / confirmation dialog, then return it.

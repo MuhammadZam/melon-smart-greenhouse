@@ -26,7 +26,7 @@
 
             <div class="flex flex-wrap items-center gap-3">
                 <h2 class="ui-page-title text-xl sm:text-2xl font-semibold text-current tracking-tight">
-                    Detail Pengamatan <span class="    text-ink">#{{ $monitoring->id }}</span>
+                    Detail Pengamatan <span class="text-ink">#{{ $monitoring->id }}</span>
                 </h2>
                 <x-status-badge :status="$monitoring->plant_condition" />
             </div>
@@ -52,9 +52,9 @@
             @if (auth()->user()->isAdmin())
                 <a
                     href="{{ route('monitorings.edit', $monitoring) }}"
-                    class="px-4 py-2 rounded-[2px] bg-warning-soft hover:bg-warning-soft text-warning border border-warning/25 text-xs font-semibold transition-colors flex items-center gap-2"
+                    class="px-4 py-2 rounded-[2px] bg-surface hover:bg-surface text-muted border border-line text-xs font-semibold transition-colors flex items-center gap-2"
                 >
-                    <svg class="w-4 h-4 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                     </svg>
                     <span>Edit Data</span>
@@ -83,10 +83,10 @@
     </div>
 
     <!-- Informasi Profil Tanaman -->
-    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line ">
+    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-line">
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-[2px]    flex items-center justify-center text-current  ">
+                <div class="w-12 h-12 rounded-[2px] flex items-center justify-center text-current">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                     </svg>
@@ -110,7 +110,7 @@
             </div>
 
             <div class="text-xs text-muted bg-canvas px-4 py-2.5 rounded-[2px] border border-line">
-                <div class="text-xs  tabular-nums text-muted">ID Tanaman Database</div>
+                <div class="text-xs tabular-nums text-muted">ID Tanaman Database</div>
                 <div class="font-semibold text-current tabular-nums text-sm">PLANT-{{ str_pad($monitoring->plant_id, 4, '0', STR_PAD_LEFT) }}</div>
             </div>
         </div>
@@ -125,11 +125,11 @@
 
     <!-- Parameter Sensor Lingkungan & Morfologi -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        
+
         <!-- 1. Suhu Lingkungan -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-accent   flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-accent flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-[2px] bg-accent-soft"></span>
                     Suhu Udara
                 </span>
@@ -173,9 +173,9 @@
         </div>
 
         <!-- 2. Derajat Keasaman pH -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-accent   flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-accent flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-[2px] bg-accent-soft"></span>
                     pH Nutrisi / Media
                 </span>
@@ -219,9 +219,9 @@
         </div>
 
         <!-- 3. Kelembapan Udara -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-muted   flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-muted flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-[2px] bg-surface"></span>
                     Kelembapan Relatif
                 </span>
@@ -265,9 +265,9 @@
         </div>
 
         <!-- 4. Tinggi Tanaman -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-ink   flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-ink flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-[2px] bg-accent"></span>
                     Tinggi Tajuk &amp; Sulur
                 </span>
@@ -290,9 +290,9 @@
         </div>
 
         <!-- 5. Kerapatan Kanopi -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-ink   flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-ink flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-[2px] bg-accent"></span>
                     Kerapatan Kanopi
                 </span>
@@ -315,9 +315,9 @@
         </div>
 
         <!-- 6. Suhu Larutan Nutrisi (Baru) -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-danger   flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-danger flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-[2px] bg-surface"></span>
                     Suhu Larutan Nutrisi
                 </span>
@@ -358,9 +358,9 @@
         </div>
 
         <!-- 7. Konduktivitas Listrik EC (Baru) -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-muted   flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-muted flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-[2px] bg-surface"></span>
                     EC Nutrisi (Kepekatan)
                 </span>
@@ -401,9 +401,9 @@
         </div>
 
         <!-- 8. Kelembapan Tanah (Baru) -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-muted   flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-muted flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-[2px] bg-surface"></span>
                     Kelembapan Media/Tanah
                 </span>
@@ -444,9 +444,9 @@
         </div>
 
         <!-- 9. Intensitas Cahaya (Baru) -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-warning   flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-warning flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-[2px] bg-surface"></span>
                     Intensitas Cahaya
                 </span>
@@ -487,9 +487,9 @@
         </div>
 
         <!-- 10. Level Cadangan Tandon Air (Baru) -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-muted   flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-muted flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-[2px] bg-surface"></span>
                     Level Cadangan Tandon
                 </span>
@@ -530,9 +530,9 @@
         </div>
 
         <!-- 11. Warna Daun & Visual -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-ink   flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-ink flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-[2px] bg-accent-soft"></span>
                     Warna Daun Tanaman
                 </span>
@@ -559,7 +559,7 @@
     </div>
 
     <!-- Catatan Observasi & Temuan Lapangan -->
-    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line space-y-4">
         <h3 class="text-base font-semibold text-current flex items-center gap-2">
             <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>

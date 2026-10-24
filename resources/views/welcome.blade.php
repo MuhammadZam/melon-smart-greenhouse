@@ -3,125 +3,40 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistem Monitoring Tanaman Melon</title>
-
+    <title>Melon Monitor — Pemantauan greenhouse</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-canvas text-ink min-h-screen font-sans selection:bg-accent selection:text-white flex flex-col justify-between">
-    
-
-    <!-- Navigation -->
-    <header class="border-b border-line  sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-[2px]    flex items-center justify-center  ">
-                    <svg class="w-6 h-6 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                    </svg>
-                </div>
-                <div>
-                    <h1 class="text-base font-semibold     text-ink">Melon Monitor</h1>
-                    <p class="text-xs text-muted">Smart Agriculture System</p>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-3">
-                <span class="hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-[2px] text-xs font-medium bg-accent-soft text-accent border border-line">
-                    <span class="w-1.5 h-1.5 rounded-[2px] bg-accent-soft mr-1.5 "></span>
-                    Phase 3 Active &bull; Docker + Auth
-                </span>
-
-                @auth
-                    <a href="{{ route('dashboard') }}" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-accent hover:bg-accent-soft text-current font-semibold text-xs transition-all">
-                        <span>Dashboard ({{ auth()->user()->name }})</span>
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </a>
-                @else
-                    <a href="{{ route('login') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-[2px] text-current font-semibold text-xs transition-all ui-button-primary">
-                        <span>Masuk (Login)</span>
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
-                        </svg>
-                    </a>
-                @endauth
-            </div>
+<body class="min-h-screen flex flex-col bg-canvas text-ink font-sans antialiased">
+    <header class="border-b border-line">
+        <div class="max-w-6xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-4">
+            <a href="{{ route('home') }}" class="font-semibold text-base tracking-tight">Melon Monitor<span class="block text-xs font-normal text-muted">Pemantauan greenhouse</span></a>
+            @auth
+                <a href="{{ route('dashboard') }}" class="ui-button-primary rounded-[4px] px-4 py-2 text-sm font-medium inline-flex items-center">Buka dashboard</a>
+            @else
+                <a href="{{ route('login') }}" class="ui-button-primary rounded-[4px] px-4 py-2 text-sm font-medium inline-flex items-center">Masuk</a>
+            @endauth
         </div>
     </header>
-
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 flex flex-col justify-center">
-        <div class="text-center max-w-3xl mx-auto mb-12">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-[2px] bg-surface border border-line text-xs text-ink mb-6">
-                <span class="px-1.5 py-0.5 rounded-[2px] bg-accent text-ink font-semibold text-xs">SUCCESS</span>
-                <span>Setup Lingkungan & Framework Berhasil Berjalan</span>
-            </div>
-            <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight text-current mb-4">
-                Sistem Web Monitoring <span class="    text-ink">Tanaman Melon</span>
-            </h2>
-            <p class="text-muted text-base sm:text-lg">
-                Platform pencatatan, pemantauan kondisi mikro-lingkungan, dan analisis perkembangan tanaman melon secara real-time dan terstruktur.
-            </p>
-        </div>
-
-        <!-- System Status Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto w-full mb-12">
-            <div class="p-5 rounded-[2px] bg-surface border border-line ">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="text-xs font-medium text-muted">Framework</span>
-                    <span class="text-xs text-accent tabular-nums">v11.57.0</span>
-                </div>
-                <div class="text-lg font-semibold text-current">Laravel 11</div>
-                <p class="text-xs text-muted mt-1">PHP 8.2.12 Aktif</p>
-            </div>
-
-            <div class="p-5 rounded-[2px] bg-surface border border-line ">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="text-xs font-medium text-muted">Styling</span>
-                    <span class="text-xs text-accent tabular-nums">v3.4.17</span>
-                </div>
-                <div class="text-lg font-semibold text-current">Tailwind CSS</div>
-                <p class="text-xs text-muted mt-1">Vite Asset Bundler</p>
-            </div>
-
-            <div class="p-5 rounded-[2px] bg-surface border border-line ">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="text-xs font-medium text-muted">Visualisasi</span>
-                    <span class="text-xs text-accent tabular-nums">Ready</span>
-                </div>
-                <div class="text-lg font-semibold text-current">Chart.js</div>
-                <p class="text-xs text-muted mt-1">Siap untuk Tren Grafik</p>
-            </div>
-
-            <div class="p-5 rounded-[2px] bg-surface border border-line ">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="text-xs font-medium text-muted">Database</span>
-                    <span class="text-xs text-warning tabular-nums">Port 3306</span>
-                </div>
-                <div class="text-lg font-semibold text-current">MySQL 8.0</div>
-                <p class="text-xs text-muted mt-1">Menunggu Kredensial DB</p>
-            </div>
-        </div>
-
-        <!-- Next Steps Banner -->
-        <div class="max-w-3xl mx-auto w-full p-6 rounded-[2px]     border border-line">
-            <h3 class="text-sm font-semibold text-accent   mb-2">Status Saat Ini: Phase 1 Selesai</h3>
-            <p class="text-sm text-ink leading-relaxed mb-4">
-                Seluruh fondasi aplikasi web (PHP, Composer, Laravel 11, Tailwind CSS, Vite, Chart.js, Alpine.js, dan Git) telah terkonfigurasi dan berjalan lancar. Tahap berikutnya adalah pembuatan database dan migrasi tabel (Phase 2).
-            </p>
-            <div class="flex items-center gap-2 text-xs text-muted">
-                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Server berjalan di <span class="tabular-nums text-accent">http://127.0.0.1:8000</span>
-            </div>
-        </div>
+    <main class="w-full max-w-6xl mx-auto px-4 sm:px-8 py-12 sm:py-20 flex-1 space-y-12">
+        <section class="max-w-2xl space-y-4">
+            <p class="text-xs text-accent font-medium">Sistem monitoring tanaman melon</p>
+            <h1 class="ui-page-title">Kondisi greenhouse, dalam satu tampilan.</h1>
+            <p class="text-muted text-sm leading-relaxed">Tinjau pembacaan sensor, telusuri riwayat pengamatan, dan pahami perubahan lingkungan tanaman. Data dan waktu pengamatan ditampilkan agar setiap kondisi dapat ditelusuri.</p>
+            <a href="{{ auth()->check() ? route('dashboard') : route('login') }}" class="inline-flex items-center gap-2 text-sm font-medium text-accent py-2">{{ auth()->check() ? 'Lihat pemantauan' : 'Masuk ke pemantauan' }} <span aria-hidden="true">&rarr;</span></a>
+        </section>
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10" aria-label="Fungsi utama">
+            <div class="border-t border-line pt-5 space-y-2"><h2 class="text-base font-semibold">Pembacaan sensor</h2><p class="text-sm text-muted">Delapan parameter lingkungan, lengkap dengan waktu pengamatan dan keterangan data yang belum tersedia.</p></div>
+            <div class="border-t border-line pt-5 space-y-2"><h2 class="text-base font-semibold">Riwayat dan analisis</h2><p class="text-sm text-muted">Grafik tren, alarm parameter, dan hasil analisis fuzzy untuk membantu meninjau kondisi greenhouse.</p></div>
+            <div class="border-t border-line pt-5 space-y-2"><h2 class="text-base font-semibold">Pencatatan dan laporan</h2><p class="text-sm text-muted">Kelola tanaman dan pengamatan, filter data yang dibutuhkan, lalu ekspor laporan CSV atau PDF.</p></div>
+        </section>
+        <section class="border-t border-line pt-6" aria-labelledby="sensor-list-title">
+            <h2 id="sensor-list-title" class="text-lg font-semibold mb-4">Parameter yang dipantau</h2>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-3 text-sm text-muted">
+                <li>Suhu udara <span class="text-ink">°C</span></li><li>Kelembapan udara <span class="text-ink">%</span></li><li>Kelembapan tanah <span class="text-ink">%</span></li><li>pH nutrisi/media</li>
+                <li>Konduktivitas listrik <span class="text-ink">mS/cm</span></li><li>Intensitas cahaya <span class="text-ink">lux</span></li><li>Suhu nutrisi <span class="text-ink">°C</span></li><li>Level tandon <span class="text-ink">%</span></li>
+            </ul>
+        </section>
     </main>
-
-    <!-- Footer -->
-    <footer class="border-t border-line py-6 text-center text-xs text-muted">
-        <p>Sistem Web Monitoring Tanaman Melon &copy; {{ date('Y') }}. Dibangun dengan Laravel & Tailwind CSS.</p>
-    </footer>
+    <footer class="border-t border-line px-4 sm:px-8 py-6 text-xs text-muted"><div class="max-w-6xl mx-auto">Melon Monitor &copy; {{ date('Y') }}</div></footer>
 </body>
 </html>

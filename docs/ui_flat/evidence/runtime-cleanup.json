@@ -1,0 +1,6 @@
+{
+  "audit_server_port": 8020,
+  "audit_server": "stopped",
+  "primary_database": "18 table checksums preserved",
+  "delivery_pass": true
+}

@@ -30,7 +30,7 @@
         <div>
             <div class="flex items-center gap-2 mb-1">
                 <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[2px] text-xs font-semibold bg-warning-soft text-warning border border-warning/25">
-                    <span class="w-1.5 h-1.5 rounded-[2px] bg-surface "></span>
+                    <span class="w-1.5 h-1.5 rounded-[2px] bg-surface"></span>
                     MODE SIMULASI DATABASE
                 </span>
             </div>
@@ -59,7 +59,7 @@
     </div>
 
     {{-- Strict Simulation Disclaimer Banner --}}
-    <div class="p-4 sm:p-5 rounded-[2px] bg-warning-soft border border-warning/25 text-warning text-xs sm:text-sm flex flex-col sm:flex-row items-start sm:items-center gap-3.5 ">
+    <div class="p-4 sm:p-5 rounded-[2px] bg-warning-soft border border-warning/25 text-warning text-xs sm:text-sm flex flex-col sm:flex-row items-start sm:items-center gap-3.5">
         <div class="p-2 rounded-[2px] bg-warning-soft text-warning shrink-0">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -80,13 +80,13 @@
                 $isOn = $actuator->isOn();
                 $isPump = $actuator->type === \App\Models\Actuator::TYPE_IRRIGATION_PUMP;
             @endphp
-            <div class="rounded-[2px] bg-canvas border {{ $isOn ? 'border-line ring-1 ring-accent' : 'border-line' }} overflow-hidden  transition-all duration-150 hover:border-line"
+            <div class="rounded-[2px] bg-canvas border {{ $isOn ? 'border-line ring-1 ring-accent' : 'border-line' }} overflow-hidden transition-all duration-150 hover:border-line"
                  id="actuator-card-{{ $actuator->code }}">
 
                 {{-- Header Kartu --}}
                 <div class="p-5 border-b border-line bg-canvas flex flex-col sm:flex-row items-start justify-between gap-4">
                     <div class="flex items-center gap-3.5">
-                        <div class="w-12 h-12 rounded-[2px] {{ $isOn ? 'bg-accent-soft text-accent border border-line' : 'bg-surface text-muted border border-line' }} flex items-center justify-center shrink-0 ">
+                        <div class="w-12 h-12 rounded-[2px] {{ $isOn ? 'bg-accent-soft text-accent border border-line' : 'bg-surface text-muted border border-line' }} flex items-center justify-center shrink-0">
                             @if($isPump)
                                 {{-- Icon Pompa Irigasi --}}
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,7 +118,7 @@
                     <div class="shrink-0 whitespace-nowrap">
                         @if($isOn)
                             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-[2px] text-xs font-semibold bg-accent-soft text-accent border border-line">
-                                <span class="w-2 h-2 rounded-[2px] bg-accent-soft "></span>
+                                <span class="w-2 h-2 rounded-[2px] bg-accent-soft"></span>
                                 AKTIF (ON)
                             </span>
                         @else
@@ -138,14 +138,14 @@
 
                     <div class="grid grid-cols-2 gap-3 text-xs">
                         <div class="p-3 rounded-[2px] bg-canvas border border-line">
-                            <span class="block text-xs  font-semibold text-muted">Lokasi Penempatan</span>
+                            <span class="block text-xs font-semibold text-muted">Lokasi Penempatan</span>
                             <span class="text-ink font-medium truncate block mt-0.5" title="{{ $actuator->location }}">
                                 {{ $actuator->location ?: '-' }}
                             </span>
                         </div>
 
                         <div class="p-3 rounded-[2px] bg-canvas border border-line">
-                            <span class="block text-xs  font-semibold text-muted">Terakhir Diperbarui</span>
+                            <span class="block text-xs font-semibold text-muted">Terakhir Diperbarui</span>
                             <span class="text-ink font-medium truncate block mt-0.5" title="{{ $actuator->last_changed_at }}">
                                 {{ $actuator->last_changed_at ? $actuator->last_changed_at->diffForHumans() : 'Belum pernah' }}
                             </span>
@@ -231,7 +231,7 @@
         @if($recentLogs->count() > 0)
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-xs">
-                    <thead class="text-xs  font-semibold text-muted border-b border-line">
+                    <thead class="text-xs font-semibold text-muted border-b border-line">
                         <tr>
                             <th class="py-2.5 px-3">Waktu</th>
                             <th class="py-2.5 px-3">Perangkat</th>
@@ -287,7 +287,7 @@
          aria-labelledby="actuator-dialog-title"
          :aria-busy="isSubmitting.toString()"
          style="display: none;"
-         class="fixed inset-0 z-50 overflow-y-auto bg-canvas  flex items-center justify-center p-4"
+         class="fixed inset-0 z-50 overflow-y-auto bg-canvas flex items-center justify-center p-4"
          x-transition:enter="transition ease-out duration-150"
          x-transition:enter-start="opacity-0"
          x-transition:enter-end="opacity-100"
@@ -295,7 +295,7 @@
          x-transition:leave-start="opacity-100"
          x-transition:leave-end="opacity-0">
 
-        <div class="bg-canvas border border-line rounded-[2px] max-w-md w-full p-6 space-y-5 "
+        <div class="bg-canvas border border-line rounded-[2px] max-w-md w-full p-6 space-y-5"
              @click.away="if(!isSubmitting) confirmModalOpen = false">
 
             <div class="flex items-center gap-3">
@@ -358,7 +358,7 @@
                         @click="submitCommand()"
                         :disabled="isSubmitting"
                         class="px-4 py-2 rounded-[2px] text-xs font-semibold bg-accent hover:bg-accent text-current transition-all flex items-center gap-2">
-                    <svg x-show="isSubmitting" class=" -ml-1 mr-1 h-3.5 w-3.5 text-current" fill="none" viewBox="0 0 24 24">
+                    <svg x-show="isSubmitting" class="-ml-1 mr-1 h-3.5 w-3.5 text-current" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
                     </svg>

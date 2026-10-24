@@ -17,16 +17,16 @@
     </div>
 
     {{-- Alarm Header Card --}}
-    <div class="relative overflow-hidden rounded-[2px] border p-6 
-        {{ $alarm->severity === 'critical' ? 'bg-danger-soft border-danger/25' : ($alarm->status === 'active' ? 'bg-danger-soft border-danger/25' : 'bg-canvas border-line') }}">
-        <div class="absolute inset-0 
-            {{ $alarm->severity === 'critical' ? '' : ($alarm->status === 'active' ? '' : '') }}
-             pointer-events-none"></div>
+    <div class="relative overflow-hidden rounded-[2px] border p-6
+ {{ $alarm->severity === 'critical' ? 'bg-danger-soft border-danger/25' : ($alarm->status === 'active' ? 'bg-danger-soft border-danger/25' : 'bg-canvas border-line') }}">
+        <div class="absolute inset-0
+ {{ $alarm->severity === 'critical' ? '' : ($alarm->status === 'active' ? '' : '') }}
+ pointer-events-none"></div>
 
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             {{-- Icon --}}
-            <div class="w-16 h-16 rounded-[2px] flex items-center justify-center shrink-0 
-                {{ $alarm->severity === 'critical' ? 'bg-danger-soft border border-danger/25' : ($alarm->status === 'active' ? 'bg-danger-soft border border-danger/25' : 'bg-accent-soft border border-line') }}">
+            <div class="w-16 h-16 rounded-[2px] flex items-center justify-center shrink-0
+ {{ $alarm->severity === 'critical' ? 'bg-danger-soft border border-danger/25' : ($alarm->status === 'active' ? 'bg-danger-soft border border-danger/25' : 'bg-accent-soft border border-line') }}">
                 @if($alarm->status === 'active')
                     <svg class="w-8 h-8 {{ $alarm->severity === 'critical' ? 'text-danger' : 'text-danger' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
@@ -41,12 +41,12 @@
             {{-- Info --}}
             <div class="flex-1 min-w-0">
                 <div class="flex flex-wrap items-center gap-2 mb-2">
-                    <span class="px-3 py-1 rounded-[2px] text-xs font-semibold  
-                        {{ $alarm->severity === 'critical' ? 'bg-danger-soft text-danger border border-danger/25' : 'bg-warning-soft text-warning border border-warning/25' }}">
+                    <span class="px-3 py-1 rounded-[2px] text-xs font-semibold
+ {{ $alarm->severity === 'critical' ? 'bg-danger-soft text-danger border border-danger/25' : 'bg-warning-soft text-warning border border-warning/25' }}">
                         {{ $alarm->severity }}
                     </span>
                     <span class="px-3 py-1 rounded-[2px] text-xs font-semibold
-                        {{ $alarm->status === 'active' ? 'bg-danger-soft text-danger border border-danger/25' : 'bg-accent-soft text-accent border border-line' }}">
+ {{ $alarm->status === 'active' ? 'bg-danger-soft text-danger border border-danger/25' : 'bg-accent-soft text-accent border border-line' }}">
                         {{ $alarm->status === 'active' ? '● Aktif' : '✓ Diselesaikan' }}
                     </span>
                     <span class="text-muted text-xs tabular-nums">#{{ $alarm->id }}</span>
@@ -65,9 +65,9 @@
 
             {{-- Sensor Value --}}
             <div class="text-right shrink-0">
-                <p class="text-xs text-muted  ">Nilai Pemicu</p>
+                <p class="text-xs text-muted">Nilai Pemicu</p>
                 <p class="text-3xl font-semibold tabular-nums
-                    {{ $alarm->severity === 'critical' ? 'text-danger' : 'text-danger' }}">
+ {{ $alarm->severity === 'critical' ? 'text-danger' : 'text-danger' }}">
                     {{ number_format($alarm->sensor_value, 2) }}
                     @if($alarm->unit)<span class="text-lg text-muted">{{ $alarm->unit }}</span>@endif
                 </p>
@@ -82,7 +82,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
         {{-- Threshold Info --}}
-        <div class="rounded-[2px] bg-canvas border border-line p-5 space-y-4 ">
+        <div class="rounded-[2px] bg-canvas border border-line p-5 space-y-4">
             <h3 class="text-sm font-semibold text-ink flex items-center gap-2">
                 <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
@@ -116,7 +116,7 @@
         </div>
 
         {{-- Timeline --}}
-        <div class="rounded-[2px] bg-canvas border border-line p-5 space-y-4 ">
+        <div class="rounded-[2px] bg-canvas border border-line p-5 space-y-4">
             <h3 class="text-sm font-semibold text-ink flex items-center gap-2">
                 <svg class="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -163,7 +163,7 @@
 
     {{-- Triggering Monitoring --}}
     @if($alarm->triggeringMonitoring)
-    <div class="rounded-[2px] bg-canvas border border-line p-5 ">
+    <div class="rounded-[2px] bg-canvas border border-line p-5">
         <h3 class="text-sm font-semibold text-ink mb-4 flex items-center gap-2">
             <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>

@@ -19,7 +19,7 @@
                 <span class="text-muted">Audit Trail #{{ $fuzzyInference->id }}</span>
             </div>
             <h2 class="ui-page-title text-xl sm:text-2xl font-semibold text-current tracking-tight flex items-center gap-2">
-                Audit Trail Evaluasi <span class="    text-ink">Fuzzy Mamdani</span>
+                Audit Trail Evaluasi <span class="text-ink">Fuzzy Mamdani</span>
             </h2>
             <p class="text-xs sm:text-sm text-muted mt-0.5">
                 Rincian matematis fuzzifikasi, aktivasi aturan (firing strength), dan defuzzifikasi centroid.
@@ -45,7 +45,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
         <div>
-            <span class="font-semibold tracking-wide ">Rule Set: {{ $fuzzyInference->rule_version }} (PROVISIONAL_FOR_SOFTWARE_TESTING)</span>
+            <span class="font-semibold tracking-wide">Rule Set: {{ $fuzzyInference->rule_version }} (PROVISIONAL_FOR_SOFTWARE_TESTING)</span>
             <span class="text-warning block mt-0.5">
                 Hasil inferensi ini dihitung secara deterministik menggunakan metode Mamdani provisional dan belum disahkan secara formal oleh Tim Elektro.
             </span>
@@ -55,10 +55,10 @@
     {{-- Main Score & Conclusion Card --}}
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {{-- Score & Category Box --}}
-        <div class="rounded-[2px] bg-canvas border border-line p-6   flex flex-col justify-between">
+        <div class="rounded-[2px] bg-canvas border border-line p-6 flex flex-col justify-between">
             <div>
                 <div class="flex items-center justify-between">
-                    <span class="text-xs font-semibold   text-muted">Skor Defuzzifikasi</span>
+                    <span class="text-xs font-semibold text-muted">Skor Defuzzifikasi</span>
                     <span class="px-2 py-0.5 rounded-[2px] text-xs tabular-nums bg-surface text-muted border border-line">
                         {{ $fuzzyInference->inference_status }}
                     </span>
@@ -94,7 +94,7 @@
         </div>
 
         {{-- Conclusion & Recommendation Box --}}
-        <div class="lg:col-span-2 rounded-[2px] bg-canvas border border-line p-6   flex flex-col justify-between">
+        <div class="lg:col-span-2 rounded-[2px] bg-canvas border border-line p-6 flex flex-col justify-between">
             <div>
                 <h3 class="text-sm font-semibold text-current flex items-center gap-2 mb-3">
                     <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -124,7 +124,7 @@
     </div>
 
     {{-- Input Snapshot & Fuzzification Details --}}
-    <div class="rounded-[2px] bg-canvas border border-line p-6  ">
+    <div class="rounded-[2px] bg-canvas border border-line p-6">
         <h3 class="text-sm font-semibold text-current flex items-center gap-2 mb-4">
             <svg class="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
@@ -140,7 +140,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {{-- Temperature --}}
             <div class="p-4 rounded-[2px] bg-surface border border-line">
-                <div class="text-xs font-semibold   text-muted">Suhu Udara</div>
+                <div class="text-xs font-semibold text-muted">Suhu Udara</div>
                 <div class="text-xl font-semibold text-current tabular-nums mt-1">
                     {{ isset($inputs['temperature']) ? number_format($inputs['temperature'], 1) . ' °C' : '-' }}
                 </div>
@@ -156,7 +156,7 @@
 
             {{-- Humidity --}}
             <div class="p-4 rounded-[2px] bg-surface border border-line">
-                <div class="text-xs font-semibold   text-muted">Kelembapan Udara</div>
+                <div class="text-xs font-semibold text-muted">Kelembapan Udara</div>
                 <div class="text-xl font-semibold text-current tabular-nums mt-1">
                     {{ isset($inputs['humidity']) ? number_format($inputs['humidity'], 1) . ' %' : '-' }}
                 </div>
@@ -172,7 +172,7 @@
 
             {{-- Soil Moisture --}}
             <div class="p-4 rounded-[2px] bg-surface border border-line">
-                <div class="text-xs font-semibold   text-muted">Kelembapan Tanah</div>
+                <div class="text-xs font-semibold text-muted">Kelembapan Tanah</div>
                 <div class="text-xl font-semibold text-current tabular-nums mt-1">
                     {{ isset($inputs['soil_moisture']) ? number_format($inputs['soil_moisture'], 1) . ' %' : '-' }}
                 </div>
@@ -188,7 +188,7 @@
 
             {{-- pH --}}
             <div class="p-4 rounded-[2px] bg-surface border border-line">
-                <div class="text-xs font-semibold   text-muted">pH Nutrisi/Media</div>
+                <div class="text-xs font-semibold text-muted">pH Nutrisi/Media</div>
                 <div class="text-xl font-semibold text-current tabular-nums mt-1">
                     {{ isset($inputs['ph']) ? number_format($inputs['ph'], 2) : '-' }}
                 </div>
@@ -209,7 +209,7 @@
         $ruleSnapshot = $fuzzyInference->rule_activation_snapshot ?? [];
         $activatedRules = $ruleSnapshot['activated_rules'] ?? [];
     @endphp
-    <div class="rounded-[2px] bg-canvas border border-line p-6  ">
+    <div class="rounded-[2px] bg-canvas border border-line p-6">
         <div class="flex items-center justify-between mb-4">
             <div>
                 <h3 class="text-sm font-semibold text-current flex items-center gap-2">
@@ -253,7 +253,7 @@
                     </div>
                     <div>
                         <span class="text-muted text-xs">Konsekuen:</span>
-                        <span class="inline-block ml-1 font-semibold  text-accent">{{ $rule['consequent'] ?? '-' }}</span>
+                        <span class="inline-block ml-1 font-semibold text-accent">{{ $rule['consequent'] ?? '-' }}</span>
                     </div>
                 </div>
             </div>

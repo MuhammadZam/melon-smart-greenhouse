@@ -9,14 +9,14 @@
     <div class="ui-page-header flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
             <div class="flex items-center gap-2 mb-1">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-[2px] text-xs font-semibold   bg-accent-soft text-accent border border-line">
-                    <span class="w-1.5 h-1.5 rounded-[2px] bg-accent-soft mr-1.5 "></span>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-[2px] text-xs font-semibold bg-accent-soft text-accent border border-line">
+                    <span class="w-1.5 h-1.5 rounded-[2px] bg-accent-soft mr-1.5"></span>
                     Dokumentasi &amp; Analisis
                 </span>
                 <span class="text-xs text-muted">Modul Pelaporan Resmi</span>
             </div>
             <h2 class="ui-page-title text-xl sm:text-2xl font-semibold text-current tracking-tight">
-                Laporan Monitoring <span class="    text-ink">Greenhouse Melon</span>
+                Laporan Monitoring <span class="text-ink">Greenhouse Melon</span>
             </h2>
             <p class="text-xs sm:text-sm text-muted mt-0.5">
                 Penyajian statistik 8 parameter mikroklimat, ringkasan alarm, inferensi fuzzy, dan rekapitulasi data terverifikasi.
@@ -53,7 +53,7 @@
     </div>
 
     <!-- Filter Form & Quick Range -->
-    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line space-y-4">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 border-b border-line pb-4">
             <div>
                 <h3 class="text-sm sm:text-base font-semibold text-current flex items-center gap-2">
@@ -99,7 +99,7 @@
         <form method="GET" action="{{ route('reports.monitoring.index') }}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3.5 items-end" id="report-filter-form">
             <!-- 1. Tanggal Mulai -->
             <div>
-                <label for="date_from" class="block text-xs font-semibold   text-ink mb-1">Tanggal Mulai</label>
+                <label for="date_from" class="block text-xs font-semibold text-ink mb-1">Tanggal Mulai</label>
                 <input
                     type="date"
                     name="date_from"
@@ -111,7 +111,7 @@
 
             <!-- 2. Tanggal Akhir -->
             <div>
-                <label for="date_to" class="block text-xs font-semibold   text-ink mb-1">Tanggal Akhir</label>
+                <label for="date_to" class="block text-xs font-semibold text-ink mb-1">Tanggal Akhir</label>
                 <input
                     type="date"
                     name="date_to"
@@ -123,7 +123,7 @@
 
             <!-- 3. Dropdown Tanaman -->
             <div>
-                <label for="plant_id" class="block text-xs font-semibold   text-ink mb-1">Tanaman</label>
+                <label for="plant_id" class="block text-xs font-semibold text-ink mb-1">Tanaman</label>
                 <select
                     name="plant_id"
                     id="plant_id"
@@ -140,7 +140,7 @@
 
             <!-- 4. Sumber Data -->
             <div>
-                <label for="source" class="block text-xs font-semibold   text-ink mb-1">Sumber Data</label>
+                <label for="source" class="block text-xs font-semibold text-ink mb-1">Sumber Data</label>
                 <select
                     name="source"
                     id="source"
@@ -156,7 +156,7 @@
 
             <!-- 5. Kondisi Tanaman -->
             <div>
-                <label for="condition" class="block text-xs font-semibold   text-ink mb-1">Kondisi Tanaman</label>
+                <label for="condition" class="block text-xs font-semibold text-ink mb-1">Kondisi Tanaman</label>
                 <select
                     name="condition"
                     id="condition"
@@ -265,7 +265,7 @@
                     $max = $pData['max'] ?? null;
                     $unit = $pData['unit'] ?? '';
                 @endphp
-                <div class="p-4 rounded-[2px] bg-canvas border border-line  space-y-2.5">
+                <div class="p-4 rounded-[2px] bg-canvas border border-line space-y-2.5">
                     <div class="flex items-center justify-between">
                         <span class="text-xs font-semibold text-ink">{{ $card['label'] }}</span>
                         <span class="text-xs tabular-nums font-semibold text-muted bg-surface px-2 py-0.5 rounded-[2px]">
@@ -298,7 +298,7 @@
     <!-- Alarm & Fuzzy Summary Cards (Periode Terpilih) -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <!-- Ringkasan Alarm 4 Parameter -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between border-b border-line pb-3">
                 <div class="flex items-center gap-2.5">
                     <div class="w-8 h-8 rounded-[2px] bg-warning-soft text-warning border border-warning/25 flex items-center justify-center font-semibold text-sm">
@@ -316,25 +316,25 @@
 
             <div class="grid grid-cols-4 gap-2 text-center text-xs">
                 <div class="p-2.5 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs text-muted block ">Critical</span>
+                    <span class="text-xs text-muted block">Critical</span>
                     <strong class="text-sm tabular-nums font-semibold {{ $alarmSummary['critical'] > 0 ? 'text-danger' : 'text-ink' }}">
                         {{ $alarmSummary['critical'] }}
                     </strong>
                 </div>
                 <div class="p-2.5 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs text-muted block ">Warning</span>
+                    <span class="text-xs text-muted block">Warning</span>
                     <strong class="text-sm tabular-nums font-semibold {{ $alarmSummary['warning'] > 0 ? 'text-warning' : 'text-ink' }}">
                         {{ $alarmSummary['warning'] }}
                     </strong>
                 </div>
                 <div class="p-2.5 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs text-muted block ">Aktif</span>
+                    <span class="text-xs text-muted block">Aktif</span>
                     <strong class="text-sm tabular-nums font-semibold {{ $alarmSummary['active'] > 0 ? 'text-warning' : 'text-ink' }}">
                         {{ $alarmSummary['active'] }}
                     </strong>
                 </div>
                 <div class="p-2.5 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs text-muted block ">Resolved</span>
+                    <span class="text-xs text-muted block">Resolved</span>
                     <strong class="text-sm tabular-nums font-semibold text-accent">
                         {{ $alarmSummary['resolved'] }}
                     </strong>
@@ -343,7 +343,7 @@
         </div>
 
         <!-- Ringkasan Logika Fuzzy Mamdani -->
-        <div class="p-5 rounded-[2px] bg-canvas border border-line  space-y-3">
+        <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between border-b border-line pb-3">
                 <div class="flex items-center gap-2.5">
                     <div class="w-8 h-8 rounded-[2px] bg-surface text-muted border border-line flex items-center justify-center font-semibold text-sm">
@@ -361,15 +361,15 @@
 
             <div class="grid grid-cols-3 gap-2 text-center text-xs">
                 <div class="p-2.5 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs text-muted block ">Kondisi BAIK</span>
+                    <span class="text-xs text-muted block">Kondisi BAIK</span>
                     <strong class="text-sm tabular-nums font-semibold text-accent">{{ $fuzzySummary['by_category']['BAIK'] }}</strong>
                 </div>
                 <div class="p-2.5 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs text-muted block ">PERHATIAN</span>
+                    <span class="text-xs text-muted block">PERHATIAN</span>
                     <strong class="text-sm tabular-nums font-semibold text-warning">{{ $fuzzySummary['by_category']['PERLU_PERHATIAN'] }}</strong>
                 </div>
                 <div class="p-2.5 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs text-muted block ">Kondisi BURUK</span>
+                    <span class="text-xs text-muted block">Kondisi BURUK</span>
                     <strong class="text-sm tabular-nums font-semibold text-danger">{{ $fuzzySummary['by_category']['BURUK'] }}</strong>
                 </div>
             </div>
@@ -377,7 +377,7 @@
     </div>
 
     <!-- Tabel Detail Monitoring -->
-    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-line pb-4">
             <div>
                 <h3 class="text-sm sm:text-base font-semibold text-current flex items-center gap-2">
@@ -430,7 +430,7 @@
             <div class="overflow-x-auto rounded-[2px] border border-line bg-canvas">
                 <table class="w-full text-left border-collapse text-xs">
                     <thead>
-                        <tr class="border-b border-line text-xs   text-muted bg-canvas whitespace-nowrap">
+                        <tr class="border-b border-line text-xs text-muted bg-canvas whitespace-nowrap">
                             <th class="py-3 px-3.5 font-semibold">Waktu</th>
                             <th class="py-3 px-3.5 font-semibold">Tanaman</th>
                             <th class="py-3 px-3 font-semibold">Sumber</th>

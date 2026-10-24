@@ -76,6 +76,18 @@
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 }
 @layer utilities {
+    .ui-number-cell { text-align: right; font-variant-numeric: tabular-nums; }
+    .ui-sensor-grid :is(svg, .text-accent, .text-warning, .text-danger) { color: var(--color-muted); }
+    .ui-page-title { font-size: clamp(24px, 2vw, 28px); }
+    button[class], a[class*="rounded-"], input[class], select[class], textarea[class] { border-radius: 4px; }
+    input, select, textarea { font-size: 14px; }
+    [role="dialog"] { background: rgb(23 23 23 / .35); }
+    [data-sidebar-backdrop] { background: rgb(23 23 23 / .3); }
+    [role="dialog"] > div, #alarm-notifications { border-radius: 4px; }
+    main nav[role="navigation"] :is(a,span) { border-radius: 4px; box-shadow: none; }
+    :where(button, a[class*="rounded-"]):hover:not(:disabled) { background-color: #f0f2f1; border-color: #c8cdd3; }
+    .ui-button-primary:hover, .bg-accent:hover { background-color: var(--color-accent-hover); border-color: var(--color-accent-hover); color: white; }
+    .bg-danger:hover { background-color: #912018; color: white; }
     .bg-accent, .bg-danger, .ui-button-primary { color: white; }
     :is(.bg-accent, .bg-danger, .ui-button-primary) :is(span,svg) { color: inherit; }
     .hover\:bg-accent:hover { background-color: var(--color-accent-hover); color: white; }

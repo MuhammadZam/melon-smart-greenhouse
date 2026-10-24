@@ -10,18 +10,18 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-canvas text-ink min-h-screen font-sans antialiased selection:bg-accent selection:text-white flex flex-col justify-between relative overflow-x-hidden">
-    
+
 
     <!-- Header Mini -->
     <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-between">
         <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-            <div class="w-10 h-10 rounded-[2px]    flex items-center justify-center    transition-transform duration-150">
+            <div class="w-10 h-10 rounded-[2px] flex items-center justify-center transition-transform duration-150">
                 <svg class="w-6 h-6 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                 </svg>
             </div>
             <div>
-                <span class="text-base font-semibold     text-ink">Melon Monitor</span>
+                <span class="text-base font-semibold text-ink">Melon Monitor</span>
                 <span class="block text-xs text-muted">Smart Agriculture</span>
             </div>
         </a>

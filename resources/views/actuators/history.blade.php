@@ -35,10 +35,10 @@
     </div>
 
     {{-- Filter Bar --}}
-    <div class="p-4 rounded-[2px] bg-canvas border border-line ">
+    <div class="p-4 rounded-[2px] bg-canvas border border-line">
         <form action="{{ route('actuators.history') }}" method="GET" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 items-end">
             <div>
-                <label for="filter-actuator" class="block text-xs font-semibold   text-muted mb-1">Perangkat</label>
+                <label for="filter-actuator" class="block text-xs font-semibold text-muted mb-1">Perangkat</label>
                 <select name="actuator_id" id="filter-actuator" class="w-full px-3 py-2 rounded-[2px] text-xs bg-canvas border border-line text-current focus:outline-none focus:border-line">
                     <option value="all">Semua Perangkat</option>
                     @foreach($actuators as $act)
@@ -50,7 +50,7 @@
             </div>
 
             <div>
-                <label for="filter-command" class="block text-xs font-semibold   text-muted mb-1">Jenis Perintah</label>
+                <label for="filter-command" class="block text-xs font-semibold text-muted mb-1">Jenis Perintah</label>
                 <select name="command" id="filter-command" class="w-full px-3 py-2 rounded-[2px] text-xs bg-canvas border border-line text-current focus:outline-none focus:border-line">
                     <option value="all">Semua Perintah</option>
                     <option value="TURN_ON" {{ ($filters['command'] ?? '') === 'TURN_ON' ? 'selected' : '' }}>TURN_ON</option>
@@ -60,7 +60,7 @@
             </div>
 
             <div>
-                <label for="filter-date-from" class="block text-xs font-semibold   text-muted mb-1">Dari Tanggal</label>
+                <label for="filter-date-from" class="block text-xs font-semibold text-muted mb-1">Dari Tanggal</label>
                 <input type="date"
                        name="date_from"
                        id="filter-date-from"
@@ -69,7 +69,7 @@
             </div>
 
             <div>
-                <label for="filter-date-to" class="block text-xs font-semibold   text-muted mb-1">Sampai Tanggal</label>
+                <label for="filter-date-to" class="block text-xs font-semibold text-muted mb-1">Sampai Tanggal</label>
                 <input type="date"
                        name="date_to"
                        id="filter-date-to"
@@ -93,11 +93,11 @@
     </div>
 
     {{-- Tabel Riwayat --}}
-    <div class="rounded-[2px] bg-canvas border border-line overflow-hidden ">
+    <div class="rounded-[2px] bg-canvas border border-line overflow-hidden">
         @if($logs->count() > 0)
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-xs">
-                    <thead class="text-xs  font-semibold text-muted bg-canvas border-b border-line">
+                    <thead class="text-xs font-semibold text-muted bg-canvas border-b border-line">
                         <tr>
                             <th class="py-3 px-4">Waktu Eksekusi</th>
                             <th class="py-3 px-4">Perangkat</th>

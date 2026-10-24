@@ -22,7 +22,7 @@
 
             <div class="flex items-center gap-2.5">
                 <h2 class="ui-page-title text-xl sm:text-2xl font-semibold text-current tracking-tight">
-                    Data Tanaman <span class="    text-ink">Melon</span>
+                    Data Tanaman <span class="text-ink">Melon</span>
                 </h2>
                 <span class="hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-[2px] text-xs font-semibold {{ auth()->user()->isAdmin() ? 'bg-accent-soft text-accent border border-line' : 'bg-accent-soft text-accent border border-line' }}">
                     {{ auth()->user()->isAdmin() ? 'Akses Admin (Full Master CRUD)' : 'Akses Pengamat (Lihat Master Data)' }}
@@ -38,7 +38,7 @@
             <div class="flex items-center gap-3">
                 <a
                     href="{{ route('plants.create') }}"
-                    class="inline-flex items-center gap-2 px-4 py-2.5 rounded-[2px] text-current text-xs font-semibold tracking-wide transition-all transform hover:-translate-y-0.5"
+                    class="inline-flex items-center gap-2 px-4 py-2.5 rounded-[2px] text-current text-xs font-semibold tracking-wide transition-all transform"
                 >
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
@@ -51,11 +51,11 @@
 
     <!-- Ringkasan Statistik Status Tanaman -->
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
-        
+
         <!-- Total Tanaman -->
-        <div class="p-4 rounded-[2px] bg-canvas border border-line  flex items-center justify-between">
+        <div class="p-4 rounded-[2px] bg-canvas border border-line flex items-center justify-between">
             <div>
-                <span class="text-xs font-semibold   text-muted">Total Tanaman</span>
+                <span class="text-xs font-semibold text-muted">Total Tanaman</span>
                 <div class="text-xl sm:text-2xl font-semibold text-current mt-1">{{ $totalPlants }}</div>
             </div>
             <div class="w-9 h-9 rounded-[2px] bg-accent-soft border border-line text-accent flex items-center justify-center">
@@ -66,9 +66,9 @@
         </div>
 
         <!-- Aktif -->
-        <div class="p-4 rounded-[2px] bg-canvas border border-line  flex items-center justify-between">
+        <div class="p-4 rounded-[2px] bg-canvas border border-line flex items-center justify-between">
             <div>
-                <span class="text-xs font-semibold   text-accent">Tanaman Aktif</span>
+                <span class="text-xs font-semibold text-accent">Tanaman Aktif</span>
                 <div class="text-xl sm:text-2xl font-semibold text-accent mt-1">{{ $activePlants }}</div>
             </div>
             <div class="w-9 h-9 rounded-[2px] bg-accent-soft border border-line text-accent flex items-center justify-center">
@@ -77,9 +77,9 @@
         </div>
 
         <!-- Sudah Dipanen -->
-        <div class="p-4 rounded-[2px] bg-canvas border border-line  flex items-center justify-between">
+        <div class="p-4 rounded-[2px] bg-canvas border border-line flex items-center justify-between">
             <div>
-                <span class="text-xs font-semibold   text-warning">Sudah Dipanen</span>
+                <span class="text-xs font-semibold text-warning">Sudah Dipanen</span>
                 <div class="text-xl sm:text-2xl font-semibold text-warning mt-1">{{ $harvestedPlants }}</div>
             </div>
             <div class="w-9 h-9 rounded-[2px] bg-warning-soft border border-warning/25 text-warning flex items-center justify-center">
@@ -88,9 +88,9 @@
         </div>
 
         <!-- Tidak Aktif -->
-        <div class="p-4 rounded-[2px] bg-canvas border border-line  flex items-center justify-between">
+        <div class="p-4 rounded-[2px] bg-canvas border border-line flex items-center justify-between">
             <div>
-                <span class="text-xs font-semibold   text-muted">Tidak Aktif</span>
+                <span class="text-xs font-semibold text-muted">Tidak Aktif</span>
                 <div class="text-xl sm:text-2xl font-semibold text-ink mt-1">{{ $inactivePlants }}</div>
             </div>
             <div class="w-9 h-9 rounded-[2px] bg-surface border border-line text-muted flex items-center justify-center">
@@ -101,14 +101,14 @@
     </div>
 
     <!-- Filter & Pencarian Card -->
-    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line space-y-4">
         <form method="GET" action="{{ route('plants.index') }}" class="space-y-4">
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
-                
+
                 <!-- 1. Pencarian Teks -->
                 <div class="md:col-span-2">
-                    <label for="search" class="block text-xs font-semibold   text-muted mb-1.5">
+                    <label for="search" class="block text-xs font-semibold text-muted mb-1.5">
                         Pencarian Tanaman / Lokasi / Deskripsi
                     </label>
                     <div class="relative">
@@ -130,7 +130,7 @@
 
                 <!-- 2. Filter Status Tanaman -->
                 <div>
-                    <label for="status" class="block text-xs font-semibold   text-muted mb-1.5">
+                    <label for="status" class="block text-xs font-semibold text-muted mb-1.5">
                         Filter Status
                     </label>
                     <select
@@ -154,7 +154,7 @@
                         {{ $filteredCount }}
                     </span>
                     <span>plot ditemukan dari total <strong class="text-current">{{ $totalPlants }}</strong> tanaman terdaftar</span>
-                    
+
                     @if(request()->anyFilled(['search', 'status']) && request('status') !== 'all')
                         <span class="hidden sm:inline-block text-warning text-xs">&bull; (Filter Aktif)</span>
                     @endif
@@ -187,11 +187,11 @@
     </div>
 
     <!-- Tabel Daftar Tanaman -->
-    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line space-y-4">
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs whitespace-nowrap">
                 <thead>
-                    <tr class="border-b border-line text-xs font-semibold   text-muted bg-canvas">
+                    <tr class="border-b border-line text-xs font-semibold text-muted bg-canvas">
                         <th class="py-3 px-4 rounded-l-xl">No / ID</th>
                         <th class="py-3 px-4">Tanaman / Plot</th>
                         <th class="py-3 px-4">Lokasi Greenhouse</th>
@@ -204,7 +204,7 @@
                 <tbody class="divide-y divide-line">
                     @forelse ($plants as $item)
                         <tr class="hover:bg-surface transition-colors">
-                            
+
                             <!-- No & ID -->
                             <td class="py-3 px-4 tabular-nums text-muted">
                                 <span class="px-2 py-0.5 rounded-[2px] bg-surface text-xs font-semibold text-ink">
@@ -261,7 +261,7 @@
                             <!-- Tombol Aksi Sesuai Role Matrix -->
                             <td class="py-3 px-4 text-center">
                                 <div class="inline-flex items-center gap-1.5">
-                                    
+
                                     <!-- 1. Lihat Detail Tanaman (Admin: ✅ | Pengamat: ✅) -->
                                     <a
                                         href="{{ route('plants.show', $item) }}"
@@ -278,7 +278,7 @@
                                     @if (auth()->user()->isAdmin())
                                         <a
                                             href="{{ route('plants.edit', $item) }}"
-                                            class="p-1.5 rounded-[2px] bg-warning-soft hover:bg-warning-soft text-warning hover:text-warning transition-colors border border-warning/25"
+                                            class="p-1.5 rounded-[2px] bg-surface hover:bg-surface text-muted hover:text-muted transition-colors border border-line"
                                             title="Edit Data Tanaman (Admin)"
                                         >
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

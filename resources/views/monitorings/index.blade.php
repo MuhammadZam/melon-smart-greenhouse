@@ -22,7 +22,7 @@
 
             <div class="flex items-center gap-2.5">
                 <h2 class="ui-page-title text-xl sm:text-2xl font-semibold text-current tracking-tight">
-                    Data Monitoring <span class="    text-ink">Tanaman Melon</span>
+                    Data Monitoring <span class="text-ink">Tanaman Melon</span>
                 </h2>
                 <span class="hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-[2px] text-xs font-semibold {{ auth()->user()->isAdmin() ? 'bg-accent-soft text-accent border border-line' : 'bg-accent-soft text-accent border border-line' }}">
                     {{ auth()->user()->isAdmin() ? 'Akses Admin (Full CRUD)' : 'Akses Pengamat (Catat & Lihat)' }}
@@ -47,7 +47,7 @@
             </a>
             <a
                 href="{{ route('monitorings.create') }}"
-                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-[2px] text-current text-xs font-semibold tracking-wide transition-all transform hover:-translate-y-0.5"
+                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-[2px] text-current text-xs font-semibold tracking-wide transition-all transform"
             >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
@@ -58,14 +58,14 @@
     </div>
 
     <!-- Filter, Search, & Kategori Card -->
-    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line space-y-4">
         <form method="GET" action="{{ route('monitorings.index') }}" class="space-y-4">
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3.5">
-                
+
                 <!-- 1. Pencarian Teks -->
                 <div class="lg:col-span-2">
-                    <label for="search" class="block text-xs font-semibold   text-muted mb-1.5">
+                    <label for="search" class="block text-xs font-semibold text-muted mb-1.5">
                         Pencarian
                     </label>
                     <div class="relative">
@@ -87,7 +87,7 @@
 
                 <!-- 2. Filter Tanaman -->
                 <div>
-                    <label for="plant_id" class="block text-xs font-semibold   text-muted mb-1.5">
+                    <label for="plant_id" class="block text-xs font-semibold text-muted mb-1.5">
                         Tanaman Melon
                     </label>
                     <select
@@ -106,7 +106,7 @@
 
                 <!-- 3. Filter Kondisi -->
                 <div>
-                    <label for="condition" class="block text-xs font-semibold   text-muted mb-1.5">
+                    <label for="condition" class="block text-xs font-semibold text-muted mb-1.5">
                         Kondisi Fisik
                     </label>
                     <select
@@ -125,7 +125,7 @@
 
                 <!-- 4. Rentang Tanggal Dari -->
                 <div>
-                    <label for="date_from" class="block text-xs font-semibold   text-muted mb-1.5">
+                    <label for="date_from" class="block text-xs font-semibold text-muted mb-1.5">
                         Tanggal Mulai
                     </label>
                     <input
@@ -146,7 +146,7 @@
                         {{ $filteredCount }}
                     </span>
                     <span>data ditemukan dari total <strong class="text-current">{{ $totalRecords }}</strong> riwayat</span>
-                    
+
                     @if(request()->anyFilled(['search', 'plant_id', 'condition', 'date_from', 'date_to']) && (request('plant_id') !== 'all' || request('condition') !== 'all'))
                         <span class="hidden sm:inline-block text-warning text-xs">&bull; (Filter Aktif)</span>
                     @endif
@@ -179,11 +179,11 @@
     </div>
 
     <!-- Tabel Daftar Monitoring -->
-    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line space-y-4">
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs whitespace-nowrap">
                 <thead>
-                    <tr class="border-b border-line text-xs font-semibold   text-muted bg-canvas">
+                    <tr class="border-b border-line text-xs font-semibold text-muted bg-canvas">
                         <th class="py-3 px-4 rounded-l-xl">No / ID</th>
                         <th class="py-3 px-4">Tanaman &amp; Lokasi</th>
                         <th class="py-3 px-4">Waktu Pengamatan</th>
@@ -199,7 +199,7 @@
                 <tbody class="divide-y divide-line">
                     @forelse ($monitorings as $index => $item)
                         <tr class="hover:bg-surface transition-colors">
-                            
+
                             <!-- No & ID -->
                             <td class="py-3 px-4 tabular-nums text-muted">
                                 <span class="px-2 py-0.5 rounded-[2px] bg-surface text-xs font-semibold text-ink">
@@ -279,7 +279,7 @@
                             <!-- Tombol Aksi Sesuai Role Matrix -->
                             <td class="py-3 px-4 text-center">
                                 <div class="inline-flex items-center gap-1.5">
-                                    
+
                                     <!-- 1. Lihat Detail (Admin: ✅ | Pengamat: ✅) -->
                                     <a
                                         href="{{ route('monitorings.show', $item) }}"
@@ -296,7 +296,7 @@
                                     @if (auth()->user()->isAdmin())
                                         <a
                                             href="{{ route('monitorings.edit', $item) }}"
-                                            class="p-1.5 rounded-[2px] bg-warning-soft hover:bg-warning-soft text-warning hover:text-warning transition-colors border border-warning/25"
+                                            class="p-1.5 rounded-[2px] bg-surface hover:bg-surface text-muted hover:text-muted transition-colors border border-line"
                                             title="Edit Data Monitoring (Admin)"
                                         >
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -9,7 +9,7 @@
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
             <h2 class="ui-page-title text-xl font-semibold text-current flex items-center gap-3">
-                <div class="w-9 h-9 rounded-[2px]    flex items-center justify-center  ">
+                <div class="w-9 h-9 rounded-[2px] flex items-center justify-center">
                     <svg class="w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
                     </svg>
@@ -33,11 +33,11 @@
     {{-- Summary Cards --}}
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {{-- Active Alarms --}}
-        <div class="relative overflow-hidden rounded-[2px] bg-canvas border border-danger/25 p-5 ">
-            <div class="absolute inset-0    pointer-events-none"></div>
+        <div class="relative overflow-hidden rounded-[2px] bg-canvas border border-danger/25 p-5">
+            <div class="absolute inset-0 pointer-events-none"></div>
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-xs font-semibold   text-danger">Alarm Aktif</p>
+                    <p class="text-xs font-semibold text-danger">Alarm Aktif</p>
                     <p class="text-3xl font-semibold text-danger mt-1">{{ $totalActive }}</p>
                     <p class="text-xs text-muted mt-1">Butuh perhatian segera</p>
                 </div>
@@ -50,11 +50,11 @@
         </div>
 
         {{-- Critical Alarms --}}
-        <div class="relative overflow-hidden rounded-[2px] bg-canvas border border-danger/25 p-5 ">
-            <div class="absolute inset-0    pointer-events-none"></div>
+        <div class="relative overflow-hidden rounded-[2px] bg-canvas border border-danger/25 p-5">
+            <div class="absolute inset-0 pointer-events-none"></div>
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-xs font-semibold   text-danger">Alarm Kritis</p>
+                    <p class="text-xs font-semibold text-danger">Alarm Kritis</p>
                     <p class="text-3xl font-semibold text-danger mt-1">{{ $totalCritical }}</p>
                     <p class="text-xs text-muted mt-1">Severity critical aktif</p>
                 </div>
@@ -67,11 +67,11 @@
         </div>
 
         {{-- Resolved --}}
-        <div class="relative overflow-hidden rounded-[2px] bg-canvas border border-line p-5 ">
-            <div class="absolute inset-0    pointer-events-none"></div>
+        <div class="relative overflow-hidden rounded-[2px] bg-canvas border border-line p-5">
+            <div class="absolute inset-0 pointer-events-none"></div>
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-xs font-semibold   text-accent">Total Diselesaikan</p>
+                    <p class="text-xs font-semibold text-accent">Total Diselesaikan</p>
                     <p class="text-3xl font-semibold text-accent mt-1">{{ $totalResolved }}</p>
                     <p class="text-xs text-muted mt-1">Semua waktu</p>
                 </div>
@@ -85,7 +85,7 @@
     </div>
 
     {{-- Filter Panel --}}
-    <div class="rounded-[2px] bg-canvas border border-line p-5 ">
+    <div class="rounded-[2px] bg-canvas border border-line p-5">
         <form method="GET" action="{{ route('alarms.index') }}" class="space-y-4" id="alarm-filter-form">
             <div class="flex items-center gap-2 mb-3">
                 <svg class="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -157,7 +157,7 @@
     </div>
 
     {{-- Alarm Table --}}
-    <div class="rounded-[2px] bg-canvas border border-line  overflow-hidden">
+    <div class="rounded-[2px] bg-canvas border border-line overflow-hidden">
         <div class="px-5 py-4 border-b border-line flex items-center justify-between">
             <div>
                 <h3 class="text-sm font-semibold text-current">Daftar Alarm</h3>
@@ -178,14 +178,14 @@
             <table class="w-full text-xs">
                 <thead>
                     <tr class="border-b border-line bg-canvas">
-                        <th class="text-left px-4 py-3 text-muted font-semibold  ">Status</th>
-                        <th class="text-left px-4 py-3 text-muted font-semibold  ">Tanaman</th>
-                        <th class="text-left px-4 py-3 text-muted font-semibold  ">Parameter</th>
-                        <th class="text-left px-4 py-3 text-muted font-semibold  ">Nilai Sensor</th>
-                        <th class="text-left px-4 py-3 text-muted font-semibold  ">Threshold</th>
-                        <th class="text-left px-4 py-3 text-muted font-semibold  ">Pelanggaran</th>
-                        <th class="text-left px-4 py-3 text-muted font-semibold  ">Pertama Terdeteksi</th>
-                        <th class="text-left px-4 py-3 text-muted font-semibold  ">Aksi</th>
+                        <th class="text-left px-4 py-3 text-muted font-semibold">Status</th>
+                        <th class="text-left px-4 py-3 text-muted font-semibold">Tanaman</th>
+                        <th class="text-left px-4 py-3 text-muted font-semibold">Parameter</th>
+                        <th class="text-left px-4 py-3 text-muted font-semibold">Nilai Sensor</th>
+                        <th class="text-left px-4 py-3 text-muted font-semibold">Threshold</th>
+                        <th class="text-left px-4 py-3 text-muted font-semibold">Pelanggaran</th>
+                        <th class="text-left px-4 py-3 text-muted font-semibold">Pertama Terdeteksi</th>
+                        <th class="text-left px-4 py-3 text-muted font-semibold">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-line">
@@ -196,7 +196,7 @@
                             <div class="flex flex-col gap-1">
                                 @if($alarm->status === 'active')
                                     <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-[2px] text-xs font-semibold
-                                        {{ $alarm->severity === 'critical' ? 'bg-danger-soft text-danger border border-danger/25' : 'bg-danger-soft text-danger border border-danger/25' }}">
+ {{ $alarm->severity === 'critical' ? 'bg-danger-soft text-danger border border-danger/25' : 'bg-danger-soft text-danger border border-danger/25' }}">
                                         <span class="w-1.5 h-1.5 rounded-[2px] {{ $alarm->severity === 'critical' ? 'bg-surface ' : 'bg-surface' }}"></span>
                                         Aktif
                                     </span>
@@ -208,8 +208,8 @@
                                         Selesai
                                     </span>
                                 @endif
-                                <span class="text-xs tabular-nums 
-                                    {{ $alarm->severity === 'critical' ? 'text-danger' : 'text-warning' }}">
+                                <span class="text-xs tabular-nums
+ {{ $alarm->severity === 'critical' ? 'text-danger' : 'text-warning' }}">
                                     {{ $alarm->severity }}
                                 </span>
                             </div>
@@ -233,7 +233,7 @@
                         {{-- Sensor Value --}}
                         <td class="px-4 py-3">
                             <span class="tabular-nums font-semibold
-                                {{ $alarm->severity === 'critical' ? 'text-danger' : 'text-danger' }}">
+ {{ $alarm->severity === 'critical' ? 'text-danger' : 'text-danger' }}">
                                 {{ number_format($alarm->sensor_value, 2) }}
                                 @if($alarm->unit) <span class="font-normal text-muted">{{ $alarm->unit }}</span> @endif
                             </span>
@@ -249,7 +249,7 @@
                         {{-- Violation Direction --}}
                         <td class="px-4 py-3">
                             <span class="inline-flex items-center gap-1 text-xs
-                                {{ $alarm->violation_direction === 'below_minimum' ? 'text-muted' : 'text-warning' }}">
+ {{ $alarm->violation_direction === 'below_minimum' ? 'text-muted' : 'text-warning' }}">
                                 @if($alarm->violation_direction === 'below_minimum')
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>

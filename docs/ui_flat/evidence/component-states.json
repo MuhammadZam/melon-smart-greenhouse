@@ -1,0 +1,107 @@
+{
+  "checks": [
+    {
+      "name": "primary default palette and radius",
+      "pass": true,
+      "detail": {
+        "background": "rgb(23, 107, 80)",
+        "radius": "4px",
+        "outline": "none",
+        "opacity": "1",
+        "cursor": "pointer",
+        "transform": "none"
+      }
+    },
+    {
+      "name": "primary hover feedback",
+      "pass": true,
+      "detail": {
+        "background": "rgb(18, 84, 63)",
+        "radius": "4px",
+        "outline": "none",
+        "opacity": "1",
+        "cursor": "pointer",
+        "transform": "none"
+      }
+    },
+    {
+      "name": "primary pressed feedback",
+      "pass": true,
+      "detail": {
+        "background": "rgb(18, 84, 63)",
+        "radius": "4px",
+        "outline": "none",
+        "opacity": "1",
+        "cursor": "pointer",
+        "transform": "matrix(0.98, 0, 0, 0.98, 0, 0)"
+      }
+    },
+    {
+      "name": "keyboard focus visible",
+      "pass": true
+    },
+    {
+      "name": "disabled feedback",
+      "pass": true,
+      "detail": {
+        "background": "rgb(18, 84, 63)",
+        "radius": "4px",
+        "outline": "none",
+        "opacity": "0.5",
+        "cursor": "not-allowed",
+        "transform": "none"
+      }
+    },
+    {
+      "name": "login loading feedback",
+      "pass": true,
+      "detail": {
+        "disabled": true,
+        "busy": "true",
+        "text": "Memproses..."
+      }
+    },
+    {
+      "name": "plant create feedback",
+      "pass": true
+    },
+    {
+      "name": "plant edit feedback",
+      "pass": true
+    },
+    {
+      "name": "delete cancellation asks confirmation",
+      "pass": true
+    },
+    {
+      "name": "confirmed fixture delete feedback",
+      "pass": true
+    },
+    {
+      "name": "reduced motion respected",
+      "pass": true
+    },
+    {
+      "name": "sensor cards share neutral presentation",
+      "pass": true
+    },
+    {
+      "name": "eight sensor timestamps retained",
+      "pass": true
+    },
+    {
+      "name": "null sensor values remain unavailable",
+      "pass": true
+    },
+    {
+      "name": "charts use consistent flat palette",
+      "pass": true
+    },
+    {
+      "name": "public home primary navigation",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "pass": true
+}

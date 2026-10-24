@@ -25,7 +25,7 @@
             </div>
 
             <h2 class="ui-page-title text-xl sm:text-2xl font-semibold text-current tracking-tight">
-                Tambah Data <span class="    text-ink">Monitoring Melon</span>
+                Tambah Data <span class="text-ink">Monitoring Melon</span>
             </h2>
             <p class="text-xs sm:text-sm text-muted mt-1">
                 Catat hasil pengamatan sensor mikroklimat greenhouse dan evaluasi visual pertumbuhan tanaman melon.
@@ -45,7 +45,7 @@
 
     <!-- Alert Ringkasan Error jika Validasi Gagal -->
     @if ($errors->any())
-        <div role="alert" class="p-4 rounded-[2px] bg-danger-soft border border-danger/25 text-danger text-xs  space-y-1">
+        <div role="alert" class="p-4 rounded-[2px] bg-danger-soft border border-danger/25 text-danger text-xs space-y-1">
             <div class="font-semibold flex items-center gap-2 text-danger">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -61,13 +61,13 @@
     @endif
 
     <!-- Form Tambah Monitoring -->
-    <form method="POST" action="{{ route('monitorings.store') }}" class="p-5 sm:p-7 rounded-[2px] bg-canvas border border-line  space-y-6">
+    <form method="POST" action="{{ route('monitorings.store') }}" class="p-5 sm:p-7 rounded-[2px] bg-canvas border border-line space-y-6">
         @csrf
 
         <!-- SECTION 1: Tanaman & Waktu Pengamatan -->
         <div class="space-y-4">
             <div class="border-b border-line pb-2">
-                <h3 class="text-sm font-semibold text-accent   flex items-center gap-2">
+                <h3 class="text-sm font-semibold text-accent flex items-center gap-2">
                     <span class="w-2 h-2 rounded-[2px] bg-accent-soft"></span>
                     1. Identitas Tanaman &amp; Waktu Pengamatan
                 </h3>
@@ -121,7 +121,7 @@
         <!-- SECTION 2: Parameter Mikroklimat & Sensor -->
         <div class="space-y-4 pt-2">
             <div class="border-b border-line pb-2">
-                <h3 class="text-sm font-semibold text-accent   flex items-center gap-2">
+                <h3 class="text-sm font-semibold text-accent flex items-center gap-2">
                     <span class="w-2 h-2 rounded-[2px] bg-accent-soft"></span>
                     2. Parameter Mikroklimat Greenhouse
                 </h3>
@@ -129,7 +129,7 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                
+
                 <!-- Suhu (°C) -->
                 <div>
                     <label for="temperature" class="block text-xs font-semibold text-ink mb-1.5">
@@ -214,7 +214,7 @@
         <!-- SECTION 3: Parameter Sensor IoT & Fertigasi (Opsional) -->
         <div class="space-y-4 pt-2">
             <div class="border-b border-line pb-2">
-                <h3 class="text-sm font-semibold text-muted   flex items-center gap-2">
+                <h3 class="text-sm font-semibold text-muted flex items-center gap-2">
                     <span class="w-2 h-2 rounded-[2px] bg-surface"></span>
                     3. Parameter Sensor IoT &amp; Fertigasi (Opsional)
                 </h3>
@@ -222,7 +222,7 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-                
+
                 <!-- Suhu Nutrisi (°C) -->
                 <div>
                     <label for="nutrient_temperature" class="block text-xs font-semibold text-ink mb-1.5">
@@ -354,7 +354,7 @@
         <!-- SECTION 4: Parameter Morfologi & Pertumbuhan -->
         <div class="space-y-4 pt-2">
             <div class="border-b border-line pb-2">
-                <h3 class="text-sm font-semibold text-muted   flex items-center gap-2">
+                <h3 class="text-sm font-semibold text-muted flex items-center gap-2">
                     <span class="w-2 h-2 rounded-[2px] bg-surface"></span>
                     4. Pertumbuhan Morfologi Tanaman (Opsional)
                 </h3>
@@ -362,7 +362,7 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                
+
                 <!-- Tinggi Tanaman -->
                 <div>
                     <label for="plant_height" class="block text-xs font-semibold text-ink mb-1.5">
@@ -417,7 +417,7 @@
         <!-- SECTION 4: Kondisi Visual & Warna -->
         <div class="space-y-4 pt-2">
             <div class="border-b border-line pb-2">
-                <h3 class="text-sm font-semibold text-warning   flex items-center gap-2">
+                <h3 class="text-sm font-semibold text-warning flex items-center gap-2">
                     <span class="w-2 h-2 rounded-[2px] bg-surface"></span>
                     4. Evaluasi Visual Lapangan
                 </h3>
@@ -425,7 +425,7 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                
+
                 <!-- Kondisi Tanaman -->
                 <div>
                     <label for="plant_condition" class="block text-xs font-semibold text-ink mb-1.5">
@@ -503,7 +503,7 @@
 
             <button
                 type="submit"
-                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-[2px] text-current text-xs font-semibold transition-all transform hover:-translate-y-0.5"
+                class="ui-button-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-[2px] text-current text-xs font-semibold transition-all transform"
             >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>

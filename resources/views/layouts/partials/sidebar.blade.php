@@ -12,14 +12,14 @@
         <!-- Brand Header -->
         <div class="h-16 flex items-center justify-between px-6 border-b border-line bg-canvas">
             <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-[2px]    flex items-center justify-center  ">
+                <div class="w-9 h-9 rounded-[2px] flex items-center justify-center">
                     <svg class="w-5 h-5 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                     </svg>
                 </div>
                 <div>
-                    <span class="text-sm font-semibold     text-ink">Melon Monitor</span>
-                    <span class="block text-xs text-muted   tabular-nums">Smart Agri</span>
+                    <span class="text-sm font-semibold text-ink">Melon Monitor</span>
+                    <span class="block text-xs text-muted tabular-nums">Smart Agri</span>
                 </div>
             </a>
 
@@ -39,7 +39,7 @@
         <!-- Navigation Menus -->
         <nav aria-label="Menu aplikasi" class="p-4 space-y-1 overflow-y-auto max-h-[calc(100dvh-10rem)]">
             <!-- Section: Menu Utama -->
-            <div class="px-3 py-2 text-xs font-semibold   text-muted">
+            <div class="px-3 py-2 text-xs font-semibold text-muted">
                 Menu Utama
             </div>
 
@@ -56,7 +56,7 @@
 
             <!-- Monitoring -->
             <div class="pt-2">
-                <div class="px-3 py-1.5 text-xs font-semibold   text-muted">
+                <div class="px-3 py-1.5 text-xs font-semibold text-muted">
                     Monitoring
                 </div>
                 <a
@@ -102,7 +102,7 @@
 
             <!-- Tanaman -->
             <div class="pt-2">
-                <div class="px-3 py-1.5 text-xs font-semibold   text-muted">
+                <div class="px-3 py-1.5 text-xs font-semibold text-muted">
                     Tanaman
                 </div>
                 <a
@@ -118,7 +118,7 @@
 
             <!-- Perangkat (Simulasi Phase 13) -->
             <div class="pt-2">
-                <div class="px-3 py-1.5 text-xs font-semibold   text-muted">
+                <div class="px-3 py-1.5 text-xs font-semibold text-muted">
                     Perangkat (Simulasi)
                 </div>
                 <a
@@ -170,7 +170,7 @@
             @if (auth()->check() && auth()->user()->isAdmin())
                 <div class="pt-4 border-t border-line mt-3">
                     <div class="flex items-center justify-between px-3 py-1.5">
-                        <span class="text-xs font-semibold   text-accent flex items-center gap-1.5">
+                        <span class="text-xs font-semibold text-accent flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-[2px] bg-accent-soft"></span>
                             Administrasi
                         </span>
@@ -236,7 +236,7 @@
     <!-- Sidebar Bottom / User Status Widget -->
     <div class="p-4 border-t border-line bg-canvas">
         <div class="flex items-center gap-3 p-2.5 rounded-[2px] bg-canvas border border-line">
-            <div class="w-8 h-8 rounded-[2px] {{ auth()->user()->isAdmin() ? 'bg-accent-soft text-accent border border-line' : 'bg-accent-soft text-accent border border-line' }} flex items-center justify-center font-semibold text-xs ">
+            <div class="w-8 h-8 rounded-[2px] {{ auth()->user()->isAdmin() ? 'bg-accent-soft text-accent border border-line' : 'bg-accent-soft text-accent border border-line' }} flex items-center justify-center font-semibold text-xs">
                 {{ substr(auth()->user()->name, 0, 2) }}
             </div>
             <div class="min-w-0 flex-1">
@@ -259,6 +259,6 @@
     @click="sidebarOpen = false"
     aria-hidden="true"
     data-sidebar-backdrop
-    class="fixed inset-0 z-40 bg-black/60  lg:hidden"
+    class="fixed inset-0 z-40 bg-black/60 lg:hidden"
     style="display: none;"
 ></div>

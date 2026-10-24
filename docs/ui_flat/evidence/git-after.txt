@@ -1,0 +1,68 @@
+ M docs/UI_COMPONENT_INVENTORY.md
+ M docs/phase16_2/evidence/concurrent.json
+ M resources/css/flat.css
+ M resources/js/app.js
+ M resources/views/actuators/history.blade.php
+ M resources/views/actuators/index.blade.php
+ M resources/views/admin/fuzzy/config.blade.php
+ M resources/views/admin/integrations/google_sheets.blade.php
+ M resources/views/alarms/index.blade.php
+ M resources/views/alarms/show.blade.php
+ M resources/views/alarms/thresholds.blade.php
+ M resources/views/auth/login.blade.php
+ M resources/views/components/status-badge.blade.php
+ M resources/views/dashboard/index.blade.php
+ M resources/views/fuzzy/history.blade.php
+ M resources/views/fuzzy/show.blade.php
+ M resources/views/layouts/app.blade.php
+ M resources/views/layouts/auth.blade.php
+ M resources/views/layouts/partials/navbar.blade.php
+ M resources/views/layouts/partials/sidebar.blade.php
+ M resources/views/monitorings/create.blade.php
+ M resources/views/monitorings/edit.blade.php
+ M resources/views/monitorings/index.blade.php
+ M resources/views/monitorings/show.blade.php
+ M resources/views/plants/create.blade.php
+ M resources/views/plants/edit.blade.php
+ M resources/views/plants/index.blade.php
+ M resources/views/plants/show.blade.php
+ M resources/views/reports/monitoring.blade.php
+ M resources/views/welcome.blade.php
+?? docs/UI_FLAT_DESIGN_REFINEMENT_REPORT.md
+?? docs/UI_INTERACTION_TEST_RESULTS.md
+?? docs/UI_RESPONSIVE_VERIFICATION.md
+?? docs/ui_flat/evidence/a11y.mjs
+?? docs/ui_flat/evidence/accessibility.json
+?? docs/ui_flat/evidence/blade-syntax.txt
+?? docs/ui_flat/evidence/browser-after.json
+?? docs/ui_flat/evidence/build.txt
+?? docs/ui_flat/evidence/component-states.json
+?? docs/ui_flat/evidence/final-verification.txt
+?? docs/ui_flat/evidence/finish-controls.mjs
+?? docs/ui_flat/evidence/history-after.json
+?? docs/ui_flat/evidence/interactions.json
+?? docs/ui_flat/evidence/interactions.mjs
+?? docs/ui_flat/evidence/neutral-edit-actions.mjs
+?? docs/ui_flat/evidence/refine-sensor-units.mjs
+?? docs/ui_flat/evidence/regression.txt
+?? docs/ui_flat/evidence/regression.xml
+?? docs/ui_flat/evidence/report.csv
+?? docs/ui_flat/evidence/report.pdf
+?? docs/ui_flat/evidence/reset-visual-copy.php
+?? docs/ui_flat/evidence/section-regression.txt
+?? docs/ui_flat/evidence/source-after.json
+?? docs/ui_flat/evidence/states.mjs
+?? docs/ui_flat/evidence/verification.json
+?? docs/ui_flat/evidence/verify.mjs
+?? docs/ui_flat/evidence/visual-comparisons.json
+?? docs/ui_flat/evidence/visuals.mjs
+?? docs/ui_flat/evidence/write-reports.mjs
+?? docs/ui_flat/screenshots/after/
+?? docs/ui_flat/screenshots/comparison_1366_dashboard.png
+?? docs/ui_flat/screenshots/comparison_375_dashboard.png
+?? docs/ui_flat/screenshots/overview_1366.png
+?? docs/ui_flat/screenshots/overview_1920.png
+?? docs/ui_flat/screenshots/overview_375.png
+?? docs/ui_flat/screenshots/overview_768.png
+?? docs/ui_flat/visual-comparison.html
+?? resources/views/components/sensor-reading.blade.php

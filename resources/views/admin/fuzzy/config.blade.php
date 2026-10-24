@@ -9,14 +9,14 @@
     <div class="ui-page-header flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
             <div class="flex items-center gap-2 mb-1">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-[2px] text-xs font-semibold   bg-surface text-muted border border-line">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-[2px] text-xs font-semibold bg-surface text-muted border border-line">
                     <span class="w-1.5 h-1.5 rounded-[2px] bg-surface mr-1.5"></span>
                     Administrasi Mesin Inferensi
                 </span>
                 <span class="text-xs text-muted">Rule Base: {{ $ruleVersion }}</span>
             </div>
             <h2 class="ui-page-title text-xl sm:text-2xl font-semibold text-current tracking-tight flex items-center gap-2">
-                Konfigurasi &amp; Audit <span class="    text-ink">Fuzzy Mamdani</span>
+                Konfigurasi &amp; Audit <span class="text-ink">Fuzzy Mamdani</span>
             </h2>
             <p class="text-xs sm:text-sm text-muted mt-0.5">
                 Spesifikasi matematis fungsi keanggotaan dan matriks aturan pendukung keputusan iklim mikro greenhouse.
@@ -28,7 +28,7 @@
             <form method="POST" action="{{ route('admin.fuzzy.toggle') }}">
                 @csrf
                 <button type="submit"
-                        class="px-4 py-2 rounded-[2px] text-xs font-semibold flex items-center gap-2 transition-all 
+                        class="px-4 py-2 rounded-[2px] text-xs font-semibold flex items-center gap-2 transition-all
  {{ $isEnabled ? 'bg-accent hover:bg-accent text-current ' : 'bg-danger hover:bg-danger text-current ' }}">
                     <span class="w-2 h-2 rounded-[2px] bg-white {{ $isEnabled ? '' : '' }}"></span>
                     <span>Status Engine: {{ $isEnabled ? 'AKTIF' : 'NON-AKTIF' }}</span>
@@ -38,12 +38,12 @@
     </div>
 
     {{-- Status Banner --}}
-    <div class="p-4 rounded-[2px] bg-warning-soft border border-warning/25 flex items-start gap-3 text-warning text-xs ">
+    <div class="p-4 rounded-[2px] bg-warning-soft border border-warning/25 flex items-start gap-3 text-warning text-xs">
         <svg class="w-5 h-5 text-warning shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
         </svg>
         <div>
-            <div class="font-semibold tracking-wide ">Label Validasi: {{ $validationStatus }}</div>
+            <div class="font-semibold tracking-wide">Label Validasi: {{ $validationStatus }}</div>
             <p class="mt-0.5 text-warning leading-relaxed">
                 Aturan Fuzzy Simulasi — Belum Divalidasi Tim Elektro. Konfigurasi ini adalah implementasi provisional perangkat lunak.
                 Perubahan pada fungsi keanggotaan dan matriks inferensi harus melalui koordinasi akademis dengan pakar elektro dan agronomi melon.
@@ -65,7 +65,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             @foreach($inputs as $key => $var)
-            <div class="rounded-[2px] bg-canvas border border-line p-5  ">
+            <div class="rounded-[2px] bg-canvas border border-line p-5">
                 <div class="flex items-center justify-between border-b border-line pb-3">
                     <div>
                         <h4 class="text-sm font-semibold text-current">{{ $var['name'] }}</h4>
@@ -97,7 +97,7 @@
     </div>
 
     {{-- Section 2: Fungsi Keanggotaan Output --}}
-    <div class="rounded-[2px] bg-canvas border border-line p-5 sm:p-6  ">
+    <div class="rounded-[2px] bg-canvas border border-line p-5 sm:p-6">
         <div class="flex items-center justify-between border-b border-line pb-4 mb-4">
             <div>
                 <h3 class="text-sm sm:text-base font-semibold text-current flex items-center gap-2">
@@ -131,7 +131,7 @@
     </div>
 
     {{-- Section 3: Matriks Aturan (Rule Base) --}}
-    <div class="rounded-[2px] bg-canvas border border-line p-5 sm:p-6  ">
+    <div class="rounded-[2px] bg-canvas border border-line p-5 sm:p-6">
         <div class="flex items-center justify-between border-b border-line pb-4 mb-4">
             <div>
                 <h3 class="text-sm sm:text-base font-semibold text-current flex items-center gap-2">
@@ -150,7 +150,7 @@
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse text-xs">
                 <thead>
-                    <tr class="border-b border-line bg-canvas text-muted text-xs font-semibold  ">
+                    <tr class="border-b border-line bg-canvas text-muted text-xs font-semibold">
                         <th class="py-3 px-3">ID &amp; Nama Aturan</th>
                         <th class="py-3 px-3">Anteseden (IF)</th>
                         <th class="py-3 px-3">Konsekuen (THEN)</th>
@@ -186,7 +186,7 @@
                                     default => 'bg-surface text-ink border-line',
                                 };
                             @endphp
-                            <span class="px-2 py-0.5 rounded-[2px] text-xs font-semibold  border {{ $badge }}">
+                            <span class="px-2 py-0.5 rounded-[2px] text-xs font-semibold border {{ $badge }}">
                                 {{ $rule['consequent'] }}
                             </span>
                         </td>

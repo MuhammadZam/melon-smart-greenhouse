@@ -10,11 +10,11 @@
     }
 }">
     <!-- Card Container -->
-    <div class="bg-canvas  border border-line rounded-[2px] p-7 sm:p-9  ">
-        
+    <div class="bg-canvas border border-line rounded-[2px] p-7 sm:p-9">
+
         <!-- Header Card -->
         <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-14 h-14 rounded-[2px]    border border-line text-accent mb-4 ">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-[2px] border border-line text-accent mb-4">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                 </svg>
@@ -49,7 +49,7 @@
 
             <!-- Field: Email -->
             <div>
-                <label for="email" class="block text-xs font-semibold   text-ink mb-2">
+                <label for="email" class="block text-xs font-semibold text-ink mb-2">
                     Alamat Email
                 </label>
                 <div class="relative">
@@ -82,7 +82,7 @@
 
             <!-- Field: Password -->
             <div>
-                <label for="password" class="block text-xs font-semibold   text-ink mb-2">
+                <label for="password" class="block text-xs font-semibold text-ink mb-2">
                     Kata Sandi (Password)
                 </label>
                 <div class="relative">
@@ -129,7 +129,7 @@
             <!-- Tombol Masuk -->
             <button
                 type="submit"
-                class="w-full py-3 px-4 rounded-[2px] font-semibold text-sm text-current focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-slate-900 active:scale-[0.99] transition-all duration-150 flex items-center justify-center gap-2"
+                class="ui-button-primary w-full py-3 px-4 rounded-[4px] font-medium text-sm focus-visible:outline transition-colors duration-150 flex items-center justify-center gap-2"
             >
                 <span>Masuk ke Dashboard</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,8 +143,8 @@
             <div class="absolute inset-0 flex items-center">
                 <div class="w-full border-t border-line"></div>
             </div>
-            <div class="relative flex justify-center text-xs  ">
-                <span class="bg-canvas px-3 text-muted font-medium">Akun Demo Pengujian (Phase 3)</span>
+            <div class="relative flex justify-center text-xs">
+                <span class="bg-canvas px-3 text-muted font-medium">Akun demo lokal</span>
             </div>
         </div>
 

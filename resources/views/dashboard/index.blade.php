@@ -9,14 +9,14 @@
     <div class="ui-page-header flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
             <div class="flex items-center gap-2 mb-1">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-[2px] text-xs font-semibold   {{ $user->isAdmin() ? 'bg-accent-soft text-accent border border-line' : 'bg-accent-soft text-accent border border-line' }}">
-                    <span class="w-1.5 h-1.5 rounded-[2px] {{ $user->isAdmin() ? 'bg-accent-soft' : 'bg-accent-soft' }} mr-1.5 "></span>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-[2px] text-xs font-semibold {{ $user->isAdmin() ? 'bg-accent-soft text-accent border border-line' : 'bg-accent-soft text-accent border border-line' }}">
+                    <span class="w-1.5 h-1.5 rounded-[2px] {{ $user->isAdmin() ? 'bg-accent-soft' : 'bg-accent-soft' }} mr-1.5"></span>
                     {{ $user->isAdmin() ? 'Mode Administrator' : 'Mode Pengamat (User)' }}
                 </span>
                 <span class="text-xs text-muted">Berdasarkan rekaman tersimpan</span>
             </div>
             <h2 class="ui-page-title text-xl sm:text-2xl font-semibold text-current tracking-tight">
-                Ringkasan Pemantauan <span class="    text-ink">Tanaman Melon</span>
+                Ringkasan Pemantauan
             </h2>
             <p class="text-xs sm:text-sm text-muted mt-0.5">
                 Visualisasi komprehensif mikroklimat greenhouse, dinamika nutrisi, dan perkembangan vegetatif melon.
@@ -46,9 +46,9 @@
     </div>
 
     <!-- SECTION A — GREENHOUSE OVERVIEW -->
-    <div class="space-y-2" id="greenhouse-overview-section">
+    <div class="space-y-2" id="greenhouse-overview-section" role="region" aria-label="Section A — Greenhouse Overview">
         <div class="flex items-center justify-between px-1">
-            <span class="text-xs font-semibold   text-muted flex items-center gap-1.5">
+            <span class="text-xs font-semibold text-muted flex items-center gap-1.5">
                 <span class="w-1.5 h-1.5 rounded-[2px] bg-accent-soft"></span>
                 Ringkasan greenhouse
             </span>
@@ -118,7 +118,7 @@
                 <div class="text-xs text-muted mt-2 flex items-center justify-between">
                     @if ($latestMonitoring)
                         <span class="text-ink tabular-nums">{{ $latestMonitoring->monitored_at->diffForHumans() }}</span>
-                        <span class="px-1.5 py-0.2 rounded-[2px] tabular-nums text-xs  bg-surface text-ink border border-line">
+                        <span class="px-1.5 py-0.2 rounded-[2px] tabular-nums text-xs bg-surface text-ink border border-line">
                             {{ $latestMonitoring->source ?? 'manual' }}
                         </span>
                     @else
@@ -162,12 +162,12 @@
     </div>
 
     <!-- SECTION B — SENSOR OVERVIEW (SMART GREENHOUSE) -->
-    <div class="ui-section space-y-5" id="sensor-overview-section">
+    <div class="ui-section space-y-5" id="sensor-overview-section" role="region" aria-label="Section B — Sensor Overview / Smart Greenhouse">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-line pb-4">
             <div>
                 <div class="flex items-center gap-2 mb-1">
-                    <span class="text-xs font-semibold   text-accent flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-[2px] bg-accent-soft "></span>
+                    <span class="text-xs font-semibold text-accent flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-[2px] bg-accent-soft"></span>
                         Pembacaan terbaru
                     </span>
                     <span class="px-2 py-0.5 rounded-[2px] text-xs tabular-nums font-semibold bg-surface text-ink border border-line">
@@ -181,7 +181,7 @@
                     @if($latestMonitoring)
                         Nilai telemetri aktual terakhir tercatat: <span class="text-ink tabular-nums font-semibold">{{ $latestMonitoring->monitored_at->format('d M Y, H:i:s') }} WIB</span>
                         &bull; Tanaman: <strong class="text-accent">{{ $latestMonitoring->plant?->name ?? 'Melon' }}</strong>
-                        &bull; Sumber: <span class=" text-ink tabular-nums text-xs">{{ $latestMonitoring->source ?? 'manual' }}</span>
+                        &bull; Sumber: <span class="text-ink tabular-nums text-xs">{{ $latestMonitoring->source ?? 'manual' }}</span>
                     @else
                         Belum ada data sensor tercatat di database. Silakan catat data baru atau jalankan sinkronisasi telemetri.
                     @endif
@@ -209,9 +209,7 @@
                     </svg>
                     <span class="text-xs font-semibold">Suhu Udara</span>
                 </div>
-                <div class="text-2xl font-semibold tabular-nums text-current tracking-tight">
-                    {{ $latestMonitoring && $latestMonitoring->temperature !== null ? number_format($latestMonitoring->temperature, 1, ',', '.') . '°C' : 'N/A' }}
-                </div>
+                <x-sensor-reading :value="$latestMonitoring?->temperature" :precision="1" unit="°C" />
                 <div class="text-xs text-muted tabular-nums mt-1">
                     Ambang: {{ $thresholds['temperature']['min'] }}°C - {{ $thresholds['temperature']['max'] }}°C
                 </div>
@@ -226,9 +224,7 @@
                     </svg>
                     <span class="text-xs font-semibold">Kelembapan Udara</span>
                 </div>
-                <div class="text-2xl font-semibold tabular-nums text-current tracking-tight">
-                    {{ $latestMonitoring && $latestMonitoring->humidity !== null ? number_format($latestMonitoring->humidity, 0, ',', '.') . '%' : 'N/A' }}
-                </div>
+                <x-sensor-reading :value="$latestMonitoring?->humidity" :precision="0" unit="%" />
                 <div class="text-xs text-muted tabular-nums mt-1">
                     Ambang: {{ $thresholds['humidity']['min'] }}% - {{ $thresholds['humidity']['max'] }}%
                 </div>
@@ -243,9 +239,7 @@
                     </svg>
                     <span class="text-xs font-semibold">Kelembapan Tanah</span>
                 </div>
-                <div class="text-2xl font-semibold tabular-nums text-current tracking-tight">
-                    {{ $latestMonitoring && $latestMonitoring->soil_moisture !== null ? number_format($latestMonitoring->soil_moisture, 0, ',', '.') . '%' : 'N/A' }}
-                </div>
+                <x-sensor-reading :value="$latestMonitoring?->soil_moisture" :precision="0" unit="%" />
                 <div class="text-xs text-muted tabular-nums mt-1">
                     Ambang: {{ $thresholds['soil_moisture']['min'] }}% - {{ $thresholds['soil_moisture']['max'] }}%
                 </div>
@@ -260,9 +254,7 @@
                     </svg>
                     <span class="text-xs font-semibold">pH Nutrisi/Media</span>
                 </div>
-                <div class="text-2xl font-semibold tabular-nums text-current tracking-tight">
-                    {{ $latestMonitoring && $latestMonitoring->ph !== null ? number_format($latestMonitoring->ph, 1, ',', '.') : 'N/A' }}
-                </div>
+                <x-sensor-reading :value="$latestMonitoring?->ph" :precision="1" unit="" />
                 <div class="text-xs text-muted tabular-nums mt-1">
                     Ambang: {{ $thresholds['ph']['min'] }} - {{ $thresholds['ph']['max'] }}
                 </div>
@@ -277,9 +269,7 @@
                     </svg>
                     <span class="text-xs font-semibold">Konduktivitas Listrik (EC)</span>
                 </div>
-                <div class="text-2xl font-semibold tabular-nums text-current tracking-tight">
-                    {{ $latestMonitoring && $latestMonitoring->ec !== null ? number_format($latestMonitoring->ec, 2, ',', '.') . ' mS/cm' : 'N/A' }}
-                </div>
+                <x-sensor-reading :value="$latestMonitoring?->ec" :precision="2" unit="mS/cm" />
                 <div class="text-xs text-muted tabular-nums mt-1">
                     Ambang: {{ $thresholds['ec']['min'] }} - {{ $thresholds['ec']['max'] }} mS/cm
                 </div>
@@ -294,9 +284,7 @@
                     </svg>
                     <span class="text-xs font-semibold">Intensitas Cahaya</span>
                 </div>
-                <div class="text-2xl font-semibold tabular-nums text-current tracking-tight">
-                    {{ $latestMonitoring && $latestMonitoring->light_intensity !== null ? number_format($latestMonitoring->light_intensity, 0, ',', '.') . ' lux' : 'N/A' }}
-                </div>
+                <x-sensor-reading :value="$latestMonitoring?->light_intensity" :precision="0" unit="lux" />
                 <div class="text-xs text-muted tabular-nums mt-1">
                     Ambang: {{ number_format($thresholds['light_intensity']['min'], 0, ',', '.') }} - {{ number_format($thresholds['light_intensity']['max'], 0, ',', '.') }} lux
                 </div>
@@ -311,9 +299,7 @@
                     </svg>
                     <span class="text-xs font-semibold">Suhu Nutrisi</span>
                 </div>
-                <div class="text-2xl font-semibold tabular-nums text-current tracking-tight">
-                    {{ $latestMonitoring && $latestMonitoring->nutrient_temperature !== null ? number_format($latestMonitoring->nutrient_temperature, 1, ',', '.') . '°C' : 'N/A' }}
-                </div>
+                <x-sensor-reading :value="$latestMonitoring?->nutrient_temperature" :precision="1" unit="°C" />
                 <div class="text-xs text-muted tabular-nums mt-1">
                     Ambang: {{ $thresholds['nutrient_temperature']['min'] }}°C - {{ $thresholds['nutrient_temperature']['max'] }}°C
                 </div>
@@ -328,9 +314,7 @@
                     </svg>
                     <span class="text-xs font-semibold">Level Tandon Nutrisi</span>
                 </div>
-                <div class="text-2xl font-semibold tabular-nums text-current tracking-tight">
-                    {{ $latestMonitoring && $latestMonitoring->tank_level !== null ? number_format($latestMonitoring->tank_level, 0, ',', '.') . '%' : 'N/A' }}
-                </div>
+                <x-sensor-reading :value="$latestMonitoring?->tank_level" :precision="0" unit="%" />
                 <div class="text-xs text-muted tabular-nums mt-1">
                     Ambang: {{ $thresholds['tank_level']['min'] }}% - {{ $thresholds['tank_level']['max'] }}%
                 </div>
@@ -352,7 +336,7 @@
                     <div class="flex items-center gap-2">
                         <h3 class="text-sm sm:text-base font-semibold text-current">Status Alarm &amp; Notifikasi Sensor</h3>
                         @if($criticalAlarms > 0)
-                            <span class="inline-flex items-center px-2 py-0.5 rounded-[2px] text-xs font-semibold bg-danger-soft text-danger border border-danger/25 ">
+                            <span class="inline-flex items-center px-2 py-0.5 rounded-[2px] text-xs font-semibold bg-danger-soft text-danger border border-danger/25">
                                 {{ $criticalAlarms }} Critical
                             </span>
                         @elseif($activeAlarms > 0)
@@ -394,7 +378,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div class="p-3.5 rounded-[2px] bg-canvas border border-line flex items-center justify-between">
                 <div>
-                    <span class="text-xs   font-semibold text-muted block">Alarm Aktif</span>
+                    <span class="text-xs font-semibold text-muted block">Alarm Aktif</span>
                     <span class="text-xl font-semibold tabular-nums {{ $activeAlarms > 0 ? 'text-warning' : 'text-ink' }}">{{ $activeAlarms }}</span>
                 </div>
                 <span class="w-8 h-8 rounded-[2px] bg-warning-soft text-warning flex items-center justify-center text-xs font-semibold border border-warning/25">
@@ -404,7 +388,7 @@
 
             <div class="p-3.5 rounded-[2px] bg-canvas border border-line flex items-center justify-between">
                 <div>
-                    <span class="text-xs   font-semibold text-muted block">Alarm Kritis (Critical)</span>
+                    <span class="text-xs font-semibold text-muted block">Alarm Kritis (Critical)</span>
                     <span class="text-xl font-semibold tabular-nums {{ $criticalAlarms > 0 ? 'text-danger' : 'text-ink' }}">{{ $criticalAlarms }}</span>
                 </div>
                 <span class="w-8 h-8 rounded-[2px] bg-danger-soft text-danger flex items-center justify-center text-xs font-semibold border border-danger/25">
@@ -414,7 +398,7 @@
 
             <div class="p-3.5 rounded-[2px] bg-canvas border border-line flex items-center justify-between">
                 <div>
-                    <span class="text-xs   font-semibold text-muted block">Diselesaikan Hari Ini</span>
+                    <span class="text-xs font-semibold text-muted block">Diselesaikan Hari Ini</span>
                     <span class="text-xl font-semibold tabular-nums text-accent">{{ $resolvedToday }}</span>
                 </div>
                 <span class="w-8 h-8 rounded-[2px] bg-accent-soft text-accent flex items-center justify-center text-xs font-semibold border border-line">
@@ -439,7 +423,7 @@
                 <div class="overflow-x-auto rounded-[2px] border border-line bg-canvas">
                     <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="border-b border-line text-xs   text-muted bg-canvas">
+                            <tr class="border-b border-line text-xs text-muted bg-canvas">
                                 <th class="py-2.5 px-4 font-semibold">Tanaman</th>
                                 <th class="py-2.5 px-4 font-semibold">Parameter</th>
                                 <th class="py-2.5 px-4 font-semibold">Nilai Terakhir</th>
@@ -480,7 +464,7 @@
                                     <td class="py-2.5 px-4">
                                         @if($alarm->isActive())
                                             <span class="inline-flex items-center gap-1 text-xs font-semibold text-warning">
-                                                <span class="w-1.5 h-1.5 rounded-[2px] bg-surface "></span>
+                                                <span class="w-1.5 h-1.5 rounded-[2px] bg-surface"></span>
                                                 Aktif
                                             </span>
                                         @else
@@ -560,7 +544,7 @@
                     </div>
                 </div>
                 <div class="text-right text-xs text-muted">
-                    <span class="block text-xs  font-semibold text-muted">Pembaruan</span>
+                    <span class="block text-xs font-semibold text-muted">Pembaruan</span>
                     <span class="tabular-nums text-ink">{{ $pump?->last_changed_at ? $pump->last_changed_at->diffForHumans() : '-' }}</span>
                 </div>
             </div>
@@ -585,7 +569,7 @@
                     </div>
                 </div>
                 <div class="text-right text-xs text-muted">
-                    <span class="block text-xs  font-semibold text-muted">Pembaruan</span>
+                    <span class="block text-xs font-semibold text-muted">Pembaruan</span>
                     <span class="tabular-nums text-ink">{{ $fan?->last_changed_at ? $fan->last_changed_at->diffForHumans() : '-' }}</span>
                 </div>
             </div>
@@ -656,7 +640,7 @@
                 <div class="p-4 rounded-[2px] bg-canvas border border-line flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-semibold   text-muted">Skor Kondisi</span>
+                            <span class="text-xs font-semibold text-muted">Skor Kondisi</span>
                             @php
                                 $catBadge = match($latestFuzzy->fuzzy_category) {
                                     'BAIK' => 'bg-accent-soft text-accent border-line',
@@ -685,7 +669,7 @@
                 {{-- Kesimpulan & Rekomendasi --}}
                 <div class="lg:col-span-2 p-4 rounded-[2px] bg-canvas border border-line flex flex-col justify-between">
                     <div>
-                        <div class="text-xs font-semibold   text-muted mb-1 flex items-center gap-1.5">
+                        <div class="text-xs font-semibold text-muted mb-1 flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-[2px] bg-accent-soft"></span>
                             Kesimpulan Analisis
                         </div>
@@ -693,7 +677,7 @@
                             {{ $latestFuzzy->conclusion }}
                         </p>
 
-                        <div class="text-xs font-semibold   text-muted mt-3 mb-1 flex items-center gap-1.5">
+                        <div class="text-xs font-semibold text-muted mt-3 mb-1 flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-[2px] bg-accent-soft"></span>
                             Rekomendasi Tindakan
                         </div>
@@ -768,7 +752,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
             <!-- 1. Konfigurasi Spreadsheet -->
             <div class="p-3.5 rounded-[2px] bg-canvas border border-line space-y-1">
-                <span class="text-xs   font-semibold text-muted block">Spreadsheet ID</span>
+                <span class="text-xs font-semibold text-muted block">Spreadsheet ID</span>
                 <div class="text-xs tabular-nums font-semibold text-current truncate" title="{{ $googleSheetsConfig?->spreadsheet_id }}">
                     {{ $googleSheetsConfig?->spreadsheet_id ? \Illuminate\Support\Str::limit($googleSheetsConfig->spreadsheet_id, 16) : 'Belum Dikonfigurasi' }}
                 </div>
@@ -779,7 +763,7 @@
 
             <!-- 2. Sinkronisasi Terakhir -->
             <div class="p-3.5 rounded-[2px] bg-canvas border border-line space-y-1">
-                <span class="text-xs   font-semibold text-muted block">Sinkronisasi Terakhir</span>
+                <span class="text-xs font-semibold text-muted block">Sinkronisasi Terakhir</span>
                 <div class="text-xs tabular-nums font-semibold text-current">
                     {{ $googleSheetsConfig?->last_synced_at ? $googleSheetsConfig->last_synced_at->diffForHumans() : 'Belum Pernah' }}
                 </div>
@@ -790,7 +774,7 @@
 
             <!-- 3. Telemetri ESP32 Terbaru -->
             <div class="p-3.5 rounded-[2px] bg-canvas border border-line space-y-1">
-                <span class="text-xs   font-semibold text-muted block">Telemetri Lapangan Terbaru</span>
+                <span class="text-xs font-semibold text-muted block">Telemetri Lapangan Terbaru</span>
                 <div class="text-xs tabular-nums font-semibold text-current">
                     {{ $latestTelemetryMonitoring ? $latestTelemetryMonitoring->monitored_at->diffForHumans() : 'Tidak Ada Data' }}
                 </div>
@@ -801,7 +785,7 @@
 
             <!-- 4. Kesegaran Telemetri -->
             <div class="p-3.5 rounded-[2px] bg-canvas border border-line space-y-1">
-                <span class="text-xs   font-semibold text-muted block">Kondisi Kesegaran Data</span>
+                <span class="text-xs font-semibold text-muted block">Kondisi Kesegaran Data</span>
                 <div class="text-xs font-semibold {{ $freshness === 'connected' ? 'text-accent' : ($freshness === 'stale' ? 'text-warning' : 'text-muted') }}">
                     {{ $googleSheetsConfig?->freshnessLabel() ?? 'Belum Terhubung' }}
                 </div>
@@ -824,7 +808,7 @@
     </div>
 
     <!-- 2. FILTER MONITORING & QUICK RANGE BAR -->
-    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+    <div class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line space-y-4">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 border-b border-line pb-4">
             <div>
                 <h3 class="text-sm sm:text-base font-semibold text-current flex items-center gap-2">
@@ -837,7 +821,7 @@
                     Saring data grafik tren dan statistik analitik berdasarkan tanaman atau periode observasi.
                 </p>
             </div>
-            
+
             <!-- Quick Range Selection -->
             <div class="flex flex-wrap items-center gap-1.5">
                 <span class="text-xs font-semibold text-muted mr-1 hidden sm:inline">Quick Range:</span>
@@ -870,10 +854,10 @@
 
         <!-- Filter Form -->
         <form method="GET" action="{{ route('dashboard') }}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 items-end">
-            
+
             <!-- 1. Dropdown Tanaman -->
             <div>
-                <label for="plant_filter" class="block text-xs font-semibold   text-ink mb-1.5">
+                <label for="plant_filter" class="block text-xs font-semibold text-ink mb-1.5">
                     Pilih Tanaman
                 </label>
                 <div class="relative">
@@ -899,7 +883,7 @@
 
             <!-- 2. Tanggal Mulai -->
             <div>
-                <label for="date_from" class="block text-xs font-semibold   text-ink mb-1.5">
+                <label for="date_from" class="block text-xs font-semibold text-ink mb-1.5">
                     Tanggal Mulai
                 </label>
                 <input
@@ -913,7 +897,7 @@
 
             <!-- 3. Tanggal Akhir -->
             <div>
-                <label for="date_to" class="block text-xs font-semibold   text-ink mb-1.5">
+                <label for="date_to" class="block text-xs font-semibold text-ink mb-1.5">
                     Tanggal Akhir
                 </label>
                 <input
@@ -974,11 +958,11 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
-            
+
             <!-- Parameter 1: Suhu Udara -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line ">
+            <div class="p-4 rounded-[2px] bg-canvas border border-line">
                 <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-accent   text-xs">Suhu Udara</span>
+                    <span class="font-semibold text-accent text-xs">Suhu Udara</span>
                     <span class="tabular-nums text-xs bg-accent-soft text-accent px-1.5 py-0.5 rounded-[2px] border border-line">°C</span>
                 </div>
                 <div class="space-y-1 text-xs">
@@ -998,9 +982,9 @@
             </div>
 
             <!-- Parameter 2: pH Media / Nutrisi -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line ">
+            <div class="p-4 rounded-[2px] bg-canvas border border-line">
                 <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-accent   text-xs">pH Nutrisi</span>
+                    <span class="font-semibold text-accent text-xs">pH Nutrisi</span>
                     <span class="tabular-nums text-xs bg-accent-soft text-accent px-1.5 py-0.5 rounded-[2px] border border-line">pH</span>
                 </div>
                 <div class="space-y-1 text-xs">
@@ -1020,9 +1004,9 @@
             </div>
 
             <!-- Parameter 3: Kelembapan Udara -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line ">
+            <div class="p-4 rounded-[2px] bg-canvas border border-line">
                 <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-muted   text-xs">Kelembapan</span>
+                    <span class="font-semibold text-muted text-xs">Kelembapan</span>
                     <span class="tabular-nums text-xs bg-surface text-muted px-1.5 py-0.5 rounded-[2px] border border-line">% RH</span>
                 </div>
                 <div class="space-y-1 text-xs">
@@ -1042,9 +1026,9 @@
             </div>
 
             <!-- Parameter 4: Tinggi Tanaman -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line ">
+            <div class="p-4 rounded-[2px] bg-canvas border border-line">
                 <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-muted   text-xs">Tinggi Tanaman</span>
+                    <span class="font-semibold text-muted text-xs">Tinggi Tanaman</span>
                     <span class="tabular-nums text-xs bg-surface text-muted px-1.5 py-0.5 rounded-[2px] border border-line">cm</span>
                 </div>
                 <div class="space-y-1 text-xs">
@@ -1064,9 +1048,9 @@
             </div>
 
             <!-- Parameter 5: Kerapatan Kanopi -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line ">
+            <div class="p-4 rounded-[2px] bg-canvas border border-line">
                 <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-warning   text-xs">Kerapatan Tajuk</span>
+                    <span class="font-semibold text-warning text-xs">Kerapatan Tajuk</span>
                     <span class="tabular-nums text-xs bg-warning-soft text-warning px-1.5 py-0.5 rounded-[2px] border border-warning/25">%</span>
                 </div>
                 <div class="space-y-1 text-xs">
@@ -1086,9 +1070,9 @@
             </div>
 
             <!-- Parameter 6: Suhu Nutrisi -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line ">
+            <div class="p-4 rounded-[2px] bg-canvas border border-line">
                 <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-danger   text-xs">Suhu Nutrisi</span>
+                    <span class="font-semibold text-danger text-xs">Suhu Nutrisi</span>
                     <span class="tabular-nums text-xs bg-danger-soft text-danger px-1.5 py-0.5 rounded-[2px] border border-danger/25">°C</span>
                 </div>
                 <div class="space-y-1 text-xs">
@@ -1108,9 +1092,9 @@
             </div>
 
             <!-- Parameter 7: EC Nutrisi -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line ">
+            <div class="p-4 rounded-[2px] bg-canvas border border-line">
                 <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-muted   text-xs">EC Nutrisi</span>
+                    <span class="font-semibold text-muted text-xs">EC Nutrisi</span>
                     <span class="tabular-nums text-xs bg-surface text-muted px-1.5 py-0.5 rounded-[2px] border border-line">mS/cm</span>
                 </div>
                 <div class="space-y-1 text-xs">
@@ -1130,9 +1114,9 @@
             </div>
 
             <!-- Parameter 8: Kelembapan Tanah -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line ">
+            <div class="p-4 rounded-[2px] bg-canvas border border-line">
                 <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-muted   text-xs">Kelembapan Tanah</span>
+                    <span class="font-semibold text-muted text-xs">Kelembapan Tanah</span>
                     <span class="tabular-nums text-xs bg-surface text-muted px-1.5 py-0.5 rounded-[2px] border border-line">%</span>
                 </div>
                 <div class="space-y-1 text-xs">
@@ -1152,9 +1136,9 @@
             </div>
 
             <!-- Parameter 9: Intensitas Cahaya -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line ">
+            <div class="p-4 rounded-[2px] bg-canvas border border-line">
                 <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-warning   text-xs">Intensitas Cahaya</span>
+                    <span class="font-semibold text-warning text-xs">Intensitas Cahaya</span>
                     <span class="tabular-nums text-xs bg-warning-soft text-warning px-1.5 py-0.5 rounded-[2px] border border-warning/25">lux</span>
                 </div>
                 <div class="space-y-1 text-xs">
@@ -1174,9 +1158,9 @@
             </div>
 
             <!-- Parameter 10: Level Tandon Nutrisi -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line ">
+            <div class="p-4 rounded-[2px] bg-canvas border border-line">
                 <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-muted   text-xs">Level Tandon</span>
+                    <span class="font-semibold text-muted text-xs">Level Tandon</span>
                     <span class="tabular-nums text-xs bg-surface text-muted px-1.5 py-0.5 rounded-[2px] border border-line">%</span>
                 </div>
                 <div class="space-y-1 text-xs">
@@ -1200,7 +1184,7 @@
 
     <!-- 4. SECTION GRAFIK VISUALISASI (CHART.JS DARI DATABASE) -->
     <div id="charts" class="space-y-6">
-        
+
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
                 <h3 class="text-base sm:text-lg font-semibold text-current flex items-center gap-2">
@@ -1212,14 +1196,14 @@
                 <p class="text-xs text-muted">Visualisasi data observasi berkala bersumber langsung dari database MySQL.</p>
             </div>
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-[2px] text-xs tabular-nums bg-canvas border border-line text-ink self-start sm:self-auto">
-                <span class="w-2 h-2 rounded-[2px] bg-accent-soft "></span>
+                <span class="w-2 h-2 rounded-[2px] bg-accent-soft"></span>
                 Chart.js Aktif
             </span>
         </div>
 
         <!-- EMPTY STATE JIKA TIDAK ADA DATA TERFILTER -->
         @if ($filteredCount === 0 || count($chartLabels) === 0)
-            <div class="p-8 sm:p-12 text-center rounded-[2px] bg-canvas border border-line  space-y-4">
+            <div class="p-8 sm:p-12 text-center rounded-[2px] bg-canvas border border-line space-y-4">
                 <div class="w-14 h-14 mx-auto rounded-[2px] bg-warning-soft border border-warning/25 flex items-center justify-center text-warning">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -1245,17 +1229,17 @@
         <!-- A. MAIN MONITORING TRENDS (Suhu, pH, Kelembapan) -->
         <div class="space-y-3 {{ $filteredCount === 0 ? 'hidden' : '' }}">
             <div class="flex items-center justify-between">
-                <h4 class="text-xs font-semibold   text-muted">1. Tren Parameter Lingkungan &amp; Nutrisi</h4>
+                <h4 class="text-xs font-semibold text-muted">1. Tren Parameter Lingkungan &amp; Nutrisi</h4>
                 <span class="text-xs text-muted italic">*Garis putus-putus = Configured Monitoring Threshold</span>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-                
+
                 <!-- Chart 1: Suhu (°C) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line  flex flex-col justify-between">
+                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-accent  ">Tren Suhu Monitoring</span>
+                            <span class="text-xs font-semibold text-accent">Tren Suhu Monitoring</span>
                             <span class="text-xs tabular-nums bg-accent-soft text-accent px-2 py-0.5 rounded-[2px] border border-line">°C</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
@@ -1268,10 +1252,10 @@
                 </div>
 
                 <!-- Chart 2: pH Nutrisi -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line  flex flex-col justify-between">
+                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-accent  ">Tren pH</span>
+                            <span class="text-xs font-semibold text-accent">Tren pH</span>
                             <span class="text-xs tabular-nums bg-accent-soft text-accent px-2 py-0.5 rounded-[2px] border border-line">pH</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
@@ -1284,10 +1268,10 @@
                 </div>
 
                 <!-- Chart 3: Kelembapan (%) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line  flex flex-col justify-between">
+                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-muted  ">Tren Kelembapan Udara</span>
+                            <span class="text-xs font-semibold text-muted">Tren Kelembapan Udara</span>
                             <span class="text-xs tabular-nums bg-surface text-muted px-2 py-0.5 rounded-[2px] border border-line">% RH</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
@@ -1305,17 +1289,17 @@
         <!-- B. EXPANDED IOT SENSOR TRENDS (Nutrisi, Media & Tandon) -->
         <div class="space-y-3 {{ $filteredCount === 0 ? 'hidden' : '' }}">
             <div class="flex items-center justify-between">
-                <h4 class="text-xs font-semibold   text-muted">2. Tren Nutrisi, Media Tanam &amp; Tandon (IoT Expansion)</h4>
+                <h4 class="text-xs font-semibold text-muted">2. Tren Nutrisi, Media Tanam &amp; Tandon (IoT Expansion)</h4>
                 <span class="text-xs text-muted italic">*Nilai kosong ditampilkan empty-state (tidak diperlakukan nol)</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                
+
                 <!-- Chart: EC Nutrisi (mS/cm) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line  flex flex-col justify-between" id="card-ecChart">
+                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between" id="card-ecChart">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-muted  ">Tren EC Nutrisi</span>
+                            <span class="text-xs font-semibold text-muted">Tren EC Nutrisi</span>
                             <span class="text-xs tabular-nums bg-surface text-muted px-2 py-0.5 rounded-[2px] border border-line">mS/cm</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
@@ -1335,10 +1319,10 @@
                 </div>
 
                 <!-- Chart: Kelembapan Tanah (%) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line  flex flex-col justify-between" id="card-soilMoistureChart">
+                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between" id="card-soilMoistureChart">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-muted  ">Tren Kelembapan Tanah</span>
+                            <span class="text-xs font-semibold text-muted">Tren Kelembapan Tanah</span>
                             <span class="text-xs tabular-nums bg-surface text-muted px-2 py-0.5 rounded-[2px] border border-line">%</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
@@ -1358,10 +1342,10 @@
                 </div>
 
                 <!-- Chart: Intensitas Cahaya (lux) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line  flex flex-col justify-between" id="card-lightChart">
+                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between" id="card-lightChart">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-warning  ">Tren Intensitas Cahaya</span>
+                            <span class="text-xs font-semibold text-warning">Tren Intensitas Cahaya</span>
                             <span class="text-xs tabular-nums bg-warning-soft text-warning px-2 py-0.5 rounded-[2px] border border-warning/25">lux</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
@@ -1381,10 +1365,10 @@
                 </div>
 
                 <!-- Chart: Suhu Larutan Nutrisi (°C) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line  flex flex-col justify-between" id="card-nutrientTempChart">
+                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between" id="card-nutrientTempChart">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-danger  ">Tren Suhu Nutrisi</span>
+                            <span class="text-xs font-semibold text-danger">Tren Suhu Nutrisi</span>
                             <span class="text-xs tabular-nums bg-danger-soft text-danger px-2 py-0.5 rounded-[2px] border border-danger/25">°C</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
@@ -1404,10 +1388,10 @@
                 </div>
 
                 <!-- Chart: Level Tandon Nutrisi (%) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line  flex flex-col justify-between" id="card-tankLevelChart">
+                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between" id="card-tankLevelChart">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-muted  ">Level Cadangan Tandon</span>
+                            <span class="text-xs font-semibold text-muted">Level Cadangan Tandon</span>
                             <span class="text-xs tabular-nums bg-surface text-muted px-2 py-0.5 rounded-[2px] border border-line">%</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
@@ -1431,15 +1415,15 @@
 
         <!-- C. GROWTH TRENDS (Tinggi Tanaman & Kerapatan Kanopi) -->
         <div class="space-y-3 {{ $filteredCount === 0 ? 'hidden' : '' }}">
-            <h4 class="text-xs font-semibold   text-muted">3. Tren Indikator Pertumbuhan Tanaman</h4>
+            <h4 class="text-xs font-semibold text-muted">3. Tren Indikator Pertumbuhan Tanaman</h4>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                
+
                 <!-- Chart 4: Tinggi Tanaman (cm) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line  flex flex-col justify-between">
+                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-muted  ">Perkembangan Tinggi Tanaman</span>
+                            <span class="text-xs font-semibold text-muted">Perkembangan Tinggi Tanaman</span>
                             <span class="text-xs tabular-nums bg-surface text-muted px-2 py-0.5 rounded-[2px] border border-line">cm</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
@@ -1452,10 +1436,10 @@
                 </div>
 
                 <!-- Chart 5: Kerapatan Kanopi (%) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line  flex flex-col justify-between">
+                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-warning  ">Perkembangan Kerapatan Kanopi</span>
+                            <span class="text-xs font-semibold text-warning">Perkembangan Kerapatan Kanopi</span>
                             <span class="text-xs tabular-nums bg-warning-soft text-warning px-2 py-0.5 rounded-[2px] border border-warning/25">%</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
@@ -1472,15 +1456,15 @@
 
         <!-- C. DISTRIBUTION & FREQUENCY CHARTS (Status Tanaman, Kondisi, Frekuensi Monitoring) -->
         <div class="space-y-3">
-            <h4 class="text-xs font-semibold   text-muted">3. Distribusi Status &amp; Frekuensi Monitoring</h4>
+            <h4 class="text-xs font-semibold text-muted">3. Distribusi Status &amp; Frekuensi Monitoring</h4>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                
+
                 <!-- Chart 6: Distribusi Kondisi Tanaman (Doughnut) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line  flex flex-col justify-between">
+                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-accent  ">Distribusi Kondisi Tanaman</span>
+                            <span class="text-xs font-semibold text-accent">Distribusi Kondisi Tanaman</span>
                             <span class="text-xs font-semibold bg-surface text-ink px-2 py-0.5 rounded-[2px]">Doughnut</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
@@ -1497,10 +1481,10 @@
                 </div>
 
                 <!-- Chart 7: Status Budidaya Tanaman (Doughnut) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line  flex flex-col justify-between">
+                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-muted  ">Status Budidaya Tanaman</span>
+                            <span class="text-xs font-semibold text-muted">Status Budidaya Tanaman</span>
                             <span class="text-xs font-semibold bg-surface text-ink px-2 py-0.5 rounded-[2px]">Doughnut</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
@@ -1513,10 +1497,10 @@
                 </div>
 
                 <!-- Chart 8: Monitoring Frequency (Bar Chart) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line  flex flex-col justify-between md:col-span-2 lg:col-span-1">
+                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between md:col-span-2 lg:col-span-1">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-accent  ">Jumlah Monitoring per Tanaman</span>
+                            <span class="text-xs font-semibold text-accent">Jumlah Monitoring per Tanaman</span>
                             <span class="text-xs font-semibold bg-surface text-ink px-2 py-0.5 rounded-[2px]">Bar</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
@@ -1534,7 +1518,7 @@
     </div>
 
     <!-- 5. TABEL MONITORING TERBARU (Data Aktual dari MySQL) -->
-    <div id="recent-table" class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line  space-y-4">
+    <div id="recent-table" class="p-5 sm:p-6 rounded-[2px] bg-canvas border border-line space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-line pb-4">
             <div>
                 <h3 class="text-base sm:text-lg font-semibold text-current flex items-center gap-2">
@@ -1573,7 +1557,7 @@
         <div class="overflow-x-auto">
             <table class="w-full text-left text-xs whitespace-nowrap">
                 <thead>
-                    <tr class="border-b border-line text-xs font-semibold   text-muted bg-canvas">
+                    <tr class="border-b border-line text-xs font-semibold text-muted bg-canvas">
                         <th class="py-3 px-4 rounded-l-xl">Tanaman / Lokasi</th>
                         <th class="py-3 px-4">Waktu Monitoring</th>
                         <th class="py-3 px-4 text-center">Suhu</th>
@@ -1671,7 +1655,7 @@
 
     <!-- 6. SECTION KHUSUS ROLE ADMINISTRATOR -->
     @if ($user->isAdmin())
-        <div id="admin-section" class="p-6 rounded-[2px]     border border-line space-y-4">
+        <div id="admin-section" class="p-6 rounded-[2px] border border-line space-y-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2.5">
                     <div class="w-8 h-8 rounded-[2px] bg-accent-soft border border-line flex items-center justify-center text-accent">

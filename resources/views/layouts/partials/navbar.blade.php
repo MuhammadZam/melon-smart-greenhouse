@@ -1,6 +1,6 @@
-<header class="sticky top-0 z-30 h-16 bg-canvas  border-b border-line">
+<header class="sticky top-0 z-30 h-16 bg-canvas border-b border-line">
     <div class="h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        
+
         <!-- Sisi Kiri: Hamburger Mobile & Nama Aplikasi -->
         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
             <!-- Mobile Menu Toggle Button -->
@@ -92,7 +92,7 @@
                     {{-- Badge Jumlah Alarm Aktif --}}
                     <template x-if="activeCount > 0">
                         <span
-                            class="absolute top-1 right-1 flex h-4 min-w-4 items-center justify-center rounded-[2px] px-1 text-xs font-semibold text-current "
+                            class="absolute top-1 right-1 flex h-4 min-w-4 items-center justify-center rounded-[2px] px-1 text-xs font-semibold text-current"
                             :class="criticalCount > 0 ? 'bg-danger ' : 'bg-surface'"
                             x-text="activeCount"
                         ></span>
@@ -111,7 +111,7 @@
                     x-transition:leave="transition ease-in duration-150"
                     x-transition:leave-start="opacity-100 scale-100"
                     x-transition:leave-end="opacity-0 scale-95"
-                    class="fixed top-16 right-4 w-[calc(100vw-2rem)] sm:absolute sm:top-auto sm:right-0 sm:mt-2 sm:w-96 rounded-[2px] bg-canvas border border-line  py-3 z-50 text-xs text-ink"
+                    class="fixed top-16 right-4 w-[calc(100vw-2rem)] sm:absolute sm:top-auto sm:right-0 sm:mt-2 sm:w-96 rounded-[2px] bg-canvas border border-line py-3 z-50 text-xs text-ink"
                     style="display: none;"
                 >
                     {{-- Dropdown Header --}}
@@ -186,7 +186,7 @@
 
             <!-- User Status Chip -->
             <div class="hidden sm:flex items-center gap-2.5 pl-2 sm:pl-3 pr-2 py-1 rounded-[2px] bg-surface border border-line">
-                <div class="w-8 h-8 rounded-[2px] {{ auth()->user()->isAdmin() ? 'bg-accent-soft text-accent border border-line' : 'bg-accent-soft text-accent border border-line' }} flex items-center justify-center text-xs font-semibold  ">
+                <div class="w-8 h-8 rounded-[2px] {{ auth()->user()->isAdmin() ? 'bg-accent-soft text-accent border border-line' : 'bg-accent-soft text-accent border border-line' }} flex items-center justify-center text-xs font-semibold">
                     {{ substr(auth()->user()->name, 0, 2) }}
                 </div>
                 <div class="hidden sm:block text-left">

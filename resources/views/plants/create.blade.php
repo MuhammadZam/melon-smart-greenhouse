@@ -26,7 +26,7 @@
 
             <div class="flex items-center gap-2.5">
                 <h2 class="ui-page-title text-xl sm:text-2xl font-semibold text-current tracking-tight">
-                    Tambah Plot <span class="    text-ink">Tanaman Melon</span>
+                    Tambah Plot <span class="text-ink">Tanaman Melon</span>
                 </h2>
                 <span class="px-2 py-0.5 rounded-[2px] text-xs tabular-nums font-semibold bg-accent-soft text-accent border border-line">
                     MODE ADMIN
@@ -50,7 +50,7 @@
 
     <!-- Alert Kesalahan Validasi -->
     @if ($errors->any())
-        <div role="alert" class="p-4 rounded-[2px] bg-danger-soft border border-danger/25 text-danger text-xs  space-y-1">
+        <div role="alert" class="p-4 rounded-[2px] bg-danger-soft border border-danger/25 text-danger text-xs space-y-1">
             <div class="font-semibold flex items-center gap-2 text-danger">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -66,7 +66,7 @@
     @endif
 
     <!-- Form Tambah Tanaman -->
-    <form method="POST" action="{{ route('plants.store') }}" class="p-5 sm:p-7 rounded-[2px] bg-canvas border border-line  space-y-5">
+    <form method="POST" action="{{ route('plants.store') }}" class="p-5 sm:p-7 rounded-[2px] bg-canvas border border-line space-y-5">
         @csrf
 
         <!-- 1. Nama Tanaman / Plot -->
@@ -90,7 +90,7 @@
 
         <!-- 2. Lokasi Greenhouse & Status -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            
+
             <!-- Lokasi -->
             <div>
                 <label for="location" class="block text-xs font-semibold text-ink mb-1.5">
@@ -160,7 +160,7 @@
 
             <button
                 type="submit"
-                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-[2px] text-current text-xs font-semibold transition-all transform hover:-translate-y-0.5"
+                class="ui-button-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-[2px] text-current text-xs font-semibold transition-all transform"
             >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>

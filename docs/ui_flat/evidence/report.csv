@@ -1,0 +1,960 @@
+﻿No,"Waktu Monitoring","ID Tanaman","Nama Tanaman",Varietas,Lokasi,"Sumber Data","ID Perangkat","Suhu Udara (°C)","Kelembapan Udara (%)","Kelembapan Tanah (%)","pH Nutrisi/Media","EC Nutrisi (mS/cm)","Intensitas Cahaya (lux)","Suhu Nutrisi (°C)","Level Tandon Nutrisi (%)","Tinggi Tanaman (cm)","Kerapatan Kanopi (%)","Kondisi Tanaman","Warna Daun","Skor Fuzzy","Kategori Fuzzy","Catatan Observasi"
+1,"2026-10-17 13:43:42",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+2,"2026-10-17 13:43:42",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+3,"2026-10-17 13:43:42",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+4,"2026-10-17 13:43:28",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,27.50,68.00,72.00,6.50,2.10,25000.0,24.00,85.0,N/A,N/A,"Optimal Prima","Hijau Tua",N/A,N/A,"Observasi PDF rendering 6ad3191080bda"
+5,"2026-10-17 13:43:21",161,"CSV Plant Filter 6ad31909a08e4",'-,"Blok CSV Test",web,'-,27.50,68.00,72.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Sehat Baik",Hijau,N/A,N/A,CSV-Unique-Notes-6ad31909a1397
+6,"2026-10-17 13:43:21",159,"Stat Test Plant 6ad3190963ec8",'-,"Greenhouse Lab 1",web,'-,30.00,70.00,N/A,7.00,N/A,20000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+7,"2026-10-17 13:43:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,29.00,60.00,65.00,6.00,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Unik-6ad319094ac7c,Kekuningan,N/A,N/A,"Condition Test"
+8,"2026-10-17 13:43:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",google_sheets,'-,28.00,65.00,68.00,6.30,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Sheets-6ad319094130d,Hijau,N/A,N/A,"Sheets Sync Note"
+9,"2026-10-17 13:43:21",158,"Melon Khusus B 6ad3190936b37",'-,"Blok Khusus B",web,'-,27.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Subur B 6ad31909381b5","Hijau Pekat",N/A,N/A,Marker-Plant-B
+10,"2026-10-17 13:43:21",157,"Melon Khusus A 6ad3190935e93",'-,"Blok Khusus A",web,'-,26.00,68.00,72.00,6.40,N/A,N/A,N/A,N/A,N/A,N/A,"Subur A 6ad319093760f","Hijau Pekat",N/A,N/A,Marker-Plant-A
+11,"2026-10-17 13:43:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+12,"2026-10-17 13:43:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+13,"2026-10-17 13:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,40.00,35.00,30.00,5.00,N/A,N/A,N/A,N/A,80.00,N/A,critical,Kuning,17.72,BURUK,
+14,"2026-10-17 13:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+15,"2026-10-17 13:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+16,"2026-10-17 13:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+17,"2026-10-17 13:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,29.50,65.00,68.00,6.30,N/A,N/A,N/A,N/A,88.00,75.0,optimal,Hijau,79.23,BAIK,"Simulator IoT payload test"
+18,"2026-10-17 13:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,28.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,"Hijau Segar",85.29,BAIK,"API ingestion fuzzy check"
+19,"2026-10-17 13:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+20,"2026-10-17 13:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+21,"2026-10-17 13:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+22,"2026-10-17 13:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+23,"2026-10-17 13:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+24,"2026-10-17 13:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+25,"2026-10-17 13:43:16",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+26,"2026-10-17 13:43:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+27,"2026-10-17 13:43:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+28,"2026-10-17 13:43:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+29,"2026-10-17 13:43:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+30,"2026-10-17 13:43:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+31,"2026-10-17 13:43:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+32,"2026-10-17 13:43:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+33,"2026-10-17 13:43:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+34,"2026-10-17 13:43:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+35,"2026-10-17 13:43:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+36,"2026-10-17 13:43:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+37,"2026-10-17 13:43:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+38,"2026-10-17 13:43:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+39,"2026-10-17 13:43:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",84.84,BAIK,"Entri web form update"
+40,"2026-10-17 13:42:44",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+41,"2026-10-17 13:42:21",159,"Stat Test Plant 6ad3190963ec8",'-,"Greenhouse Lab 1",web,'-,20.00,50.00,N/A,6.00,2.00,10000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+42,"2026-10-17 13:42:10",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+43,"2026-10-17 13:39:24",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,27.50,68.00,72.00,6.50,2.10,25000.0,24.00,85.0,N/A,N/A,"Optimal Prima","Hijau Tua",N/A,N/A,"Observasi PDF rendering 6ad3181c3417e"
+44,"2026-10-17 13:39:17",156,"CSV Plant Filter 6ad3181568cb9",'-,"Blok CSV Test",web,'-,27.50,68.00,72.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Sehat Baik",Hijau,N/A,N/A,CSV-Unique-Notes-6ad3181569988
+45,"2026-10-17 13:39:17",154,"Stat Test Plant 6ad3181532d11",'-,"Greenhouse Lab 1",web,'-,30.00,70.00,N/A,7.00,N/A,20000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+46,"2026-10-17 13:39:17",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,29.00,60.00,65.00,6.00,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Unik-6ad3181520ca6,Kekuningan,N/A,N/A,"Condition Test"
+47,"2026-10-17 13:39:17",153,"Melon Khusus B 6ad318150cf2a",'-,"Blok Khusus B",web,'-,27.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Subur B 6ad318150e91e","Hijau Pekat",N/A,N/A,Marker-Plant-B
+48,"2026-10-17 13:39:17",152,"Melon Khusus A 6ad318150c103",'-,"Blok Khusus A",web,'-,26.00,68.00,72.00,6.40,N/A,N/A,N/A,N/A,N/A,N/A,"Subur A 6ad318150db9d","Hijau Pekat",N/A,N/A,Marker-Plant-A
+49,"2026-10-17 13:38:17",154,"Stat Test Plant 6ad3181532d11",'-,"Greenhouse Lab 1",web,'-,20.00,50.00,N/A,6.00,2.00,10000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+50,"2026-10-17 13:38:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+51,"2026-10-17 13:33:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+52,"2026-10-17 13:33:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+53,"2026-10-17 13:28:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+54,"2026-10-17 13:24:17",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+55,"2026-10-17 13:24:17",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+56,"2026-10-17 13:24:17",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+57,"2026-10-17 13:24:03",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,27.50,68.00,72.00,6.50,2.10,25000.0,24.00,85.0,N/A,N/A,"Optimal Prima","Hijau Tua",N/A,N/A,"Observasi PDF rendering 6ad31483aff65"
+58,"2026-10-17 13:23:57",144,"CSV Plant Filter 6ad3147d165e6",'-,"Blok CSV Test",web,'-,27.50,68.00,72.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Sehat Baik",Hijau,N/A,N/A,CSV-Unique-Notes-6ad3147d1721a
+59,"2026-10-17 13:23:56",142,"Stat Test Plant 6ad3147cd74f8",'-,"Greenhouse Lab 1",web,'-,30.00,70.00,N/A,7.00,N/A,20000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+60,"2026-10-17 13:23:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,29.00,60.00,65.00,6.00,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Unik-6ad3147cc6991,Kekuningan,N/A,N/A,"Condition Test"
+61,"2026-10-17 13:23:56",141,"Melon Khusus B 6ad3147cb686a",'-,"Blok Khusus B",web,'-,27.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Subur B 6ad3147cb7d31","Hijau Pekat",N/A,N/A,Marker-Plant-B
+62,"2026-10-17 13:23:56",140,"Melon Khusus A 6ad3147cb5e48",'-,"Blok Khusus A",web,'-,26.00,68.00,72.00,6.40,N/A,N/A,N/A,N/A,N/A,N/A,"Subur A 6ad3147cb722a","Hijau Pekat",N/A,N/A,Marker-Plant-A
+63,"2026-10-17 13:23:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+64,"2026-10-17 13:23:55",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+65,"2026-10-17 13:23:55",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,40.00,35.00,30.00,5.00,N/A,N/A,N/A,N/A,80.00,N/A,critical,Kuning,17.72,BURUK,
+66,"2026-10-17 13:23:55",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+67,"2026-10-17 13:23:55",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+68,"2026-10-17 13:23:55",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+69,"2026-10-17 13:23:55",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,29.50,65.00,68.00,6.30,N/A,N/A,N/A,N/A,88.00,75.0,optimal,Hijau,79.23,BAIK,"Simulator IoT payload test"
+70,"2026-10-17 13:23:54",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,28.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,"Hijau Segar",85.29,BAIK,"API ingestion fuzzy check"
+71,"2026-10-17 13:23:54",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+72,"2026-10-17 13:23:54",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+73,"2026-10-17 13:23:54",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+74,"2026-10-17 13:23:54",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+75,"2026-10-17 13:23:54",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+76,"2026-10-17 13:23:54",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+77,"2026-10-17 13:23:52",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+78,"2026-10-17 13:23:51",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+79,"2026-10-17 13:23:51",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+80,"2026-10-17 13:23:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+81,"2026-10-17 13:23:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+82,"2026-10-17 13:23:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+83,"2026-10-17 13:23:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+84,"2026-10-17 13:23:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+85,"2026-10-17 13:23:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+86,"2026-10-17 13:23:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+87,"2026-10-17 13:23:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+88,"2026-10-17 13:23:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+89,"2026-10-17 13:23:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+90,"2026-10-17 13:23:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+91,"2026-10-17 13:23:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",84.84,BAIK,"Entri web form update"
+92,"2026-10-17 13:22:56",142,"Stat Test Plant 6ad3147cd74f8",'-,"Greenhouse Lab 1",web,'-,20.00,50.00,N/A,6.00,2.00,10000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+93,"2026-10-17 13:18:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+94,"2026-10-17 13:13:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+95,"2026-10-17 13:13:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+96,"2026-10-17 13:09:47",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.57,79.92,N/A,6.46,N/A,N/A,N/A,N/A,2.24,71.0,Subur,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+97,"2026-10-17 13:08:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+98,"2026-10-17 12:39:05",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+99,"2026-10-17 12:39:04",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+100,"2026-10-17 12:39:04",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+101,"2026-10-17 12:38:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,27.50,68.00,72.00,6.50,2.10,25000.0,24.00,85.0,N/A,N/A,"Optimal Prima","Hijau Tua",N/A,N/A,"Observasi PDF rendering 6ad309eac3062"
+102,"2026-10-17 12:38:43",132,"CSV Plant Filter 6ad309e38ed24",'-,"Blok CSV Test",web,'-,27.50,68.00,72.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Sehat Baik",Hijau,N/A,N/A,CSV-Unique-Notes-6ad309e38fe9e
+103,"2026-10-17 12:38:43",130,"Stat Test Plant 6ad309e352031",'-,"Greenhouse Lab 1",web,'-,30.00,70.00,N/A,7.00,N/A,20000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+104,"2026-10-17 12:38:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,29.00,60.00,65.00,6.00,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Unik-6ad309e3364f4,Kekuningan,N/A,N/A,"Condition Test"
+105,"2026-10-17 12:38:43",129,"Melon Khusus B 6ad309e322614",'-,"Blok Khusus B",web,'-,27.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Subur B 6ad309e323f64","Hijau Pekat",N/A,N/A,Marker-Plant-B
+106,"2026-10-17 12:38:43",128,"Melon Khusus A 6ad309e321892",'-,"Blok Khusus A",web,'-,26.00,68.00,72.00,6.40,N/A,N/A,N/A,N/A,N/A,N/A,"Subur A 6ad309e32320e","Hijau Pekat",N/A,N/A,Marker-Plant-A
+107,"2026-10-17 12:38:42",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+108,"2026-10-17 12:38:42",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+109,"2026-10-17 12:38:41",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,40.00,35.00,30.00,5.00,N/A,N/A,N/A,N/A,80.00,N/A,critical,Kuning,17.72,BURUK,
+110,"2026-10-17 12:38:41",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+111,"2026-10-17 12:38:41",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+112,"2026-10-17 12:38:41",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+113,"2026-10-17 12:38:41",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,29.50,65.00,68.00,6.30,N/A,N/A,N/A,N/A,88.00,75.0,optimal,Hijau,79.23,BAIK,"Simulator IoT payload test"
+114,"2026-10-17 12:38:41",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,28.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,"Hijau Segar",85.29,BAIK,"API ingestion fuzzy check"
+115,"2026-10-17 12:38:41",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+116,"2026-10-17 12:38:41",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+117,"2026-10-17 12:38:41",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+118,"2026-10-17 12:38:40",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+119,"2026-10-17 12:38:40",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+120,"2026-10-17 12:38:40",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+121,"2026-10-17 12:38:38",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+122,"2026-10-17 12:38:37",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+123,"2026-10-17 12:38:37",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+124,"2026-10-17 12:38:36",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+125,"2026-10-17 12:38:36",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+126,"2026-10-17 12:38:36",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+127,"2026-10-17 12:38:36",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+128,"2026-10-17 12:38:36",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+129,"2026-10-17 12:38:36",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+130,"2026-10-17 12:38:36",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+131,"2026-10-17 12:38:35",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+132,"2026-10-17 12:38:35",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+133,"2026-10-17 12:38:35",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+134,"2026-10-17 12:38:35",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+135,"2026-10-17 12:38:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",84.84,BAIK,"Entri web form update"
+136,"2026-10-17 12:37:43",130,"Stat Test Plant 6ad309e352031",'-,"Greenhouse Lab 1",web,'-,20.00,50.00,N/A,6.00,2.00,10000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+137,"2026-10-17 12:37:37",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+138,"2026-10-17 12:37:37",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+139,"2026-10-17 12:37:37",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+140,"2026-10-17 12:37:22",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,27.50,68.00,72.00,6.50,2.10,25000.0,24.00,85.0,N/A,N/A,"Optimal Prima","Hijau Tua",N/A,N/A,"Observasi PDF rendering 6ad30992512f5"
+141,"2026-10-17 12:37:15",120,"CSV Plant Filter 6ad3098b1839e",'-,"Blok CSV Test",web,'-,27.50,68.00,72.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Sehat Baik",Hijau,N/A,N/A,CSV-Unique-Notes-6ad3098b19686
+142,"2026-10-17 12:37:14",118,"Stat Test Plant 6ad3098ada35d",'-,"Greenhouse Lab 1",web,'-,30.00,70.00,N/A,7.00,N/A,20000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+143,"2026-10-17 12:37:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,29.00,60.00,65.00,6.00,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Unik-6ad3098ac7fdf,Kekuningan,N/A,N/A,"Condition Test"
+144,"2026-10-17 12:37:14",117,"Melon Khusus B 6ad3098ab5f0e",'-,"Blok Khusus B",web,'-,27.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Subur B 6ad3098ab799d","Hijau Pekat",N/A,N/A,Marker-Plant-B
+145,"2026-10-17 12:37:14",116,"Melon Khusus A 6ad3098ab5330",'-,"Blok Khusus A",web,'-,26.00,68.00,72.00,6.40,N/A,N/A,N/A,N/A,N/A,N/A,"Subur A 6ad3098ab6dd3","Hijau Pekat",N/A,N/A,Marker-Plant-A
+146,"2026-10-17 12:37:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+147,"2026-10-17 12:37:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+148,"2026-10-17 12:37:13",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,40.00,35.00,30.00,5.00,N/A,N/A,N/A,N/A,80.00,N/A,critical,Kuning,17.72,BURUK,
+149,"2026-10-17 12:37:13",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+150,"2026-10-17 12:37:13",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+151,"2026-10-17 12:37:13",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+152,"2026-10-17 12:37:12",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,29.50,65.00,68.00,6.30,N/A,N/A,N/A,N/A,88.00,75.0,optimal,Hijau,79.23,BAIK,"Simulator IoT payload test"
+153,"2026-10-17 12:37:12",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,28.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,"Hijau Segar",85.29,BAIK,"API ingestion fuzzy check"
+154,"2026-10-17 12:37:12",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+155,"2026-10-17 12:37:12",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+156,"2026-10-17 12:37:12",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+157,"2026-10-17 12:37:12",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+158,"2026-10-17 12:37:12",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+159,"2026-10-17 12:37:12",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+160,"2026-10-17 12:37:10",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+161,"2026-10-17 12:37:09",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+162,"2026-10-17 12:37:09",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+163,"2026-10-17 12:37:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+164,"2026-10-17 12:37:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+165,"2026-10-17 12:37:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+166,"2026-10-17 12:37:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+167,"2026-10-17 12:37:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+168,"2026-10-17 12:37:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+169,"2026-10-17 12:37:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+170,"2026-10-17 12:37:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+171,"2026-10-17 12:37:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+172,"2026-10-17 12:37:07",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+173,"2026-10-17 12:37:07",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+174,"2026-10-17 12:37:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",84.84,BAIK,"Entri web form update"
+175,"2026-10-17 12:36:42",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,27.50,68.00,72.00,6.50,2.10,25000.0,24.00,85.0,N/A,N/A,"Optimal Prima","Hijau Tua",N/A,N/A,"Observasi PDF rendering 6ad3096a4247c"
+176,"2026-10-17 12:36:35",115,"CSV Plant Filter 6ad3096309ffb",'-,"Blok CSV Test",web,'-,27.50,68.00,72.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Sehat Baik",Hijau,N/A,N/A,CSV-Unique-Notes-6ad309630ac61
+177,"2026-10-17 12:36:34",113,"Stat Test Plant 6ad30962c5ab1",'-,"Greenhouse Lab 1",web,'-,30.00,70.00,N/A,7.00,N/A,20000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+178,"2026-10-17 12:36:34",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,29.00,60.00,65.00,6.00,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Unik-6ad30962b12d7,Kekuningan,N/A,N/A,"Condition Test"
+179,"2026-10-17 12:36:34",112,"Melon Khusus B 6ad309629b100",'-,"Blok Khusus B",web,'-,27.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Subur B 6ad309629cb82","Hijau Pekat",N/A,N/A,Marker-Plant-B
+180,"2026-10-17 12:36:34",111,"Melon Khusus A 6ad309629a37c",'-,"Blok Khusus A",web,'-,26.00,68.00,72.00,6.40,N/A,N/A,N/A,N/A,N/A,N/A,"Subur A 6ad309629bf62","Hijau Pekat",N/A,N/A,Marker-Plant-A
+181,"2026-10-17 12:36:14",118,"Stat Test Plant 6ad3098ada35d",'-,"Greenhouse Lab 1",web,'-,20.00,50.00,N/A,6.00,2.00,10000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+182,"2026-10-17 12:35:34",113,"Stat Test Plant 6ad30962c5ab1",'-,"Greenhouse Lab 1",web,'-,20.00,50.00,N/A,6.00,2.00,10000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+183,"2026-10-17 12:34:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,27.50,68.00,72.00,6.50,2.10,25000.0,24.00,85.0,N/A,N/A,"Optimal Prima","Hijau Tua",N/A,N/A,"Observasi PDF rendering 6ad308f32f1b9"
+184,"2026-10-17 12:34:35",110,"CSV Plant Filter 6ad308ebc6a39",'-,"Blok CSV Test",web,'-,27.50,68.00,72.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Sehat Baik",Hijau,N/A,N/A,CSV-Unique-Notes-6ad308ebc7a23
+185,"2026-10-17 12:34:35",108,"Stat Test Plant 6ad308eb8a028",'-,"Greenhouse Lab 1",web,'-,30.00,70.00,N/A,7.00,N/A,20000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+186,"2026-10-17 12:34:35",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,29.00,60.00,65.00,6.00,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Unik-6ad308eb7660d,Kekuningan,N/A,N/A,"Condition Test"
+187,"2026-10-17 12:34:35",107,"Melon Khusus B 6ad308eb5c8a9",'-,"Blok Khusus B",web,'-,27.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Subur B 6ad308eb5e5fc","Hijau Pekat",N/A,N/A,Marker-Plant-B
+188,"2026-10-17 12:34:35",106,"Melon Khusus A 6ad308eb5bad0",'-,"Blok Khusus A",web,'-,26.00,68.00,72.00,6.40,N/A,N/A,N/A,N/A,N/A,N/A,"Subur A 6ad308eb5d645","Hijau Pekat",N/A,N/A,Marker-Plant-A
+189,"2026-10-17 12:33:38",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,27.50,68.00,72.00,6.50,2.10,25000.0,24.00,85.0,N/A,N/A,"Optimal Prima","Hijau Tua",N/A,N/A,"Observasi PDF rendering 6ad308b2279fa"
+190,"2026-10-17 12:33:36",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+191,"2026-10-17 12:33:35",108,"Stat Test Plant 6ad308eb8a028",'-,"Greenhouse Lab 1",web,'-,20.00,50.00,N/A,6.00,2.00,10000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+192,"2026-10-17 12:33:30",105,"CSV Plant Filter 6ad308aacfab2",'-,"Blok CSV Test",web,'-,27.50,68.00,72.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Sehat Baik",Hijau,N/A,N/A,CSV-Unique-Notes-6ad308aad072e
+193,"2026-10-17 12:33:30",103,"Stat Test Plant 6ad308aa9c2fd",'-,"Greenhouse Lab 1",web,'-,30.00,70.00,N/A,7.00,N/A,20000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+194,"2026-10-17 12:33:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,29.00,60.00,65.00,6.00,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Unik-6ad308aa88ded,Kekuningan,N/A,N/A,"Condition Test"
+195,"2026-10-17 12:33:30",102,"Melon Khusus B 6ad308aa72ee7",'-,"Blok Khusus B",web,'-,27.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,N/A,N/A,"Subur B 6ad308aa744be","Hijau Pekat",N/A,N/A,Marker-Plant-B
+196,"2026-10-17 12:33:30",101,"Melon Khusus A 6ad308aa72180",'-,"Blok Khusus A",web,'-,26.00,68.00,72.00,6.40,N/A,N/A,N/A,N/A,N/A,N/A,"Subur A 6ad308aa7392d","Hijau Pekat",N/A,N/A,Marker-Plant-A
+197,"2026-10-17 12:32:30",103,"Stat Test Plant 6ad308aa9c2fd",'-,"Greenhouse Lab 1",web,'-,20.00,50.00,N/A,6.00,2.00,10000.0,N/A,N/A,N/A,N/A,Test,Hijau,N/A,N/A,
+198,"2026-10-17 12:32:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+199,"2026-10-17 12:31:10",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,27.50,68.00,72.00,6.50,2.10,25000.0,24.00,85.0,N/A,N/A,"Optimal Prima","Hijau Tua",N/A,N/A,"Observasi PDF rendering 6ad3081e7892c"
+200,"2026-10-17 12:31:02",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,29.00,60.00,65.00,6.00,N/A,N/A,N/A,N/A,N/A,N/A,"Stres Panas Terkendali",Kekuningan,N/A,N/A,Condition-Marker-6ad3081600db1
+201,"2026-10-17 12:28:36",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+202,"2026-10-17 12:28:35",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+203,"2026-10-17 12:27:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+204,"2026-10-17 12:27:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+205,"2026-10-17 12:23:36",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+206,"2026-10-17 12:22:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+207,"2026-10-17 12:13:07",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+208,"2026-10-17 12:13:06",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+209,"2026-10-17 12:13:06",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+210,"2026-10-17 12:13:04",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+211,"2026-10-17 12:13:03",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+212,"2026-10-17 12:13:03",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,40.00,35.00,30.00,5.00,N/A,N/A,N/A,N/A,80.00,N/A,critical,Kuning,17.72,BURUK,
+213,"2026-10-17 12:13:02",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+214,"2026-10-17 12:13:02",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+215,"2026-10-17 12:13:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+216,"2026-10-17 12:13:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,29.50,65.00,68.00,6.30,N/A,N/A,N/A,N/A,88.00,75.0,optimal,Hijau,79.23,BAIK,"Simulator IoT payload test"
+217,"2026-10-17 12:13:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,28.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,"Hijau Segar",85.29,BAIK,"API ingestion fuzzy check"
+218,"2026-10-17 12:13:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+219,"2026-10-17 12:13:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+220,"2026-10-17 12:13:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+221,"2026-10-17 12:13:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+222,"2026-10-17 12:13:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+223,"2026-10-17 12:13:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+224,"2026-10-17 12:13:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",84.84,BAIK,"Entri web form update"
+225,"2026-10-17 12:12:59",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+226,"2026-10-17 12:12:57",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+227,"2026-10-17 12:12:57",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+228,"2026-10-17 12:12:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+229,"2026-10-17 12:12:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+230,"2026-10-17 12:12:55",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+231,"2026-10-17 12:12:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+232,"2026-10-17 12:12:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+233,"2026-10-17 12:12:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+234,"2026-10-17 12:12:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+235,"2026-10-17 12:12:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+236,"2026-10-17 12:12:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+237,"2026-10-17 12:12:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+238,"2026-10-17 12:12:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+239,"2026-10-17 12:07:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+240,"2026-10-17 12:02:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+241,"2026-10-17 12:02:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+242,"2026-10-17 11:57:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+243,"2026-10-17 10:54:02",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+244,"2026-10-17 10:54:02",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+245,"2026-10-17 10:54:02",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+246,"2026-10-17 10:54:02",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+247,"2026-10-17 10:54:01",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+248,"2026-10-17 10:54:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,40.00,35.00,30.00,5.00,N/A,N/A,N/A,N/A,80.00,N/A,critical,Kuning,17.72,BURUK,
+249,"2026-10-17 10:54:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+250,"2026-10-17 10:54:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+251,"2026-10-17 10:54:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",84.84,BAIK,"Entri web form update"
+252,"2026-10-17 10:54:00",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+253,"2026-10-17 10:54:00",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,29.50,65.00,68.00,6.30,N/A,N/A,N/A,N/A,88.00,75.0,optimal,Hijau,79.23,BAIK,"Simulator IoT payload test"
+254,"2026-10-17 10:54:00",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,28.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,"Hijau Segar",85.29,BAIK,"API ingestion fuzzy check"
+255,"2026-10-17 10:54:00",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+256,"2026-10-17 10:54:00",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+257,"2026-10-17 10:54:00",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+258,"2026-10-17 10:54:00",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+259,"2026-10-17 10:54:00",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+260,"2026-10-17 10:54:00",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+261,"2026-10-17 10:53:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+262,"2026-10-17 10:53:57",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+263,"2026-10-17 10:53:57",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+264,"2026-10-17 10:53:57",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+265,"2026-10-17 10:53:57",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+266,"2026-10-17 10:53:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+267,"2026-10-17 10:53:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+268,"2026-10-17 10:53:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+269,"2026-10-17 10:53:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+270,"2026-10-17 10:53:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+271,"2026-10-17 10:53:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+272,"2026-10-17 10:53:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+273,"2026-10-17 10:53:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+274,"2026-10-17 10:53:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+275,"2026-10-17 10:53:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+276,"2026-10-17 10:52:28",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+277,"2026-10-17 10:52:28",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+278,"2026-10-17 10:52:28",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+279,"2026-10-17 10:52:28",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+280,"2026-10-17 10:52:27",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+281,"2026-10-17 10:52:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,40.00,35.00,30.00,5.00,N/A,N/A,N/A,N/A,80.00,N/A,critical,Kuning,17.72,BURUK,
+282,"2026-10-17 10:52:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+283,"2026-10-17 10:52:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+284,"2026-10-17 10:52:26",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+285,"2026-10-17 10:52:26",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,29.50,65.00,68.00,6.30,N/A,N/A,N/A,N/A,88.00,75.0,optimal,Hijau,79.23,BAIK,"Simulator IoT payload test"
+286,"2026-10-17 10:52:26",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,28.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,"Hijau Segar",85.29,BAIK,"API ingestion fuzzy check"
+287,"2026-10-17 10:52:26",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+288,"2026-10-17 10:52:26",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+289,"2026-10-17 10:52:26",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+290,"2026-10-17 10:52:26",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+291,"2026-10-17 10:52:25",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+292,"2026-10-17 10:52:25",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+293,"2026-10-17 10:52:24",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+294,"2026-10-17 10:52:22",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+295,"2026-10-17 10:52:22",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+296,"2026-10-17 10:52:22",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+297,"2026-10-17 10:52:22",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+298,"2026-10-17 10:52:22",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+299,"2026-10-17 10:52:22",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+300,"2026-10-17 10:52:22",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+301,"2026-10-17 10:52:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+302,"2026-10-17 10:52:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+303,"2026-10-17 10:52:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+304,"2026-10-17 10:52:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+305,"2026-10-17 10:52:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+306,"2026-10-17 10:52:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+307,"2026-10-17 10:52:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",84.84,BAIK,"Entri web form update"
+308,"2026-10-17 10:48:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+309,"2026-10-17 10:47:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+310,"2026-10-17 10:46:48",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,40.00,35.00,30.00,5.00,N/A,N/A,N/A,N/A,80.00,N/A,critical,Kuning,17.72,BURUK,
+311,"2026-10-17 10:46:47",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+312,"2026-10-17 10:46:47",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+313,"2026-10-17 10:46:47",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+314,"2026-10-17 10:46:47",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,29.50,65.00,68.00,6.30,N/A,N/A,N/A,N/A,88.00,75.0,optimal,Hijau,79.23,BAIK,"Simulator IoT payload test"
+315,"2026-10-17 10:46:47",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,28.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,"Hijau Segar",85.29,BAIK,"API ingestion fuzzy check"
+316,"2026-10-17 10:46:47",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+317,"2026-10-17 10:46:47",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+318,"2026-10-17 10:46:47",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+319,"2026-10-17 10:46:47",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+320,"2026-10-17 10:46:47",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+321,"2026-10-17 10:46:47",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+322,"2026-10-17 10:46:16",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,40.00,35.00,30.00,5.00,N/A,N/A,N/A,N/A,80.00,N/A,critical,Kuning,17.72,BURUK,
+323,"2026-10-17 10:46:16",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+324,"2026-10-17 10:46:16",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+325,"2026-10-17 10:46:15",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+326,"2026-10-17 10:46:15",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,29.50,65.00,68.00,6.30,N/A,N/A,N/A,N/A,88.00,75.0,optimal,Hijau,79.23,BAIK,"Simulator IoT payload test"
+327,"2026-10-17 10:46:15",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,28.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,"Hijau Segar",85.29,BAIK,"API ingestion fuzzy check"
+328,"2026-10-17 10:46:15",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+329,"2026-10-17 10:46:15",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+330,"2026-10-17 10:46:15",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+331,"2026-10-17 10:46:15",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+332,"2026-10-17 10:46:15",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+333,"2026-10-17 10:46:15",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+334,"2026-10-17 10:43:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+335,"2026-10-17 10:43:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+336,"2026-10-17 10:42:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+337,"2026-10-17 10:42:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+338,"2026-10-17 10:39:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+339,"2026-10-17 10:39:57",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+340,"2026-10-17 10:39:57",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+341,"2026-10-17 10:39:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+342,"2026-10-17 10:39:55",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+343,"2026-10-17 10:39:54",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,40.00,35.00,30.00,5.00,N/A,N/A,N/A,N/A,80.00,N/A,critical,Kuning,17.72,BURUK,
+344,"2026-10-17 10:39:54",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+345,"2026-10-17 10:39:53",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+346,"2026-10-17 10:39:53",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+347,"2026-10-17 10:39:53",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,29.50,65.00,68.00,6.30,N/A,N/A,N/A,N/A,88.00,75.0,optimal,Hijau,79.23,BAIK,"Simulator IoT payload test"
+348,"2026-10-17 10:39:52",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,28.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,"Hijau Segar",85.29,BAIK,"API ingestion fuzzy check"
+349,"2026-10-17 10:39:52",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+350,"2026-10-17 10:39:52",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+351,"2026-10-17 10:39:52",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+352,"2026-10-17 10:39:52",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+353,"2026-10-17 10:39:52",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+354,"2026-10-17 10:39:52",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+355,"2026-10-17 10:39:49",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+356,"2026-10-17 10:39:48",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+357,"2026-10-17 10:39:48",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+358,"2026-10-17 10:39:47",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+359,"2026-10-17 10:39:47",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+360,"2026-10-17 10:39:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+361,"2026-10-17 10:39:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+362,"2026-10-17 10:39:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+363,"2026-10-17 10:39:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+364,"2026-10-17 10:39:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+365,"2026-10-17 10:39:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+366,"2026-10-17 10:39:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+367,"2026-10-17 10:39:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+368,"2026-10-17 10:39:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+369,"2026-10-17 10:39:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",84.84,BAIK,"Entri web form update"
+370,"2026-10-17 10:38:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+371,"2026-10-17 10:37:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+372,"2026-10-17 10:34:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+373,"2026-10-17 10:29:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+374,"2026-10-17 10:29:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+375,"2026-10-17 10:24:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+376,"2026-10-17 10:16:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,31.40,71.35,N/A,6.54,N/A,N/A,N/A,N/A,2.25,85.9,Baik,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+377,"2026-10-17 10:13:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.09,71.37,N/A,7.45,N/A,N/A,N/A,N/A,3.94,70.5,"Perlu Perhatian","Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+378,"2026-10-17 08:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+379,"2026-10-17 08:23:55",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+380,"2026-10-17 07:56:34",151,"Melon Sunt Plot 67200",'-,"Greenhouse 2 - Sektor Barat",api,'-,24.55,68.09,N/A,7.51,N/A,N/A,N/A,N/A,2.86,62.4,Optimal,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+381,"2026-10-17 07:38:41",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+382,"2026-10-17 07:37:13",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+383,"2026-10-17 07:13:02",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+384,"2026-10-17 05:54:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+385,"2026-10-17 05:52:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+386,"2026-10-17 05:46:47",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+387,"2026-10-17 05:46:16",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+388,"2026-10-17 05:39:53",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+389,"2026-10-17 02:59:03",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,23.76,65.79,N/A,6.62,N/A,N/A,N/A,N/A,3.07,87.4,Subur,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+390,"2026-10-16 22:55:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+391,"2026-10-16 22:55:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+392,"2026-10-16 22:55:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+393,"2026-10-16 22:55:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+394,"2026-10-16 22:55:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+395,"2026-10-16 22:55:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,40.00,35.00,30.00,5.00,N/A,N/A,N/A,N/A,80.00,N/A,critical,Kuning,17.72,BURUK,
+396,"2026-10-16 22:55:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+397,"2026-10-16 22:55:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+398,"2026-10-16 22:55:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+399,"2026-10-16 22:55:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,29.50,65.00,68.00,6.30,N/A,N/A,N/A,N/A,88.00,75.0,optimal,Hijau,79.23,BAIK,"Simulator IoT payload test"
+400,"2026-10-16 22:55:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,28.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,"Hijau Segar",85.29,BAIK,"API ingestion fuzzy check"
+401,"2026-10-16 22:55:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+402,"2026-10-16 22:55:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+403,"2026-10-16 22:55:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+404,"2026-10-16 22:55:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+405,"2026-10-16 22:55:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+406,"2026-10-16 22:55:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+407,"2026-10-16 22:55:26",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+408,"2026-10-16 22:55:24",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+409,"2026-10-16 22:55:24",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+410,"2026-10-16 22:55:24",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+411,"2026-10-16 22:55:24",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+412,"2026-10-16 22:55:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+413,"2026-10-16 22:55:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+414,"2026-10-16 22:55:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+415,"2026-10-16 22:55:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+416,"2026-10-16 22:55:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+417,"2026-10-16 22:55:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+418,"2026-10-16 22:55:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+419,"2026-10-16 22:55:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+420,"2026-10-16 22:55:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+421,"2026-10-16 22:55:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",84.84,BAIK,"Entri web form update"
+422,"2026-10-16 22:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,40.00,35.00,30.00,5.00,N/A,N/A,N/A,N/A,80.00,N/A,critical,Kuning,17.72,BURUK,
+423,"2026-10-16 22:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+424,"2026-10-16 22:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+425,"2026-10-16 22:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+426,"2026-10-16 22:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,29.50,65.00,68.00,6.30,N/A,N/A,N/A,N/A,88.00,75.0,optimal,Hijau,79.23,BAIK,"Simulator IoT payload test"
+427,"2026-10-16 22:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,28.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,"Hijau Segar",85.29,BAIK,"API ingestion fuzzy check"
+428,"2026-10-16 22:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+429,"2026-10-16 22:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+430,"2026-10-16 22:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+431,"2026-10-16 22:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+432,"2026-10-16 22:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+433,"2026-10-16 22:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+434,"2026-10-16 22:54:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+435,"2026-10-16 22:54:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+436,"2026-10-16 22:54:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+437,"2026-10-16 22:54:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,29.50,65.00,68.00,6.30,N/A,N/A,N/A,N/A,88.00,75.0,optimal,Hijau,79.23,BAIK,"Simulator IoT payload test"
+438,"2026-10-16 22:54:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,28.00,70.00,75.00,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,"Hijau Segar",85.29,BAIK,"API ingestion fuzzy check"
+439,"2026-10-16 22:54:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+440,"2026-10-16 22:54:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+441,"2026-10-16 22:54:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+442,"2026-10-16 22:54:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+443,"2026-10-16 22:54:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+444,"2026-10-16 22:54:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+445,"2026-10-16 22:52:41",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,40.00,35.00,30.00,5.00,N/A,N/A,N/A,N/A,80.00,N/A,critical,Kuning,17.72,BURUK,
+446,"2026-10-16 22:52:41",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+447,"2026-10-16 22:52:39",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+448,"2026-10-16 22:52:37",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+449,"2026-10-16 22:52:36",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,api,'-,26.50,68.00,72.00,6.40,N/A,N/A,N/A,N/A,85.00,N/A,optimal,"Hijau Segar",85.66,BAIK,"Pengujian inferensi web form Phase 15"
+450,"2026-10-16 22:52:36",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+451,"2026-10-16 22:52:36",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,28.00,70.00,65.00,6.20,N/A,N/A,N/A,N/A,75.00,N/A,optimal,Hijau,85.29,BAIK,
+452,"2026-10-16 22:52:36",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,95.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,N/A,N/A,
+453,"2026-10-16 22:52:36",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+454,"2026-10-16 22:50:59",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+455,"2026-10-16 22:50:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+456,"2026-10-16 22:50:15",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+457,"2026-10-16 22:50:15",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+458,"2026-10-16 22:50:15",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+459,"2026-10-16 22:50:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+460,"2026-10-16 22:50:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+461,"2026-10-16 22:50:09",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+462,"2026-10-16 22:50:06",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+463,"2026-10-16 22:50:06",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+464,"2026-10-16 22:50:05",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+465,"2026-10-16 22:50:05",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+466,"2026-10-16 22:50:04",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+467,"2026-10-16 22:50:04",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+468,"2026-10-16 22:50:04",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+469,"2026-10-16 22:50:04",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+470,"2026-10-16 22:50:04",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+471,"2026-10-16 22:50:04",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+472,"2026-10-16 22:50:03",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+473,"2026-10-16 22:50:03",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+474,"2026-10-16 22:50:03",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+475,"2026-10-16 22:50:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",84.84,BAIK,"Entri web form update"
+476,"2026-10-16 22:45:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+477,"2026-10-16 22:45:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+478,"2026-10-16 22:45:04",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+479,"2026-10-16 22:40:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+480,"2026-10-16 22:40:04",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+481,"2026-10-16 22:40:03",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+482,"2026-10-16 22:36:41",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+483,"2026-10-16 22:36:41",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+484,"2026-10-16 22:36:41",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+485,"2026-10-16 22:36:40",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+486,"2026-10-16 22:36:39",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+487,"2026-10-16 22:36:34",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+488,"2026-10-16 22:36:31",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+489,"2026-10-16 22:36:31",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+490,"2026-10-16 22:36:31",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+491,"2026-10-16 22:36:31",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+492,"2026-10-16 22:36:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+493,"2026-10-16 22:36:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+494,"2026-10-16 22:36:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+495,"2026-10-16 22:36:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+496,"2026-10-16 22:36:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+497,"2026-10-16 22:36:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+498,"2026-10-16 22:36:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+499,"2026-10-16 22:36:28",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+500,"2026-10-16 22:36:28",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+501,"2026-10-16 22:36:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Entri web form update"
+502,"2026-10-16 22:35:04",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+503,"2026-10-16 22:31:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+504,"2026-10-16 22:29:52",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+505,"2026-10-16 22:29:52",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+506,"2026-10-16 22:29:52",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+507,"2026-10-16 22:29:51",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+508,"2026-10-16 22:29:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+509,"2026-10-16 22:29:47",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+510,"2026-10-16 22:29:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+511,"2026-10-16 22:29:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+512,"2026-10-16 22:29:44",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+513,"2026-10-16 22:29:44",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+514,"2026-10-16 22:29:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+515,"2026-10-16 22:29:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+516,"2026-10-16 22:29:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+517,"2026-10-16 22:29:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+518,"2026-10-16 22:29:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+519,"2026-10-16 22:29:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+520,"2026-10-16 22:29:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+521,"2026-10-16 22:29:42",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+522,"2026-10-16 22:29:42",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+523,"2026-10-16 22:29:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Entri web form update"
+524,"2026-10-16 22:26:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+525,"2026-10-16 22:26:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+526,"2026-10-16 22:24:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+527,"2026-10-16 22:23:22",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+528,"2026-10-16 22:23:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+529,"2026-10-16 22:23:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+530,"2026-10-16 22:23:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+531,"2026-10-16 22:23:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+532,"2026-10-16 22:23:17",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+533,"2026-10-16 22:23:15",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+534,"2026-10-16 22:23:15",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+535,"2026-10-16 22:23:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+536,"2026-10-16 22:23:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+537,"2026-10-16 22:23:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+538,"2026-10-16 22:23:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+539,"2026-10-16 22:23:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+540,"2026-10-16 22:23:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+541,"2026-10-16 22:23:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+542,"2026-10-16 22:23:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+543,"2026-10-16 22:23:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+544,"2026-10-16 22:23:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+545,"2026-10-16 22:23:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+546,"2026-10-16 22:23:02",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+547,"2026-10-16 22:23:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Entri web form update"
+548,"2026-10-16 22:21:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+549,"2026-10-16 22:20:35",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,SIMULATOR-01,28.00,68.00,N/A,6.20,N/A,N/A,N/A,N/A,50.00,55.0,optimal,Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+550,"2026-10-16 22:19:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+551,"2026-10-16 22:19:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+552,"2026-10-16 22:18:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+553,"2026-10-16 22:14:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+554,"2026-10-16 22:13:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+555,"2026-10-16 22:13:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+556,"2026-10-16 22:08:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+557,"2026-10-16 22:02:05",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+558,"2026-10-16 22:02:05",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+559,"2026-10-16 22:02:05",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+560,"2026-10-16 22:02:04",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+561,"2026-10-16 22:02:01",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+562,"2026-10-16 22:02:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Entri web form update"
+563,"2026-10-16 22:01:59",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+564,"2026-10-16 22:01:59",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+565,"2026-10-16 22:01:59",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+566,"2026-10-16 22:01:59",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+567,"2026-10-16 22:01:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+568,"2026-10-16 22:01:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+569,"2026-10-16 22:01:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+570,"2026-10-16 22:01:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+571,"2026-10-16 22:01:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+572,"2026-10-16 22:01:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+573,"2026-10-16 22:01:57",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+574,"2026-10-16 22:01:57",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+575,"2026-10-16 22:01:57",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+576,"2026-10-16 21:59:24",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+577,"2026-10-16 21:59:24",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+578,"2026-10-16 21:59:24",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+579,"2026-10-16 21:59:24",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+580,"2026-10-16 21:59:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+581,"2026-10-16 21:59:18",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+582,"2026-10-16 21:59:18",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+583,"2026-10-16 21:59:17",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+584,"2026-10-16 21:59:17",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+585,"2026-10-16 21:59:16",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+586,"2026-10-16 21:59:16",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+587,"2026-10-16 21:59:16",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+588,"2026-10-16 21:59:16",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+589,"2026-10-16 21:59:16",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+590,"2026-10-16 21:59:15",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+591,"2026-10-16 21:59:15",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+592,"2026-10-16 21:59:15",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+593,"2026-10-16 21:59:15",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+594,"2026-10-16 21:59:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Entri web form update"
+595,"2026-10-16 21:56:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+596,"2026-10-16 21:54:16",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+597,"2026-10-16 21:51:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+598,"2026-10-16 21:51:57",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+599,"2026-10-16 21:49:16",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+600,"2026-10-16 21:49:15",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+601,"2026-10-16 21:46:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+602,"2026-10-16 21:46:41",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+603,"2026-10-16 21:46:40",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+604,"2026-10-16 21:46:40",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+605,"2026-10-16 21:46:39",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+606,"2026-10-16 21:46:35",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+607,"2026-10-16 21:46:33",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+608,"2026-10-16 21:46:33",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+609,"2026-10-16 21:46:32",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+610,"2026-10-16 21:46:31",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+611,"2026-10-16 21:46:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+612,"2026-10-16 21:46:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+613,"2026-10-16 21:46:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+614,"2026-10-16 21:46:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+615,"2026-10-16 21:46:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+616,"2026-10-16 21:46:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+617,"2026-10-16 21:46:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+618,"2026-10-16 21:46:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+619,"2026-10-16 21:46:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+620,"2026-10-16 21:46:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Entri web form update"
+621,"2026-10-16 21:44:16",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+622,"2026-10-16 21:41:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+623,"2026-10-16 21:39:52",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,75.90,N/A,6.45,N/A,N/A,N/A,N/A,1.73,61.5,Subur,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+624,"2026-10-16 21:39:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+625,"2026-10-16 21:39:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+626,"2026-10-16 21:39:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+627,"2026-10-16 21:39:28",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+628,"2026-10-16 21:39:24",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+629,"2026-10-16 21:39:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+630,"2026-10-16 21:39:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+631,"2026-10-16 21:39:22",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,42.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+632,"2026-10-16 21:39:22",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+633,"2026-10-16 21:39:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+634,"2026-10-16 21:39:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+635,"2026-10-16 21:39:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+636,"2026-10-16 21:39:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+637,"2026-10-16 21:39:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+638,"2026-10-16 21:39:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,36.50,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+639,"2026-10-16 21:39:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+640,"2026-10-16 21:39:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+641,"2026-10-16 21:39:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+642,"2026-10-16 21:39:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Entri web form update"
+643,"2026-10-16 21:36:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+644,"2026-10-16 21:36:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+645,"2026-10-16 21:35:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.50,78.00,N/A,6.85,N/A,N/A,N/A,N/A,55.00,80.0,"Subur & Baik","Hijau Pekat",N/A,N/A,"Data telah dikoreksi oleh admin."
+646,"2026-10-16 21:35:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.20,70.00,N/A,6.70,N/A,N/A,N/A,N/A,50.00,75.0,Optimal,"Hijau Segar",N/A,N/A,"Input data oleh administrator."
+647,"2026-10-16 21:35:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.50,75.00,N/A,6.50,N/A,N/A,N/A,N/A,45.00,70.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi uji coba oleh pengamat lapangan."
+648,"2026-10-16 21:35:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,70.00,75.00,6.50,2.20,35000.0,24.00,90.0,60.00,65.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Observasi detail"
+649,"2026-10-16 21:35:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,75.00,N/A,6.60,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,"Live Dashboard Ingestion Sync"
+650,"2026-10-16 21:35:55",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,65.00,70.00,6.50,5.00,60000.0,35.00,10.0,120.00,95.0,normal,Hijau,N/A,N/A,
+651,"2026-10-16 21:35:55",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,45.00,95.00,95.00,8.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+652,"2026-10-16 21:35:55",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+653,"2026-10-16 21:35:55",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,72.00,N/A,6.20,2.10,N/A,N/A,N/A,75.00,65.0,abnormal,Kuning,N/A,N/A,
+654,"2026-10-16 21:35:55",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.00,72.00,N/A,6.20,N/A,N/A,N/A,N/A,75.00,65.0,optimal,Hijau,N/A,N/A,
+655,"2026-10-16 21:35:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+656,"2026-10-16 21:35:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,39.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+657,"2026-10-16 21:35:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,4.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+658,"2026-10-16 21:35:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,
+659,"2026-10-16 21:35:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,65.00,6.50,2.00,30000.0,23.00,80.0,80.00,70.0,optimal,Hijau,N/A,N/A,
+660,"2026-10-16 21:35:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.00,75.00,73.00,6.50,2.40,30000.0,23.50,85.0,50.00,60.0,"Subur & Baik","Hijau Segar",N/A,N/A,"Entri web form update"
+661,"2026-10-16 21:34:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+662,"2026-10-16 21:31:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+663,"2026-10-16 21:30:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+664,"2026-10-16 21:29:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+665,"2026-10-16 21:29:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+666,"2026-10-16 21:25:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+667,"2026-10-16 21:25:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,35.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+668,"2026-10-16 21:24:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+669,"2026-10-16 21:20:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,37.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+670,"2026-10-16 20:03:50",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.70,65.75,N/A,6.38,N/A,N/A,N/A,N/A,3.16,73.8,"Perlu Perhatian","Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+671,"2026-10-16 19:14:02",8,"Melon Pariatur Plot 91656",'-,"Greenhouse 5 - Sektor Barat",api,'-,26.74,66.80,N/A,7.06,N/A,N/A,N/A,N/A,1.93,63.3,"Perlu Perhatian","Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+672,"2026-10-16 19:08:59",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,30.85,78.79,N/A,7.06,N/A,N/A,N/A,N/A,3.32,88.4,Subur,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+673,"2026-10-16 17:55:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+674,"2026-10-16 17:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+675,"2026-10-16 17:54:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+676,"2026-10-16 17:52:39",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,35.00,50.00,45.00,5.50,N/A,N/A,N/A,N/A,75.00,N/A,warning,Kuning,17.72,BURUK,
+677,"2026-10-16 17:52:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.10,76.15,N/A,7.26,N/A,N/A,N/A,N/A,3.31,79.4,Baik,"Hijau Pekat",N/A,N/A,ObservasiSpesialUnik6ad241698a6f1
+678,"2026-10-16 15:11:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,31.18,81.11,N/A,7.26,N/A,N/A,N/A,N/A,1.97,82.0,"Perlu Perhatian","Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+679,"2026-10-16 13:39:28",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,81.23,N/A,6.31,N/A,N/A,N/A,N/A,1.40,71.5,Baik,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+680,"2026-10-16 11:28:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.36,70.28,N/A,6.55,N/A,N/A,N/A,N/A,3.93,91.8,"Perlu Perhatian","Hijau Segar",N/A,N/A,ObservasiSpesialUnik6ad2364e37251
+681,"2026-10-16 09:49:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,23.78,81.14,N/A,7.58,N/A,N/A,N/A,N/A,2.70,87.5,Optimal,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+682,"2026-10-16 07:32:40",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.34,75.43,N/A,6.99,N/A,N/A,N/A,N/A,3.98,81.7,Baik,"Hijau Segar",N/A,N/A,ObservasiSpesialUnik6ad24489008fe
+683,"2026-10-16 05:27:37",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,23.57,70.24,N/A,6.58,N/A,N/A,N/A,N/A,2.15,64.5,Subur,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+684,"2026-10-16 04:47:35",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.04,77.92,N/A,7.43,N/A,N/A,N/A,N/A,1.49,73.6,Subur,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+685,"2026-10-16 03:32:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.59,81.25,N/A,6.72,N/A,N/A,N/A,N/A,1.31,61.5,Optimal,"Hijau Pekat",N/A,N/A,ObservasiSpesialUnik6ad3149102855
+686,"2026-10-15 21:42:24",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,24.50,77.49,N/A,7.03,N/A,N/A,N/A,N/A,2.30,60.2,Baik,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+687,"2026-10-15 20:32:35",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.52,81.36,N/A,6.50,N/A,N/A,N/A,N/A,3.81,88.9,Baik,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+688,"2026-10-15 18:46:05",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.49,78.18,N/A,6.58,N/A,N/A,N/A,N/A,2.52,83.2,Baik,"Hijau Pekat",N/A,N/A,ObservasiSpesialUnik6ad23bcc4225f
+689,"2026-10-15 16:53:12",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,69.65,N/A,6.72,N/A,N/A,N/A,N/A,1.39,59.6,"Perlu Perhatian","Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+690,"2026-10-15 16:04:34",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,30.89,68.54,N/A,6.33,N/A,N/A,N/A,N/A,1.46,63.6,"Perlu Perhatian","Hijau Segar",N/A,N/A,ObservasiSpesialUnik6ad2ee0ccb3c8
+691,"2026-10-15 10:27:01",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,30.40,82.18,N/A,6.90,N/A,N/A,N/A,N/A,1.36,69.0,Subur,"Hijau Pekat",N/A,N/A,ObservasiSpesialUnik6ad309f8b346c
+692,"2026-10-15 09:35:47",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,24.16,70.79,N/A,6.53,N/A,N/A,N/A,N/A,2.08,55.3,Baik,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+693,"2026-10-15 08:55:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.79,79.07,N/A,7.51,N/A,N/A,N/A,N/A,3.92,89.8,Optimal,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+694,"2026-10-15 06:22:16",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.49,67.93,N/A,6.41,N/A,N/A,N/A,N/A,2.44,60.4,Subur,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+695,"2026-10-15 05:43:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.44,67.42,N/A,7.02,N/A,N/A,N/A,N/A,3.37,77.8,Subur,"Hijau Segar",N/A,N/A,ObservasiSpesialUnik6ad2f0fc89df1
+696,"2026-10-15 02:29:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.21,79.87,N/A,7.13,N/A,N/A,N/A,N/A,3.02,91.7,Subur,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+697,"2026-10-15 00:58:48",43,"Melon Aut Plot 63814",'-,"Greenhouse 3 - Sektor Utara",api,'-,23.95,82.69,N/A,6.30,N/A,N/A,N/A,N/A,1.57,63.4,Subur,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+698,"2026-10-14 22:16:37",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,30.74,81.31,N/A,6.96,N/A,N/A,N/A,N/A,1.75,64.9,Baik,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+699,"2026-10-14 21:35:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,24.75,68.57,N/A,6.50,N/A,N/A,N/A,N/A,1.93,63.1,Subur,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+700,"2026-10-14 18:22:12",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.59,83.70,N/A,6.59,N/A,N/A,N/A,N/A,2.93,81.6,Subur,"Hijau Muda",N/A,N/A,ObservasiSpesialUnik6ad309a1757be
+701,"2026-10-14 16:14:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,76.61,N/A,6.63,N/A,N/A,N/A,N/A,3.33,82.1,Baik,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+702,"2026-10-14 13:43:19",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+703,"2026-10-14 13:25:34",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.03,66.18,N/A,6.62,N/A,N/A,N/A,N/A,3.14,62.3,"Perlu Perhatian","Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+704,"2026-10-14 13:23:55",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+705,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+706,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+707,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+708,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+709,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+710,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+711,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+712,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+713,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+714,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+715,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+716,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+717,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+718,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+719,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+720,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+721,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+722,"2026-10-14 13:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,3.80,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+723,"2026-10-14 12:38:41",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+724,"2026-10-14 12:37:13",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+725,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+726,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+727,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+728,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+729,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+730,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+731,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+732,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+733,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+734,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+735,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+736,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+737,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+738,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+739,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+740,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+741,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+742,"2026-10-14 12:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,41.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,warning,Kuning,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+743,"2026-10-14 12:13:02",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+744,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+745,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+746,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+747,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+748,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+749,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+750,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+751,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+752,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+753,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+754,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+755,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+756,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+757,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+758,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+759,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+760,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+761,"2026-10-14 12:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,38.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,abnormal,Kuning,N/A,N/A,
+762,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,84.89,BAIK,"Simulated sensor data (IoT Prototype)"
+763,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,84.89,BAIK,"Simulated sensor data (IoT Prototype)"
+764,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,84.89,BAIK,"Simulated sensor data (IoT Prototype)"
+765,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,84.89,BAIK,"Simulated sensor data (IoT Prototype)"
+766,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,84.89,BAIK,"Simulated sensor data (IoT Prototype)"
+767,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,84.89,BAIK,"Simulated sensor data (IoT Prototype)"
+768,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,84.89,BAIK,"Simulated sensor data (IoT Prototype)"
+769,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,84.89,BAIK,"Simulated sensor data (IoT Prototype)"
+770,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,84.89,BAIK,"Simulated sensor data (IoT Prototype)"
+771,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,84.89,BAIK,"Simulated sensor data (IoT Prototype)"
+772,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+773,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+774,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+775,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+776,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+777,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+778,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+779,"2026-10-14 11:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.00,69.50,72.00,6.30,2.15,N/A,N/A,N/A,50.00,55.0,"Subur & Baik",Hijau,N/A,N/A,"Simulated sensor data (IoT Prototype)"
+780,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+781,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+782,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+783,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+784,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+785,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+786,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+787,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+788,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+789,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+790,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+791,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+792,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+793,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+794,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+795,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+796,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+797,"2026-10-14 11:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.80,75.20,N/A,6.20,N/A,N/A,N/A,N/A,60.00,58.0,optimal,"Hijau Segar",N/A,N/A,"Payload legacy lama tanpa parameter baru"
+798,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",85.23,BAIK,"Uji lengkap 8 sensor telemetri"
+799,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",85.23,BAIK,"Uji lengkap 8 sensor telemetri"
+800,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",85.23,BAIK,"Uji lengkap 8 sensor telemetri"
+801,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",85.23,BAIK,"Uji lengkap 8 sensor telemetri"
+802,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",85.23,BAIK,"Uji lengkap 8 sensor telemetri"
+803,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",85.23,BAIK,"Uji lengkap 8 sensor telemetri"
+804,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",85.23,BAIK,"Uji lengkap 8 sensor telemetri"
+805,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",85.23,BAIK,"Uji lengkap 8 sensor telemetri"
+806,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",85.23,BAIK,"Uji lengkap 8 sensor telemetri"
+807,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",85.23,BAIK,"Uji lengkap 8 sensor telemetri"
+808,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",N/A,N/A,"Uji lengkap 8 sensor telemetri"
+809,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",N/A,N/A,"Uji lengkap 8 sensor telemetri"
+810,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",N/A,N/A,"Uji lengkap 8 sensor telemetri"
+811,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",N/A,N/A,"Uji lengkap 8 sensor telemetri"
+812,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",N/A,N/A,"Uji lengkap 8 sensor telemetri"
+813,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",N/A,N/A,"Uji lengkap 8 sensor telemetri"
+814,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",N/A,N/A,"Uji lengkap 8 sensor telemetri"
+815,"2026-10-14 11:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.50,72.00,68.50,6.45,2.30,32000.0,24.20,88.0,78.50,65.0,optimal,"Hijau Segar",N/A,N/A,"Uji lengkap 8 sensor telemetri"
+816,"2026-10-14 10:54:01",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+817,"2026-10-14 10:52:27",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+818,"2026-10-14 10:46:47",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+819,"2026-10-14 10:46:16",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+820,"2026-10-14 10:39:53",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+821,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+822,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+823,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+824,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+825,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+826,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+827,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+828,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+829,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+830,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+831,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+832,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+833,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+834,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+835,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+836,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+837,"2026-10-14 10:00:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.00,N/A,6.50,N/A,N/A,N/A,N/A,80.00,70.0,optimal,Hijau,N/A,N/A,
+838,"2026-10-14 07:38:46",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,23.51,79.11,N/A,6.56,N/A,N/A,N/A,N/A,3.32,68.9,Baik,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+839,"2026-10-14 07:10:45",86,"Melon Earum Plot 5449",'-,"Greenhouse 4 - Sektor Timur",api,'-,28.41,84.46,N/A,7.16,N/A,N/A,N/A,N/A,1.78,88.5,"Perlu Perhatian","Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+840,"2026-10-14 05:49:17",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.47,81.70,N/A,6.70,N/A,N/A,N/A,N/A,3.66,64.9,Optimal,"Hijau Pekat",N/A,N/A,ObservasiSpesialUnik6ad2f15a78d48
+841,"2026-10-14 05:03:41",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.09,74.10,N/A,6.39,N/A,N/A,N/A,N/A,1.68,70.3,Optimal,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+842,"2026-10-14 04:11:13",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.81,65.90,N/A,7.29,N/A,N/A,N/A,N/A,2.01,78.3,Subur,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+843,"2026-10-14 02:20:08",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.58,70.69,N/A,6.98,N/A,N/A,N/A,N/A,3.25,60.1,Optimal,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+844,"2026-10-13 23:38:09",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.13,74.42,N/A,7.21,N/A,N/A,N/A,N/A,1.75,65.0,Baik,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+845,"2026-10-13 23:05:20",93,"Melon Voluptatem Plot 47196",'-,"Greenhouse 2 - Sektor Selatan",api,'-,28.46,70.43,N/A,6.33,N/A,N/A,N/A,N/A,1.23,59.2,"Perlu Perhatian","Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+846,"2026-10-13 22:55:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+847,"2026-10-13 22:54:56",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+848,"2026-10-13 22:54:28",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+849,"2026-10-13 22:52:38",65,"Golden Melon Greenhouse Test",'-,Greenhouse-B1,manual,'-,27.00,70.00,70.00,6.50,N/A,N/A,N/A,N/A,80.00,N/A,optimal,Hijau,86.17,BAIK,
+850,"2026-10-13 13:04:27",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.59,67.58,N/A,6.45,N/A,N/A,N/A,N/A,1.21,60.8,"Perlu Perhatian","Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+851,"2026-10-13 08:16:34",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,24.25,82.47,N/A,7.41,N/A,N/A,N/A,N/A,2.14,90.5,Subur,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+852,"2026-10-13 05:41:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.09,78.97,N/A,7.03,N/A,N/A,N/A,N/A,1.77,64.7,Subur,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+853,"2026-10-13 03:30:13",127,"Melon Neque Plot 43472",'-,"Greenhouse 1 - Sektor Selatan",api,'-,30.87,69.63,N/A,6.33,N/A,N/A,N/A,N/A,2.15,66.9,"Perlu Perhatian","Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+854,"2026-10-13 02:43:32",29,"Melon Assumenda Plot 84946",'-,"Greenhouse 2 - Sektor Utara",api,'-,24.82,79.02,N/A,7.21,N/A,N/A,N/A,N/A,1.33,78.1,"Perlu Perhatian","Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+855,"2026-10-13 00:54:46",79,"Melon Eos Plot 53575",'-,"Greenhouse 4 - Sektor Utara",api,'-,28.25,82.07,N/A,6.99,N/A,N/A,N/A,N/A,2.63,75.5,Baik,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+856,"2026-10-13 00:45:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,66.66,N/A,7.11,N/A,N/A,N/A,N/A,2.50,62.4,Optimal,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+857,"2026-10-13 00:26:44",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,31.34,76.08,N/A,7.08,N/A,N/A,N/A,N/A,2.26,78.1,Optimal,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+858,"2026-10-12 16:29:33",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.59,N/A,6.28,N/A,N/A,N/A,N/A,2.35,68.6,Optimal,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+859,"2026-10-12 13:43:21",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,25.50,65.00,70.00,6.20,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Past-6ad319092764d,"Hijau Segar",N/A,N/A,"Catatan masa lalu 6ad3190927663"
+860,"2026-10-12 13:39:16",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,25.50,65.00,70.00,6.20,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Past-6ad31814f1adc,"Hijau Segar",N/A,N/A,"Catatan masa lalu 6ad31814f1aee"
+861,"2026-10-12 13:26:36",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.59,71.29,N/A,6.86,N/A,N/A,N/A,N/A,3.35,69.8,Baik,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+862,"2026-10-12 13:23:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,25.50,65.00,70.00,6.20,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Past-6ad3147cab7c0,"Hijau Segar",N/A,N/A,"Catatan masa lalu 6ad3147cab7d2"
+863,"2026-10-12 12:38:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,25.50,65.00,70.00,6.20,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Past-6ad309e316261,"Hijau Segar",N/A,N/A,"Catatan masa lalu 6ad309e316274"
+864,"2026-10-12 12:37:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,25.50,65.00,70.00,6.20,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Past-6ad3098aa9c76,"Hijau Segar",N/A,N/A,"Catatan masa lalu 6ad3098aa9c8d"
+865,"2026-10-12 12:36:34",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,25.50,65.00,70.00,6.20,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Past-6ad309628c88a,"Hijau Segar",N/A,N/A,"Catatan masa lalu 6ad309628c8a1"
+866,"2026-10-12 12:34:35",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,25.50,65.00,70.00,6.20,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Past-6ad308eb4bb0d,"Hijau Segar",N/A,N/A,"Catatan masa lalu 6ad308eb4bb40"
+867,"2026-10-12 12:33:30",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,25.50,65.00,70.00,6.20,N/A,N/A,N/A,N/A,N/A,N/A,Kondisi-Past-6ad308aa64a21,"Hijau Segar",N/A,N/A,"Catatan masa lalu 6ad308aa64a36"
+868,"2026-10-12 12:31:01",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",web,'-,25.50,65.00,70.00,6.20,N/A,N/A,N/A,N/A,N/A,N/A,"Sehat Normal","Hijau Segar",N/A,N/A,"Catatan masa lalu 6ad30815d6da5"
+869,"2026-10-12 12:02:20",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,24.38,74.52,N/A,6.81,N/A,N/A,N/A,N/A,2.32,80.1,Subur,"Hijau Pekat",N/A,N/A,ObservasiSpesialUnik6ad248f1cb1f0
+870,"2026-10-12 06:07:44",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,24.33,65.69,N/A,6.65,N/A,N/A,N/A,N/A,1.69,76.0,"Perlu Perhatian","Hijau Segar",N/A,N/A,ObservasiSpesialUnik6ad303e17e6a8
+871,"2026-10-11 23:58:48",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,23.17,79.36,N/A,6.33,N/A,N/A,N/A,N/A,2.24,66.8,Optimal,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+872,"2026-10-11 22:50:35",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.64,80.60,N/A,6.33,N/A,N/A,N/A,N/A,1.87,65.2,"Perlu Perhatian","Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+873,"2026-10-11 22:14:15",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,70.69,N/A,7.08,N/A,N/A,N/A,N/A,1.64,72.7,Baik,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+874,"2026-10-11 19:56:38",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,31.12,80.49,N/A,6.94,N/A,N/A,N/A,N/A,3.75,70.2,Optimal,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+875,"2026-10-11 19:13:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,24.01,73.03,N/A,6.74,N/A,N/A,N/A,N/A,2.80,70.4,Baik,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+876,"2026-10-11 19:09:11",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.48,68.41,N/A,6.37,N/A,N/A,N/A,N/A,2.57,71.4,Optimal,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+877,"2026-10-11 16:33:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.88,67.13,N/A,6.25,N/A,N/A,N/A,N/A,3.93,84.1,Subur,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+878,"2026-10-11 15:03:28",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,30.86,73.25,N/A,6.62,N/A,N/A,N/A,N/A,3.24,80.0,Subur,"Hijau Pekat",N/A,N/A,ObservasiSpesialUnik6ad242efb9ef1
+879,"2026-10-11 14:27:19",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,65.56,N/A,7.24,N/A,N/A,N/A,N/A,1.49,59.9,Optimal,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+880,"2026-10-11 04:51:47",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.01,77.49,N/A,7.52,N/A,N/A,N/A,N/A,2.64,70.2,"Perlu Perhatian","Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+881,"2026-10-11 03:50:24",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.34,71.62,N/A,7.11,N/A,N/A,N/A,N/A,1.36,81.5,Baik,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+882,"2026-10-11 03:46:55",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.52,73.20,N/A,6.52,N/A,N/A,N/A,N/A,2.46,57.1,Optimal,"Hijau Segar",N/A,N/A,ObservasiSpesialUnik6ad3191e4cb98
+883,"2026-10-11 00:49:32",15,"Melon Cupiditate Plot 98539",'-,"Greenhouse 1 - Sektor Utara",api,'-,23.20,80.48,N/A,7.10,N/A,N/A,N/A,N/A,1.33,79.1,Baik,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+884,"2026-10-10 22:37:27",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,67.70,N/A,6.56,N/A,N/A,N/A,N/A,2.51,68.0,Optimal,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+885,"2026-10-10 14:12:12",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.61,83.57,N/A,6.84,N/A,N/A,N/A,N/A,2.41,70.0,Subur,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+886,"2026-10-10 12:13:19",168,"Melon Nobis Plot 4731",'-,"Greenhouse 1 - Sektor Barat",api,'-,28.38,80.23,N/A,7.25,N/A,N/A,N/A,N/A,2.66,56.1,Subur,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+887,"2026-10-10 05:21:53",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.86,79.65,N/A,7.59,N/A,N/A,N/A,N/A,2.38,69.9,Subur,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+888,"2026-10-10 05:17:47",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,24.36,72.58,N/A,6.73,N/A,N/A,N/A,N/A,3.22,58.6,"Perlu Perhatian","Hijau Pekat",N/A,N/A,ObservasiSpesialUnik6ad238cfd1af3
+889,"2026-10-10 03:30:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,23.88,75.66,N/A,6.21,N/A,N/A,N/A,N/A,1.31,85.6,Baik,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+890,"2026-10-10 03:29:01",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,79.91,N/A,6.60,N/A,N/A,N/A,N/A,1.21,73.6,"Perlu Perhatian","Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+891,"2026-10-10 02:26:07",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.20,70.93,N/A,7.57,N/A,N/A,N/A,N/A,1.88,67.7,Subur,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+892,"2026-10-10 02:15:26",139,"Melon Laborum Plot 74092",'-,"Greenhouse 1 - Sektor Barat",api,'-,27.59,75.71,N/A,6.25,N/A,N/A,N/A,N/A,2.97,56.4,"Perlu Perhatian","Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+893,"2026-10-09 21:30:06",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,76.29,N/A,6.85,N/A,N/A,N/A,N/A,1.92,55.8,Subur,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+894,"2026-10-09 20:57:45",36,"Melon Ea Plot 89459",'-,"Greenhouse 5 - Sektor Timur",api,'-,23.80,76.01,N/A,6.72,N/A,N/A,N/A,N/A,3.27,77.0,Baik,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+895,"2026-10-09 19:24:51",50,"Melon Vitae Plot 60443",'-,"Greenhouse 1 - Sektor Barat",api,'-,27.00,83.47,N/A,6.59,N/A,N/A,N/A,N/A,2.74,79.4,Baik,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+896,"2026-10-09 17:07:48",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,31.06,75.02,N/A,6.74,N/A,N/A,N/A,N/A,2.45,70.8,Optimal,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+897,"2026-10-09 11:45:14",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,31.10,76.65,N/A,7.03,N/A,N/A,N/A,N/A,2.48,81.0,"Perlu Perhatian","Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+898,"2026-10-09 11:22:15",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,79.85,N/A,7.29,N/A,N/A,N/A,N/A,1.92,65.2,Baik,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+899,"2026-10-09 06:59:33",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.15,71.85,N/A,6.44,N/A,N/A,N/A,N/A,3.33,82.4,"Perlu Perhatian","Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+900,"2026-10-09 02:30:29",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,65.49,N/A,6.37,N/A,N/A,N/A,N/A,2.46,83.4,Subur,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+901,"2026-10-08 23:29:42",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,82.96,N/A,6.69,N/A,N/A,N/A,N/A,1.62,67.8,"Perlu Perhatian","Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+902,"2026-10-08 19:36:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,30.18,65.21,N/A,6.37,N/A,N/A,N/A,N/A,2.08,71.4,"Perlu Perhatian","Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+903,"2026-10-08 16:50:31",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,66.35,N/A,6.61,N/A,N/A,N/A,N/A,3.34,74.4,Baik,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+904,"2026-10-08 13:46:05",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,30.71,81.96,N/A,7.53,N/A,N/A,N/A,N/A,2.18,64.2,Subur,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+905,"2026-10-08 10:09:53",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,68.46,N/A,6.26,N/A,N/A,N/A,N/A,2.18,64.2,Subur,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+906,"2026-10-08 09:45:49",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.55,84.46,N/A,7.39,N/A,N/A,N/A,N/A,2.08,86.4,Optimal,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+907,"2026-10-08 05:16:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.11,66.27,N/A,6.81,N/A,N/A,N/A,N/A,2.53,89.1,Subur,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+908,"2026-10-08 02:54:47",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,23.25,74.41,N/A,7.60,N/A,N/A,N/A,N/A,3.43,77.1,"Perlu Perhatian","Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+909,"2026-10-07 23:24:54",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,74.76,N/A,7.52,N/A,N/A,N/A,N/A,2.54,84.2,"Perlu Perhatian","Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+910,"2026-10-07 22:09:45",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.00,71.72,N/A,7.39,N/A,N/A,N/A,N/A,1.30,55.2,Baik,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+911,"2026-10-07 21:30:42",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.89,68.60,N/A,7.12,N/A,N/A,N/A,N/A,2.28,59.8,Optimal,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+912,"2026-10-07 20:35:53",100,"Melon Labore Plot 8960",'-,"Greenhouse 1 - Sektor Utara",api,'-,26.37,73.08,N/A,6.25,N/A,N/A,N/A,N/A,1.67,82.4,Baik,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+913,"2026-10-07 16:55:52",72,"Melon Et Plot 634",'-,"Greenhouse 4 - Sektor Selatan",api,'-,24.02,65.38,N/A,6.32,N/A,N/A,N/A,N/A,3.84,63.0,"Perlu Perhatian","Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+914,"2026-10-07 15:53:38",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.57,71.21,N/A,6.30,N/A,N/A,N/A,N/A,2.10,83.8,Subur,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+915,"2026-10-07 13:41:26",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,25.12,77.40,N/A,6.73,N/A,N/A,N/A,N/A,2.35,61.7,Optimal,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+916,"2026-10-07 13:11:43",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.90,83.54,N/A,7.41,N/A,N/A,N/A,N/A,2.62,90.4,Optimal,"Hijau Muda",N/A,N/A,ObservasiSpesialUnik6ad23c6d25674
+917,"2026-10-07 12:00:33",22,"Melon Ipsum Plot 53831",'-,"Greenhouse 5 - Sektor Utara",api,'-,30.43,69.37,N/A,7.36,N/A,N/A,N/A,N/A,1.66,81.3,Baik,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+918,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+919,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+920,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+921,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+922,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+923,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+924,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+925,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+926,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+927,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+928,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+929,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+930,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+931,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+932,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+933,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+934,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+935,"2026-10-07 10:15:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.10,78.00,N/A,6.70,N/A,N/A,N/A,N/A,88.00,72.0,optimal,Hijau,N/A,N/A,"Specific Ingested Data Check"
+936,"2026-10-07 09:33:51",64,"Melon Est Plot 68356",'-,"Greenhouse 1 - Sektor Utara",api,'-,28.48,69.42,N/A,6.35,N/A,N/A,N/A,N/A,3.46,56.8,Baik,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+937,"2026-10-07 09:27:58",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,29.61,74.33,N/A,6.24,N/A,N/A,N/A,N/A,1.34,64.1,"Perlu Perhatian","Hijau Segar",N/A,N/A,ObservasiSpesialUnik6ad247b73b171
+938,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+939,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+940,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+941,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+942,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+943,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+944,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+945,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+946,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+947,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+948,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+949,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+950,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+951,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+952,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+953,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+954,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+955,"2026-10-07 08:30:00",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.40,74.50,N/A,6.35,N/A,N/A,N/A,N/A,82.00,68.0,optimal,"Hijau Segar",N/A,N/A,"Simulated sensor data (IoT Ingestion Test)"
+956,"2026-10-07 07:14:57",57,"Melon Tempore Plot 63504",'-,"Greenhouse 2 - Sektor Selatan",api,'-,30.95,69.04,N/A,6.23,N/A,N/A,N/A,N/A,2.62,67.9,Optimal,"Hijau Muda",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+957,"2026-10-07 04:43:39",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,28.63,70.60,N/A,7.43,N/A,N/A,N/A,N/A,2.14,55.5,Optimal,"Hijau Pekat",N/A,N/A,"Data observasi simulasi pengujian monitoring."
+958,"2026-10-07 02:04:23",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,27.31,66.86,N/A,7.23,N/A,N/A,N/A,N/A,2.41,84.3,"Perlu Perhatian","Hijau Muda",N/A,N/A,ObservasiSpesialUnik6ad23720c4aad
+959,"2026-10-06 22:29:56",1,"Melon Alarm Test Subject",'-,"Greenhouse Alarm Lab",api,'-,26.02,67.88,N/A,6.27,N/A,N/A,N/A,N/A,1.20,82.9,Subur,"Hijau Segar",N/A,N/A,"Data observasi simulasi pengujian monitoring."
