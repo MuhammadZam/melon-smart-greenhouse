@@ -1,0 +1,39 @@
+{
+  "rect": {
+    "x": 0,
+    "y": 0,
+    "width": 375,
+    "height": 812,
+    "top": 0,
+    "right": 375,
+    "bottom": 812,
+    "left": 0
+  },
+  "style": null,
+  "display": "flex",
+  "position": "fixed",
+  "active": "<input type=\"text\" id=\"modal-command-notes\" x-model=\"commandNotes\" placeholder=\"Misal: Uji coba fertigasi pagi hari...\" class=\"w-full px-3 py-2 rounded-xl text-xs bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500\">",
+  "ancestors": [
+    {
+      "tag": "DIV",
+      "classes": "space-y-6 max-w-7xl mx-auto",
+      "transform": "none",
+      "filter": "none",
+      "backdrop": "none"
+    },
+    {
+      "tag": "MAIN",
+      "classes": "flex-1 p-4 sm:p-6 lg:p-8 space-y-6 max-w-7xl w-full mx-auto",
+      "transform": "none",
+      "filter": "none",
+      "backdrop": "none"
+    },
+    {
+      "tag": "DIV",
+      "classes": "app-shell lg:pl-64 flex flex-col min-h-screen",
+      "transform": "none",
+      "filter": "none",
+      "backdrop": "none"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ namespace Tests\Feature\Api;
 use App\Models\Monitoring;
 use App\Models\Plant;
 use App\Models\User;
-use Tests\TestCase;
+use Tests\ApiTestCase as TestCase;
 
 class MonitoringIngestionTest extends TestCase
 {

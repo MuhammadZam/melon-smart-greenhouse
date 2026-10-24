@@ -1,0 +1,100 @@
+ M .gitignore
+M  README.md
+A  SPESIFIKASI_AKHIR_SISTEM_MONITORING_DAN_KONTROL_MELON.docx
+M  app/Http/Controllers/Api/DashboardController.php
+MM app/Http/Controllers/Api/MonitoringController.php
+MM app/Http/Controllers/DashboardController.php
+ M app/Http/Controllers/MonitoringController.php
+MM app/Http/Requests/Api/StoreMonitoringApiRequest.php
+M  app/Http/Requests/StoreMonitoringRequest.php
+M  app/Http/Requests/UpdateMonitoringRequest.php
+MM app/Http/Resources/MonitoringResource.php
+MM app/Models/Monitoring.php
+ M app/Models/MonitoringParameter.php
+ M bootstrap/app.php
+ M composer.json
+ M composer.lock
+ M config/services.php
+A  database/migrations/2026_10_14_000001_add_expanded_sensor_parameters_to_monitorings_table.php
+ M database/seeders/DatabaseSeeder.php
+M  database/seeders/MonitoringParameterSeeder.php
+ M iot-simulator/.env.example
+MM iot-simulator/README.md
+A  iot-simulator/__pycache__/simulator.cpython-313.pyc
+MM iot-simulator/simulator.py
+ M package-lock.json
+ M package.json
+ M phpunit.xml
+ M resources/css/app.css
+ M resources/js/app.js
+ M resources/views/auth/login.blade.php
+MM resources/views/dashboard/index.blade.php
+ M resources/views/layouts/app.blade.php
+ M resources/views/layouts/auth.blade.php
+ M resources/views/layouts/partials/navbar.blade.php
+ M resources/views/layouts/partials/sidebar.blade.php
+MM resources/views/monitorings/create.blade.php
+MM resources/views/monitorings/edit.blade.php
+M  resources/views/monitorings/index.blade.php
+M  resources/views/monitorings/show.blade.php
+ M resources/views/plants/create.blade.php
+ M resources/views/plants/edit.blade.php
+ M routes/api.php
+ M routes/web.php
+ M tests/Feature/Api/DashboardApiTest.php
+ M tests/Feature/Api/MonitoringApiTest.php
+ M tests/Feature/Api/MonitoringIngestionTest.php
+ M tests/Feature/Api/PlantApiTest.php
+AM tests/Feature/MonitoringParameterExpansionTest.php
+ M tests/TestCase.php
+?? SRS_Web_Monitoring_Greenhouse_Melon.docx
+?? app/Console/
+?? app/Contracts/
+?? app/DTO/
+?? app/Exceptions/
+?? app/Http/Controllers/ActuatorController.php
+?? app/Http/Controllers/AlarmController.php
+?? app/Http/Controllers/FuzzyConfigController.php
+?? app/Http/Controllers/FuzzyHistoryController.php
+?? app/Http/Controllers/GoogleSheetsIntegrationController.php
+?? app/Http/Controllers/MonitoringReportController.php
+?? app/Http/Middleware/AuthenticateDeviceToken.php
+?? app/Http/Middleware/AuthenticateInternalApi.php
+?? app/Models/Actuator.php
+?? app/Models/ActuatorCommandLog.php
+?? app/Models/FuzzyInferenceResult.php
+?? app/Models/GoogleSheetsSyncConfig.php
+?? app/Models/GoogleSheetsSyncLog.php
+?? app/Models/IotDevice.php
+?? app/Models/MonitoringAlarm.php
+?? app/Services/
+?? config/dompdf.php
+?? config/fuzzy.php
+?? database/migrations/2026_10_14_145836_create_monitoring_alarms_table.php
+?? database/migrations/2026_10_16_210503_create_actuators_and_actuator_command_logs_tables.php
+?? database/migrations/2026_10_16_220000_create_phase14_telemetry_and_security_tables.php
+?? database/migrations/2026_10_16_230000_create_fuzzy_inference_results_table.php
+?? database/migrations/2026_10_22_000001_create_monitoring_ingestion_keys_table.php
+?? database/seeders/ActuatorSeeder.php
+?? database/seeders/AlarmParameterKeySeeder.php
+?? database/seeders/IotDeviceSeeder.php
+?? docs/
+?? resources/fonts/
+?? resources/views/actuators/
+?? resources/views/admin/
+?? resources/views/alarms/
+?? resources/views/fuzzy/
+?? resources/views/reports/
+?? scratch/
+?? tests/ApiTestCase.php
+?? tests/Feature/ActuatorSimulationTest.php
+?? tests/Feature/AlarmTest.php
+?? tests/Feature/FuzzyLogicInferenceTest.php
+?? tests/Feature/GoogleSheetsTelemetryAndSecurityTest.php
+?? tests/Feature/MonitoringReportTest.php
+?? tests/Feature/Phase16_2ApiSecurityTest.php
+?? tests/Feature/Phase16_2DeduplicationTest.php
+?? tests/Feature/Phase16_2FuzzyZeroTest.php
+?? tests/Support/
+?? tests/Unit/FuzzyMathematicalValidationTest.php
+?? tests/bootstrap.php

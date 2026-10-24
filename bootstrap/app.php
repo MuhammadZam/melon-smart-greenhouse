@@ -13,14 +13,32 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'role' => \App\Http\Middleware\RoleMiddleware::class,
+            'role'        => \App\Http\Middleware\RoleMiddleware::class,
+            'device.auth' => \App\Http\Middleware\AuthenticateDeviceToken::class,
         ]);
+        $middleware->prependToPriorityList(
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\AuthenticateInternalApi::class
+        );
+        $middleware->prependToPriorityList(
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\RoleMiddleware::class
+        );
         $middleware->redirectTo(
             guests: '/login',
             users: '/dashboard'
         );
     })
     ->withExceptions(function (Exceptions $exceptions) {
+        $exceptions->render(function (\Symfony\Component\HttpKernel\Exception\ConflictHttpException $e, \Illuminate\Http\Request $request) {
+            if ($request->is('api/*') || $request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => $e->getMessage(),
+                    'error_code' => 'OBSERVATION_IDENTITY_CONFLICT',
+                ], 409);
+            }
+        });
         $exceptions->render(function (\Illuminate\Database\Eloquent\ModelNotFoundException $e, \Illuminate\Http\Request $request) {
             if ($request->is('api/*') || $request->expectsJson()) {
                 return response()->json([

@@ -1,0 +1,280 @@
+{
+    "date": "2026-10-22",
+    "php": "8.2.12",
+    "laravel": "11.57.0",
+    "db_connection": "sqlite",
+    "app_env": "local",
+    "debug": true,
+    "timezone": "Asia\/Jakarta",
+    "google_mode": "mock",
+    "google_id_present": false,
+    "google_credentials_present": false,
+    "enforce_device_auth": false,
+    "tables": {
+        "migrations": 11,
+        "users": 10,
+        "password_reset_tokens": 0,
+        "sessions": 0,
+        "cache": 0,
+        "cache_locks": 0,
+        "jobs": 0,
+        "job_batches": 0,
+        "failed_jobs": 0,
+        "plants": 150,
+        "monitoring_parameters": 10,
+        "monitorings": 959,
+        "monitoring_alarms": 1,
+        "actuators": 3,
+        "actuator_command_logs": 1,
+        "iot_devices": 3,
+        "google_sheets_sync_configs": 1,
+        "google_sheets_sync_logs": 0,
+        "fuzzy_inference_results": 493
+    },
+    "foreign_keys": {
+        "migrations": [],
+        "users": [],
+        "password_reset_tokens": [],
+        "sessions": [],
+        "cache": [],
+        "cache_locks": [],
+        "jobs": [],
+        "job_batches": [],
+        "failed_jobs": [],
+        "plants": [],
+        "monitoring_parameters": [],
+        "monitorings": [
+            {
+                "id": 0,
+                "seq": 0,
+                "table": "plants",
+                "from": "plant_id",
+                "to": "id",
+                "on_update": "NO ACTION",
+                "on_delete": "CASCADE",
+                "match": "NONE"
+            }
+        ],
+        "monitoring_alarms": [
+            {
+                "id": 0,
+                "seq": 0,
+                "table": "monitorings",
+                "from": "triggered_by_monitoring_id",
+                "to": "id",
+                "on_update": "NO ACTION",
+                "on_delete": "SET NULL",
+                "match": "NONE"
+            },
+            {
+                "id": 1,
+                "seq": 0,
+                "table": "plants",
+                "from": "plant_id",
+                "to": "id",
+                "on_update": "NO ACTION",
+                "on_delete": "CASCADE",
+                "match": "NONE"
+            }
+        ],
+        "actuators": [
+            {
+                "id": 0,
+                "seq": 0,
+                "table": "users",
+                "from": "last_user_id",
+                "to": "id",
+                "on_update": "NO ACTION",
+                "on_delete": "SET NULL",
+                "match": "NONE"
+            }
+        ],
+        "actuator_command_logs": [
+            {
+                "id": 0,
+                "seq": 0,
+                "table": "users",
+                "from": "user_id",
+                "to": "id",
+                "on_update": "NO ACTION",
+                "on_delete": "SET NULL",
+                "match": "NONE"
+            },
+            {
+                "id": 1,
+                "seq": 0,
+                "table": "actuators",
+                "from": "actuator_id",
+                "to": "id",
+                "on_update": "NO ACTION",
+                "on_delete": "CASCADE",
+                "match": "NONE"
+            }
+        ],
+        "iot_devices": [],
+        "google_sheets_sync_configs": [],
+        "google_sheets_sync_logs": [
+            {
+                "id": 0,
+                "seq": 0,
+                "table": "google_sheets_sync_configs",
+                "from": "config_id",
+                "to": "id",
+                "on_update": "NO ACTION",
+                "on_delete": "SET NULL",
+                "match": "NONE"
+            }
+        ],
+        "fuzzy_inference_results": [
+            {
+                "id": 0,
+                "seq": 0,
+                "table": "plants",
+                "from": "plant_id",
+                "to": "id",
+                "on_update": "NO ACTION",
+                "on_delete": "CASCADE",
+                "match": "NONE"
+            },
+            {
+                "id": 1,
+                "seq": 0,
+                "table": "monitorings",
+                "from": "monitoring_id",
+                "to": "id",
+                "on_update": "NO ACTION",
+                "on_delete": "SET NULL",
+                "match": "NONE"
+            }
+        ]
+    },
+    "foreign_key_check": [],
+    "monitoring_sources": [
+        {
+            "source": "api",
+            "count": 738
+        },
+        {
+            "source": "google_sheets",
+            "count": 1
+        },
+        {
+            "source": "manual",
+            "count": 153
+        },
+        {
+            "source": "web",
+            "count": 67
+        }
+    ],
+    "parameters": [
+        {
+            "parameter_name": "Suhu Udara",
+            "parameter_key": "temperature",
+            "unit": "°C",
+            "minimum_value": 22,
+            "maximum_value": 34,
+            "critical_min_value": null,
+            "critical_max_value": 38
+        },
+        {
+            "parameter_name": "pH Nutrisi\/Media",
+            "parameter_key": "ph",
+            "unit": "pH",
+            "minimum_value": 5.8,
+            "maximum_value": 7.2,
+            "critical_min_value": 4.5,
+            "critical_max_value": 8.5
+        },
+        {
+            "parameter_name": "Kelembapan Udara",
+            "parameter_key": "humidity",
+            "unit": "%",
+            "minimum_value": 60,
+            "maximum_value": 85,
+            "critical_min_value": 40,
+            "critical_max_value": 95
+        },
+        {
+            "parameter_name": "Tinggi Tanaman",
+            "parameter_key": "plant_height",
+            "unit": "cm",
+            "minimum_value": 10,
+            "maximum_value": 150,
+            "critical_min_value": null,
+            "critical_max_value": null
+        },
+        {
+            "parameter_name": "Kerapatan Kanopi",
+            "parameter_key": "plant_density",
+            "unit": "%",
+            "minimum_value": 40,
+            "maximum_value": 90,
+            "critical_min_value": null,
+            "critical_max_value": null
+        },
+        {
+            "parameter_name": "Kelembapan Tanah",
+            "parameter_key": "soil_moisture",
+            "unit": "%",
+            "minimum_value": 60,
+            "maximum_value": 80,
+            "critical_min_value": 30,
+            "critical_max_value": null
+        },
+        {
+            "parameter_name": "Konduktivitas Listrik (EC)",
+            "parameter_key": "ec",
+            "unit": "mS\/cm",
+            "minimum_value": 1.8,
+            "maximum_value": 2.8,
+            "critical_min_value": 0.5,
+            "critical_max_value": 4
+        },
+        {
+            "parameter_name": "Intensitas Cahaya",
+            "parameter_key": "light_intensity",
+            "unit": "lux",
+            "minimum_value": 15000,
+            "maximum_value": 50000,
+            "critical_min_value": 5000,
+            "critical_max_value": null
+        },
+        {
+            "parameter_name": "Suhu Nutrisi",
+            "parameter_key": "nutrient_temperature",
+            "unit": "°C",
+            "minimum_value": 20,
+            "maximum_value": 26,
+            "critical_min_value": 15,
+            "critical_max_value": 32
+        },
+        {
+            "parameter_name": "Level Tandon Nutrisi",
+            "parameter_key": "tank_level",
+            "unit": "%",
+            "minimum_value": 40,
+            "maximum_value": 95,
+            "critical_min_value": 25,
+            "critical_max_value": null
+        }
+    ],
+    "last_monitored_at": "2026-10-17 13:43:42",
+    "device_types": [
+        {
+            "type": "esp32_hardware",
+            "is_active": 1,
+            "count": 1
+        },
+        {
+            "type": "google_sheets_gateway",
+            "is_active": 1,
+            "count": 1
+        },
+        {
+            "type": "python_simulator",
+            "is_active": 1,
+            "count": 1
+        }
+    ]
+}

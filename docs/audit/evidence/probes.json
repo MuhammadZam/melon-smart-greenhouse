@@ -1,0 +1,1401 @@
+{
+    "isolation": ":memory:",
+    "guest": {
+        "\/api\/plants": {
+            "status": 200,
+            "has_data": true
+        },
+        "\/api\/monitorings": {
+            "status": 200,
+            "has_data": true
+        },
+        "\/api\/monitorings\/statistics": {
+            "status": 200,
+            "has_data": true
+        },
+        "\/api\/dashboard\/summary": {
+            "status": 200,
+            "has_data": true
+        }
+    },
+    "unknown_plant_device_invalid_optional": {
+        "valid": true,
+        "plant_id": 1,
+        "ec": null
+    },
+    "fuzzy": {
+        "status": "AVAILABLE",
+        "score": 86.17,
+        "raw_score": 86.16666666666667,
+        "numerator": 2412.666666666667,
+        "denominator": 28,
+        "category": "BAIK",
+        "input_snapshot": {
+            "temperature": 27,
+            "humidity": 70,
+            "soil_moisture": 70,
+            "ph": 6.5
+        },
+        "activated_rules": [
+            {
+                "id": "R01",
+                "name": "Kondisi Sempurna Seimbang",
+                "operator": "and",
+                "antecedents": {
+                    "temperature": "optimal",
+                    "humidity": "optimal",
+                    "soil_moisture": "ideal",
+                    "ph": "optimal"
+                },
+                "antecedents_mu": {
+                    "temperature.optimal": 1,
+                    "humidity.optimal": 1,
+                    "soil_moisture.ideal": 1,
+                    "ph.optimal": 1
+                },
+                "consequent": "baik",
+                "weight": 1,
+                "raw_alpha": 1,
+                "firing_strength": 1,
+                "conclusion": "Seluruh parameter iklim mikro dan media tumbuh melon berada dalam rentang ideal.",
+                "recommendation": "Pertahankan rutinitas sirkulasi dan irigasi nutrisi saat ini."
+            },
+            {
+                "id": "R16",
+                "name": "Kondisi Optimal Suhu dan Kelembapan Udara",
+                "operator": "and",
+                "antecedents": {
+                    "temperature": "optimal",
+                    "humidity": "optimal"
+                },
+                "antecedents_mu": {
+                    "temperature.optimal": 1,
+                    "humidity.optimal": 1
+                },
+                "consequent": "baik",
+                "weight": 0.9,
+                "raw_alpha": 1,
+                "firing_strength": 0.9,
+                "conclusion": "Kondisi mikroklimat udara greenhouse sangat nyaman untuk fotosintesis tanaman melon.",
+                "recommendation": "Pertahankan set-point lingkungan dan lanjutkan pemantauan berkala."
+            }
+        ],
+        "consequent_alphas": {
+            "baik": 1
+        }
+    },
+    "fuzzy_config": {
+        "enabled": true,
+        "rule_version": "v1.0-provisional",
+        "validation_status": "PROVISIONAL_FOR_SOFTWARE_TESTING",
+        "method": "Mamdani",
+        "operators": {
+            "and": "min",
+            "or": "max",
+            "implication": "min",
+            "aggregation": "max",
+            "defuzzification": "centroid"
+        },
+        "stale_threshold_hours": 24,
+        "inputs": {
+            "temperature": {
+                "name": "Suhu Udara",
+                "unit": "°C",
+                "min": 10,
+                "max": 50,
+                "sets": {
+                    "dingin": {
+                        "type": "trapezoidal",
+                        "params": [
+                            10,
+                            10,
+                            20,
+                            24
+                        ]
+                    },
+                    "optimal": {
+                        "type": "triangular",
+                        "params": [
+                            22,
+                            27,
+                            32
+                        ]
+                    },
+                    "panas": {
+                        "type": "trapezoidal",
+                        "params": [
+                            29,
+                            34,
+                            50,
+                            50
+                        ]
+                    }
+                }
+            },
+            "humidity": {
+                "name": "Kelembapan Udara",
+                "unit": "%",
+                "min": 0,
+                "max": 100,
+                "sets": {
+                    "kering": {
+                        "type": "trapezoidal",
+                        "params": [
+                            0,
+                            0,
+                            50,
+                            65
+                        ]
+                    },
+                    "optimal": {
+                        "type": "triangular",
+                        "params": [
+                            58,
+                            70,
+                            82
+                        ]
+                    },
+                    "lembap": {
+                        "type": "trapezoidal",
+                        "params": [
+                            75,
+                            85,
+                            100,
+                            100
+                        ]
+                    }
+                }
+            },
+            "soil_moisture": {
+                "name": "Kelembapan Tanah",
+                "unit": "%",
+                "min": 0,
+                "max": 100,
+                "sets": {
+                    "kering": {
+                        "type": "trapezoidal",
+                        "params": [
+                            0,
+                            0,
+                            50,
+                            65
+                        ]
+                    },
+                    "ideal": {
+                        "type": "triangular",
+                        "params": [
+                            58,
+                            70,
+                            82
+                        ]
+                    },
+                    "jenuh": {
+                        "type": "trapezoidal",
+                        "params": [
+                            75,
+                            85,
+                            100,
+                            100
+                        ]
+                    }
+                }
+            },
+            "ph": {
+                "name": "pH Nutrisi\/Media",
+                "unit": "pH",
+                "min": 0,
+                "max": 14,
+                "sets": {
+                    "asam": {
+                        "type": "trapezoidal",
+                        "params": [
+                            0,
+                            0,
+                            5.5,
+                            6
+                        ]
+                    },
+                    "optimal": {
+                        "type": "triangular",
+                        "params": [
+                            5.8,
+                            6.5,
+                            7.2
+                        ]
+                    },
+                    "basa": {
+                        "type": "trapezoidal",
+                        "params": [
+                            6.8,
+                            7.5,
+                            14,
+                            14
+                        ]
+                    }
+                }
+            }
+        },
+        "output": {
+            "name": "Skor Kondisi Greenhouse",
+            "unit": "Index (0-100)",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "sets": {
+                "buruk": {
+                    "type": "trapezoidal",
+                    "params": [
+                        0,
+                        0,
+                        25,
+                        45
+                    ]
+                },
+                "perlu_perhatian": {
+                    "type": "triangular",
+                    "params": [
+                        35,
+                        55,
+                        75
+                    ]
+                },
+                "baik": {
+                    "type": "trapezoidal",
+                    "params": [
+                        65,
+                        80,
+                        100,
+                        100
+                    ]
+                }
+            }
+        },
+        "categories": {
+            "BAIK": {
+                "min_score": 65,
+                "max_score": 100,
+                "color": "emerald",
+                "badge": "bg-emerald-100 text-emerald-800 border-emerald-300",
+                "label": "Kondisi Baik & Optimal"
+            },
+            "PERLU_PERHATIAN": {
+                "min_score": 40,
+                "max_score": 64.99,
+                "color": "amber",
+                "badge": "bg-amber-100 text-amber-800 border-amber-300",
+                "label": "Perlu Perhatian \/ Moderat"
+            },
+            "BURUK": {
+                "min_score": 0,
+                "max_score": 39.99,
+                "color": "rose",
+                "badge": "bg-rose-100 text-rose-800 border-rose-300",
+                "label": "Kondisi Kritis \/ Buruk"
+            }
+        },
+        "rules": [
+            {
+                "id": "R01",
+                "name": "Kondisi Sempurna Seimbang",
+                "antecedents": {
+                    "temperature": "optimal",
+                    "humidity": "optimal",
+                    "soil_moisture": "ideal",
+                    "ph": "optimal"
+                },
+                "operator": "and",
+                "consequent": "baik",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Seluruh parameter iklim mikro dan media tumbuh melon berada dalam rentang ideal.",
+                "recommendation": "Pertahankan rutinitas sirkulasi dan irigasi nutrisi saat ini."
+            },
+            {
+                "id": "R02",
+                "name": "Stres Panas dan Kekeringan Ekstrem",
+                "antecedents": {
+                    "temperature": "panas",
+                    "soil_moisture": "kering"
+                },
+                "operator": "and",
+                "consequent": "buruk",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Suhu lingkungan tinggi disertai kelembapan media yang kering memicu stres air akut pada melon.",
+                "recommendation": "Segera aktifkan sirkulasi udara (exhaust fan) dan pertimbangkan irigasi tambahan."
+            },
+            {
+                "id": "R03",
+                "name": "Panas dan Sangat Lembap (Potensi Jamur)",
+                "antecedents": {
+                    "temperature": "panas",
+                    "humidity": "lembap"
+                },
+                "operator": "and",
+                "consequent": "perlu_perhatian",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Kombinasi suhu panas dan udara lembap menghambat transpirasi tanaman melon serta memicu risiko jamur\/embun tepung.",
+                "recommendation": "Buka ventilasi samping greenhouse atau aktifkan kipas ventilasi untuk menurunkan kelembapan relatif."
+            },
+            {
+                "id": "R04",
+                "name": "Dingin dan Sangat Lembap",
+                "antecedents": {
+                    "temperature": "dingin",
+                    "humidity": "lembap"
+                },
+                "operator": "and",
+                "consequent": "perlu_perhatian",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Suhu dingin dan udara lembap memperlambat metabolisme serta penyerapan nutrisi tanaman.",
+                "recommendation": "Kurangi penyiraman dan periksa sirkulasi udara greenhouse."
+            },
+            {
+                "id": "R05",
+                "name": "Media Asam dan Kekeringan Tanah",
+                "antecedents": {
+                    "ph": "asam",
+                    "soil_moisture": "kering"
+                },
+                "operator": "and",
+                "consequent": "buruk",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Kondisi media asam bersamaan dengan tanah kering berisiko merusak perakaran dan mengunci unsur hara makro.",
+                "recommendation": "Lakukan pengenceran larutan nutrisi dengan air ber-pH netral dan naikkan kelembapan media."
+            },
+            {
+                "id": "R06",
+                "name": "Media Basa dan Media Jenuh Air",
+                "antecedents": {
+                    "ph": "basa",
+                    "soil_moisture": "jenuh"
+                },
+                "operator": "and",
+                "consequent": "buruk",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Media terlalu jenuh air dan basa memicu asfiksia akar (kurang oksigen) serta defisiensi zat besi\/mikro.",
+                "recommendation": "Hentikan penyiraman sementara hingga drainase membaik, lalu koreksi pH nutrisi ke rentang 5.8 - 6.8."
+            },
+            {
+                "id": "R07",
+                "name": "Iklim Mikro Baik tapi Tanah Kering",
+                "antecedents": {
+                    "temperature": "optimal",
+                    "humidity": "optimal",
+                    "soil_moisture": "kering"
+                },
+                "operator": "and",
+                "consequent": "perlu_perhatian",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Suhu dan kelembapan udara optimal, namun kelembapan tanah rendah sehingga tanaman berisiko layu ringan.",
+                "recommendation": "Lakukan irigasi terjadwal untuk mengembalikan kelembapan tanah ke level ideal."
+            },
+            {
+                "id": "R08",
+                "name": "Iklim Mikro Baik tapi Tanah Jenuh",
+                "antecedents": {
+                    "temperature": "optimal",
+                    "humidity": "optimal",
+                    "soil_moisture": "jenuh"
+                },
+                "operator": "and",
+                "consequent": "perlu_perhatian",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Suhu dan kelembapan udara stabil, namun media tumbuh terlalu basah.",
+                "recommendation": "Tunda siklus irigasi berikutnya dan cek lubang drainase polybag\/bedengan."
+            },
+            {
+                "id": "R09",
+                "name": "Udara Terlalu Kering pada Suhu Normal",
+                "antecedents": {
+                    "temperature": "optimal",
+                    "humidity": "kering"
+                },
+                "operator": "and",
+                "consequent": "perlu_perhatian",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Kelembapan udara rendah meningkatkan defisit tekanan uap air (VPD) dan mempercepat penguapan.",
+                "recommendation": "Cek kabut misting atau basahi lantai greenhouse untuk menaikkan kelembapan relatif."
+            },
+            {
+                "id": "R10",
+                "name": "Suhu Panas Moderat dengan Tanah Ideal",
+                "antecedents": {
+                    "temperature": "panas",
+                    "soil_moisture": "ideal"
+                },
+                "operator": "and",
+                "consequent": "perlu_perhatian",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Suhu udara greenhouse menghangat di atas ambang optimal melon, meskipun ketersediaan air tanah masih mencukupi.",
+                "recommendation": "Pantau suhu kanopi dan persiapkan naungan\/shading net jika radiasi matahari terus meningkat."
+            },
+            {
+                "id": "R11",
+                "name": "Suhu Dingin Moderat dengan Tanah Ideal",
+                "antecedents": {
+                    "temperature": "dingin",
+                    "soil_moisture": "ideal"
+                },
+                "operator": "and",
+                "consequent": "perlu_perhatian",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Suhu udara di bawah standar tumbuh aktif tanaman melon.",
+                "recommendation": "Tutup tirai samping greenhouse untuk menahan panas di dalam ruangan."
+            },
+            {
+                "id": "R12",
+                "name": "Penyimpangan pH Asam Moderat",
+                "antecedents": {
+                    "ph": "asam",
+                    "temperature": "optimal"
+                },
+                "operator": "and",
+                "consequent": "perlu_perhatian",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Nilai pH larutan nutrisi berada di bawah batas nyaman penyerapan fosfat dan kalsium melon.",
+                "recommendation": "Lakukan kalibrasi probe pH sensor dan tambahkan larutan basa (pH Up) bertahap."
+            },
+            {
+                "id": "R13",
+                "name": "Penyimpangan pH Basa Moderat",
+                "antecedents": {
+                    "ph": "basa",
+                    "temperature": "optimal"
+                },
+                "operator": "and",
+                "consequent": "perlu_perhatian",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Nilai pH larutan nutrisi terlalu basa, berpotensi menyebabkan pengendapan mikro nutrien.",
+                "recommendation": "Tambahkan larutan pengatur asam (pH Down) pada tandon nutrisi hingga mencapai 6.0 - 6.5."
+            },
+            {
+                "id": "R14",
+                "name": "Kombinasi Kering Komprehensif (Panas + Udara Kering + Tanah Kering)",
+                "antecedents": {
+                    "temperature": "panas",
+                    "humidity": "kering",
+                    "soil_moisture": "kering"
+                },
+                "operator": "and",
+                "consequent": "buruk",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Kondisi lingkungan kering menyeluruh berisiko tinggi mematikan pucuk tanaman dan menggugurkan bakal buah melon.",
+                "recommendation": "Tindakan darurat: lakukan pengabutan (misting), siram tanah, dan aktifkan peneduh kanopi."
+            },
+            {
+                "id": "R15",
+                "name": "Kombinasi Basah Dingin Komprehensif (Dingin + Lembap + Tanah Jenuh)",
+                "antecedents": {
+                    "temperature": "dingin",
+                    "humidity": "lembap",
+                    "soil_moisture": "jenuh"
+                },
+                "operator": "and",
+                "consequent": "buruk",
+                "weight": 1,
+                "enabled": true,
+                "conclusion": "Lingkungan dingin berkelembapan jenuh memicu pembusukan leher akar (damping off) dan layu bakteri.",
+                "recommendation": "Keringkan media, perbaiki sirkulasi udara greenhouse secara maksimal."
+            },
+            {
+                "id": "R16",
+                "name": "Kondisi Optimal Suhu dan Kelembapan Udara",
+                "antecedents": {
+                    "temperature": "optimal",
+                    "humidity": "optimal"
+                },
+                "operator": "and",
+                "consequent": "baik",
+                "weight": 0.9,
+                "enabled": true,
+                "conclusion": "Kondisi mikroklimat udara greenhouse sangat nyaman untuk fotosintesis tanaman melon.",
+                "recommendation": "Pertahankan set-point lingkungan dan lanjutkan pemantauan berkala."
+            }
+        ]
+    },
+    "fuzzy_scenarios": [
+        {
+            "input": {
+                "temperature": 27,
+                "humidity": 70,
+                "soil_moisture": 70,
+                "ph": 6.5
+            },
+            "score": 86.17,
+            "status": "AVAILABLE",
+            "category": "BAIK"
+        },
+        {
+            "input": {
+                "temperature": 40,
+                "humidity": 35,
+                "soil_moisture": 30,
+                "ph": 5
+            },
+            "score": 17.72,
+            "status": "AVAILABLE",
+            "category": "BURUK"
+        },
+        {
+            "input": {
+                "temperature": 35,
+                "humidity": 90,
+                "soil_moisture": 90,
+                "ph": 6.5
+            },
+            "score": 55,
+            "status": "AVAILABLE",
+            "category": "PERLU_PERHATIAN"
+        },
+        {
+            "input": {
+                "temperature": 27,
+                "humidity": 70,
+                "soil_moisture": 70,
+                "ph": 4.5
+            },
+            "score": 72.49,
+            "status": "AVAILABLE",
+            "category": "BAIK"
+        },
+        {
+            "input": {
+                "temperature": 27,
+                "humidity": 70,
+                "soil_moisture": 70,
+                "ph": 8.5
+            },
+            "score": 72.49,
+            "status": "AVAILABLE",
+            "category": "BAIK"
+        },
+        {
+            "input": {
+                "temperature": 30,
+                "humidity": 78,
+                "soil_moisture": 80,
+                "ph": 6.9
+            },
+            "score": 57.86,
+            "status": "AVAILABLE",
+            "category": "PERLU_PERHATIAN"
+        },
+        {
+            "input": {
+                "temperature": 10,
+                "humidity": 0,
+                "soil_moisture": 0,
+                "ph": 0
+            },
+            "score": 17.72,
+            "status": "AVAILABLE",
+            "category": "BURUK"
+        },
+        {
+            "input": {
+                "temperature": 50,
+                "humidity": 100,
+                "soil_moisture": 100,
+                "ph": 14
+            },
+            "score": 30.95,
+            "status": "AVAILABLE",
+            "category": "BURUK"
+        },
+        {
+            "input": {
+                "temperature": 24,
+                "humidity": 65,
+                "soil_moisture": 65,
+                "ph": 6
+            },
+            "score": 84.07,
+            "status": "AVAILABLE",
+            "category": "BAIK"
+        },
+        {
+            "input": {
+                "temperature": 22,
+                "humidity": 58,
+                "soil_moisture": 58,
+                "ph": 5.8
+            },
+            "score": 20.31,
+            "status": "AVAILABLE",
+            "category": "BURUK"
+        },
+        {
+            "input": {
+                "temperature": 32,
+                "humidity": 82,
+                "soil_moisture": 82,
+                "ph": 7.2
+            },
+            "score": 34.43,
+            "status": "AVAILABLE",
+            "category": "BURUK"
+        },
+        {
+            "input": {
+                "temperature": 20,
+                "humidity": 55,
+                "soil_moisture": 70,
+                "ph": 6.5
+            },
+            "score": 55,
+            "status": "AVAILABLE",
+            "category": "PERLU_PERHATIAN"
+        }
+    ],
+    "fuzzy_disabled_api": {
+        "created": true,
+        "status": "AVAILABLE"
+    },
+    "external_score_zero": {
+        "score": 86.17,
+        "category": "BAIK"
+    },
+    "duplicate_api": {
+        "first": 201,
+        "second": 201,
+        "count": 2
+    },
+    "nullable_ph": {
+        "status": 422,
+        "errors": [
+            "ph"
+        ]
+    },
+    "blueprint_payload": {
+        "status": 422,
+        "errors": [
+            "plant_height",
+            "plant_density"
+        ]
+    },
+    "report_source_filter": {
+        "monitorings": 0,
+        "fuzzy_total": 4
+    },
+    "dashboard_trend": {
+        "total": 43,
+        "chart_points": 30,
+        "last_chart_label": "22 Oct 11:02",
+        "latest_database_label": "22 Oct 22:03"
+    },
+    "development_seed_token_in_production": {
+        "status": 201,
+        "environment": "production"
+    },
+    "schema": {
+        "monitorings": [
+            {
+                "cid": 0,
+                "name": "id",
+                "type": "INTEGER",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 1
+            },
+            {
+                "cid": 1,
+                "name": "plant_id",
+                "type": "INTEGER",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 2,
+                "name": "temperature",
+                "type": "numeric",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 3,
+                "name": "ph",
+                "type": "numeric",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 4,
+                "name": "humidity",
+                "type": "numeric",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 5,
+                "name": "plant_height",
+                "type": "numeric",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 6,
+                "name": "plant_density",
+                "type": "numeric",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 7,
+                "name": "plant_condition",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 8,
+                "name": "plant_color",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 9,
+                "name": "notes",
+                "type": "TEXT",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 10,
+                "name": "monitored_at",
+                "type": "datetime",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 11,
+                "name": "created_at",
+                "type": "datetime",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 12,
+                "name": "updated_at",
+                "type": "datetime",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 13,
+                "name": "nutrient_temperature",
+                "type": "numeric",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 14,
+                "name": "ec",
+                "type": "numeric",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 15,
+                "name": "soil_moisture",
+                "type": "numeric",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 16,
+                "name": "light_intensity",
+                "type": "numeric",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 17,
+                "name": "tank_level",
+                "type": "numeric",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 18,
+                "name": "source",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": "'api'",
+                "pk": 0
+            },
+            {
+                "cid": 19,
+                "name": "device_id",
+                "type": "varchar",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 20,
+                "name": "source_identifier",
+                "type": "varchar",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 21,
+                "name": "reported_pump_state",
+                "type": "varchar",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 22,
+                "name": "reported_fan_state",
+                "type": "varchar",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 23,
+                "name": "fuzzy_score",
+                "type": "numeric",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 24,
+                "name": "fuzzy_label",
+                "type": "varchar",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            }
+        ],
+        "monitoring_alarms": [
+            {
+                "cid": 0,
+                "name": "id",
+                "type": "INTEGER",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 1
+            },
+            {
+                "cid": 1,
+                "name": "plant_id",
+                "type": "INTEGER",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 2,
+                "name": "triggered_by_monitoring_id",
+                "type": "INTEGER",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 3,
+                "name": "parameter_key",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 4,
+                "name": "parameter_display_name",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 5,
+                "name": "unit",
+                "type": "varchar",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 6,
+                "name": "violation_direction",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 7,
+                "name": "sensor_value",
+                "type": "numeric",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 8,
+                "name": "threshold_min",
+                "type": "numeric",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 9,
+                "name": "threshold_max",
+                "type": "numeric",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 10,
+                "name": "severity",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": "'warning'",
+                "pk": 0
+            },
+            {
+                "cid": 11,
+                "name": "status",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": "'active'",
+                "pk": 0
+            },
+            {
+                "cid": 12,
+                "name": "first_detected_at",
+                "type": "datetime",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 13,
+                "name": "last_abnormal_value",
+                "type": "numeric",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 14,
+                "name": "last_abnormal_at",
+                "type": "datetime",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 15,
+                "name": "resolved_value",
+                "type": "numeric",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 16,
+                "name": "resolved_at",
+                "type": "datetime",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 17,
+                "name": "notes",
+                "type": "TEXT",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 18,
+                "name": "created_at",
+                "type": "datetime",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 19,
+                "name": "updated_at",
+                "type": "datetime",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            }
+        ],
+        "fuzzy_inference_results": [
+            {
+                "cid": 0,
+                "name": "id",
+                "type": "INTEGER",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 1
+            },
+            {
+                "cid": 1,
+                "name": "monitoring_id",
+                "type": "INTEGER",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 2,
+                "name": "plant_id",
+                "type": "INTEGER",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 3,
+                "name": "inference_source",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": "'laravel_engine'",
+                "pk": 0
+            },
+            {
+                "cid": 4,
+                "name": "inference_status",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": "'AVAILABLE'",
+                "pk": 0
+            },
+            {
+                "cid": 5,
+                "name": "fuzzy_score",
+                "type": "numeric",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 6,
+                "name": "fuzzy_category",
+                "type": "varchar",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 7,
+                "name": "conclusion",
+                "type": "TEXT",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 8,
+                "name": "recommendation",
+                "type": "TEXT",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 9,
+                "name": "rule_version",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": "'v1.0-provisional'",
+                "pk": 0
+            },
+            {
+                "cid": 10,
+                "name": "input_snapshot",
+                "type": "TEXT",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 11,
+                "name": "membership_snapshot",
+                "type": "TEXT",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 12,
+                "name": "rule_activation_snapshot",
+                "type": "TEXT",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 13,
+                "name": "inferred_at",
+                "type": "datetime",
+                "notnull": 1,
+                "dflt_value": "CURRENT_TIMESTAMP",
+                "pk": 0
+            },
+            {
+                "cid": 14,
+                "name": "created_at",
+                "type": "datetime",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 15,
+                "name": "updated_at",
+                "type": "datetime",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            }
+        ],
+        "iot_devices": [
+            {
+                "cid": 0,
+                "name": "id",
+                "type": "INTEGER",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 1
+            },
+            {
+                "cid": 1,
+                "name": "device_id",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 2,
+                "name": "name",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 3,
+                "name": "type",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": "'esp32_hardware'",
+                "pk": 0
+            },
+            {
+                "cid": 4,
+                "name": "token_hash",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 5,
+                "name": "token_prefix",
+                "type": "varchar",
+                "notnull": 1,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 6,
+                "name": "is_active",
+                "type": "tinyint(1)",
+                "notnull": 1,
+                "dflt_value": "'1'",
+                "pk": 0
+            },
+            {
+                "cid": 7,
+                "name": "last_seen_at",
+                "type": "datetime",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 8,
+                "name": "last_ip",
+                "type": "varchar",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 9,
+                "name": "revoked_at",
+                "type": "datetime",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 10,
+                "name": "revoked_reason",
+                "type": "varchar",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 11,
+                "name": "created_at",
+                "type": "datetime",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            },
+            {
+                "cid": 12,
+                "name": "updated_at",
+                "type": "datetime",
+                "notnull": 0,
+                "dflt_value": null,
+                "pk": 0
+            }
+        ]
+    },
+    "indexes": {
+        "monitorings": [
+            {
+                "seq": 0,
+                "name": "monitorings_source_identifier_index",
+                "unique": 0,
+                "origin": "c",
+                "partial": 0
+            },
+            {
+                "seq": 1,
+                "name": "monitorings_monitored_at_index",
+                "unique": 0,
+                "origin": "c",
+                "partial": 0
+            }
+        ],
+        "monitoring_alarms": [
+            {
+                "seq": 0,
+                "name": "monitoring_alarms_status_index",
+                "unique": 0,
+                "origin": "c",
+                "partial": 0
+            },
+            {
+                "seq": 1,
+                "name": "monitoring_alarms_parameter_key_index",
+                "unique": 0,
+                "origin": "c",
+                "partial": 0
+            },
+            {
+                "seq": 2,
+                "name": "idx_alarm_lookup",
+                "unique": 0,
+                "origin": "c",
+                "partial": 0
+            }
+        ],
+        "fuzzy_inference_results": [
+            {
+                "seq": 0,
+                "name": "uniq_monitoring_rule_source",
+                "unique": 1,
+                "origin": "c",
+                "partial": 0
+            },
+            {
+                "seq": 1,
+                "name": "fuzzy_inference_results_inference_status_inferred_at_index",
+                "unique": 0,
+                "origin": "c",
+                "partial": 0
+            },
+            {
+                "seq": 2,
+                "name": "fuzzy_inference_results_plant_id_inferred_at_index",
+                "unique": 0,
+                "origin": "c",
+                "partial": 0
+            }
+        ],
+        "iot_devices": [
+            {
+                "seq": 0,
+                "name": "iot_devices_token_hash_index",
+                "unique": 0,
+                "origin": "c",
+                "partial": 0
+            },
+            {
+                "seq": 1,
+                "name": "iot_devices_device_id_unique",
+                "unique": 1,
+                "origin": "c",
+                "partial": 0
+            },
+            {
+                "seq": 2,
+                "name": "iot_devices_is_active_token_hash_index",
+                "unique": 0,
+                "origin": "c",
+                "partial": 0
+            }
+        ]
+    },
+    "independent_oracle": {
+        "numerator": 2412.666666666667,
+        "denominator": 28,
+        "score": 86.16666666666667,
+        "rounded": 86.17,
+        "continuous_numerator": 2362.5,
+        "continuous_denominator": 27.5,
+        "continuous_centroid": 85.9090909090909
+    }
+}

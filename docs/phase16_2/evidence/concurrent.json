@@ -1,0 +1,48 @@
+{
+    "workers": 10,
+    "driver": "sqlite",
+    "results": [
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 201,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        }
+    ],
+    "monitorings": 1,
+    "inferences": 1
+}

@@ -1,0 +1,134 @@
+[
+  {
+    "path": "/login",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 13
+      }
+    ],
+    "passes": 20
+  },
+  {
+    "path": "/dashboard",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 118
+      }
+    ],
+    "passes": 29
+  },
+  {
+    "path": "/monitorings",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 116
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/plants",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 53
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/charts",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 116
+      }
+    ],
+    "passes": 29
+  },
+  {
+    "path": "/alarms",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 11
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/fuzzy/history",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 55
+      }
+    ],
+    "passes": 29
+  },
+  {
+    "path": "/actuators",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 8
+      }
+    ],
+    "passes": 23
+  },
+  {
+    "path": "/admin/integrations/google-sheets",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 16
+      }
+    ],
+    "passes": 29
+  },
+  {
+    "path": "/reports/monitoring",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 115
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/plants/create",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 6
+      }
+    ],
+    "passes": 21
+  },
+  {
+    "path": "/monitorings/create",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 6
+      }
+    ],
+    "passes": 21
+  }
+]

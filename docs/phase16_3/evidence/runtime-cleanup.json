@@ -1,0 +1,7 @@
+{
+    "runtime":  "Use php artisan serve for the primary local project",
+    "browser_server":  "stopped",
+    "audit_database":  "isolated copy retained and ignored by Git",
+    "mysql_container":  "compro-phase163-mysql stopped after verified gate",
+    "primary_database":  "unchanged"
+}

@@ -1,0 +1,1984 @@
+{
+  "stage": "before",
+  "browser": "Installed Microsoft Edge / Playwright",
+  "database": "disposable SQLite copy",
+  "pages": [
+    {
+      "width": 375,
+      "height": 812,
+      "name": "login",
+      "documentWidth": 375,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "name": "dashboard",
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 484,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 357,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 357,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 357,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 357,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 357,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 357,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 357,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 357,
+          "height": 150,
+          "initialized": true
+        }
+      ],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 385
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 380
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 404
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 446
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 446
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 455
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 456
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 426
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 409
+        }
+      ]
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "name": "monitoring",
+      "status": 200,
+      "path": "/monitorings",
+      "documentWidth": 375,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "name": "plants",
+      "status": 200,
+      "path": "/plants",
+      "documentWidth": 375,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "name": "charts",
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 484,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 357,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 357,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 357,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 357,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 357,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 357,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 357,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 357,
+          "height": 150,
+          "initialized": true
+        }
+      ],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 385
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 380
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 404
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 446
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 446
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 455
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 456
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 426
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 409
+        }
+      ]
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "name": "alarms",
+      "status": 200,
+      "path": "/alarms",
+      "documentWidth": 375,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        }
+      ]
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "name": "fuzzy",
+      "status": 200,
+      "path": "/fuzzy/history",
+      "documentWidth": 502,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [
+        {
+          "id": "fuzzyTrendChart",
+          "width": 357,
+          "height": 150,
+          "initialized": true
+        }
+      ],
+      "overflowElements": [
+        {
+          "tag": "DIV",
+          "class": "",
+          "right": 502
+        },
+        {
+          "tag": "SPAN",
+          "class": "font-bold tracking-wide uppercase",
+          "right": 502
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-amber-400/80 block mt-0.5",
+          "right": 502
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 384
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        }
+      ]
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "name": "actuators",
+      "status": 200,
+      "path": "/actuators",
+      "documentWidth": 375,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "name": "sheets",
+      "status": 200,
+      "path": "/admin/integrations/google-sheets",
+      "documentWidth": 375,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 385
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 386
+        }
+      ]
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "name": "reports",
+      "status": 200,
+      "path": "/reports/monitoring",
+      "documentWidth": 441,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": [
+        {
+          "tag": "SPAN",
+          "class": "",
+          "right": 441
+        },
+        {
+          "tag": "STRONG",
+          "class": "text-sky-200",
+          "right": 420
+        },
+        {
+          "tag": "STRONG",
+          "class": "",
+          "right": 415
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "name": "login",
+      "documentWidth": 768,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "name": "dashboard",
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 877,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 750,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 750,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 750,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 750,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 750,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 750,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 750,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 750,
+          "height": 150,
+          "initialized": true
+        }
+      ],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 778
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 773
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 797
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 839
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 839
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 848
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 849
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 819
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 802
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "name": "monitoring",
+      "status": 200,
+      "path": "/monitorings",
+      "documentWidth": 768,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "name": "plants",
+      "status": 200,
+      "path": "/plants",
+      "documentWidth": 768,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "name": "charts",
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 877,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 750,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 750,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 750,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 750,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 750,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 750,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 750,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 750,
+          "height": 150,
+          "initialized": true
+        }
+      ],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 778
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 773
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 797
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 839
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 839
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 848
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 849
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 819
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 802
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "name": "alarms",
+      "status": 200,
+      "path": "/alarms",
+      "documentWidth": 768,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "name": "fuzzy",
+      "status": 200,
+      "path": "/fuzzy/history",
+      "documentWidth": 895,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [
+        {
+          "id": "fuzzyTrendChart",
+          "width": 750,
+          "height": 150,
+          "initialized": true
+        }
+      ],
+      "overflowElements": [
+        {
+          "tag": "DIV",
+          "class": "",
+          "right": 895
+        },
+        {
+          "tag": "SPAN",
+          "class": "font-bold tracking-wide uppercase",
+          "right": 895
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-amber-400/80 block mt-0.5",
+          "right": 895
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 777
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "name": "actuators",
+      "status": 200,
+      "path": "/actuators",
+      "documentWidth": 768,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "name": "sheets",
+      "status": 200,
+      "path": "/admin/integrations/google-sheets",
+      "documentWidth": 768,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 778
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 779
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "name": "reports",
+      "status": 200,
+      "path": "/reports/monitoring",
+      "documentWidth": 834,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": [
+        {
+          "tag": "SPAN",
+          "class": "",
+          "right": 834
+        },
+        {
+          "tag": "STRONG",
+          "class": "text-sky-200",
+          "right": 813
+        },
+        {
+          "tag": "STRONG",
+          "class": "",
+          "right": 808
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "name": "login",
+      "documentWidth": 1366,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "name": "dashboard",
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 1475,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 1348,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 1348,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 1348,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 1348,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 1348,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 1348,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 1348,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 1348,
+          "height": 150,
+          "initialized": true
+        }
+      ],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1376
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1371
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1395
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1437
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1437
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1446
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1447
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1417
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1400
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "name": "monitoring",
+      "status": 200,
+      "path": "/monitorings",
+      "documentWidth": 1366,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "name": "plants",
+      "status": 200,
+      "path": "/plants",
+      "documentWidth": 1366,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "name": "charts",
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 1475,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 1348,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 1348,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 1348,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 1348,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 1348,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 1348,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 1348,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 1348,
+          "height": 150,
+          "initialized": true
+        }
+      ],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1376
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1371
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1395
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1437
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1437
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1446
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1447
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1417
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1400
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "name": "alarms",
+      "status": 200,
+      "path": "/alarms",
+      "documentWidth": 1366,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "name": "fuzzy",
+      "status": 200,
+      "path": "/fuzzy/history",
+      "documentWidth": 1493,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [
+        {
+          "id": "fuzzyTrendChart",
+          "width": 1348,
+          "height": 150,
+          "initialized": true
+        }
+      ],
+      "overflowElements": [
+        {
+          "tag": "DIV",
+          "class": "",
+          "right": 1493
+        },
+        {
+          "tag": "SPAN",
+          "class": "font-bold tracking-wide uppercase",
+          "right": 1493
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-amber-400/80 block mt-0.5",
+          "right": 1493
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1375
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "name": "actuators",
+      "status": 200,
+      "path": "/actuators",
+      "documentWidth": 1366,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "name": "sheets",
+      "status": 200,
+      "path": "/admin/integrations/google-sheets",
+      "documentWidth": 1366,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1376
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1377
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "name": "reports",
+      "status": 200,
+      "path": "/reports/monitoring",
+      "documentWidth": 1432,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": [
+        {
+          "tag": "SPAN",
+          "class": "",
+          "right": 1432
+        },
+        {
+          "tag": "STRONG",
+          "class": "text-sky-200",
+          "right": 1411
+        },
+        {
+          "tag": "STRONG",
+          "class": "",
+          "right": 1406
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "login",
+      "documentWidth": 1920,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "dashboard",
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 2029,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 1902,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 1902,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 1902,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 1902,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 1902,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 1902,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 1902,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 1902,
+          "height": 150,
+          "initialized": true
+        }
+      ],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1930
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1925
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1949
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1991
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1991
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 2000
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 2001
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1971
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1954
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "monitoring",
+      "status": 200,
+      "path": "/monitorings",
+      "documentWidth": 1920,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "plants",
+      "status": 200,
+      "path": "/plants",
+      "documentWidth": 1920,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "charts",
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 2029,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 1902,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 1902,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 1902,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "height": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 1902,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 1902,
+          "height": 150,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 1902,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 1902,
+          "height": 300,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 1902,
+          "height": 150,
+          "initialized": true
+        }
+      ],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1930
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1925
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1949
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1991
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1991
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 2000
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 2001
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1971
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-xs font-semibold",
+          "right": 1954
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "alarms",
+      "status": 200,
+      "path": "/alarms",
+      "documentWidth": 1920,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "fuzzy",
+      "status": 200,
+      "path": "/fuzzy/history",
+      "documentWidth": 2047,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [
+        {
+          "id": "fuzzyTrendChart",
+          "width": 1902,
+          "height": 150,
+          "initialized": true
+        }
+      ],
+      "overflowElements": [
+        {
+          "tag": "DIV",
+          "class": "",
+          "right": 2047
+        },
+        {
+          "tag": "SPAN",
+          "class": "font-bold tracking-wide uppercase",
+          "right": 2047
+        },
+        {
+          "tag": "SPAN",
+          "class": "text-amber-400/80 block mt-0.5",
+          "right": 2047
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1929
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "actuators",
+      "status": 200,
+      "path": "/actuators",
+      "documentWidth": 1920,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": []
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "sheets",
+      "status": 200,
+      "path": "/admin/integrations/google-sheets",
+      "documentWidth": 1920,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": [
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1930
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        },
+        {
+          "tag": "path",
+          "class": {},
+          "right": 1931
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "name": "reports",
+      "status": 200,
+      "path": "/reports/monitoring",
+      "documentWidth": 1986,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "charts": [],
+      "overflowElements": [
+        {
+          "tag": "SPAN",
+          "class": "",
+          "right": 1986
+        },
+        {
+          "tag": "STRONG",
+          "class": "text-sky-200",
+          "right": 1965
+        },
+        {
+          "tag": "STRONG",
+          "class": "",
+          "right": 1960
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

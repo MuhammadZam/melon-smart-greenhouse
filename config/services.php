@@ -31,4 +31,18 @@ return [
         ],
     ],
 
+    'google_sheets' => [
+        'mode' => env('GOOGLE_SHEETS_AUTH_MODE', 'mock'),
+        'spreadsheet_id' => env('GOOGLE_SHEETS_SPREADSHEET_ID'),
+        'sheet_name' => env('GOOGLE_SHEETS_SHEET_NAME', 'Telemetry'),
+        'credentials_path' => env('GOOGLE_SHEETS_CREDENTIALS_PATH', storage_path('app/credentials/google-service-account.json')),
+        'polling_interval' => (int) env('GOOGLE_SHEETS_POLLING_INTERVAL', 5),
+        'timeout_seconds' => (int) env('GOOGLE_SHEETS_TIMEOUT_SECONDS', 10),
+    ],
+
+    'iot' => [
+        // Retained for old configuration consumers. Authentication can no longer be disabled.
+        'enforce_device_auth' => true,
+    ],
+
 ];

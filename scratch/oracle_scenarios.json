@@ -1,0 +1,395 @@
+{
+  "Scenario_A": {
+    "description": "Semua parameter optimal",
+    "inputs": {
+      "temperature": 27.0,
+      "humidity": 70.0,
+      "soil_moisture": 70.0,
+      "ph": 6.5
+    },
+    "step": 1.0,
+    "status": "AVAILABLE",
+    "score": 86.17,
+    "raw_score": 86.16666666666667,
+    "numerator": 2412.666666666667,
+    "denominator": 28.0,
+    "category": "BAIK",
+    "active_rules": [
+      "R01",
+      "R16"
+    ],
+    "consequent_alphas": {
+      "baik": 1.0
+    }
+  },
+  "Scenario_B": {
+    "description": "Suhu tinggi dan kelembapan tanah rendah",
+    "inputs": {
+      "temperature": 36.0,
+      "humidity": 50.0,
+      "soil_moisture": 30.0,
+      "ph": 6.5
+    },
+    "step": 1.0,
+    "status": "AVAILABLE",
+    "score": 17.72,
+    "raw_score": 17.71830985915493,
+    "numerator": 629.0,
+    "denominator": 35.49999999999999,
+    "category": "BURUK",
+    "active_rules": [
+      "R02",
+      "R14"
+    ],
+    "consequent_alphas": {
+      "buruk": 1.0
+    }
+  },
+  "Scenario_C": {
+    "description": "Kelembapan udara tinggi dan tanah jenuh",
+    "inputs": {
+      "temperature": 18.0,
+      "humidity": 90.0,
+      "soil_moisture": 90.0,
+      "ph": 6.5
+    },
+    "step": 1.0,
+    "status": "AVAILABLE",
+    "score": 30.95,
+    "raw_score": 30.949308755760374,
+    "numerator": 1679.0,
+    "denominator": 54.24999999999999,
+    "category": "BURUK",
+    "active_rules": [
+      "R04",
+      "R15"
+    ],
+    "consequent_alphas": {
+      "perlu_perhatian": 1.0,
+      "buruk": 1.0
+    }
+  },
+  "Scenario_D": {
+    "description": "pH terlalu asam",
+    "inputs": {
+      "temperature": 27.0,
+      "humidity": 70.0,
+      "soil_moisture": 70.0,
+      "ph": 4.5
+    },
+    "step": 1.0,
+    "status": "AVAILABLE",
+    "score": 72.49,
+    "raw_score": 72.49043869516314,
+    "numerator": 3222.2,
+    "denominator": 44.449999999999974,
+    "category": "BAIK",
+    "active_rules": [
+      "R12",
+      "R16"
+    ],
+    "consequent_alphas": {
+      "perlu_perhatian": 1.0,
+      "baik": 0.9
+    }
+  },
+  "Scenario_E": {
+    "description": "pH terlalu basa",
+    "inputs": {
+      "temperature": 27.0,
+      "humidity": 70.0,
+      "soil_moisture": 70.0,
+      "ph": 8.5
+    },
+    "step": 1.0,
+    "status": "AVAILABLE",
+    "score": 72.49,
+    "raw_score": 72.49043869516314,
+    "numerator": 3222.2,
+    "denominator": 44.449999999999974,
+    "category": "BAIK",
+    "active_rules": [
+      "R13",
+      "R16"
+    ],
+    "consequent_alphas": {
+      "perlu_perhatian": 1.0,
+      "baik": 0.9
+    }
+  },
+  "Scenario_F": {
+    "description": "Kombinasi beberapa aturan dengan output berbeda (overlap)",
+    "inputs": {
+      "temperature": 30.0,
+      "humidity": 62.0,
+      "soil_moisture": 62.0,
+      "ph": 6.5
+    },
+    "step": 1.0,
+    "status": "AVAILABLE",
+    "score": 55.98,
+    "raw_score": 55.98087431693998,
+    "numerator": 1365.9333333333332,
+    "denominator": 24.399999999999956,
+    "category": "PERLU_PERHATIAN",
+    "active_rules": [
+      "R01",
+      "R02",
+      "R07",
+      "R09",
+      "R10",
+      "R14",
+      "R16"
+    ],
+    "consequent_alphas": {
+      "baik": 0.3333333333333333,
+      "buruk": 0.2,
+      "perlu_perhatian": 0.2
+    }
+  },
+  "Scenario_G": {
+    "description": "Input tepat di titik batas membership",
+    "inputs": {
+      "temperature": 22.0,
+      "humidity": 58.0,
+      "soil_moisture": 58.0,
+      "ph": 5.8
+    },
+    "step": 1.0,
+    "status": "AVAILABLE",
+    "score": 20.31,
+    "raw_score": 20.313253012048186,
+    "numerator": 337.2000000000002,
+    "denominator": 16.600000000000016,
+    "category": "BURUK",
+    "active_rules": [
+      "R05"
+    ],
+    "consequent_alphas": {
+      "buruk": 0.40000000000000036
+    }
+  },
+  "Scenario_H": {
+    "description": "Input di area overlap dua himpunan",
+    "inputs": {
+      "temperature": 23.0,
+      "humidity": 60.0,
+      "soil_moisture": 60.0,
+      "ph": 6.0
+    },
+    "step": 1.0,
+    "status": "AVAILABLE",
+    "score": 67.32,
+    "raw_score": 67.31818181818187,
+    "numerator": 789.8666666666667,
+    "denominator": 11.733333333333325,
+    "category": "BAIK",
+    "active_rules": [
+      "R01",
+      "R07",
+      "R09",
+      "R11",
+      "R16"
+    ],
+    "consequent_alphas": {
+      "baik": 0.16666666666666666,
+      "perlu_perhatian": 0.2
+    }
+  },
+  "Scenario_I": {
+    "description": "Tidak ada aturan aktif (Insufficient rule coverage)",
+    "inputs": {
+      "temperature": 15.0,
+      "humidity": 40.0,
+      "soil_moisture": 90.0,
+      "ph": 6.5
+    },
+    "step": 1.0,
+    "status": "INSUFFICIENT_RULE_COVERAGE",
+    "score": null,
+    "raw_score": null,
+    "numerator": 0.0,
+    "denominator": 0.0,
+    "category": null,
+    "active_rules": [],
+    "consequent_alphas": {}
+  },
+  "Scenario_J": {
+    "description": "Missing/null sensor (Temperature & Humidity missing)",
+    "inputs": {
+      "temperature": null,
+      "humidity": null,
+      "soil_moisture": 70.0,
+      "ph": 6.5
+    },
+    "step": 1.0,
+    "status": "INSUFFICIENT_RULE_COVERAGE",
+    "score": null,
+    "raw_score": null,
+    "numerator": 0.0,
+    "denominator": 0.0,
+    "category": null,
+    "active_rules": [],
+    "consequent_alphas": {}
+  },
+  "Scenario_K": {
+    "description": "Nilai input di luar domain fisik normal (ekstrem)",
+    "inputs": {
+      "temperature": 55.0,
+      "humidity": -5.0,
+      "soil_moisture": 110.0,
+      "ph": 15.0
+    },
+    "step": 1.0,
+    "status": "AVAILABLE",
+    "score": 17.72,
+    "raw_score": 17.71830985915493,
+    "numerator": 629.0,
+    "denominator": 35.49999999999999,
+    "category": "BURUK",
+    "active_rules": [
+      "R06"
+    ],
+    "consequent_alphas": {
+      "buruk": 1.0
+    }
+  },
+  "Scenario_L": {
+    "description": "Hanya satu aturan aktif (R10 aktif tunggal)",
+    "inputs": {
+      "temperature": 35.0,
+      "humidity": 70.0,
+      "soil_moisture": 70.0,
+      "ph": 6.5
+    },
+    "step": 1.0,
+    "status": "AVAILABLE",
+    "score": 55.0,
+    "raw_score": 55.0,
+    "numerator": 1100.0,
+    "denominator": 20.0,
+    "category": "PERLU_PERHATIAN",
+    "active_rules": [
+      "R10"
+    ],
+    "consequent_alphas": {
+      "perlu_perhatian": 1.0
+    }
+  },
+  "Scenario_M": {
+    "description": "Beberapa aturan aktif dengan konsekuen sama (R01 & R16: Baik)",
+    "inputs": {
+      "temperature": 27.0,
+      "humidity": 70.0,
+      "soil_moisture": 70.0,
+      "ph": 6.5
+    },
+    "step": 1.0,
+    "status": "AVAILABLE",
+    "score": 86.17,
+    "raw_score": 86.16666666666667,
+    "numerator": 2412.666666666667,
+    "denominator": 28.0,
+    "category": "BAIK",
+    "active_rules": [
+      "R01",
+      "R16"
+    ],
+    "consequent_alphas": {
+      "baik": 1.0
+    }
+  },
+  "Scenario_N": {
+    "description": "Beberapa aturan aktif dengan konsekuen berbeda (R04: Perhatian, R15: Buruk)",
+    "inputs": {
+      "temperature": 18.0,
+      "humidity": 90.0,
+      "soil_moisture": 90.0,
+      "ph": 6.5
+    },
+    "step": 1.0,
+    "status": "AVAILABLE",
+    "score": 30.95,
+    "raw_score": 30.949308755760374,
+    "numerator": 1679.0,
+    "denominator": 54.24999999999999,
+    "category": "BURUK",
+    "active_rules": [
+      "R04",
+      "R15"
+    ],
+    "consequent_alphas": {
+      "perlu_perhatian": 1.0,
+      "buruk": 1.0
+    }
+  },
+  "Scenario_O": {
+    "description": "Output membership left-shoulder vs right-shoulder murni",
+    "inputs": {
+      "temperature": 35.0,
+      "humidity": 45.0,
+      "soil_moisture": 40.0,
+      "ph": 6.5
+    },
+    "step": 1.0,
+    "status": "AVAILABLE",
+    "score": 17.72,
+    "raw_score": 17.71830985915493,
+    "numerator": 629.0,
+    "denominator": 35.49999999999999,
+    "category": "BURUK",
+    "active_rules": [
+      "R02",
+      "R14"
+    ],
+    "consequent_alphas": {
+      "buruk": 1.0
+    }
+  },
+  "Scenario_P_step_0_5": {
+    "description": "Nilai centroid dengan resolusi sampling berbeda: step = 0.5",
+    "inputs": {
+      "temperature": 27.0,
+      "humidity": 70.0,
+      "soil_moisture": 70.0,
+      "ph": 6.5
+    },
+    "step": 0.5,
+    "status": "AVAILABLE",
+    "score": 86.04,
+    "raw_score": 86.03753753753753,
+    "numerator": 4775.083333333333,
+    "denominator": 55.5,
+    "category": "BAIK",
+    "active_rules": [
+      "R01",
+      "R16"
+    ],
+    "consequent_alphas": {
+      "baik": 1.0
+    }
+  },
+  "Scenario_P_step_0_1": {
+    "description": "Nilai centroid dengan resolusi sampling berbeda: step = 0.1",
+    "inputs": {
+      "temperature": 27.0,
+      "humidity": 70.0,
+      "soil_moisture": 70.0,
+      "ph": 6.5
+    },
+    "step": 0.1,
+    "status": "AVAILABLE",
+    "score": 85.93,
+    "raw_score": 85.9347247428917,
+    "numerator": 23675.01666666667,
+    "denominator": 275.50000000000006,
+    "category": "BAIK",
+    "active_rules": [
+      "R01",
+      "R16"
+    ],
+    "consequent_alphas": {
+      "baik": 1.0
+    }
+  }
+}

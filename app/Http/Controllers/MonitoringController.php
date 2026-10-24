@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateMonitoringRequest;
 use App\Models\Monitoring;
 use App\Models\MonitoringParameter;
 use App\Models\Plant;
+use App\Services\MonitoringAlarmService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -76,6 +77,13 @@ class MonitoringController extends Controller
         $validated = $request->validated();
 
         $monitoring = Monitoring::create($validated);
+        $monitoring->load('plant');
+
+        // Phase 12: Evaluasi alarm threshold setelah data disimpan
+        app(MonitoringAlarmService::class)->evaluate($monitoring);
+
+        // Phase 15: Eksekusi inferensi fuzzy logic (failure-isolated)
+        app(\App\Services\FuzzyLogic\FuzzyPipelineService::class)->process($monitoring, 'web_form');
 
         $plantName = $monitoring->plant->name ?? 'Tanaman';
 
@@ -90,7 +98,7 @@ class MonitoringController extends Controller
      */
     public function show(Monitoring $monitoring): View
     {
-        $monitoring->load('plant');
+        $monitoring->load(['plant', 'latestFuzzyInference']);
         $parameters = MonitoringParameter::all()->keyBy('parameter_name');
 
         return view('monitorings.show', compact('monitoring', 'parameters'));
@@ -127,6 +135,13 @@ class MonitoringController extends Controller
 
         $validated = $request->validated();
         $monitoring->update($validated);
+        $monitoring->refresh()->load('plant');
+
+        // Phase 12: Re-evaluasi alarm threshold setelah data diperbarui
+        app(MonitoringAlarmService::class)->evaluate($monitoring);
+
+        // Phase 15: Re-evaluasi inferensi fuzzy logic (failure-isolated)
+        app(\App\Services\FuzzyLogic\FuzzyPipelineService::class)->process($monitoring, 'web_form');
 
         return redirect()
             ->route('monitorings.index')

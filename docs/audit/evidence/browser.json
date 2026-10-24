@@ -1,0 +1,282 @@
+{
+  "date": "2026-10-22",
+  "database": "isolated browser.sqlite copy",
+  "pages": [
+    {
+      "role": "guest",
+      "path": "/dashboard",
+      "status": 200,
+      "redirected": true
+    },
+    {
+      "role": "guest",
+      "path": "/reports/monitoring",
+      "status": 200,
+      "redirected": true
+    },
+    {
+      "role": "guest",
+      "path": "/admin/thresholds",
+      "status": 200,
+      "redirected": true
+    },
+    {
+      "role": "admin",
+      "path": "/dashboard",
+      "status": 200,
+      "finalPath": "/dashboard",
+      "ms": 3574,
+      "title": "Dashboard Monitoring & Analytics - Melon Monitoring System",
+      "charts": 13
+    },
+    {
+      "role": "admin",
+      "path": "/plants",
+      "status": 200,
+      "finalPath": "/plants",
+      "ms": 2370,
+      "title": "Data Tanaman Melon - Melon Monitoring System",
+      "charts": 0
+    },
+    {
+      "role": "admin",
+      "path": "/monitorings",
+      "status": 200,
+      "finalPath": "/monitorings",
+      "ms": 3237,
+      "title": "Data Monitoring Tanaman Melon - Melon Monitoring System",
+      "charts": 0
+    },
+    {
+      "role": "admin",
+      "path": "/alarms",
+      "status": 200,
+      "finalPath": "/alarms",
+      "ms": 2697,
+      "title": "Riwayat Alarm - Melon Monitoring System",
+      "charts": 0
+    },
+    {
+      "role": "admin",
+      "path": "/actuators",
+      "status": 200,
+      "finalPath": "/actuators",
+      "ms": 2461,
+      "title": "Kontrol Perangkat (Mode Simulasi) - Melon Monitoring System",
+      "charts": 0
+    },
+    {
+      "role": "admin",
+      "path": "/actuators/history",
+      "status": 200,
+      "finalPath": "/actuators/history",
+      "ms": 3018,
+      "title": "Riwayat Kontrol Perangkat (Audit Trail) - Melon Monitoring System",
+      "charts": 0
+    },
+    {
+      "role": "admin",
+      "path": "/fuzzy/history",
+      "status": 200,
+      "finalPath": "/fuzzy/history",
+      "ms": 2483,
+      "title": "Riwayat Analisis Fuzzy Logic - Melon Monitoring System",
+      "charts": 1
+    },
+    {
+      "role": "admin",
+      "path": "/admin/fuzzy/config",
+      "status": 200,
+      "finalPath": "/admin/fuzzy/config",
+      "ms": 2362,
+      "title": "Konfigurasi & Audit Mesin Fuzzy Logic - Melon Monitoring System",
+      "charts": 0
+    },
+    {
+      "role": "admin",
+      "path": "/admin/thresholds",
+      "status": 200,
+      "finalPath": "/admin/thresholds",
+      "ms": 2175,
+      "title": "Manajemen Ambang Batas (Threshold) Sensor - Melon Monitoring System",
+      "charts": 0
+    },
+    {
+      "role": "admin",
+      "path": "/admin/integrations/google-sheets",
+      "status": 200,
+      "finalPath": "/admin/integrations/google-sheets",
+      "ms": 2341,
+      "title": "Integrasi Google Sheets & Keamanan Perangkat — Melon Monitor - Melon Monitoring System",
+      "charts": 0
+    },
+    {
+      "role": "admin",
+      "path": "/reports/monitoring",
+      "status": 200,
+      "finalPath": "/reports/monitoring",
+      "ms": 2568,
+      "title": "Laporan Monitoring Greenhouse - Melon Monitoring System",
+      "charts": 0
+    },
+    {
+      "role": "admin",
+      "path": "/admin/users",
+      "status": 200,
+      "finalPath": "/dashboard",
+      "ms": 3677,
+      "title": "Dashboard Monitoring & Analytics - Melon Monitoring System",
+      "charts": 13
+    },
+    {
+      "role": "pengamat",
+      "path": "/admin/thresholds",
+      "status": 403
+    },
+    {
+      "role": "pengamat",
+      "path": "/admin/fuzzy/config",
+      "status": 403
+    },
+    {
+      "role": "pengamat",
+      "path": "/admin/integrations/google-sheets",
+      "status": 403
+    },
+    {
+      "role": "pengamat",
+      "path": "/plants/create",
+      "status": 403
+    },
+    {
+      "role": "pengamat",
+      "path": "/monitorings/create",
+      "status": 200
+    },
+    {
+      "role": "pengamat",
+      "path": "/reports/monitoring",
+      "status": 200
+    },
+    {
+      "role": "pengamat",
+      "path": "/actuators",
+      "status": 200
+    }
+  ],
+  "responsive": [
+    {
+      "width": 375,
+      "height": 812,
+      "path": "/dashboard",
+      "documentWidth": 484,
+      "bodyWidth": 476,
+      "chartCount": 13,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "firstIconWidth": 0,
+      "overflow": true
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "path": "/reports/monitoring",
+      "documentWidth": 441,
+      "bodyWidth": 433,
+      "chartCount": 0,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "firstIconWidth": 0,
+      "overflow": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/dashboard",
+      "documentWidth": 877,
+      "bodyWidth": 869,
+      "chartCount": 13,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "firstIconWidth": 0,
+      "overflow": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "path": "/reports/monitoring",
+      "documentWidth": 834,
+      "bodyWidth": 826,
+      "chartCount": 0,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "firstIconWidth": 0,
+      "overflow": true
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "path": "/dashboard",
+      "documentWidth": 1475,
+      "bodyWidth": 1467,
+      "chartCount": 13,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "firstIconWidth": 0,
+      "overflow": true
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "path": "/reports/monitoring",
+      "documentWidth": 1432,
+      "bodyWidth": 1424,
+      "chartCount": 0,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "firstIconWidth": 0,
+      "overflow": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "path": "/dashboard",
+      "documentWidth": 2029,
+      "bodyWidth": 2021,
+      "chartCount": 13,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "firstIconWidth": 0,
+      "overflow": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "path": "/reports/monitoring",
+      "documentWidth": 1986,
+      "bodyWidth": 1978,
+      "chartCount": 0,
+      "background": "rgba(0, 0, 0, 0)",
+      "font": "\"Times New Roman\"",
+      "firstIconWidth": 0,
+      "overflow": true
+    }
+  ],
+  "errors": [
+    "TimeoutError: page.waitForEvent: Timeout 30000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================"
+  ],
+  "exports": {
+    "csv": {
+      "bytes": 174384,
+      "signature": "efbbbf4e6f2c2257",
+      "lines": 961,
+      "header": "﻿No,\"Waktu Monitoring\",\"ID Tanaman\",\"Nama Tanaman\",Varietas,Lokasi,\"Sumber Data\",\"ID Perangkat\",\"Suhu Udara (°C)\",\"Kelembapan Udara (%)\",\"Kelembapan Tanah (%)\",\"pH Nutrisi/Media\",\"EC Nutrisi (mS/cm)\",\"Intensitas Cahaya (lux)\",\"Suhu Nutrisi (°C)\",\"Level Tandon Nutrisi (%)\",\"Tinggi Tanaman (cm)\",\"Kerapatan Kanopi (%)\",\"Kondisi Tanaman\",\"Warna Daun\",\"Skor Fuzzy\",\"Kategori Fuzzy\",\"Catatan Observasi\""
+    },
+    "pdf": {
+      "status": 200,
+      "ms": 36348,
+      "bytes": 209292,
+      "signature": "255044462d312e37"
+    }
+  }
+}

@@ -18,14 +18,26 @@ class Monitoring extends Model
     protected $fillable = [
         'plant_id',
         'temperature',
+        'nutrient_temperature',
         'ph',
+        'ec',
         'humidity',
+        'soil_moisture',
+        'light_intensity',
+        'tank_level',
         'plant_height',
         'plant_density',
         'plant_condition',
         'plant_color',
         'notes',
         'monitored_at',
+        'source',
+        'device_id',
+        'source_identifier',
+        'reported_pump_state',
+        'reported_fan_state',
+        'fuzzy_score',
+        'fuzzy_label',
     ];
 
     /**
@@ -36,12 +48,18 @@ class Monitoring extends Model
     protected function casts(): array
     {
         return [
-            'temperature'   => 'float',
-            'ph'            => 'float',
-            'humidity'      => 'float',
-            'plant_height'  => 'float',
-            'plant_density' => 'float',
-            'monitored_at'  => 'datetime',
+            'temperature'          => 'float',
+            'nutrient_temperature' => 'float',
+            'ph'                   => 'float',
+            'ec'                   => 'float',
+            'humidity'             => 'float',
+            'soil_moisture'        => 'float',
+            'light_intensity'      => 'float',
+            'tank_level'           => 'float',
+            'plant_height'         => 'float',
+            'plant_density'        => 'float',
+            'fuzzy_score'          => 'float',
+            'monitored_at'         => 'datetime',
         ];
     }
 
@@ -52,6 +70,31 @@ class Monitoring extends Model
     {
         return $this->belongsTo(Plant::class);
     }
+
+    /**
+     * Relasi ke perangkat IoT pengirim (opsional).
+     */
+    public function device(): BelongsTo
+    {
+        return $this->belongsTo(IotDevice::class, 'device_id', 'device_id');
+    }
+
+    /**
+     * Relasi ke seluruh hasil inferensi fuzzy (berbagai versi/sumber).
+     */
+    public function fuzzyInferences(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(FuzzyInferenceResult::class);
+    }
+
+    /**
+     * Relasi ke hasil inferensi fuzzy terbaru.
+     */
+    public function latestFuzzyInference(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(FuzzyInferenceResult::class)->latestOfMany('inferred_at');
+    }
+
 
     /**
      * Scope query untuk filter dan pencarian monitoring melon.

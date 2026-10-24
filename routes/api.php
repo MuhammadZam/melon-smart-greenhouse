@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\MonitoringController;
 use App\Http\Controllers\Api\PlantController;
+use App\Http\Middleware\AuthenticateInternalApi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,19 +16,21 @@ use Illuminate\Support\Facades\Route;
 
 // 1. Endpoint Data Tanaman
 Route::prefix('plants')->group(function () {
-    Route::get('/', [PlantController::class, 'index'])->name('api.plants.index');
-    Route::get('/{plant}', [PlantController::class, 'show'])->name('api.plants.show');
+    Route::get('/', [PlantController::class, 'index'])->middleware(['web', AuthenticateInternalApi::class])->name('api.plants.index');
+    Route::get('/{plant}', [PlantController::class, 'show'])->middleware(['web', AuthenticateInternalApi::class])->name('api.plants.show');
 });
 
 // 2. Endpoint Data Monitoring & Statistik Agregasi
 Route::prefix('monitorings')->group(function () {
-    Route::get('/statistics', [MonitoringController::class, 'statistics'])->name('api.monitorings.statistics');
-    Route::get('/', [MonitoringController::class, 'index'])->name('api.monitorings.index');
-    Route::post('/', [MonitoringController::class, 'store'])->name('api.monitorings.store');
-    Route::get('/{monitoring}', [MonitoringController::class, 'show'])->name('api.monitorings.show');
+    Route::get('/statistics', [MonitoringController::class, 'statistics'])->middleware(['web', AuthenticateInternalApi::class])->name('api.monitorings.statistics');
+    Route::get('/', [MonitoringController::class, 'index'])->middleware(['web', AuthenticateInternalApi::class])->name('api.monitorings.index');
+    Route::post('/', [MonitoringController::class, 'store'])
+        ->middleware(['device.auth', 'throttle:60,1'])
+        ->name('api.monitorings.store');
+    Route::get('/{monitoring}', [MonitoringController::class, 'show'])->middleware(['web', AuthenticateInternalApi::class])->name('api.monitorings.show');
 });
 
 // 3. Endpoint Ringkasan Dashboard
 Route::prefix('dashboard')->group(function () {
-    Route::get('/summary', [DashboardController::class, 'summary'])->name('api.dashboard.summary');
+    Route::get('/summary', [DashboardController::class, 'summary'])->middleware(['web', AuthenticateInternalApi::class])->name('api.dashboard.summary');
 });

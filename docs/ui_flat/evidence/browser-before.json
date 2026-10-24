@@ -1,0 +1,1694 @@
+{
+  "stage": "before",
+  "pages": [
+    {
+      "name": "home",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "documentWidth": 375,
+      "background": "oklch(0.208 0.042 265.755)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 5,
+      "largeRadius": 6,
+      "charts": []
+    },
+    {
+      "name": "login",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 9,
+      "charts": []
+    },
+    {
+      "name": "dashboard",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 115,
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 301,
+          "initialized": true
+        }
+      ]
+    },
+    {
+      "name": "monitoring",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/monitorings",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 81,
+      "charts": []
+    },
+    {
+      "name": "plants",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/plants",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 66,
+      "charts": []
+    },
+    {
+      "name": "charts",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 115,
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 301,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 301,
+          "initialized": true
+        }
+      ]
+    },
+    {
+      "name": "alarms",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/alarms",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 6,
+      "largeRadius": 17,
+      "charts": []
+    },
+    {
+      "name": "fuzzy",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/fuzzy/history",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 47,
+      "charts": [
+        {
+          "id": "fuzzyTrendChart",
+          "width": 301,
+          "initialized": true
+        }
+      ]
+    },
+    {
+      "name": "actuators",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/actuators",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 29,
+      "charts": []
+    },
+    {
+      "name": "sheets",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/admin/integrations/google-sheets",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 21,
+      "charts": []
+    },
+    {
+      "name": "reports",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/reports/monitoring",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 51,
+      "charts": []
+    },
+    {
+      "name": "monitoring_create",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/monitorings/create",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 19,
+      "charts": []
+    },
+    {
+      "name": "monitoring_show",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/monitorings/1",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 22,
+      "charts": []
+    },
+    {
+      "name": "monitoring_edit",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/monitorings/1/edit",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 20,
+      "charts": []
+    },
+    {
+      "name": "plant_create",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/plants/create",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 8,
+      "charts": []
+    },
+    {
+      "name": "plant_show",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/plants/1",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 39,
+      "charts": []
+    },
+    {
+      "name": "plant_edit",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/plants/1/edit",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 9,
+      "charts": []
+    },
+    {
+      "name": "thresholds",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/admin/thresholds",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 53,
+      "charts": []
+    },
+    {
+      "name": "fuzzy_config",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/admin/fuzzy/config",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 42,
+      "charts": []
+    },
+    {
+      "name": "actuator_history",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/actuators/history",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 9,
+      "charts": []
+    },
+    {
+      "name": "fuzzy_show",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/fuzzy/history/1",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 15,
+      "charts": []
+    },
+    {
+      "name": "alarm_show",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "path": "/alarms/379",
+      "documentWidth": 375,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 6,
+      "charts": []
+    },
+    {
+      "name": "home",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "documentWidth": 768,
+      "background": "oklch(0.208 0.042 265.755)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 5,
+      "largeRadius": 6,
+      "charts": []
+    },
+    {
+      "name": "login",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 9,
+      "charts": []
+    },
+    {
+      "name": "dashboard",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 115,
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 678,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 678,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 678,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 678,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 678,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 308,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 308,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 678,
+          "initialized": true
+        }
+      ]
+    },
+    {
+      "name": "monitoring",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/monitorings",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 81,
+      "charts": []
+    },
+    {
+      "name": "plants",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/plants",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 66,
+      "charts": []
+    },
+    {
+      "name": "charts",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 115,
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 678,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 678,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 678,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 678,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 678,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 308,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 308,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 678,
+          "initialized": true
+        }
+      ]
+    },
+    {
+      "name": "alarms",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/alarms",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 6,
+      "largeRadius": 17,
+      "charts": []
+    },
+    {
+      "name": "fuzzy",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/fuzzy/history",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 46,
+      "charts": [
+        {
+          "id": "fuzzyTrendChart",
+          "width": 670,
+          "initialized": true
+        }
+      ]
+    },
+    {
+      "name": "actuators",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/actuators",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 29,
+      "charts": []
+    },
+    {
+      "name": "sheets",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/admin/integrations/google-sheets",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 21,
+      "charts": []
+    },
+    {
+      "name": "reports",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/reports/monitoring",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 50,
+      "charts": []
+    },
+    {
+      "name": "monitoring_create",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/monitorings/create",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 19,
+      "charts": []
+    },
+    {
+      "name": "monitoring_show",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/monitorings/1",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 22,
+      "charts": []
+    },
+    {
+      "name": "monitoring_edit",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/monitorings/1/edit",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 20,
+      "charts": []
+    },
+    {
+      "name": "plant_create",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/plants/create",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 8,
+      "charts": []
+    },
+    {
+      "name": "plant_show",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/plants/1",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 39,
+      "charts": []
+    },
+    {
+      "name": "plant_edit",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/plants/1/edit",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 9,
+      "charts": []
+    },
+    {
+      "name": "thresholds",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/admin/thresholds",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 53,
+      "charts": []
+    },
+    {
+      "name": "fuzzy_config",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/admin/fuzzy/config",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 42,
+      "charts": []
+    },
+    {
+      "name": "actuator_history",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/actuators/history",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 9,
+      "charts": []
+    },
+    {
+      "name": "fuzzy_show",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/fuzzy/history/1",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 15,
+      "charts": []
+    },
+    {
+      "name": "alarm_show",
+      "width": 768,
+      "height": 1024,
+      "status": 200,
+      "path": "/alarms/379",
+      "documentWidth": 768,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 6,
+      "charts": []
+    },
+    {
+      "name": "home",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "documentWidth": 1366,
+      "background": "oklch(0.208 0.042 265.755)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 5,
+      "largeRadius": 6,
+      "charts": []
+    },
+    {
+      "name": "login",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 9,
+      "charts": []
+    },
+    {
+      "name": "dashboard",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 115,
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 293,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 293,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 293,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 471,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 471,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 293,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 293,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 293,
+          "initialized": true
+        }
+      ]
+    },
+    {
+      "name": "monitoring",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/monitorings",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 81,
+      "charts": []
+    },
+    {
+      "name": "plants",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/plants",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 66,
+      "charts": []
+    },
+    {
+      "name": "charts",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 115,
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 293,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 293,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 293,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 471,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 471,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 293,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 293,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 293,
+          "initialized": true
+        }
+      ]
+    },
+    {
+      "name": "alarms",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/alarms",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 6,
+      "largeRadius": 17,
+      "charts": []
+    },
+    {
+      "name": "fuzzy",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/fuzzy/history",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 46,
+      "charts": [
+        {
+          "id": "fuzzyTrendChart",
+          "width": 996,
+          "initialized": true
+        }
+      ]
+    },
+    {
+      "name": "actuators",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/actuators",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 29,
+      "charts": []
+    },
+    {
+      "name": "sheets",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/admin/integrations/google-sheets",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 21,
+      "charts": []
+    },
+    {
+      "name": "reports",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/reports/monitoring",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 50,
+      "charts": []
+    },
+    {
+      "name": "monitoring_create",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/monitorings/create",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 19,
+      "charts": []
+    },
+    {
+      "name": "monitoring_show",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/monitorings/1",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 22,
+      "charts": []
+    },
+    {
+      "name": "monitoring_edit",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/monitorings/1/edit",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 20,
+      "charts": []
+    },
+    {
+      "name": "plant_create",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/plants/create",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 8,
+      "charts": []
+    },
+    {
+      "name": "plant_show",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/plants/1",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 39,
+      "charts": []
+    },
+    {
+      "name": "plant_edit",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/plants/1/edit",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 9,
+      "charts": []
+    },
+    {
+      "name": "thresholds",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/admin/thresholds",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 53,
+      "charts": []
+    },
+    {
+      "name": "fuzzy_config",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/admin/fuzzy/config",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 42,
+      "charts": []
+    },
+    {
+      "name": "actuator_history",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/actuators/history",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 9,
+      "charts": []
+    },
+    {
+      "name": "fuzzy_show",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/fuzzy/history/1",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 15,
+      "charts": []
+    },
+    {
+      "name": "alarm_show",
+      "width": 1366,
+      "height": 768,
+      "status": 200,
+      "path": "/alarms/379",
+      "documentWidth": 1366,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 6,
+      "charts": []
+    },
+    {
+      "name": "home",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "documentWidth": 1920,
+      "background": "oklch(0.208 0.042 265.755)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 5,
+      "largeRadius": 6,
+      "charts": []
+    },
+    {
+      "name": "login",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 9,
+      "charts": []
+    },
+    {
+      "name": "dashboard",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 115,
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 350,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 350,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 350,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 556,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 556,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 350,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 350,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 350,
+          "initialized": true
+        }
+      ]
+    },
+    {
+      "name": "monitoring",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/monitorings",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 81,
+      "charts": []
+    },
+    {
+      "name": "plants",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/plants",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 66,
+      "charts": []
+    },
+    {
+      "name": "charts",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/dashboard",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 115,
+      "charts": [
+        {
+          "id": "tempChart",
+          "width": 350,
+          "initialized": true
+        },
+        {
+          "id": "phChart",
+          "width": 350,
+          "initialized": true
+        },
+        {
+          "id": "humidityChart",
+          "width": 350,
+          "initialized": true
+        },
+        {
+          "id": "ecChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "soilMoistureChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "lightChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "nutrientTempChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "tankLevelChart",
+          "width": 0,
+          "initialized": false
+        },
+        {
+          "id": "heightChart",
+          "width": 556,
+          "initialized": true
+        },
+        {
+          "id": "densityChart",
+          "width": 556,
+          "initialized": true
+        },
+        {
+          "id": "conditionChart",
+          "width": 350,
+          "initialized": true
+        },
+        {
+          "id": "statusChart",
+          "width": 350,
+          "initialized": true
+        },
+        {
+          "id": "frequencyChart",
+          "width": 350,
+          "initialized": true
+        }
+      ]
+    },
+    {
+      "name": "alarms",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/alarms",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 6,
+      "largeRadius": 17,
+      "charts": []
+    },
+    {
+      "name": "fuzzy",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/fuzzy/history",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 46,
+      "charts": [
+        {
+          "id": "fuzzyTrendChart",
+          "width": 1166,
+          "initialized": true
+        }
+      ]
+    },
+    {
+      "name": "actuators",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/actuators",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 29,
+      "charts": []
+    },
+    {
+      "name": "sheets",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/admin/integrations/google-sheets",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 21,
+      "charts": []
+    },
+    {
+      "name": "reports",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/reports/monitoring",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 50,
+      "charts": []
+    },
+    {
+      "name": "monitoring_create",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/monitorings/create",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 19,
+      "charts": []
+    },
+    {
+      "name": "monitoring_show",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/monitorings/1",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 22,
+      "charts": []
+    },
+    {
+      "name": "monitoring_edit",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/monitorings/1/edit",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 20,
+      "charts": []
+    },
+    {
+      "name": "plant_create",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/plants/create",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 8,
+      "charts": []
+    },
+    {
+      "name": "plant_show",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/plants/1",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 39,
+      "charts": []
+    },
+    {
+      "name": "plant_edit",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/plants/1/edit",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 4,
+      "largeRadius": 9,
+      "charts": []
+    },
+    {
+      "name": "thresholds",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/admin/thresholds",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 53,
+      "charts": []
+    },
+    {
+      "name": "fuzzy_config",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/admin/fuzzy/config",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 42,
+      "charts": []
+    },
+    {
+      "name": "actuator_history",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/actuators/history",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 2,
+      "largeRadius": 9,
+      "charts": []
+    },
+    {
+      "name": "fuzzy_show",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/fuzzy/history/1",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 15,
+      "charts": []
+    },
+    {
+      "name": "alarm_show",
+      "width": 1920,
+      "height": 1080,
+      "status": 200,
+      "path": "/alarms/379",
+      "documentWidth": 1920,
+      "background": "oklch(0.129 0.042 264.695)",
+      "font": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+      "gradientElements": 3,
+      "largeRadius": 6,
+      "charts": []
+    }
+  ],
+  "errors": []
+}

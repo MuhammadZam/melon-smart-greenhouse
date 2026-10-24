@@ -1,0 +1,482 @@
+[
+  {
+    "path": "/login",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              ".pt-1 > .text-slate-500"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.84 (foreground color: #62748e, background color: #0c1427, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 13
+      }
+    ],
+    "passes": 15
+  },
+  {
+    "path": "/dashboard",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              ".shadow-emerald-600\\/30 > span"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".px-1 > .text-slate-500.text-\\[11px\\].font-mono"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.79 (foreground color: #62748e, background color: #021826, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-emerald-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-teal-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-sky-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-indigo-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-amber-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-yellow-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-cyan-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-blue-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".bg-emerald-600.shadow-sm.py-1"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:bg-emerald-500.flex-1[type=\"submit\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".space-y-3:nth-child(2) > .justify-between.items-center.flex > .italic.text-slate-500.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.23 (foreground color: #62748e, background color: #020618, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".space-y-3:nth-child(3) > .justify-between.items-center.flex > .italic.text-slate-500.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.23 (foreground color: #62748e, background color: #020618, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".text-rose-400\\/80"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.43 (foreground color: #ce536d, background color: #0c1427, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".text-indigo-400\\/80"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #666fd4, background color: #0c1427, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 116
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/monitorings",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              ".bg-emerald-600 > span"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 115
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/plants",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              ".bg-emerald-600 > span"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 53
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/charts",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              ".shadow-emerald-600\\/30 > span"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".px-1 > .text-slate-500.text-\\[11px\\].font-mono"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.23 (foreground color: #62748e, background color: #020618, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-emerald-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-teal-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-sky-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-indigo-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-amber-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-yellow-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-cyan-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:border-blue-500\\/40 > .text-slate-500.mt-1.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.15 (foreground color: #62748e, background color: #04091b, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".bg-emerald-600.shadow-sm.py-1"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:bg-emerald-500.flex-1[type=\"submit\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".space-y-3:nth-child(2) > .justify-between.items-center.flex > .italic.text-slate-500.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.23 (foreground color: #62748e, background color: #020618, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".space-y-3:nth-child(3) > .justify-between.items-center.flex > .italic.text-slate-500.text-\\[11px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.23 (foreground color: #62748e, background color: #020618, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".text-rose-400\\/80"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.43 (foreground color: #ce536d, background color: #0c1427, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".text-indigo-400\\/80"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.18 (foreground color: #666fd4, background color: #0c1427, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 116
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/alarms",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              "#btn-filter-apply"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".ml-1"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #62748e, background color: #0a1023, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".font-normal"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #62748e, background color: #0a1023, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".text-slate-500.text-\\[10px\\]"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #62748e, background color: #0a1023, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 11
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/fuzzy/history",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 55
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/actuators",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              "#control-form-624 > .grid-cols-2.grid.gap-3 > .bg-emerald-600.hover\\:bg-emerald-500.shadow-emerald-600\\/20 > span"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              "#control-form-625 > .grid-cols-2.grid.gap-3 > .bg-emerald-600.hover\\:bg-emerald-500.shadow-emerald-600\\/20 > span"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 7
+      }
+    ],
+    "passes": 23
+  },
+  {
+    "path": "/admin/integrations/google-sheets",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              ".bg-emerald-600"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".py-6"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.74 (foreground color: #62748e, background color: #0f172b, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 9
+      }
+    ],
+    "passes": 29
+  },
+  {
+    "path": "/reports/monitoring",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              "#btn-export-pdf > span"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".bg-emerald-600.px-2\\.5.py-1"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".hover\\:bg-emerald-500.bg-emerald-600[type=\"submit\"] > span"
+            ],
+            "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.65 (foreground color: #ffffff, background color: #009966, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 115
+      }
+    ],
+    "passes": 27
+  },
+  {
+    "path": "/plants/create",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 6
+      }
+    ],
+    "passes": 21
+  },
+  {
+    "path": "/monitorings/create",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 5
+      }
+    ],
+    "passes": 21
+  }
+]

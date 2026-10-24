@@ -1,0 +1,7 @@
+import fs from 'node:fs';
+const p=JSON.parse(fs.readFileSync('docs/audit/evidence/probes.json')),config=p.fuzzy_config;
+// Independent arithmetic implementation. Uses rule definitions as data, never PHP engine classes.
+function mu(x,s){const a=s.params;if(s.type==='triangular'){const [l,m,r]=a;if(x===m)return 1;if(x<=l||x>=r)return 0;return x<m?(x-l)/(m-l):(r-x)/(r-m);}const [l,b,c,r]=a;if(x<l||x>r)return 0;if(x>=b&&x<=c)return 1;if(x<b)return b===l?1:(x-l)/(b-l);return r===c?1:(r-x)/(r-c);}
+const results=[];
+for(const scenario of p.fuzzy_scenarios){let outputs={};for(const rule of config.rules){if(!rule.enabled)continue;const memberships=Object.entries(rule.antecedents).map(([k,s])=>mu(scenario.input[k],config.inputs[k].sets[s]));const alpha=(rule.operator==='or'?Math.max(...memberships):Math.min(...memberships))*rule.weight;outputs[rule.consequent]=Math.max(outputs[rule.consequent]||0,alpha);}let numerator=0,denominator=0;for(let z=0;z<=100;z++){const value=Math.max(0,...Object.entries(outputs).map(([s,a])=>Math.min(a,mu(z,config.output.sets[s]))));numerator+=z*value;denominator+=value;}const oracle=denominator?Math.round(numerator/denominator*100)/100:null;results.push({...scenario,oracle,pass:oracle===scenario.score});}
+fs.writeFileSync('docs/audit/evidence/fuzzy-oracle.json',JSON.stringify({scenarios:results.length,passed:results.filter(r=>r.pass).length,results},null,2));console.log(results.length+' scenarios; '+results.filter(r=>r.pass).length+' match');

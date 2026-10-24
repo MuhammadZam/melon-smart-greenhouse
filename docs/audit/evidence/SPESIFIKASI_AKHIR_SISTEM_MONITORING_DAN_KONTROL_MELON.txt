@@ -1,0 +1,139 @@
+P1: SPESIFIKASI DAN CETAK BIRU (BLUEPRINT) HASIL AKHIRSISTEM SMART GREENHOUSE & KONTROL OTOMASI TANAMAN MELON
+P2: Integrasi Perangkat Keras ESP32, Modul Sensor Presisi, Aktuator Otomatis, dan Platform Web Laravel 11
+P3: Nama Proyek
+P4: Sistem Web Monitoring & Kontrol Otomasi Tanaman Melon
+P5: Teknologi Inti
+P6: Laravel 11, PHP 8.2, MySQL, Tailwind CSS, Alpine.js, Chart.js, ESP32, Python
+P7: Tipe Sistem
+P8: Closed-Loop IoT Precision Agriculture (Smart Greenhouse & Fertigasi Hidroponik)
+P9: Status Dokumen
+P10: Spesifikasi Resmi Hasil Akhir (Final Architecture & Operational Blueprint)
+P12: 1. KONFIRMASI HASIL AKHIR SISTEM (VERIFIKASI BLUEPRINT)
+P13: Jawaban atas pertanyaan Anda: YA, BENAR SEKALI. Seluruh arsitektur yang Anda deskripsikan — mencakup 8 parameter sensor presisi, 5 aktuator pengendali fisik, logika otomasi closed-loop, serta komponen mikrokontroler ESP32 dan modul relay — adalah rancangan hasil akhir (final output) yang tepat dan menjadi sasaran puncak dari implementasi sistem ini.
+P14: Hingga Phase 10 yang baru saja diaudit, proyek telah berhasil membangun pondasi inti perangkat lunak yang sangat kokoh, meliputi:• Platform Web Laravel 11 lengkap dengan autentikasi multi-role (Administrator dan Pengamat Lapangan).• REST API Ingestion yang siap menerima kiriman data telemetri dari mikrokontroler secara berkala.• Visualisasi grafik tren analitik (Chart.js) dan manajemen data tanaman melon.• Simulator IoT berbasis HTTP client untuk memvalidasi alur data tanpa ketergantungan perangkat fisik awal.Dengan demikian, spesifikasi yang Anda sampaikan adalah cetak biru operasional (operational blueprint) untuk integrasi perangkat keras fisik pada tahap selanjutnya (Phase 11: Alarm Notifications & Device Controls, dilanjutkan dengan Hardware Deployment ESP32).
+P15: 📌 FILOSOFI DESAIN SISTEM: Sistem tidak hanya sekadar memantau (monitoring pasif), melainkan bertindak secara cerdas (otomasi aktif / closed-loop). Saat parameter lingkungan atau nutrisi bergeser dari batas aman, aktuator langsung bekerja otomatis guna menjaga tanaman melon tetap berada pada kondisi fisiologis optimal tanpa ketergantungan konstan pada intervensi manual manusia.
+P16: 2. SPESIFIKASI LENGKAP PARAMETER SENSOR & NILAI AMBANG BATAS
+P17: Budidaya melon (Cucumis melo L.) di dalam greenhouse atau sistem hidroponik/substrat sangat sensitif terhadap fluktuasi iklim mikro dan larutan hara. Berikut adalah 8 parameter sensor yang diterapkan pada sistem:
+P18: No
+P19: Parameter Sensor
+P20: Tipe Sensor
+P21: Rentang Ideal Melon
+P22: Fungsi Biologis & Dampak Pemicu
+P23: 1
+P24: Suhu Udara
+P25: DHT22 / SHT31
+P26: 25 - 30 °C
+P27: Suhu > 30°C menyebabkan bunga rontok, transpirasi berlebih, dan heat stress; memicu Kipas Exhaust ON.
+P28: 2
+P29: Kelembapan Udara (RH)
+P30: DHT22 / SHT31
+P31: 50 - 70 % RH
+P32: RH > 70% memicu embun jelaga/jamur tepung (powdery mildew); RH < 50% memicu Misting/Fogger ON.
+P33: 3
+P34: Kelembapan Media/Tanah
+P35: Soil Moisture Kapasitif v1.2
+P36: 60 - 80 % Kapasitas Lapang
+P37: Mencegah layu dan busuk akar (root rot); media < 60% memicu Pompa Fertigasi ON.
+P38: 4
+P39: Derajat Keasaman (pH)
+P40: Sensor pH E-201-C / Analog
+P41: 6.0 - 6.8 pH
+P42: Menentukan bioavailabilitas hara makro/mikro; di luar rentang memicu Pompa Dosing pH Up/Down.
+P43: 5
+P44: EC / TDS Nutrisi
+P45: Sensor EC Analog DFRobot
+P46: 2.0 - 3.0 mS/cm (Fase Buah)
+P47: Konsentrasi ion hara; EC < 2.0 memicu Dosing Nutrisi A/B ON, EC > 3.0 memicu penambahan air tandon.
+P48: 6
+P49: Intensitas Cahaya
+P50: BH1750 (Digital I2C) / LDR
+P51: 8 - 10 Jam / > 20.000 Lux
+P52: Fotosintesis dan pembentukan jaring (netting) serta kadar brix buah; mendung/gelap memicu Grow Light ON.
+P53: 7
+P54: Suhu Larutan Nutrisi
+P55: DS18B20 Waterproof
+P56: 20 - 25 °C
+P57: Menjaga kadar Dissolved Oxygen (DO); suhu > 25°C merusak akar dan mengacaukan pembacaan sensor pH/EC.
+P58: 8
+P59: Level Air Tandon
+P60: HC-SR04P / Float Switch
+P61: 20 - 100 % (Min > 20%)
+P62: Mencegah pompa berjalan kering (dry-run protection); level < 20% membunyikan Alarm Kritis dan mematikan pompa.
+P64: Penjelasan Fisiologis Masing-Masing Parameter:
+P65: • Suhu & Kelembapan Udara (DHT22 / SHT31): Suhu ideal melon pada fase vegetatif adalah 25–28°C dan pada fase pembuahan hingga pematangan 28–30°C. Apabila suhu melebihi 32°C, polen menjadi steril sehingga pembentukan buah gagal. Sementara itu, kelembapan udara yang terlalu tinggi (>75%) mempercepat perkembangan cendawan Pseudoperonospora cubensis (downy mildew).
+P66: • Kelembapan Tanah/Media (Soil Moisture Kapasitif): Sensor tipe kapasitif digunakan karena memiliki ketahanan korosi yang jauh lebih baik dibanding sensor resistif. Melon membutuhkan media yang porous (misal cocopeat + arang sekam) dengan kelembapan konstan 60–80%. Kekurangan air saat pembesaran buah menyebabkan buah kerdil atau pecah (fruit cracking) saat disiram mendadak.
+P67: • pH dan EC Larutan Nutrisi (Sensor Analog): pH optimal melon berada di kisaran 6,0–6,8. Jika pH < 5,5, penyerapan kalsium dan magnesium terhambat sehingga muncul busuk ujung buah (Blossom End Rot). Nilai EC diatur bertahap: fase vegetatif (1,2–1,8 mS/cm), fase berbunga (1,8–2,2 mS/cm), dan fase pematangan buah (2,2–2,8 mS/cm) guna mendongkrak kemanisan (brix).
+P68: • Suhu Larutan & Level Tandon Nutrisi (DS18B20 & Ultrasonik): Suhu nutrisi di atas 26°C menyebabkan penurunan drastis kandungan oksigen terlarut (DO), mengundang jamur Pythium (busuk akar). Sensor level air bertindak sebagai fail-safe mutlak agar pompa sirkulasi/fertigasi tidak mengalami overheating akibat beroperasi tanpa cairan.
+P69: 3. SPESIFIKASI DAN MEKANISME KERJA 5 AKTUATOR
+P70: Aktuator merupakan instrumen fisik yang menerima sinyal kendali dari relay modul untuk melakukan tindakan korektif di lapangan. Terdapat 5 unit aktuator utama:
+P71: 🔹 1. Pompa Penyiraman / Drip FertigasiPompa celup (submersible DC 12V atau AC 220V) yang terhubung ke jaringan pipa fertigasi tetes (drip emitter) pada tiap polybag melon. Aktif secara otomatis saat kelembapan media turun di bawah batas minimal atau berdasarkan jadwal irigasi presisi.
+P72: 🔹 2. Pompa Dosing pH dan Nutrisi A/B (Peristaltic Pump)Pompa peristaltik berpresisi tinggi (DC 12V, laju aliran 50–100 ml/menit) yang menginjeksikan cairan koreksi pH (pH Up/Down) serta pekatan hara AB Mix ke dalam tandon pencampur secara terukur tanpa risiko kontaminasi silang.
+P73: 🔹 3. Kipas / Exhaust Fan GreenhouseKipas ventilasi berdaya hisap tinggi yang dipasang di dinding atau atap greenhouse. Berfungsi mengeluarkan udara panas berlebih saat siang hari, menciptakan aliran udara mikro yang mencegah akumulasi kelembapan tinggi di tajuk daun.
+P74: 🔹 4. Misting / Fogger SystemPompa bertekanan tinggi (high pressure pump 100 PSI) yang dihubungkan ke nozzle pengabut (mist nozzle 0.2–0.3 mm). Berfungsi menaikkan kelembapan udara saat cuaca sangat terik kering serta membantu menurunkan suhu udara melalui pendinginan evaporatif.
+P75: 🔹 5. Lampu Tambahan (Supplemental Grow Light)Lampu LED Full Spectrum khusus tanaman (panjang gelombang merah-biru) yang menyala secara otomatis saat intensitas cahaya matahari di bawah ambang batas (kondisi mendung berkepanjangan atau hujan) guna memastikan durasi fotoperiode 8–10 jam terang tercapai.
+P76: 4. LOGIKA KONTROL OTOMASI & RULE-BASED DECISION
+P77: Sistem bekerja dengan prinsip closed-loop feedback control. Mikrokontroler ESP32 membaca data sensor setiap siklus sampling (misal 5–10 detik), membandingkannya terhadap set-point yang dikonfigurasi, dan memutuskan aksi aktuator.
+P78: Kondisi Sensor
+P79: Nilai Terukur
+P80: Aksi Aktuator / Relay
+P81: Tujuan & Pengamanan
+P82: Kelembapan Media Rendah
+P83: < 60%
+P84: Pompa Siram / Fertigasi ON
+P85: Aktif hingga kelembapan mencapai 75%, lalu OFF (Histeresis).
+P86: Suhu Udara Panas
+P87: > 30.0 °C
+P88: Kipas Exhaust Fan ON
+P89: Menurunkan suhu greenhouse hingga < 28.5 °C.
+P90: Kelembapan Udara Kering
+P91: < 50% RH
+P92: Misting / Fogger ON
+P93: Menyemprotkan kabut mikro hingga RH naik ke 60%.
+P94: pH Nutrisi di Luar Batas
+P95: < 6.0 atau > 6.8
+P96: Dosing Pump pH Up/Down ON
+P97: Injeksi pulsa (pulse dosing) bertahap + delay pencampuran 3 menit.
+P98: EC Nutrisi Terlalu Rendah
+P99: < 2.0 mS/cm
+P100: Dosing Pump Nutrisi A & B ON
+P101: Injeksi konsentrat A/B berimbang hingga EC mencapai 2.4 mS/cm.
+P102: Level Air Tandon Kritis
+P103: < 20% Kapasitas
+P104: LOCK ALL PUMPS + ALARM ON
+P105: FAIL-SAFE: Semua pompa dipaksa OFF demi mencegah kerusakan dinamo.
+P107: 📌 PENCEGAHAN RELAY CHATTERING (HISTERESIS): Sistem menerapkan mekanisme Histeresis (Deadband) pada semua aktuator. Contoh: Kipas ON saat suhu > 30.0°C, namun baru OFF setelah suhu turun ke 28.5°C. Ini mencegah relay on-off terus-menerus (chattering / hunting) yang dapat memperpendek umur pakai relay dan motor kipas.
+P108: 5. ARSITEKTUR PERANGKAT KERAS & KOMPONEN PENDUKUNG
+P109: Rangkaian elektronik dibangun dengan standard industri prototype berbasis komponen andal:
+P110: ⚙️ ESP32 Microcontroller Board:Bertindak sebagai pusat pemrosesan lokal (edge computing). Memiliki CPU dual-core 240 MHz, memori SRAM 520 KB, built-in Wi-Fi 2.4 GHz dan Bluetooth LE. ESP32 bertugas: (1) membaca nilai ADC dan I2C dari semua sensor, (2) mengeksekusi logika otomasi lokal secara real-time, (3) mengontrol sinyal GPIO ke modul relay, dan (4) mengirimkan paket data telemetri ke server Laravel melalui HTTP POST /api/monitorings.
+P111: ⚙️ Relay Module Multi-Channel (Optocoupler Isolation):Relay modul 4 hingga 8 channel yang dilengkapi optocoupler isolator. Komponen ini berfungsi sebagai saklar elektronik antara level logika digital ESP32 (3,3 Volt DC) dengan tegangan operasional aktuator (12 Volt DC untuk pompa dosing, atau 220 Volt AC untuk kipas exhaust/pompa besar). Optocoupler memproteksi chip ESP32 dari lonjakan tegangan induksi (back-EMF).
+P112: ⚙️ Sistem Catu Daya & Manajemen Daya (Power Supply):Menggunakan Switching Power Supply (SMPS) 12V 5A sebagai sumber utama aktuator DC, dilengkapi modul step-down converter (LM2596 atau Buck Converter) untuk menyuplai daya stabil 5V ke board ESP32 dan sensor. Dilengkapi sekring pengaman (fuse).
+P113: ⚙️ Koneksi Sensor Presisi:Sensor digital (DHT22/SHT31, BH1750, DS18B20 1-Wire) menggunakan pull-up resistor standar (4.7kΩ). Sensor analog (pH, EC, Soil Moisture) memanfaatkan pin ADC berfilter kapasitor guna meredam ripple tegangan.
+P114: 6. INTEGRASI PERANGKAT LUNAK: WEB PLATFORM LARAVEL 11
+P115: Pada sisi perangkat lunak, sistem web yang dibangun menggunakan Laravel 11 berperan sebagai server pusat monitoring, analitik, dan kontrol. Integrasi dilakukan melalui komponen-komponen berikut:
+P116: 1. REST API Ingestion (/api/monitorings):ESP32 mengirimkan payload JSON secara periodik (misal per 10–30 detik). Format payload dirancang kompatibel:   {     "plant_id": 1,     "monitored_at": "2026-10-10 13:30:00",     "temperature": 27.8,     "humidity": 65.2,     "soil_moisture": 72.0,     "ph": 6.35,     "ec": 2.45,     "light_intensity": 25400,     "nutrient_temperature": 23.2,     "water_tank_level": 85.0,     "condition": "optimal"   }
+P117: 2. Visualisasi Interaktif Dashboard (Chart.js):Data telemetri yang masuk langsung diolah ke dalam grafik tren parameter, perbandingan kondisi lingkungan greenhouse, distribusi status kesehatan tanaman, dan tabel observasi terkini.
+P118: 3. Sistem Notifikasi & Alarm Ambang Batas (Phase 11 Target):Saat sensor mendeteksi parameter di luar rentang aman (misal air tandon < 20% atau suhu > 32°C), server Laravel mencatat event alarm, menampilkan alert visual mencolok pada dashboard, dan mencatat riwayat insiden untuk audit pengamat.
+P119: 4. Mode Kontrol Manual Override (Phase 11 Target):Selain bekerja otomatis, Administrator memiliki akses khusus di dashboard untuk menyalakan/mematikan pompa atau kipas secara manual (misal untuk pemeliharaan rutin atau pengurasan tandon).
+P120: 7. MATRIKS PROGRES: KONDISI SEKARANG VS HASIL AKHIR
+P121: Komponen / Fitur
+P122: Kondisi Saat Ini (Phase 1 - 10 Selesai)
+P123: Kondisi Hasil Akhir (Target Phase 11+)
+P124: Sumber Data Sensor
+P125: Python IoT Simulator (menghasilkan data tiruan acak realistis via HTTP POST).
+P126: Perangkat fisik ESP32 terpasang langsung di greenhouse membaca sensor nyata.
+P127: Parameter Lingkungan
+P128: Suhu udara, pH, kelembapan udara, tinggi tanaman, kerapatan kanopi.
+P129: Lengkap 8 sensor: Suhu, RH, Tanah, pH, EC, Cahaya, Suhu Nutrisi, Level Tandon.
+P130: Aktuator & Relay
+P131: Belum ada kendali aktuator (fase audit software).
+P132: 5 aktuator fisik (Pompa Siram, Dosing pH & AB, Kipas, Misting, Grow Light) terhubung relay.
+P133: Logika Keputusan
+P134: Evaluasi kondisi pada model (optimal/warning).
+P135: Closed-loop feedback control dengan histeresis dan fail-safe lock.
+P136: Alarm & Notifikasi
+P137: Tampilan indikator status pada dashboard.
+P138: Modul Alarm terdedikasi, log anomali sensor, dan alert ambang batas kritis (Phase 11).
+P140: 8. KESIMPULAN DAN REKOMENDASI TAHAP SELANJUTNYA
+P141: Arsitektur yang Anda paparkan telah diverifikasi dan selaras 100% dengan tujuan akhir sistem Smart Greenhouse Melon. Seluruh komponen software dasar (Laravel 11, REST API, Chart.js, RBAC) telah siap dan terbukti tangguh melalui audit baseline Phase 10.
+P142: Langkah tindak lanjut berikutnya adalah:1. Masuk ke Phase 11: Mengimplementasikan Alarm Notification System pada Laravel dan modul Simulated Device Control (saklar aktuator manual & otomatis).2. Flash Firmware ESP32: Memprogram kode C++/Arduino pada ESP32 untuk membaca modul sensor fisik dan mengendalikan modul relay.3. Uji Coba Lapangan (Field Test): Melakukan kalibrasi sensor pH/EC dengan cairan buffer standar dan pengujian beban pada aktuator pompa/kipas.
+P144: Dokumen ini dihasilkan secara otomatis sebagai Dokumentasi Spesifikasi Resmi Hasil Akhir Sistem.Sistem Web Monitoring & Kontrol Otomasi Tanaman Melon — 2026

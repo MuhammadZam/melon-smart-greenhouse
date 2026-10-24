@@ -1,0 +1,5 @@
+*.sqlite
+*.sqlite-*
+credentials.json
+mysql-credentials.json
+mysql.ready*

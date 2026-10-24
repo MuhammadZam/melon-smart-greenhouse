@@ -1,0 +1,5 @@
+
+   INFO  Running migrations.  
+
+  2026_10_22_000001_create_monitoring_ingestion_keys_table .............................................. 12.18ms DONE
+

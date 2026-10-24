@@ -1,0 +1,542 @@
+[
+  {
+    "name": "test_guest_cannot_read_private_endpoints with data set #0",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "22",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.084403"
+  },
+  {
+    "name": "test_guest_cannot_read_private_endpoints with data set #1",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "22",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.064985"
+  },
+  {
+    "name": "test_guest_cannot_read_private_endpoints with data set #2",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "22",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.058868"
+  },
+  {
+    "name": "test_guest_cannot_read_private_endpoints with data set #3",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "22",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.081160"
+  },
+  {
+    "name": "test_guest_cannot_read_private_endpoints with data set #4",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "22",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.061687"
+  },
+  {
+    "name": "test_guest_cannot_read_private_endpoints with data set #5",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "22",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.080903"
+  },
+  {
+    "name": "test_guest_cannot_read_private_endpoints with data set #6",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "22",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.064974"
+  },
+  {
+    "name": "test_authorized_observer_can_read_internal_data with data set #0",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "28",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.077527"
+  },
+  {
+    "name": "test_authorized_observer_can_read_internal_data with data set #1",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "28",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.064186"
+  },
+  {
+    "name": "test_authorized_observer_can_read_internal_data with data set #2",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "28",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.070034"
+  },
+  {
+    "name": "test_authorized_observer_can_read_internal_data with data set #3",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "28",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.069689"
+  },
+  {
+    "name": "test_authorized_observer_can_read_internal_data with data set #4",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "28",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.065856"
+  },
+  {
+    "name": "test_authorized_observer_can_read_internal_data with data set #5",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "28",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.066288"
+  },
+  {
+    "name": "test_authorized_observer_can_read_internal_data with data set #6",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "28",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.078976"
+  },
+  {
+    "name": "test_token_only_device_cannot_read_private_data",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "33",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "14",
+    "time": "0.071502"
+  },
+  {
+    "name": "test_unknown_user_role_has_no_read_permission",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "41",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "1",
+    "time": "0.066383"
+  },
+  {
+    "name": "test_authentication_runs_before_private_model_binding",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "49",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "3",
+    "time": "0.092654"
+  },
+  {
+    "name": "test_observer_cannot_use_admin_endpoints_but_admin_can",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "57",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "15",
+    "time": "0.113595"
+  },
+  {
+    "name": "test_admin_session_cannot_substitute_for_device_token",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "73",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "2",
+    "time": "0.084836"
+  },
+  {
+    "name": "test_valid_invalid_missing_and_revoked_device_auth",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "79",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "8",
+    "time": "0.079659"
+  },
+  {
+    "name": "test_expired_database_session_is_unauthorized",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "94",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "2",
+    "time": "0.082192"
+  },
+  {
+    "name": "test_valid_encrypted_session_cookie_can_read_api_without_acting_as",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2ApiSecurityTest.php",
+    "line": "108",
+    "class": "Tests\\Feature\\Phase16_2ApiSecurityTest",
+    "classname": "Tests.Feature.Phase16_2ApiSecurityTest",
+    "assertions": "7",
+    "time": "0.086774"
+  },
+  {
+    "name": "test_ten_concurrent_http_kernel_requests_commit_exactly_once",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "14",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "18",
+    "time": "1.650619"
+  },
+  {
+    "name": "test_additive_migration_and_rollback_preserve_legacy_records",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "59",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "3",
+    "time": "0.108914"
+  },
+  {
+    "name": "test_ten_identical_api_retries_create_one_observation_and_inference",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "72",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "33",
+    "time": "0.168963"
+  },
+  {
+    "name": "test_timestamp_fallback_normalizes_equivalent_timezones",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "87",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "3",
+    "time": "0.090374"
+  },
+  {
+    "name": "test_distinct_subsecond_events_are_not_collapsed",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "96",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "5",
+    "time": "0.109401"
+  },
+  {
+    "name": "test_identical_sensor_values_at_different_times_or_event_ids_are_preserved",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "109",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "5",
+    "time": "0.111563"
+  },
+  {
+    "name": "test_changed_payload_with_same_key_is_conflict_without_overwrite",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "120",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "5",
+    "time": "0.075828"
+  },
+  {
+    "name": "test_invalid_idempotency_key_is_rejected with data set #0",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "136",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "4",
+    "time": "0.083964"
+  },
+  {
+    "name": "test_invalid_idempotency_key_is_rejected with data set #1",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "136",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "4",
+    "time": "0.102353"
+  },
+  {
+    "name": "test_invalid_idempotency_key_is_rejected with data set #2",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "136",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "4",
+    "time": "0.120552"
+  },
+  {
+    "name": "test_invalid_idempotency_key_is_rejected with data set #3",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "136",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "4",
+    "time": "0.086913"
+  },
+  {
+    "name": "test_invalid_idempotency_key_is_rejected with data set #4",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "136",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "4",
+    "time": "0.073524"
+  },
+  {
+    "name": "test_conflicting_header_body_keys_are_rejected",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "143",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "1",
+    "time": "0.106054"
+  },
+  {
+    "name": "test_same_data_from_different_sources_and_devices_are_not_lost",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "149",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "1",
+    "time": "0.075095"
+  },
+  {
+    "name": "test_legacy_duplicates_are_reported_as_conflict_not_deleted",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "158",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "3",
+    "time": "0.068332"
+  },
+  {
+    "name": "test_unambiguous_legacy_event_is_replayed_without_rewriting_history",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2DeduplicationTest.php",
+    "line": "169",
+    "class": "Tests\\Feature\\Phase16_2DeduplicationTest",
+    "classname": "Tests.Feature.Phase16_2DeduplicationTest",
+    "assertions": "3",
+    "time": "0.071206"
+  },
+  {
+    "name": "test_api_preserves_external_score_and_uses_existing_category with data set #0",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "24",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "5",
+    "time": "0.079623"
+  },
+  {
+    "name": "test_api_preserves_external_score_and_uses_existing_category with data set #1",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "24",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "5",
+    "time": "0.075021"
+  },
+  {
+    "name": "test_api_preserves_external_score_and_uses_existing_category with data set #2",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "24",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "5",
+    "time": "0.064691"
+  },
+  {
+    "name": "test_api_preserves_external_score_and_uses_existing_category with data set #3",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "24",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "5",
+    "time": "0.071723"
+  },
+  {
+    "name": "test_api_preserves_external_score_and_uses_existing_category with data set #4",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "24",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "5",
+    "time": "0.068187"
+  },
+  {
+    "name": "test_api_preserves_external_score_and_uses_existing_category with data set #5",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "24",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "5",
+    "time": "0.082847"
+  },
+  {
+    "name": "test_api_preserves_external_score_and_uses_existing_category with data set #6",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "24",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "5",
+    "time": "0.165621"
+  },
+  {
+    "name": "test_api_preserves_external_score_and_uses_existing_category with data set #7",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "24",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "5",
+    "time": "0.063009"
+  },
+  {
+    "name": "test_api_preserves_external_score_and_uses_existing_category with data set #8",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "24",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "5",
+    "time": "0.078151"
+  },
+  {
+    "name": "test_invalid_external_score_cannot_store_observation with data set #0",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "41",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "4",
+    "time": "0.123045"
+  },
+  {
+    "name": "test_invalid_external_score_cannot_store_observation with data set #1",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "41",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "4",
+    "time": "0.134904"
+  },
+  {
+    "name": "test_invalid_external_score_cannot_store_observation with data set #2",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "41",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "4",
+    "time": "0.191550"
+  },
+  {
+    "name": "test_invalid_external_score_cannot_store_observation with data set #3",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "41",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "4",
+    "time": "0.070683"
+  },
+  {
+    "name": "test_invalid_external_score_cannot_store_observation with data set #4",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "41",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "4",
+    "time": "0.160334"
+  },
+  {
+    "name": "test_invalid_external_score_cannot_store_observation with data set #5",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "41",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "4",
+    "time": "0.086804"
+  },
+  {
+    "name": "test_invalid_external_score_cannot_store_observation with data set #6",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "41",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "4",
+    "time": "0.059758"
+  },
+  {
+    "name": "test_invalid_external_score_cannot_store_observation with data set #7",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "41",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "4",
+    "time": "0.060878"
+  },
+  {
+    "name": "test_nonfinite_native_values_are_rejected",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "49",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "3",
+    "time": "0.053419"
+  },
+  {
+    "name": "test_null_or_missing_external_score_is_unavailable_not_external_zero",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "57",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "7",
+    "time": "0.070356"
+  },
+  {
+    "name": "test_external_zero_history_is_not_overwritten_on_reprocessing",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "73",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "2",
+    "time": "0.072277"
+  },
+  {
+    "name": "test_sheet_zero_import_replay_and_different_device_are_safe",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "84",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "11",
+    "time": "0.099465"
+  },
+  {
+    "name": "test_zero_is_visible_in_history_dashboard_and_csv",
+    "file": "D:\\Compro\\tests\\Feature\\Phase16_2FuzzyZeroTest.php",
+    "line": "102",
+    "class": "Tests\\Feature\\Phase16_2FuzzyZeroTest",
+    "classname": "Tests.Feature.Phase16_2FuzzyZeroTest",
+    "assertions": "8",
+    "time": "0.147647"
+  }
+]

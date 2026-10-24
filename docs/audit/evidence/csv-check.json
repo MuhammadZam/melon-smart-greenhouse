@@ -1,0 +1,83 @@
+{
+    "bom": true,
+    "header_count": 23,
+    "rows": 959,
+    "database_rows": 959,
+    "malformed_rows": 0,
+    "unprotected_formula_prefixes": 0,
+    "protected_formula_cells": 1900,
+    "statistics": {
+        "temperature": {
+            "csv_count": 959,
+            "db_count": 959,
+            "csv_min": 20,
+            "csv_max": 95,
+            "csv_avg": 30.669301355578735,
+            "db_avg": 30.669301355578725,
+            "match": true
+        },
+        "humidity": {
+            "csv_count": 959,
+            "db_count": 959,
+            "csv_min": 35,
+            "csv_max": 95,
+            "csv_avg": 70.45691345151195,
+            "db_avg": 70.45691345151197,
+            "match": true
+        },
+        "ph": {
+            "csv_count": 959,
+            "db_count": 959,
+            "csv_min": 3.8,
+            "csv_max": 8.5,
+            "csv_avg": 6.377257559958283,
+            "db_avg": 6.377257559958276,
+            "match": true
+        },
+        "soil_moisture": {
+            "csv_count": 358,
+            "db_count": 358,
+            "csv_min": 30,
+            "csv_max": 95,
+            "csv_avg": 68.91899441340782,
+            "db_avg": 68.91899441340782,
+            "match": true
+        },
+        "ec": {
+            "csv_count": 143,
+            "db_count": 143,
+            "csv_min": 2,
+            "csv_max": 5,
+            "csv_avg": 2.5286713286713263,
+            "db_avg": 2.52867132867133,
+            "match": true
+        },
+        "light_intensity": {
+            "csv_count": 115,
+            "db_count": 115,
+            "csv_min": 10000,
+            "csv_max": 60000,
+            "csv_avg": 33313.04347826087,
+            "db_avg": 33313.04347826087,
+            "match": true
+        },
+        "nutrient_temperature": {
+            "csv_count": 99,
+            "db_count": 99,
+            "csv_min": 23,
+            "csv_max": 35,
+            "csv_avg": 25.76363636363633,
+            "db_avg": 25.763636363636362,
+            "match": true
+        },
+        "tank_level": {
+            "csv_count": 99,
+            "db_count": 99,
+            "csv_min": 10,
+            "csv_max": 90,
+            "csv_avg": 71.9090909090909,
+            "db_avg": 71.9090909090909,
+            "match": true
+        }
+    }
+}

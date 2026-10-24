@@ -21,9 +21,12 @@ class MonitoringParameter extends Model
      */
     protected $fillable = [
         'parameter_name',
+        'parameter_key',
         'unit',
         'minimum_value',
+        'critical_min_value',
         'maximum_value',
+        'critical_max_value',
         'description',
     ];
 
@@ -35,8 +38,10 @@ class MonitoringParameter extends Model
     protected function casts(): array
     {
         return [
-            'minimum_value' => 'float',
-            'maximum_value' => 'float',
+            'minimum_value'      => 'float',
+            'maximum_value'      => 'float',
+            'critical_min_value' => 'float',
+            'critical_max_value' => 'float',
         ];
     }
 }

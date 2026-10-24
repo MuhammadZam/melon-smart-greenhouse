@@ -1,0 +1,220 @@
+{
+  "checks": [
+    {
+      "name": "login required validation",
+      "pass": true
+    },
+    {
+      "name": "admin login",
+      "pass": true
+    },
+    {
+      "name": "drawer open 375",
+      "pass": true
+    },
+    {
+      "name": "drawer focus 375",
+      "pass": true
+    },
+    {
+      "name": "drawer focus wraps 375",
+      "pass": true
+    },
+    {
+      "name": "drawer escape focus return 375",
+      "pass": true
+    },
+    {
+      "name": "drawer overlay closes 375",
+      "pass": true
+    },
+    {
+      "name": "notifications contained 375",
+      "pass": true
+    },
+    {
+      "name": "notification escape 375",
+      "pass": true
+    },
+    {
+      "name": "drawer open 768",
+      "pass": true
+    },
+    {
+      "name": "drawer focus 768",
+      "pass": true
+    },
+    {
+      "name": "drawer focus wraps 768",
+      "pass": true
+    },
+    {
+      "name": "drawer escape focus return 768",
+      "pass": true
+    },
+    {
+      "name": "drawer overlay closes 768",
+      "pass": true
+    },
+    {
+      "name": "notifications contained 768",
+      "pass": true
+    },
+    {
+      "name": "notification escape 768",
+      "pass": true
+    },
+    {
+      "name": "table keyboard horizontal scroll",
+      "pass": true
+    },
+    {
+      "name": "monitoring empty filter",
+      "pass": true
+    },
+    {
+      "name": "monitoring filter reset",
+      "pass": true
+    },
+    {
+      "name": "pagination available",
+      "pass": true
+    },
+    {
+      "name": "pagination page 2",
+      "pass": true
+    },
+    {
+      "name": "plant required validation",
+      "pass": true
+    },
+    {
+      "name": "server validation linked to field",
+      "pass": true
+    },
+    {
+      "name": "13 chart slots initialized or truthful empty state",
+      "pass": true
+    },
+    {
+      "name": "chart resize 375",
+      "pass": true
+    },
+    {
+      "name": "chart resize 768",
+      "pass": true
+    },
+    {
+      "name": "chart resize 1366",
+      "pass": true
+    },
+    {
+      "name": "chart resize 1920",
+      "pass": true
+    },
+    {
+      "name": "chart tooltip on observation",
+      "pass": true
+    },
+    {
+      "name": "chart legend toggles series",
+      "pass": true
+    },
+    {
+      "name": "chart empty state",
+      "pass": true
+    },
+    {
+      "name": "dashboard plant filter submitted",
+      "pass": true
+    },
+    {
+      "name": "report date filter submitted",
+      "pass": true
+    },
+    {
+      "name": "report filter reset",
+      "pass": true
+    },
+    {
+      "name": "csv export download",
+      "pass": true,
+      "detail": {
+        "bytes": 174384
+      }
+    },
+    {
+      "name": "pdf export download",
+      "pass": true,
+      "detail": {
+        "bytes": 209296
+      }
+    },
+    {
+      "name": "simulation modal opens",
+      "pass": true
+    },
+    {
+      "name": "modal keyboard focus",
+      "pass": true
+    },
+    {
+      "name": "modal escape restores focus",
+      "pass": true
+    },
+    {
+      "name": "modal cancel",
+      "pass": true
+    },
+    {
+      "name": "simulation success feedback",
+      "pass": true
+    },
+    {
+      "name": "sheets mode visible",
+      "pass": true
+    },
+    {
+      "name": "mock Sheets sync feedback",
+      "pass": true
+    },
+    {
+      "name": "/plants filter applies",
+      "pass": true
+    },
+    {
+      "name": "/plants reset",
+      "pass": true
+    },
+    {
+      "name": "/alarms filter applies",
+      "pass": true
+    },
+    {
+      "name": "/alarms reset",
+      "pass": true
+    },
+    {
+      "name": "/fuzzy/history filter applies",
+      "pass": true
+    },
+    {
+      "name": "/fuzzy/history reset",
+      "pass": true
+    },
+    {
+      "name": "notification network error feedback",
+      "pass": true
+    },
+    {
+      "name": "notification retry recovers",
+      "pass": true
+    },
+    {
+      "name": "logout returns to login",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "pass": true
+}

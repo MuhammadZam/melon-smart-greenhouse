@@ -1,0 +1,47 @@
+{
+  "composer": [
+    {
+      "package": "laravel/framework",
+      "title": "Laravel: XSS in Debug Page Information",
+      "severity": "low",
+      "url": "https://github.com/advisories/GHSA-jh5r-qr3c-85q8"
+    },
+    {
+      "package": "laravel/framework",
+      "title": "Laravel Framework: Temporary Signed URL Path Confusion",
+      "severity": "medium",
+      "url": "https://github.com/advisories/GHSA-crmm-hgp2-wgrp"
+    },
+    {
+      "package": "laravel/framework",
+      "title": "Laravel Framework: CRLF injection in default email rule ",
+      "severity": "high",
+      "url": "https://github.com/advisories/GHSA-5vg9-5847-vvmq"
+    },
+    {
+      "package": "laravel/framework",
+      "title": "Laravel CRLF injection in default email rule",
+      "severity": null,
+      "url": "https://github.com/laravel/framework/security/advisories/GHSA-5vg9-5847-vvmq"
+    }
+  ],
+  "npm": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "dependencies": {
+      "prod": 6,
+      "dev": 148,
+      "optional": 76,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 153
+    }
+  },
+  "routes": 55
+}

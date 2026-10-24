@@ -1,0 +1,162 @@
+{
+  "scenarios": 12,
+  "passed": 12,
+  "results": [
+    {
+      "input": {
+        "temperature": 27,
+        "humidity": 70,
+        "soil_moisture": 70,
+        "ph": 6.5
+      },
+      "score": 86.17,
+      "status": "AVAILABLE",
+      "category": "BAIK",
+      "oracle": 86.17,
+      "pass": true
+    },
+    {
+      "input": {
+        "temperature": 40,
+        "humidity": 35,
+        "soil_moisture": 30,
+        "ph": 5
+      },
+      "score": 17.72,
+      "status": "AVAILABLE",
+      "category": "BURUK",
+      "oracle": 17.72,
+      "pass": true
+    },
+    {
+      "input": {
+        "temperature": 35,
+        "humidity": 90,
+        "soil_moisture": 90,
+        "ph": 6.5
+      },
+      "score": 55,
+      "status": "AVAILABLE",
+      "category": "PERLU_PERHATIAN",
+      "oracle": 55,
+      "pass": true
+    },
+    {
+      "input": {
+        "temperature": 27,
+        "humidity": 70,
+        "soil_moisture": 70,
+        "ph": 4.5
+      },
+      "score": 72.49,
+      "status": "AVAILABLE",
+      "category": "BAIK",
+      "oracle": 72.49,
+      "pass": true
+    },
+    {
+      "input": {
+        "temperature": 27,
+        "humidity": 70,
+        "soil_moisture": 70,
+        "ph": 8.5
+      },
+      "score": 72.49,
+      "status": "AVAILABLE",
+      "category": "BAIK",
+      "oracle": 72.49,
+      "pass": true
+    },
+    {
+      "input": {
+        "temperature": 30,
+        "humidity": 78,
+        "soil_moisture": 80,
+        "ph": 6.9
+      },
+      "score": 57.86,
+      "status": "AVAILABLE",
+      "category": "PERLU_PERHATIAN",
+      "oracle": 57.86,
+      "pass": true
+    },
+    {
+      "input": {
+        "temperature": 10,
+        "humidity": 0,
+        "soil_moisture": 0,
+        "ph": 0
+      },
+      "score": 17.72,
+      "status": "AVAILABLE",
+      "category": "BURUK",
+      "oracle": 17.72,
+      "pass": true
+    },
+    {
+      "input": {
+        "temperature": 50,
+        "humidity": 100,
+        "soil_moisture": 100,
+        "ph": 14
+      },
+      "score": 30.95,
+      "status": "AVAILABLE",
+      "category": "BURUK",
+      "oracle": 30.95,
+      "pass": true
+    },
+    {
+      "input": {
+        "temperature": 24,
+        "humidity": 65,
+        "soil_moisture": 65,
+        "ph": 6
+      },
+      "score": 84.07,
+      "status": "AVAILABLE",
+      "category": "BAIK",
+      "oracle": 84.07,
+      "pass": true
+    },
+    {
+      "input": {
+        "temperature": 22,
+        "humidity": 58,
+        "soil_moisture": 58,
+        "ph": 5.8
+      },
+      "score": 20.31,
+      "status": "AVAILABLE",
+      "category": "BURUK",
+      "oracle": 20.31,
+      "pass": true
+    },
+    {
+      "input": {
+        "temperature": 32,
+        "humidity": 82,
+        "soil_moisture": 82,
+        "ph": 7.2
+      },
+      "score": 34.43,
+      "status": "AVAILABLE",
+      "category": "BURUK",
+      "oracle": 34.43,
+      "pass": true
+    },
+    {
+      "input": {
+        "temperature": 20,
+        "humidity": 55,
+        "soil_moisture": 70,
+        "ph": 6.5
+      },
+      "score": 55,
+      "status": "AVAILABLE",
+      "category": "PERLU_PERHATIAN",
+      "oracle": 55,
+      "pass": true
+    }
+  ]
+}

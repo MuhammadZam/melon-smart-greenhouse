@@ -17,3 +17,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/storage/app/credentials/*
+*.service-account.json
+credentials.json

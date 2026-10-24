@@ -1,0 +1,1074 @@
+{
+  "completed": "2026-10-24 Asia/Jakarta",
+  "baseline": {
+    "name": "D:\\Compro\\phpunit.xml",
+    "tests": "237",
+    "assertions": "15133",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "58.226756"
+  },
+  "regression": {
+    "name": "D:\\Compro\\phpunit.xml",
+    "tests": "297",
+    "assertions": "2075",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "29.207409"
+  },
+  "new_cases": 60,
+  "new_case_assertions": 274,
+  "historical_tables": 18,
+  "historical_data_unchanged": true,
+  "history_counts": {
+    "actuator_command_logs": 1,
+    "actuators": 3,
+    "cache": 0,
+    "cache_locks": 0,
+    "failed_jobs": 0,
+    "fuzzy_inference_results": 493,
+    "google_sheets_sync_configs": 1,
+    "google_sheets_sync_logs": 0,
+    "iot_devices": 3,
+    "job_batches": 0,
+    "jobs": 0,
+    "monitoring_alarms": 1,
+    "monitoring_parameters": 10,
+    "monitorings": 959,
+    "password_reset_tokens": 0,
+    "plants": 150,
+    "sessions": 0,
+    "users": 10
+  },
+  "modified_files": [
+    "app/Http/Controllers/Api/MonitoringController.php",
+    "app/Http/Middleware/AuthenticateDeviceToken.php",
+    "app/Http/Middleware/AuthenticateInternalApi.php",
+    "app/Http/Requests/Api/StoreMonitoringApiRequest.php",
+    "app/Http/Resources/MonitoringResource.php",
+    "app/Services/FuzzyLogic/ExternalFuzzyScore.php",
+    "app/Services/FuzzyLogic/FuzzyPipelineService.php",
+    "app/Services/GoogleSheets/GoogleSheetsSyncService.php",
+    "app/Services/GoogleSheets/GoogleSheetsTelemetryService.php",
+    "app/Services/MonitoringIngestionService.php",
+    "bootstrap/app.php",
+    "config/services.php",
+    "database/migrations/2026_10_22_000001_create_monitoring_ingestion_keys_table.php",
+    "iot-simulator/README.md",
+    "iot-simulator/simulator.py",
+    "phpunit.xml",
+    "routes/api.php",
+    "routes/web.php",
+    "tests/ApiTestCase.php",
+    "tests/Feature/AlarmTest.php",
+    "tests/Feature/Api/DashboardApiTest.php",
+    "tests/Feature/Api/MonitoringApiTest.php",
+    "tests/Feature/Api/MonitoringIngestionTest.php",
+    "tests/Feature/Api/PlantApiTest.php",
+    "tests/Feature/FuzzyLogicInferenceTest.php",
+    "tests/Feature/GoogleSheetsTelemetryAndSecurityTest.php",
+    "tests/Feature/MonitoringParameterExpansionTest.php",
+    "tests/Feature/Phase16_2ApiSecurityTest.php",
+    "tests/Feature/Phase16_2DeduplicationTest.php",
+    "tests/Feature/Phase16_2FuzzyZeroTest.php",
+    "tests/Support/ingestion_worker.php",
+    "tests/TestCase.php",
+    "tests/bootstrap.php"
+  ],
+  "route_count": 55,
+  "concurrent": {
+    "workers": 10,
+    "driver": "sqlite",
+    "results": [
+      {
+        "status": 200,
+        "id": 1
+      },
+      {
+        "status": 200,
+        "id": 1
+      },
+      {
+        "status": 200,
+        "id": 1
+      },
+      {
+        "status": 200,
+        "id": 1
+      },
+      {
+        "status": 200,
+        "id": 1
+      },
+      {
+        "status": 200,
+        "id": 1
+      },
+      {
+        "status": 201,
+        "id": 1
+      },
+      {
+        "status": 200,
+        "id": 1
+      },
+      {
+        "status": 200,
+        "id": 1
+      },
+      {
+        "status": 200,
+        "id": 1
+      }
+    ],
+    "monitorings": 1,
+    "inferences": 1
+  },
+  "simulator": {
+    "python": "3.13.17 portable",
+    "cli_exit": 0,
+    "cli_http_201": true,
+    "replay": {
+      "responses": [
+        {
+          "ok": true,
+          "status": 201,
+          "id": 1181,
+          "score": 0,
+          "source": "simulator"
+        },
+        {
+          "ok": true,
+          "status": 200,
+          "id": 1181,
+          "score": 0,
+          "source": "simulator"
+        }
+      ],
+      "stable_event_id": true
+    }
+  },
+  "legacy": {
+    "duplicate_groups": [],
+    "possible_fuzzy_zero_candidates": [],
+    "telemetry_rows_without_device": 721,
+    "unattributed_timestamp_candidates_not_proven_duplicates": [
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-07 08:30:00",
+        "records": 18
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-07 10:15:00",
+        "records": 18
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-14 10:00:00",
+        "records": 17
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-14 11:00:00",
+        "records": 18
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-14 11:15:00",
+        "records": 18
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-14 11:30:00",
+        "records": 18
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-14 12:00:00",
+        "records": 18
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-14 12:30:00",
+        "records": 18
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-14 13:00:00",
+        "records": 18
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:25:54",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:29:20",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:35:54",
+        "records": 5
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:35:55",
+        "records": 5
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:35:58",
+        "records": 4
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:39:20",
+        "records": 6
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:39:21",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:39:22",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:39:23",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:39:29",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:46:29",
+        "records": 4
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:46:30",
+        "records": 5
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:46:33",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:46:40",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:59:15",
+        "records": 4
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:59:16",
+        "records": 5
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:59:17",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:59:18",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 21:59:24",
+        "records": 4
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:01:57",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:01:58",
+        "records": 6
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:01:59",
+        "records": 4
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:02:05",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:19:43",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:23:13",
+        "records": 4
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:23:14",
+        "records": 7
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:23:15",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:23:21",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:26:29",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:29:42",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:29:43",
+        "records": 7
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:29:44",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:29:45",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:29:52",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:36:28",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:36:29",
+        "records": 7
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:36:31",
+        "records": 4
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:36:41",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:45:23",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:50:03",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:50:04",
+        "records": 6
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:50:05",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:50:06",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:50:15",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:55:23",
+        "records": 9
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:55:24",
+        "records": 4
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:55:29",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-16 22:55:30",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 10:29:45",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 10:39:45",
+        "records": 9
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 10:39:47",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 10:39:48",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 10:39:57",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 10:42:21",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 10:43:56",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 10:52:21",
+        "records": 6
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 10:52:22",
+        "records": 7
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 10:52:28",
+        "records": 4
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 10:53:56",
+        "records": 9
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 10:53:57",
+        "records": 4
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 10:54:02",
+        "records": 4
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:02:54",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:12:54",
+        "records": 8
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:12:56",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:12:57",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:13:06",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:27:08",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:37:07",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:37:08",
+        "records": 9
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:37:09",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:37:37",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:38:35",
+        "records": 4
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:38:36",
+        "records": 7
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:38:37",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 12:39:04",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 13:13:50",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 13:23:50",
+        "records": 11
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 13:23:51",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 13:24:17",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 13:33:13",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 13:43:13",
+        "records": 7
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 13:43:14",
+        "records": 6
+      },
+      {
+        "source": "api",
+        "plant_id": 1,
+        "monitored_at": "2026-10-17 13:43:42",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 65,
+        "monitored_at": "2026-10-16 22:54:27",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 65,
+        "monitored_at": "2026-10-16 22:54:56",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 65,
+        "monitored_at": "2026-10-16 22:55:28",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:39:52",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:46:15",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:46:47",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:52:26",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:54:00",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 12:13:01",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 12:37:12",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 12:38:41",
+        "records": 3
+      },
+      {
+        "source": "api",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 13:23:54",
+        "records": 2
+      },
+      {
+        "source": "api",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 13:43:19",
+        "records": 3
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-16 22:52:36",
+        "records": 4
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-16 22:52:41",
+        "records": 2
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-16 22:54:27",
+        "records": 6
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-16 22:54:28",
+        "records": 2
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-16 22:54:56",
+        "records": 9
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-16 22:55:27",
+        "records": 4
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-16 22:55:28",
+        "records": 5
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:39:52",
+        "records": 5
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:39:53",
+        "records": 2
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:39:54",
+        "records": 2
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:46:15",
+        "records": 6
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:46:16",
+        "records": 3
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:46:47",
+        "records": 8
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:52:25",
+        "records": 2
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:52:26",
+        "records": 4
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:52:27",
+        "records": 3
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:54:00",
+        "records": 6
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 10:54:01",
+        "records": 3
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 12:13:01",
+        "records": 6
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 12:13:02",
+        "records": 2
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 12:37:12",
+        "records": 5
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 12:37:13",
+        "records": 4
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 12:38:40",
+        "records": 3
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 12:38:41",
+        "records": 6
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 13:23:54",
+        "records": 5
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 13:23:55",
+        "records": 4
+      },
+      {
+        "source": "manual",
+        "plant_id": 65,
+        "monitored_at": "2026-10-17 13:43:19",
+        "records": 9
+      }
+    ]
+  },
+  "lint": [
+    {
+      "file": "app/Http/Controllers/Api/MonitoringController.php",
+      "result": "No syntax errors detected in app/Http/Controllers/Api/MonitoringController.php"
+    },
+    {
+      "file": "app/Http/Middleware/AuthenticateDeviceToken.php",
+      "result": "No syntax errors detected in app/Http/Middleware/AuthenticateDeviceToken.php"
+    },
+    {
+      "file": "app/Http/Middleware/AuthenticateInternalApi.php",
+      "result": "No syntax errors detected in app/Http/Middleware/AuthenticateInternalApi.php"
+    },
+    {
+      "file": "app/Http/Requests/Api/StoreMonitoringApiRequest.php",
+      "result": "No syntax errors detected in app/Http/Requests/Api/StoreMonitoringApiRequest.php"
+    },
+    {
+      "file": "app/Http/Resources/MonitoringResource.php",
+      "result": "No syntax errors detected in app/Http/Resources/MonitoringResource.php"
+    },
+    {
+      "file": "app/Services/FuzzyLogic/ExternalFuzzyScore.php",
+      "result": "No syntax errors detected in app/Services/FuzzyLogic/ExternalFuzzyScore.php"
+    },
+    {
+      "file": "app/Services/FuzzyLogic/FuzzyPipelineService.php",
+      "result": "No syntax errors detected in app/Services/FuzzyLogic/FuzzyPipelineService.php"
+    },
+    {
+      "file": "app/Services/GoogleSheets/GoogleSheetsSyncService.php",
+      "result": "No syntax errors detected in app/Services/GoogleSheets/GoogleSheetsSyncService.php"
+    },
+    {
+      "file": "app/Services/GoogleSheets/GoogleSheetsTelemetryService.php",
+      "result": "No syntax errors detected in app/Services/GoogleSheets/GoogleSheetsTelemetryService.php"
+    },
+    {
+      "file": "app/Services/MonitoringIngestionService.php",
+      "result": "No syntax errors detected in app/Services/MonitoringIngestionService.php"
+    },
+    {
+      "file": "bootstrap/app.php",
+      "result": "No syntax errors detected in bootstrap/app.php"
+    },
+    {
+      "file": "config/services.php",
+      "result": "No syntax errors detected in config/services.php"
+    },
+    {
+      "file": "database/migrations/2026_10_22_000001_create_monitoring_ingestion_keys_table.php",
+      "result": "No syntax errors detected in database/migrations/2026_10_22_000001_create_monitoring_ingestion_keys_table.php"
+    },
+    {
+      "file": "routes/api.php",
+      "result": "No syntax errors detected in routes/api.php"
+    },
+    {
+      "file": "routes/web.php",
+      "result": "No syntax errors detected in routes/web.php"
+    },
+    {
+      "file": "tests/ApiTestCase.php",
+      "result": "No syntax errors detected in tests/ApiTestCase.php"
+    },
+    {
+      "file": "tests/Feature/AlarmTest.php",
+      "result": "No syntax errors detected in tests/Feature/AlarmTest.php"
+    },
+    {
+      "file": "tests/Feature/Api/DashboardApiTest.php",
+      "result": "No syntax errors detected in tests/Feature/Api/DashboardApiTest.php"
+    },
+    {
+      "file": "tests/Feature/Api/MonitoringApiTest.php",
+      "result": "No syntax errors detected in tests/Feature/Api/MonitoringApiTest.php"
+    },
+    {
+      "file": "tests/Feature/Api/MonitoringIngestionTest.php",
+      "result": "No syntax errors detected in tests/Feature/Api/MonitoringIngestionTest.php"
+    },
+    {
+      "file": "tests/Feature/Api/PlantApiTest.php",
+      "result": "No syntax errors detected in tests/Feature/Api/PlantApiTest.php"
+    },
+    {
+      "file": "tests/Feature/FuzzyLogicInferenceTest.php",
+      "result": "No syntax errors detected in tests/Feature/FuzzyLogicInferenceTest.php"
+    },
+    {
+      "file": "tests/Feature/GoogleSheetsTelemetryAndSecurityTest.php",
+      "result": "No syntax errors detected in tests/Feature/GoogleSheetsTelemetryAndSecurityTest.php"
+    },
+    {
+      "file": "tests/Feature/MonitoringParameterExpansionTest.php",
+      "result": "No syntax errors detected in tests/Feature/MonitoringParameterExpansionTest.php"
+    },
+    {
+      "file": "tests/Feature/Phase16_2ApiSecurityTest.php",
+      "result": "No syntax errors detected in tests/Feature/Phase16_2ApiSecurityTest.php"
+    },
+    {
+      "file": "tests/Feature/Phase16_2DeduplicationTest.php",
+      "result": "No syntax errors detected in tests/Feature/Phase16_2DeduplicationTest.php"
+    },
+    {
+      "file": "tests/Feature/Phase16_2FuzzyZeroTest.php",
+      "result": "No syntax errors detected in tests/Feature/Phase16_2FuzzyZeroTest.php"
+    },
+    {
+      "file": "tests/Support/ingestion_worker.php",
+      "result": "No syntax errors detected in tests/Support/ingestion_worker.php"
+    },
+    {
+      "file": "tests/TestCase.php",
+      "result": "No syntax errors detected in tests/TestCase.php"
+    },
+    {
+      "file": "tests/bootstrap.php",
+      "result": "No syntax errors detected in tests/bootstrap.php"
+    }
+  ]
+}

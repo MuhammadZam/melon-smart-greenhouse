@@ -48,6 +48,41 @@ class MonitoringParameterSeeder extends Seeder
                 'maximum_value'  => 90.00,
                 'description'    => 'Ambang batas persentase kerapatan kanopi daun tanaman melon yang dikonfigurasi pada sistem.',
             ],
+            [
+                'parameter_name' => 'Kelembapan Tanah',
+                'unit'           => '%',
+                'minimum_value'  => 60.00,
+                'maximum_value'  => 80.00,
+                'description'    => 'Ambang batas kelembapan media tanam/tanah yang dikonfigurasi untuk tanaman melon (perlu validasi dengan tim Elektro).',
+            ],
+            [
+                'parameter_name' => 'Konduktivitas Listrik (EC)',
+                'unit'           => 'mS/cm',
+                'minimum_value'  => 1.80,
+                'maximum_value'  => 2.80,
+                'description'    => 'Ambang batas kepekatan larutan nutrisi (EC) fase vegetatif-generatif melon.',
+            ],
+            [
+                'parameter_name' => 'Intensitas Cahaya',
+                'unit'           => 'lux',
+                'minimum_value'  => 15000.00,
+                'maximum_value'  => 50000.00,
+                'description'    => 'Ambang batas intensitas radiasi cahaya optimal greenhouse untuk fotosintesis melon.',
+            ],
+            [
+                'parameter_name' => 'Suhu Nutrisi',
+                'unit'           => '°C',
+                'minimum_value'  => 20.00,
+                'maximum_value'  => 26.00,
+                'description'    => 'Ambang batas suhu larutan tandon nutrisi hidroponik/fertigasi melon.',
+            ],
+            [
+                'parameter_name' => 'Level Tandon Nutrisi',
+                'unit'           => '%',
+                'minimum_value'  => 40.00,
+                'maximum_value'  => 95.00,
+                'description'    => 'Ambang batas volume cadangan tandon air/nutrisi tanaman melon.',
+            ],
         ];
 
         foreach ($parameters as $param) {

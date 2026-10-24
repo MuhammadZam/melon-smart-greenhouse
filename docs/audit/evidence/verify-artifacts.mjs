@@ -1,0 +1,7 @@
+import fs from 'node:fs';
+const d='docs/audit',e=d+'/evidence';
+const read=p=>JSON.parse(fs.readFileSync(e+'/'+p,'utf8').replace(/^\uFEFF/,''));
+const controls=read('audit-controls.json'),rtm=read('rtm.json'),pdf=read('pdf-check.json'),csv=read('csv-check.json'),fuzzy=read('fuzzy-oracle.json'),integrity=read('database-integrity.json');
+const reports=['MASTER_PROJECT_AUDIT_REPORT','FEATURE_COMPLETENESS_MATRIX','REQUIREMENT_TRACEABILITY_MATRIX','FEATURE_GAP_ANALYSIS','UI_UX_AUDIT_REPORT','IOT_INTEGRATION_AUDIT','FUZZY_LOGIC_AUDIT','SECURITY_AUDIT_REPORT','TEST_COVERAGE_AUDIT','PROJECT_READINESS_ASSESSMENT'];
+const checks={ten_reports:reports.every(n=>fs.statSync(d+'/'+n+'.md').size>1000),unique_control_ids:new Set(controls.map(r=>r.id)).size===117,rtm89:rtm.length===89,complete_controls_executed:controls.filter(r=>r.status==='COMPLETE').every(r=>r.verified),source_paths_exist:controls.every(r=>fs.existsSync(r.meta[1])),csv_all_rows:csv.rows===csv.database_rows&&csv.header_count===23,csv_eight_sensor_aggregates:Object.keys(csv.statistics).length===8&&Object.values(csv.statistics).every(x=>x.match),independent_fuzzy12:fuzzy.passed===12&&fuzzy.scenarios===12,pdf23_A4_landscape:pdf.pages===23&&pdf.dimensions.every(p=>p.width>841&&p.width<843&&p.height>595&&p.height<596),database_unchanged:integrity.same};
+const result={checks,all_pass:Object.values(checks).every(Boolean)};fs.writeFileSync(e+'/artifact-verification.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));if(!result.all_pass)process.exitCode=1;

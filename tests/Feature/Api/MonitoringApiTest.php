@@ -4,7 +4,7 @@ namespace Tests\Feature\Api;
 
 use App\Models\Monitoring;
 use App\Models\Plant;
-use Tests\TestCase;
+use Tests\ApiTestCase as TestCase;
 
 class MonitoringApiTest extends TestCase
 {

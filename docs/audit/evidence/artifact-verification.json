@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "ten_reports": true,
+    "unique_control_ids": true,
+    "rtm89": true,
+    "complete_controls_executed": true,
+    "source_paths_exist": true,
+    "csv_all_rows": true,
+    "csv_eight_sensor_aggregates": true,
+    "independent_fuzzy12": true,
+    "pdf23_A4_landscape": true,
+    "database_unchanged": true
+  },
+  "all_pass": true
+}

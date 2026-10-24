@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
             PlantSeeder::class,
             MonitoringParameterSeeder::class,
             MonitoringSeeder::class,
+            ActuatorSeeder::class,
+            IotDeviceSeeder::class,
         ]);
     }
 }

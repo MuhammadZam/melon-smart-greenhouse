@@ -1,0 +1,99 @@
+{
+    "target": "isolated Docker mysql:8.0 \/ phase163_test \/ port3319",
+    "checks": {
+        "migrations": {
+            "pass": true,
+            "detail": null
+        },
+        "guest_read_401": {
+            "pass": true,
+            "detail": null
+        },
+        "missing_device_token_401": {
+            "pass": true,
+            "detail": null
+        },
+        "invalid_device_token_401": {
+            "pass": true,
+            "detail": null
+        },
+        "ten_workers_at_barrier": {
+            "pass": true,
+            "detail": null
+        },
+        "concurrent_http_exactly_once": {
+            "pass": true,
+            "detail": [
+                {
+                    "status": 200,
+                    "id": 2
+                },
+                {
+                    "status": 200,
+                    "id": 2
+                },
+                {
+                    "status": 200,
+                    "id": 2
+                },
+                {
+                    "status": 200,
+                    "id": 2
+                },
+                {
+                    "status": 200,
+                    "id": 2
+                },
+                {
+                    "status": 200,
+                    "id": 2
+                },
+                {
+                    "status": 200,
+                    "id": 2
+                },
+                {
+                    "status": 200,
+                    "id": 2
+                },
+                {
+                    "status": 201,
+                    "id": 2
+                },
+                {
+                    "status": 200,
+                    "id": 2
+                }
+            ]
+        },
+        "single_side_effects": {
+            "pass": true,
+            "detail": null
+        },
+        "external_zero_preserved": {
+            "pass": true,
+            "detail": {
+                "score": 0,
+                "label": "BURUK"
+            }
+        },
+        "identity_primary_unique": {
+            "pass": true,
+            "detail": null
+        },
+        "database_rejects_duplicate_identity": {
+            "pass": true,
+            "detail": null
+        },
+        "history_unchanged": {
+            "pass": true,
+            "detail": null
+        },
+        "admin_read_200": {
+            "pass": true,
+            "detail": null
+        }
+    },
+    "mysql_version": "8.0.46",
+    "pass": true
+}

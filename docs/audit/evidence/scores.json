@@ -1,0 +1,26 @@
+{
+  "controls": 117,
+  "weights": 407,
+  "statusCounts": {
+    "COMPLETE": 61,
+    "PARTIAL": 21,
+    "MISSING": 5,
+    "BUG": 19,
+    "NOT VERIFIED": 6,
+    "EXTERNAL DEPENDENCY": 5
+  },
+  "implementationNumerator": 317.5,
+  "verificationNumerator": 303,
+  "verifiedCompleteNumerator": 210,
+  "srsRequirements": 89,
+  "srsWeights": 283,
+  "srsCompleteNumerator": 81,
+  "srsStatusCounts": {
+    "COMPLETE": 26,
+    "PARTIAL": 20,
+    "MISSING": 18,
+    "BUG": 4,
+    "NOT VERIFIED": 14,
+    "EXTERNAL DEPENDENCY": 7
+  }
+}

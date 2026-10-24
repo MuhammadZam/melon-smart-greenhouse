@@ -40,11 +40,16 @@ class DashboardController extends Controller
             'total_monitorings'       => $totalMonitorings,
             'today_monitorings'       => $todayMonitorings,
             'todays_monitorings'      => $todayMonitorings,
-            'latest_monitoring'       => $latestMonitoring ? new MonitoringResource($latestMonitoring) : null,
-            'latest_temperature'      => $latestMonitoring ? (float) $latestMonitoring->temperature : null,
-            'latest_ph'               => $latestMonitoring ? (float) $latestMonitoring->ph : null,
-            'latest_humidity'         => $latestMonitoring ? (float) $latestMonitoring->humidity : null,
-            'plant_condition_summary' => $rawConditionCounts,
+            'latest_monitoring'           => $latestMonitoring ? new MonitoringResource($latestMonitoring) : null,
+            'latest_temperature'          => $latestMonitoring && $latestMonitoring->temperature !== null ? (float) $latestMonitoring->temperature : null,
+            'latest_nutrient_temperature' => $latestMonitoring && $latestMonitoring->nutrient_temperature !== null ? (float) $latestMonitoring->nutrient_temperature : null,
+            'latest_ph'                   => $latestMonitoring && $latestMonitoring->ph !== null ? (float) $latestMonitoring->ph : null,
+            'latest_ec'                   => $latestMonitoring && $latestMonitoring->ec !== null ? (float) $latestMonitoring->ec : null,
+            'latest_humidity'             => $latestMonitoring && $latestMonitoring->humidity !== null ? (float) $latestMonitoring->humidity : null,
+            'latest_soil_moisture'        => $latestMonitoring && $latestMonitoring->soil_moisture !== null ? (float) $latestMonitoring->soil_moisture : null,
+            'latest_light_intensity'      => $latestMonitoring && $latestMonitoring->light_intensity !== null ? (float) $latestMonitoring->light_intensity : null,
+            'latest_tank_level'           => $latestMonitoring && $latestMonitoring->tank_level !== null ? (float) $latestMonitoring->tank_level : null,
+            'plant_condition_summary'     => $rawConditionCounts,
         ];
 
         return response()->json([

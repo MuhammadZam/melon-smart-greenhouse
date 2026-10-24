@@ -1,0 +1,282 @@
+[
+  {
+    "name": "login",
+    "viewport": "375x812",
+    "before": "screenshots/before/375x812_login.png",
+    "after": "screenshots/after/375x812_login.png",
+    "changedPixelsPercent": 99.13
+  },
+  {
+    "name": "dashboard",
+    "viewport": "375x812",
+    "before": "screenshots/before/375x812_dashboard.png",
+    "after": "screenshots/after/375x812_dashboard.png",
+    "changedPixelsPercent": 98.99
+  },
+  {
+    "name": "monitoring",
+    "viewport": "375x812",
+    "before": "screenshots/before/375x812_monitoring.png",
+    "after": "screenshots/after/375x812_monitoring.png",
+    "changedPixelsPercent": 99.54
+  },
+  {
+    "name": "plants",
+    "viewport": "375x812",
+    "before": "screenshots/before/375x812_plants.png",
+    "after": "screenshots/after/375x812_plants.png",
+    "changedPixelsPercent": 99.58
+  },
+  {
+    "name": "charts",
+    "viewport": "375x812",
+    "before": "screenshots/before/375x812_charts.png",
+    "after": "screenshots/after/375x812_charts.png",
+    "changedPixelsPercent": 99.58
+  },
+  {
+    "name": "alarms",
+    "viewport": "375x812",
+    "before": "screenshots/before/375x812_alarms.png",
+    "after": "screenshots/after/375x812_alarms.png",
+    "changedPixelsPercent": 99.5
+  },
+  {
+    "name": "fuzzy",
+    "viewport": "375x812",
+    "before": "screenshots/before/375x812_fuzzy.png",
+    "after": "screenshots/after/375x812_fuzzy.png",
+    "changedPixelsPercent": 99.47
+  },
+  {
+    "name": "actuators",
+    "viewport": "375x812",
+    "before": "screenshots/before/375x812_actuators.png",
+    "after": "screenshots/after/375x812_actuators.png",
+    "changedPixelsPercent": 99.1
+  },
+  {
+    "name": "sheets",
+    "viewport": "375x812",
+    "before": "screenshots/before/375x812_sheets.png",
+    "after": "screenshots/after/375x812_sheets.png",
+    "changedPixelsPercent": 98.94
+  },
+  {
+    "name": "reports",
+    "viewport": "375x812",
+    "before": "screenshots/before/375x812_reports.png",
+    "after": "screenshots/after/375x812_reports.png",
+    "changedPixelsPercent": 99.23
+  },
+  {
+    "name": "login",
+    "viewport": "768x1024",
+    "before": "screenshots/before/768x1024_login.png",
+    "after": "screenshots/after/768x1024_login.png",
+    "changedPixelsPercent": 99.72
+  },
+  {
+    "name": "dashboard",
+    "viewport": "768x1024",
+    "before": "screenshots/before/768x1024_dashboard.png",
+    "after": "screenshots/after/768x1024_dashboard.png",
+    "changedPixelsPercent": 99.26
+  },
+  {
+    "name": "monitoring",
+    "viewport": "768x1024",
+    "before": "screenshots/before/768x1024_monitoring.png",
+    "after": "screenshots/after/768x1024_monitoring.png",
+    "changedPixelsPercent": 99.47
+  },
+  {
+    "name": "plants",
+    "viewport": "768x1024",
+    "before": "screenshots/before/768x1024_plants.png",
+    "after": "screenshots/after/768x1024_plants.png",
+    "changedPixelsPercent": 99.4
+  },
+  {
+    "name": "charts",
+    "viewport": "768x1024",
+    "before": "screenshots/before/768x1024_charts.png",
+    "after": "screenshots/after/768x1024_charts.png",
+    "changedPixelsPercent": 99.85
+  },
+  {
+    "name": "alarms",
+    "viewport": "768x1024",
+    "before": "screenshots/before/768x1024_alarms.png",
+    "after": "screenshots/after/768x1024_alarms.png",
+    "changedPixelsPercent": 99.73
+  },
+  {
+    "name": "fuzzy",
+    "viewport": "768x1024",
+    "before": "screenshots/before/768x1024_fuzzy.png",
+    "after": "screenshots/after/768x1024_fuzzy.png",
+    "changedPixelsPercent": 99.59
+  },
+  {
+    "name": "actuators",
+    "viewport": "768x1024",
+    "before": "screenshots/before/768x1024_actuators.png",
+    "after": "screenshots/after/768x1024_actuators.png",
+    "changedPixelsPercent": 99.27
+  },
+  {
+    "name": "sheets",
+    "viewport": "768x1024",
+    "before": "screenshots/before/768x1024_sheets.png",
+    "after": "screenshots/after/768x1024_sheets.png",
+    "changedPixelsPercent": 99.23
+  },
+  {
+    "name": "reports",
+    "viewport": "768x1024",
+    "before": "screenshots/before/768x1024_reports.png",
+    "after": "screenshots/after/768x1024_reports.png",
+    "changedPixelsPercent": 99.34
+  },
+  {
+    "name": "login",
+    "viewport": "1366x768",
+    "before": "screenshots/before/1366x768_login.png",
+    "after": "screenshots/after/1366x768_login.png",
+    "changedPixelsPercent": 99.82
+  },
+  {
+    "name": "dashboard",
+    "viewport": "1366x768",
+    "before": "screenshots/before/1366x768_dashboard.png",
+    "after": "screenshots/after/1366x768_dashboard.png",
+    "changedPixelsPercent": 99.38
+  },
+  {
+    "name": "monitoring",
+    "viewport": "1366x768",
+    "before": "screenshots/before/1366x768_monitoring.png",
+    "after": "screenshots/after/1366x768_monitoring.png",
+    "changedPixelsPercent": 99.66
+  },
+  {
+    "name": "plants",
+    "viewport": "1366x768",
+    "before": "screenshots/before/1366x768_plants.png",
+    "after": "screenshots/after/1366x768_plants.png",
+    "changedPixelsPercent": 99.65
+  },
+  {
+    "name": "charts",
+    "viewport": "1366x768",
+    "before": "screenshots/before/1366x768_charts.png",
+    "after": "screenshots/after/1366x768_charts.png",
+    "changedPixelsPercent": 99.78
+  },
+  {
+    "name": "alarms",
+    "viewport": "1366x768",
+    "before": "screenshots/before/1366x768_alarms.png",
+    "after": "screenshots/after/1366x768_alarms.png",
+    "changedPixelsPercent": 99.79
+  },
+  {
+    "name": "fuzzy",
+    "viewport": "1366x768",
+    "before": "screenshots/before/1366x768_fuzzy.png",
+    "after": "screenshots/after/1366x768_fuzzy.png",
+    "changedPixelsPercent": 99.69
+  },
+  {
+    "name": "actuators",
+    "viewport": "1366x768",
+    "before": "screenshots/before/1366x768_actuators.png",
+    "after": "screenshots/after/1366x768_actuators.png",
+    "changedPixelsPercent": 99.5
+  },
+  {
+    "name": "sheets",
+    "viewport": "1366x768",
+    "before": "screenshots/before/1366x768_sheets.png",
+    "after": "screenshots/after/1366x768_sheets.png",
+    "changedPixelsPercent": 99.3
+  },
+  {
+    "name": "reports",
+    "viewport": "1366x768",
+    "before": "screenshots/before/1366x768_reports.png",
+    "after": "screenshots/after/1366x768_reports.png",
+    "changedPixelsPercent": 99.37
+  },
+  {
+    "name": "login",
+    "viewport": "1920x1080",
+    "before": "screenshots/before/1920x1080_login.png",
+    "after": "screenshots/after/1920x1080_login.png",
+    "changedPixelsPercent": 99.9
+  },
+  {
+    "name": "dashboard",
+    "viewport": "1920x1080",
+    "before": "screenshots/before/1920x1080_dashboard.png",
+    "after": "screenshots/after/1920x1080_dashboard.png",
+    "changedPixelsPercent": 99.61
+  },
+  {
+    "name": "monitoring",
+    "viewport": "1920x1080",
+    "before": "screenshots/before/1920x1080_monitoring.png",
+    "after": "screenshots/after/1920x1080_monitoring.png",
+    "changedPixelsPercent": 99.76
+  },
+  {
+    "name": "plants",
+    "viewport": "1920x1080",
+    "before": "screenshots/before/1920x1080_plants.png",
+    "after": "screenshots/after/1920x1080_plants.png",
+    "changedPixelsPercent": 99.76
+  },
+  {
+    "name": "charts",
+    "viewport": "1920x1080",
+    "before": "screenshots/before/1920x1080_charts.png",
+    "after": "screenshots/after/1920x1080_charts.png",
+    "changedPixelsPercent": 99.87
+  },
+  {
+    "name": "alarms",
+    "viewport": "1920x1080",
+    "before": "screenshots/before/1920x1080_alarms.png",
+    "after": "screenshots/after/1920x1080_alarms.png",
+    "changedPixelsPercent": 99.89
+  },
+  {
+    "name": "fuzzy",
+    "viewport": "1920x1080",
+    "before": "screenshots/before/1920x1080_fuzzy.png",
+    "after": "screenshots/after/1920x1080_fuzzy.png",
+    "changedPixelsPercent": 99.84
+  },
+  {
+    "name": "actuators",
+    "viewport": "1920x1080",
+    "before": "screenshots/before/1920x1080_actuators.png",
+    "after": "screenshots/after/1920x1080_actuators.png",
+    "changedPixelsPercent": 99.71
+  },
+  {
+    "name": "sheets",
+    "viewport": "1920x1080",
+    "before": "screenshots/before/1920x1080_sheets.png",
+    "after": "screenshots/after/1920x1080_sheets.png",
+    "changedPixelsPercent": 99.61
+  },
+  {
+    "name": "reports",
+    "viewport": "1920x1080",
+    "before": "screenshots/before/1920x1080_reports.png",
+    "after": "screenshots/after/1920x1080_reports.png",
+    "changedPixelsPercent": 99.6
+  }
+]

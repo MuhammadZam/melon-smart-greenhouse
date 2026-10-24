@@ -1,0 +1,25 @@
+{
+  "completed": "2026-10-24",
+  "checks": {
+    "six_reports": true,
+    "links_resolve": true,
+    "tests": true,
+    "new_tests": true,
+    "history_unchanged": true,
+    "backup_matches_original": true,
+    "ledger_installed_empty": true,
+    "ledger_primary_key": true,
+    "foreign_keys_clean": true,
+    "routes55": true,
+    "device_post_only": true,
+    "simulator_server_stopped": true
+  },
+  "endpoint_categories": {
+    "PUBLIC": 7,
+    "AUTHENTICATED USER": 26,
+    "ADMIN ONLY": 21,
+    "AUTHORIZED DEVICE INGESTION": 1
+  },
+  "missingLinks": [],
+  "all_pass": true
+}

@@ -1,0 +1,41 @@
+{
+  "changed_application_files": [
+    "resources/css\\app.css",
+    "resources/js\\app.js",
+    "resources/views\\actuators\\index.blade.php",
+    "resources/views\\alarms\\index.blade.php",
+    "resources/views\\auth\\login.blade.php",
+    "resources/views\\dashboard\\index.blade.php",
+    "resources/views\\fuzzy\\history.blade.php",
+    "resources/views\\layouts\\app.blade.php",
+    "resources/views\\layouts\\auth.blade.php",
+    "resources/views\\monitorings\\create.blade.php",
+    "resources/views\\monitorings\\edit.blade.php",
+    "resources/views\\plants\\create.blade.php",
+    "resources/views\\plants\\edit.blade.php",
+    "resources/views\\admin\\integrations\\google_sheets.blade.php",
+    "resources/views\\layouts\\partials\\navbar.blade.php",
+    "resources/views\\layouts\\partials\\sidebar.blade.php",
+    "resources/fonts\\plus-jakarta-sans-latin-wght-normal.woff2",
+    "resources/fonts\\PLUS_JAKARTA_SANS_LICENSE.txt"
+  ],
+  "backend_and_tests_unchanged": true,
+  "historical_tables_unchanged": true,
+  "historical_tables": 18,
+  "foreign_key_violations": 0,
+  "browser_pages": 40,
+  "browser_overflow": [],
+  "browser_errors": [],
+  "interaction_checks": 52,
+  "interaction_pass": true,
+  "mysql_pass": true,
+  "accessibility_pages": 12,
+  "accessibility_violations": 0,
+  "regression": {
+    "tests": 297,
+    "assertions": 2075,
+    "errors": 0,
+    "failures": 0
+  },
+  "pass": true
+}

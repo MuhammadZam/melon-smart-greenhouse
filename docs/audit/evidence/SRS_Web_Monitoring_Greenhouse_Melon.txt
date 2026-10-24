@@ -1,0 +1,1427 @@
+P1: COMPUTING PROJECT
+P2: SOFTWARE REQUIREMENT SPECIFICATION
+P4: Rancang Bangun Aplikasi Web Monitoring Greenhouse Melon
+P12: Project Manager
+P13: Nabila Amilatul Jannah1203230103
+P15: Team Members
+P16: I Gede Fender Adrea Veda1203230009
+P17: Muhammad Fadli Zamzami1203230054
+P18: Richard Edgar Gonassis1203230084
+P19: Neisyah Nurul Alyazara1203230098
+P21: Supervisor
+P22: Dr. Tanzilal Mustaqim, S.Kom., M.Kom
+P26: PROGRAM STUDI S-1 INFORMATIKA
+P27: DIREKTORAT KAMPUS SURABAYA
+P28: UNIVERSITAS TELKOM
+P29: 2026
+P33: Document Version
+P34: Versi
+P35: 1.0
+P36: Tanggal
+P37: 14 Oktober 2026
+P38: Perubahan
+P39: Penyusunan awal dokumen SRS berdasarkan Proposal Computing Project
+P40: Penulis
+P41: Neisyah Nurul Alyazara (System Analyst)
+P45: Table of Content
+P46: 1.  Introduction4
+P47: 1.1.  Purpose4
+P48: 1.2.  Intended Readers4
+P49: 1.3.  Scope of the System4
+P50: 2.  Overall Description6
+P51: 2.1.  Product Perspective6
+P52: 2.2.  Product Functions7
+P53: 2.3.  User Classes and Characteristics9
+P54: 2.4.  Operating Environment9
+P55: 2.5.  Design and Implementation Constraints10
+P56: 2.6.  Assumptions and Dependencies11
+P57: 3.  System Requirements12
+P58: 3.1.  Functional Requirements12
+P59: 3.1.1.  Authentication & Authorization12
+P60: 3.1.2.  User Management12
+P61: 3.1.3.  Plant Management (Data Tanaman)13
+P62: 3.1.4.  Sensor Data Reception (REST API)13
+P63: 3.1.5.  Dashboard14
+P64: 3.1.6.  Alarm15
+P65: 3.1.7.  Graph (Grafik Tren)16
+P66: 3.1.8.  Fruit Observation (Ukuran dan Kematangan Buah)17
+P67: 3.1.9.  History (Riwayat)17
+P68: 3.1.10.  Parameter Threshold Settings (Pengaturan Batas)18
+P69: 3.1.11.  Actuator Module (Opsional)18
+P70: 3.2.  Non-Functional Requirements (NFR)19
+P71: 3.2.1.  Performance Requirements19
+P72: 3.2.2.  Security Requirements19
+P73: 3.2.3.  Usability Requirements20
+P74: 3.2.4.  Reliability Requirements20
+P75: 3.2.5.  Maintainability Requirements21
+P76: 3.2.6.  Portability Requirements21
+P77: 3.3.  Data Requirements22
+P78: 3.3.1.  Entity Relationship Diagram22
+P79: 3.3.2.  Data Dictionary23
+P80: 3.3.3.  Parameter Thresholds and Alarm Rules26
+P81: 3.4.  System Models27
+P82: 3.4.1.  Data Flow Diagram Level 128
+P83: 3.4.2.  Flowchart Proses Pengguna (TO-BE)29
+P84: 3.4.3.  Flowchart Penerimaan Data dan Alarm30
+P85: 3.4.4.  Sequence Diagram31
+P86: 4.  External Interface Requirements33
+P87: 4.1.  User Interface33
+P88: 4.2.  Hardware Interface36
+P89: 4.3.  Software Interface37
+P90: 4.4.  Communication Interface37
+P91: 5.  Appendix40
+P92: 5.1.  Glosarium40
+P93: 5.2.  Matriks Keterkaitan Kebutuhan Bisnis dan Kebutuhan Fungsional41
+P94: 5.3.  Referensi Dokumen41
+P95: Introduction
+P96: Purpose
+P97: Dokumen Software Requirement Specification (SRS) ini mendefinisikan kebutuhan fungsional, nonfungsional, dan antarmuka dari Aplikasi Web Monitoring Greenhouse Melon. Aplikasi ini dikembangkan oleh tim Informatika dalam Computing Project lintas program studi bersama tim Elektro dan tim Logistik, dan digunakan oleh Admin serta Pengamat Lapangan untuk memantau kondisi greenhouse melon dan mencatat perkembangan buah.
+P98: Dokumen ini disusun berdasarkan Proposal Computing Project dan menjadi acuan bersama dalam perancangan, implementasi, pengujian, dan penerimaan sistem.
+P99: Intended Readers
+P100: Dokumen ini ditujukan bagi pihak berikut:
+P101: Project manager: memantau kesesuaian lingkup, jadwal, dan kesepakatan lintas tim.
+P102: Analyst: menjadi dasar penyusunan SDD, ERD, dan spesifikasi API.
+P103: Developer (front-end dan back-end): acuan implementasi fitur, basis data, dan REST API.
+P104: QA/tester: dasar penyusunan skenario uji fungsional, API, alarm, integrasi, dan UAT.
+P105: Tim Elektro: acuan kontrak API, format data sensor, dan antarmuka perangkat keras.
+P106: Tim Logistik: acuan kebutuhan lingkungan operasi untuk perencanaan pengadaan.
+P107: Stakeholder (dosen pembimbing dan kampus): memahami cakupan dan kebutuhan sistem.
+P108: Scope of the System
+P109: Sistem Web Monitoring Greenhouse Melon adalah aplikasi web yang menjadi pusat pemantauan greenhouse melon. Fungsi utamanya adalah menerima data sensor dari ESP32 melalui REST API, menyimpannya secara terpusat, lalu menampilkan kondisi terkini, alarm, grafik tren, dan riwayat. Sistem juga mengelola data tanaman (blok/batch) serta mencatat ukuran dan kematangan buah yang dapat dibandingkan dengan kondisi lingkungan.
+P110: Pengguna utama sistem adalah Admin, yang mengelola data tanaman, pengamatan buah, akun, dan batas parameter, serta Pengamat Lapangan (User), yang melihat dashboard, alarm, grafik, dan riwayat. Seluruh pengguna wajib login.
+P111: Manfaat sistem adalah data budidaya melon tersimpan terpusat dan terstruktur, kondisi abnormal cepat diketahui melalui status warna dan alarm, serta perkembangan tanaman dan buah dapat dievaluasi melalui grafik dan riwayat. Pengembangan perangkat keras, firmware, dan logika kontrol ESP32 berada di luar lingkup sistem ini karena dikerjakan tim Elektro.
+P112: Overall Description
+P113: Product Perspective
+P114: Sistem merupakan aplikasi web yang berdiri sendiri pada sisi aplikasi, tetapi terintegrasi dengan subsistem IoT milik tim Elektro melalui REST API. ESP32 mengirim data sensor ke sistem, sedangkan seluruh logika kontrol (termasuk logika fuzzy) tetap berada di ESP32. Web hanya menampilkan hasilnya dan, bila disepakati, mengirim perintah override. Gambar 1 menunjukkan diagram konteks sistem.
+P116: Gambar 1. Diagram konteks sistem
+P117: Arsitektur sistem terdiri dari sisi greenhouse (sensor, ESP32, aktuator), server aplikasi Laravel 11 dengan basis data MySQL, dan browser pengguna. Alur dasarnya: (1) ESP32 mengirim data sensor ke REST API; (2) Laravel memvalidasi, menyimpan ke MySQL, dan mengevaluasi batas untuk membuat alarm; (3) pengguna login melalui browser; (4) data ditampilkan pada dashboard, grafik, riwayat, dan daftar alarm.
+P119: Gambar 2. Arsitektur sistem
+P120: Product Functions
+P121: Fungsi utama sistem adalah sebagai berikut:
+P122: Autentikasi (login dan logout) dengan pembatasan akses berdasarkan role Admin dan User.
+P123: Penerimaan data sensor dari ESP32 melalui REST API, beserta autentikasi token, validasi, dan penyimpanan.
+P124: Dashboard berisi kartu 6 sensor dengan status warna, status kondisi, jumlah buah per tingkat kematangan, dan grafik tren.
+P125: Pembuatan dan pencatatan alarm (batas parameter, data berhenti masuk, dan buah matang) beserta riwayatnya.
+P126: Grafik tren parameter dengan pilihan parameter, tanaman, dan rentang waktu.
+P127: Pengelolaan data tanaman (blok/batch, varietas, tanggal tanam, lokasi, fase tumbuh) oleh Admin.
+P128: Pencatatan ukuran dan kematangan buah oleh Admin, beserta grafik pertumbuhan dan perbandingannya dengan kondisi sensor.
+P129: Riwayat data sensor, alarm, dan pengamatan buah dengan filter tanggal dan tanaman.
+P130: Pengaturan batas parameter dan manajemen akun oleh Admin.
+P131: Peringkasan data sensor (rata-rata per menit atau per jam) agar grafik tetap ringan.
+P132: Modul aktuator yang modular dan opsional sesuai keputusan tim Elektro.
+P134: Hubungan antara aktor dan fungsi sistem digambarkan pada diagram use case (Gambar 3) dan dirinci pada Tabel 1.
+P136: Gambar 3. Diagram use case
+P137: Tabel 1. Daftar use case dan keterkaitannya dengan kebutuhan fungsional
+P138: ID
+P139: Use Case
+P140: Aktor
+P141: FR Terkait
+P142: UC-01
+P143: Login / Logout
+P144: Admin, User
+P145: FR-01, FR-02, FR-03, FR-04, FR-05
+P146: UC-02
+P147: Melihat Dashboard
+P148: Admin, User
+P149: FR-23, FR-24, FR-25, FR-26, FR-27, FR-28, FR-29
+P150: UC-03
+P151: Melihat Alarm dan Riwayat Alarm
+P152: Admin, User
+P153: FR-37, FR-51
+P154: UC-04
+P155: Melihat Grafik Tren
+P156: Admin, User
+P157: FR-39, FR-40, FR-41
+P158: UC-05
+P159: Melihat Data Tanaman
+P160: Admin, User
+P161: FR-11
+P162: UC-06
+P163: Melihat Pengamatan Buah dan Grafik Pertumbuhan
+P164: Admin, User
+P165: FR-44, FR-48, FR-49
+P166: UC-07
+P167: Melihat Riwayat
+P168: Admin, User
+P169: FR-50, FR-51, FR-52, FR-53
+P170: UC-08
+P171: Kelola Data Tanaman
+P172: Admin
+P173: FR-12, FR-13, FR-14
+P174: UC-09
+P175: Kelola Pengamatan Buah
+P176: Admin
+P177: FR-45, FR-46, FR-47
+P178: UC-10
+P179: Atur Batas Parameter
+P180: Admin
+P181: FR-54, FR-55, FR-56
+P182: UC-11
+P183: Kelola Akun Pengguna
+P184: Admin
+P185: FR-06, FR-07, FR-08, FR-09, FR-10
+P186: UC-12
+P187: Kontrol / Override Aktuator (opsional)
+P188: Admin
+P189: FR-60, FR-61, FR-62
+P190: UC-13
+P191: Kirim Data Sensor
+P192: ESP32
+P193: FR-15, FR-16, FR-17, FR-18, FR-19, FR-20, FR-21
+P194: UC-14
+P195: Evaluasi dan Catat Alarm
+P196: Sistem (include UC-13)
+P197: FR-31, FR-32, FR-33, FR-34, FR-35, FR-36
+P198: UC-15
+P199: Ringkas Data Sensor
+P200: Sistem (include UC-13)
+P201: FR-22
+P202: UC-16
+P203: Terima Perintah Override (opsional)
+P204: ESP32
+P205: FR-58, FR-59
+P207: User Classes and Characteristics
+P208: Sistem memiliki dua kelas pengguna manusia dan satu aktor sistem eksternal. Tidak ada kelas Guest; pengguna yang belum login hanya dapat mengakses halaman login.
+P209: Tabel 2. Kelas pengguna dan karakteristiknya
+P210: Kelas
+P211: Deskripsi
+P212: Hak Akses
+P213: Karakteristik
+P214: Admin
+P215: Operator/pengelola greenhouse yang bertanggung jawab atas data dan pengaturan sistem.
+P216: Seluruh fitur yang dapat dilihat User, ditambah menambah, mengubah, dan menghapus data tanaman, pengamatan buah, akun, dan batas parameter; menutup alarm; (opsional) override aktuator.
+P217: Memahami budidaya melon dan parameter greenhouse; tidak memerlukan keahlian pemrograman.
+P218: Pengamat Lapangan (User)
+P219: Pengguna di lapangan yang memantau kondisi greenhouse.
+P220: Melihat dashboard, alarm, grafik, data tanaman, pengamatan buah, dan riwayat. Tidak dapat mengubah data serta tidak dapat mengakses pengaturan dan akun.
+P221: Pengguna umum yang terbiasa memakai browser di laptop, tablet, atau ponsel.
+P222: Perangkat ESP32 (aktor sistem)
+P223: Perangkat IoT tim Elektro yang mengirim data sensor.
+P224: Mengirim data melalui endpoint API menggunakan token yang valid; tidak memiliki akses ke antarmuka web.
+P225: Berkomunikasi otomatis melalui WiFi sesuai kontrak API.
+P227: Operating Environment
+P228: Sistem beroperasi pada lingkungan berikut:
+P229: Platform: aplikasi web responsif untuk laptop, tablet, dan ponsel; tidak mencakup aplikasi mobile native.
+P230: Sistem operasi klien: Windows, macOS, Linux, Android, dan iOS selama memiliki browser modern.
+P231: Browser: versi terbaru Google Chrome, Microsoft Edge, Mozilla Firefox, dan Safari.
+P232: Server/hosting: Railway, VPS, atau hosting kampus dengan PHP 8.2, Laravel 11, MySQL, web server (Nginx atau Apache), dan HTTPS.
+P233: Perangkat IoT: ESP32 dengan koneksi WiFi dan internet di lokasi greenhouse.
+P234: Kebutuhan AI/ML: tidak ada; sistem tidak mencakup analisis prediksi.
+P235: Design and Implementation Constraints
+P236: Regulasi: data pribadi pengguna dibatasi pada nama dan email, dikelola dengan mengacu pada UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi (minimisasi data dan perlindungan password).
+P237: Hardware/software: pengembangan perangkat keras, firmware, sensor, dan logika kontrol ESP32 berada di luar lingkup tim Informatika; pengiriman data bergantung pada WiFi dan internet di greenhouse; data pH dan EC/TDS menyusul sesuai kesiapan sensor.
+P238: Framework: Laravel 11 (PHP 8.2) sebagai framework full stack dengan Blade, Tailwind CSS, Alpine.js, Chart.js, dan MySQL (Eloquent ORM).
+P239: Aturan keamanan: login wajib, pembatasan akses berdasarkan role, token API untuk perangkat, validasi input, dan password ter-hash.
+P240: Logika kontrol: web tidak menghitung logika kontrol atau fuzzy; hanya menampilkan hasilnya dan, bila disepakati, mengirim perintah override.
+P241: Modul aktuator: bergantung pada keputusan tim Elektro; bila belum diputuskan, modul ditunda tanpa mengganggu fitur inti.
+P242: Skala: pengujian dilakukan pada skala prototype dan periode terbatas.
+P243: Assumptions and Dependencies
+P244: Asumsi
+P245: ESP32 mengirim data secara periodik dengan interval dan format yang disepakati bersama tim Elektro dalam kontrak API.
+P246: Setiap data sensor berkaitan dengan satu tanaman (blok/batch) terdaftar, dan ESP32 mengetahui plant_id yang sesuai.
+P247: Batas awal parameter dari tim Elektro dianggap valid dan dapat diubah Admin.
+P248: Bila koneksi terputus, data pada periode tersebut tidak masuk dan kondisi ini ditandai melalui alarm data berhenti masuk.
+P249: Pengguna memiliki perangkat dan browser modern serta koneksi internet.
+P251: Dependensi eksternal
+P252: Tim Elektro: perangkat ESP32, sensor, aktuator, kontrak API, token perangkat, dan keputusan mode aktuator.
+P253: Tim Logistik: perencanaan kebutuhan dan pengadaan komponen.
+P254: Layanan hosting (Railway/VPS/hosting kampus) beserta HTTPS.
+P255: Pustaka pihak ketiga: Laravel, Tailwind CSS, Alpine.js, dan Chart.js.
+P256: System Requirements
+P257: Bagian ini memuat kebutuhan fungsional dan nonfungsional sistem beserta kebutuhan data dan pemodelan sistem.
+P258: Functional Requirements
+P259: Kebutuhan fungsional dikelompokkan ke dalam 11 fitur. Kolom Priority memakai skala Tinggi (harus ada pada rilis utama), Sedang (seharusnya ada), dan Rendah (dapat ditunda atau opsional). Kolom Dependency memuat ID kebutuhan lain yang harus tersedia terlebih dahulu. Seluruh kebutuhan menggunakan bentuk "Sistem harus..." (system shall).
+P260: Authentication & Authorization
+P261: Fitur ini mengatur akses pengguna ke aplikasi dan membedakan hak akses Admin dan Pengamat Lapangan (User).
+P262: Tabel 3. Kebutuhan fungsional - Authentication & Authorization
+P263: ID
+P264: Requirement
+P265: Description
+P266: Priority
+P267: Dependency
+P268: FR-01
+P269: Login
+P270: Sistem harus menyediakan halaman login dengan email dan password, memvalidasi kredensial, dan menampilkan pesan error serta kembali ke halaman login bila data tidak valid.
+P271: Tinggi
+P272: -
+P273: FR-02
+P274: Logout
+P275: Sistem harus menyediakan logout yang mengakhiri sesi pengguna dan mengarahkan pengguna ke halaman login.
+P276: Tinggi
+P277: FR-01
+P278: FR-03
+P279: Pembatasan akses berdasarkan role
+P280: Sistem harus membatasi halaman dan aksi sesuai role (Admin atau User). Akses tanpa hak ditolak dengan pesan akses ditolak (HTTP 403).
+P281: Tinggi
+P282: FR-01
+P283: FR-04
+P284: Proteksi halaman
+P285: Sistem harus mengarahkan pengguna yang belum login ke halaman login ketika mencoba membuka halaman terlindungi.
+P286: Tinggi
+P287: FR-01
+P288: FR-05
+P289: Akun nonaktif
+P290: Sistem harus menolak login dari akun yang berstatus nonaktif.
+P291: Sedang
+P292: FR-01, FR-09
+P294: User Management
+P295: Fitur ini hanya dapat diakses Admin untuk mengelola akun pengguna.
+P296: Tabel 4. Kebutuhan fungsional - User Management
+P297: ID
+P298: Requirement
+P299: Description
+P300: Priority
+P301: Dependency
+P302: FR-06
+P303: Daftar akun
+P304: Admin dapat melihat daftar akun beserta nama, email, role, dan status aktif.
+P305: Sedang
+P306: FR-03
+P307: FR-07
+P308: Tambah akun
+P309: Admin dapat menambah akun dengan nama, email unik, password, dan role (Admin atau User).
+P310: Tinggi
+P311: FR-06
+P312: FR-08
+P313: Ubah akun
+P314: Admin dapat mengubah data akun, mengganti role, dan mengatur ulang password.
+P315: Sedang
+P316: FR-06
+P317: FR-09
+P318: Aktif/nonaktifkan akun
+P319: Admin dapat mengaktifkan atau menonaktifkan akun pengguna.
+P320: Sedang
+P321: FR-06
+P322: FR-10
+P323: Hapus akun
+P324: Admin dapat menghapus akun setelah memberikan konfirmasi.
+P325: Rendah
+P326: FR-06
+P328: Plant Management (Data Tanaman)
+P329: Fitur ini mengelola data blok/batch tanaman melon yang menjadi acuan data sensor dan pengamatan buah.
+P330: Tabel 5. Kebutuhan fungsional - Plant Management (Data Tanaman)
+P331: ID
+P332: Requirement
+P333: Description
+P334: Priority
+P335: Dependency
+P336: FR-11
+P337: Daftar dan detail tanaman
+P338: Pengguna dapat melihat daftar dan detail tanaman (blok/batch, varietas, tanggal tanam, lokasi, dan fase tumbuh).
+P339: Tinggi
+P340: FR-03
+P341: FR-12
+P342: Tambah tanaman
+P343: Admin dapat menambah data tanaman dengan validasi kolom wajib dan tipe data.
+P344: Tinggi
+P345: FR-11
+P346: FR-13
+P347: Ubah tanaman
+P348: Admin dapat mengubah data tanaman, termasuk memperbarui fase tumbuh.
+P349: Tinggi
+P350: FR-11
+P351: FR-14
+P352: Hapus tanaman
+P353: Admin dapat menghapus tanaman setelah konfirmasi. Penghapusan ditolak bila tanaman masih memiliki data sensor atau pengamatan buah.
+P354: Sedang
+P355: FR-11, FR-19, FR-45
+P357: Sensor Data Reception (REST API)
+P358: Fitur ini menerima data sensor dari ESP32 (Tim Elektro) dan menyimpannya secara terpusat.
+P359: Tabel 6. Kebutuhan fungsional - Sensor Data Reception (REST API)
+P360: ID
+P361: Requirement
+P362: Description
+P363: Priority
+P364: Dependency
+P365: FR-15
+P366: Endpoint penerimaan data
+P367: Sistem harus menyediakan endpoint POST /api/monitorings yang menerima data sensor berformat JSON dari ESP32.
+P368: Tinggi
+P369: -
+P370: FR-16
+P371: Autentikasi perangkat
+P372: Sistem harus mengautentikasi setiap permintaan menggunakan kunci API/token perangkat. Permintaan tanpa kredensial valid ditolak (HTTP 401).
+P373: Tinggi
+P374: FR-15
+P375: FR-17
+P376: Validasi data
+P377: Sistem harus memvalidasi kolom wajib (plant_id, monitored_at, temperature, humidity, soil_moisture, light_intensity, nutrient_temperature, water_tank_level, condition), tipe data, dan rentang nilai. Data tidak valid ditolak (HTTP 422) disertai pesan kesalahan.
+P378: Tinggi
+P379: FR-15
+P380: FR-18
+P381: Keterkaitan tanaman
+P382: Sistem harus memastikan plant_id merujuk ke tanaman yang terdaftar.
+P383: Tinggi
+P384: FR-11
+P385: FR-19
+P386: Penyimpanan data
+P387: Sistem harus menyimpan data sensor yang valid ke basis data MySQL beserta waktu pengukuran.
+P388: Tinggi
+P389: FR-17
+P390: FR-20
+P391: Parameter opsional pH dan EC/TDS
+P392: Sistem harus menerima dan menyimpan kolom ph dan ec_tds bila dikirim, tanpa mewajibkannya.
+P393: Sedang
+P394: FR-17
+P395: FR-21
+P396: Pencatatan aktivitas perangkat
+P397: Sistem harus memperbarui waktu terakhir perangkat mengirim data (last_seen_at) setiap data diterima.
+P398: Sedang
+P399: FR-19
+P400: FR-22
+P401: Peringkasan data
+P402: Sistem harus meringkas data sensor yang sering masuk menjadi rata-rata per menit atau per jam agar grafik tetap ringan.
+P403: Sedang
+P404: FR-19
+P406: Dashboard
+P407: Fitur ini menyajikan kondisi terkini greenhouse dalam satu halaman.
+P408: Tabel 7. Kebutuhan fungsional - Dashboard
+P409: ID
+P410: Requirement
+P411: Description
+P412: Priority
+P413: Dependency
+P414: FR-23
+P415: Kartu status sensor
+P416: Sistem harus menampilkan kartu 6 sensor (suhu udara, kelembapan udara, kelembapan media tanam, intensitas cahaya, suhu larutan nutrisi, level tandon) beserta nilai terbaru dan waktu pembaruan.
+P417: Tinggi
+P418: FR-19
+P419: FR-24
+P420: Status warna sensor
+P421: Sistem harus menandai tiap kartu dengan status warna dan label teks: dalam batas, rendah/tinggi, atau kritis, berdasarkan batas parameter.
+P422: Tinggi
+P423: FR-23, FR-54
+P424: FR-25
+P425: Status kondisi
+P426: Sistem harus menampilkan status kondisi (condition) terbaru yang dikirim ESP32.
+P427: Sedang
+P428: FR-23
+P429: FR-26
+P430: Ringkasan kematangan buah
+P431: Sistem harus menampilkan jumlah buah per tingkat kematangan.
+P432: Sedang
+P433: FR-45
+P434: FR-27
+P435: Ringkasan alarm aktif
+P436: Sistem harus menampilkan alarm yang sedang aktif pada dashboard.
+P437: Sedang
+P438: FR-34
+P439: FR-28
+P440: Grafik tren ringkas
+P441: Sistem harus menampilkan grafik tren parameter pada dashboard.
+P442: Sedang
+P443: FR-39
+P444: FR-29
+P445: Pemilihan tanaman
+P446: Pengguna dapat memilih tanaman (blok/batch) yang datanya ditampilkan pada dashboard.
+P447: Sedang
+P448: FR-11
+P449: FR-30
+P450: Pembaruan berkala
+P451: Sistem sebaiknya memperbarui data dashboard secara berkala tanpa memuat ulang halaman secara manual (interval ditetapkan saat desain).
+P452: Rendah
+P453: FR-23
+P455: Alarm
+P456: Fitur ini membuat, mencatat, dan menampilkan peringatan kondisi abnormal.
+P457: Tabel 8. Kebutuhan fungsional - Alarm
+P458: ID
+P459: Requirement
+P460: Description
+P461: Priority
+P462: Dependency
+P463: FR-31
+P464: Pembuatan alarm batas parameter
+P465: Sistem harus membuat alarm otomatis ketika suhu udara terlalu tinggi, kelembapan udara di luar batas, media tanam kering, suhu larutan nutrisi tinggi, atau level tandon di bawah batas minimum.
+P466: Tinggi
+P467: FR-19, FR-54
+P468: FR-32
+P469: Alarm data berhenti masuk
+P470: Sistem harus membuat alarm ketika tidak ada data sensor yang masuk melebihi batas waktu yang ditetapkan.
+P471: Tinggi
+P472: FR-21
+P473: FR-33
+P474: Alarm buah matang
+P475: Sistem harus membuat alarm ketika pengamatan buah berstatus Matang.
+P476: Sedang
+P477: FR-45
+P478: FR-34
+P479: Pencatatan alarm
+P480: Sistem harus mencatat setiap alarm beserta waktu, jenis, nilai, tanaman, dan status (aktif atau selesai).
+P481: Tinggi
+P482: FR-31
+P483: FR-35
+P484: Pencegahan alarm ganda
+P485: Sistem sebaiknya tidak membuat alarm baru untuk jenis dan tanaman yang sama selama alarm sebelumnya masih aktif.
+P486: Sedang
+P487: FR-34
+P488: FR-36
+P489: Penyelesaian alarm
+P490: Sistem harus menandai alarm selesai ketika nilai kembali dalam batas atau data kembali masuk, dan Admin dapat menutup alarm secara manual.
+P491: Sedang
+P492: FR-34
+P493: FR-37
+P494: Daftar dan riwayat alarm
+P495: Pengguna dapat melihat daftar alarm aktif dan riwayat alarm, dengan filter status.
+P496: Tinggi
+P497: FR-34
+P498: FR-38
+P499: Alarm pH dan EC/TDS
+P500: Sistem dapat membuat alarm untuk pH dan EC/TDS setelah sensornya siap dan datanya dikirim.
+P501: Rendah
+P502: FR-20, FR-31
+P504: Graph (Grafik Tren)
+P505: Fitur ini memvisualisasikan tren parameter sensor.
+P506: Tabel 9. Kebutuhan fungsional - Graph (Grafik Tren)
+P507: ID
+P508: Requirement
+P509: Description
+P510: Priority
+P511: Dependency
+P512: FR-39
+P513: Tampilan grafik
+P514: Sistem harus menampilkan grafik tren parameter menggunakan Chart.js.
+P515: Tinggi
+P516: FR-19
+P517: FR-40
+P518: Pilihan parameter, tanaman, dan rentang waktu
+P519: Pengguna dapat memilih parameter, tanaman, dan rentang waktu grafik.
+P520: Tinggi
+P521: FR-39, FR-11
+P522: FR-41
+P523: Penggunaan data ringkasan
+P524: Sistem harus memakai data yang telah diringkas untuk rentang waktu panjang agar grafik tetap cepat dimuat.
+P525: Sedang
+P526: FR-22, FR-39
+P527: FR-42
+P528: Garis batas parameter
+P529: Sistem sebaiknya menampilkan garis batas minimum dan maksimum pada grafik.
+P530: Rendah
+P531: FR-39, FR-54
+P532: FR-43
+P533: Log aktuator pada grafik
+P534: Bila modul aktuator aktif, sistem menampilkan log tindakan aktuator sejajar dengan grafik sensor.
+P535: Rendah
+P536: FR-39, FR-59
+P538: Fruit Observation (Ukuran dan Kematangan Buah)
+P539: Fitur ini mencatat perkembangan ukuran dan kematangan buah melon.
+P540: Tabel 10. Kebutuhan fungsional - Fruit Observation (Ukuran dan Kematangan Buah)
+P541: ID
+P542: Requirement
+P543: Description
+P544: Priority
+P545: Dependency
+P546: FR-44
+P547: Daftar pengamatan buah
+P548: Pengguna dapat melihat daftar pengamatan buah.
+P549: Tinggi
+P550: FR-11
+P551: FR-45
+P552: Tambah pengamatan buah
+P553: Admin dapat menambah pengamatan dengan tanaman, kode buah, tanggal, diameter, panjang, berat, umur buah (hari setelah polinasi), tingkat kematangan (Muda, Mendekati Matang, Matang, Lewat Matang), dan Brix (opsional) dengan validasi data.
+P554: Tinggi
+P555: FR-44
+P556: FR-46
+P557: Ubah pengamatan buah
+P558: Admin dapat mengubah data pengamatan buah.
+P559: Sedang
+P560: FR-44
+P561: FR-47
+P562: Hapus pengamatan buah
+P563: Admin dapat menghapus pengamatan buah setelah konfirmasi.
+P564: Sedang
+P565: FR-44
+P566: FR-48
+P567: Grafik pertumbuhan buah
+P568: Sistem harus menampilkan grafik pertumbuhan buah (ukuran dan berat) dari data pengamatan.
+P569: Sedang
+P570: FR-45
+P571: FR-49
+P572: Perbandingan dengan kondisi sensor
+P573: Sistem harus memungkinkan pertumbuhan buah dibandingkan dengan kondisi sensor pada periode yang sama.
+P574: Sedang
+P575: FR-48, FR-39
+P577: History (Riwayat)
+P578: Fitur ini menyediakan penelusuran data historis.
+P579: Tabel 11. Kebutuhan fungsional - History (Riwayat)
+P580: ID
+P581: Requirement
+P582: Description
+P583: Priority
+P584: Dependency
+P585: FR-50
+P586: Riwayat data sensor
+P587: Pengguna dapat melihat riwayat data sensor.
+P588: Tinggi
+P589: FR-19
+P590: FR-51
+P591: Riwayat alarm
+P592: Pengguna dapat melihat riwayat alarm (waktu, nilai, dan status selesai).
+P593: Tinggi
+P594: FR-34
+P595: FR-52
+P596: Riwayat pengamatan buah
+P597: Pengguna dapat melihat riwayat pengamatan buah.
+P598: Tinggi
+P599: FR-45
+P600: FR-53
+P601: Filter tanggal dan tanaman
+P602: Pengguna dapat memfilter ketiga jenis riwayat berdasarkan rentang tanggal dan tanaman, dengan penomoran halaman (pagination).
+P603: Tinggi
+P604: FR-50
+P606: Parameter Threshold Settings (Pengaturan Batas)
+P607: Fitur ini mengelola batas nilai parameter yang menjadi dasar status warna dan alarm.
+P608: Tabel 12. Kebutuhan fungsional - Parameter Threshold Settings (Pengaturan Batas)
+P609: ID
+P610: Requirement
+P611: Description
+P612: Priority
+P613: Dependency
+P614: FR-54
+P615: Lihat batas parameter
+P616: Sistem harus menampilkan batas minimum dan maksimum tiap parameter.
+P617: Tinggi
+P618: FR-03
+P619: FR-55
+P620: Nilai awal batas
+P621: Sistem harus menyediakan nilai awal batas dari Tim Elektro (suhu udara 25-30 °C, kelembapan udara 50-70%, media 60-80%, cahaya 8-10 jam terang, suhu larutan 20-25 °C, tandon minimal 20%).
+P622: Tinggi
+P623: -
+P624: FR-56
+P625: Ubah batas parameter
+P626: Admin dapat mengubah batas parameter dengan validasi nilai minimum lebih kecil dari maksimum.
+P627: Tinggi
+P628: FR-54
+P630: Actuator Module (Opsional)
+P631: Modul ini bersifat modular dan bergantung pada keputusan Tim Elektro mengenai mode kontrol ESP32. Bila belum diputuskan, modul ditunda tanpa mengganggu fitur inti.
+P632: Tabel 13. Kebutuhan fungsional - Actuator Module (Opsional)
+P633: ID
+P634: Requirement
+P635: Description
+P636: Priority
+P637: Dependency
+P638: FR-57
+P639: Modul dapat diaktifkan/dinonaktifkan
+P640: Sistem harus memungkinkan modul aktuator diaktifkan atau dinonaktifkan tanpa memengaruhi fitur inti.
+P641: Sedang
+P642: -
+P643: FR-58
+P644: Status aktuator
+P645: Sistem menampilkan status aktuator (pompa siram, kipas, misting, lampu tambahan: ON/OFF).
+P646: Rendah
+P647: FR-57, FR-15
+P648: FR-59
+P649: Log tindakan aktuator
+P650: Sistem mencatat dan menampilkan log tindakan aktuator (waktu, aktuator, pemicu).
+P651: Rendah
+P652: FR-58
+P653: FR-60
+P654: Override oleh Admin
+P655: Admin dapat memberi perintah ON/OFF pompa dan kipas serta memilih mode Otomatis/Manual dari web.
+P656: Rendah
+P657: FR-58, FR-03
+P658: FR-61
+P659: Pengaman tandon kosong
+P660: Perintah override tidak boleh menembus pengaman tandon kosong.
+P661: Rendah
+P662: FR-60
+P663: FR-62
+P664: Audit override
+P665: Setiap tindakan override dicatat beserta pelaku dan waktunya.
+P666: Rendah
+P667: FR-60
+P669: Non-Functional Requirements (NFR)
+P670: Nilai target pada bagian ini merupakan usulan awal tim dan dapat disesuaikan setelah pengujian performa serta kesepakatan dengan dosen pembimbing.
+P671: Performance Requirements
+P672: NFR-P1 (Response time): halaman dashboard dan daftar data dimuat dalam 3 detik atau kurang untuk 95% permintaan pada koneksi normal.
+P673: NFR-P2 (Grafik): grafik dengan rentang hingga 30 hari tampil dalam 5 detik atau kurang dengan memanfaatkan data yang telah diringkas.
+P674: NFR-P3 (API): endpoint POST /api/monitorings merespons dalam 1 detik atau kurang.
+P675: NFR-P4 (Throughput): sistem mampu menerima minimal 60 permintaan API per menit tanpa kehilangan data.
+P676: NFR-P5 (Concurrent users): sistem melayani minimal 20 pengguna bersamaan tanpa penurunan kinerja berarti (skala prototype).
+P677: Security Requirements
+P678: NFR-S1 (Autentikasi): login wajib; password disimpan dalam bentuk hash.
+P679: NFR-S2 (Otorisasi): pembatasan akses berdasarkan role diterapkan di sisi server pada setiap halaman dan aksi.
+P680: NFR-S3 (Token API): token perangkat disimpan ter-hash, dapat dicabut, dan permintaan tanpa token valid ditolak.
+P681: NFR-S4 (Enkripsi): seluruh komunikasi pengguna dan perangkat menggunakan HTTPS.
+P682: NFR-S5 (Proteksi aplikasi): perlindungan terhadap CSRF, XSS, dan SQL injection, serta pembatasan laju (rate limiting) pada login dan API.
+P683: NFR-S6 (Logging): sistem mencatat login gagal, perubahan data master, dan tindakan override aktuator (siapa dan kapan).
+P684: NFR-S7 (Compliance): pengelolaan data pribadi mengacu pada UU No. 27 Tahun 2022 (PDP) dengan data pribadi minimal.
+P685: Usability Requirements
+P686: NFR-U1 (Responsif): tampilan menyesuaikan layar laptop, tablet, dan ponsel.
+P687: NFR-U2 (Bahasa): antarmuka berbahasa Indonesia dengan istilah yang konsisten.
+P688: NFR-U3 (Aksesibilitas): status tidak hanya dibedakan warna, tetapi juga label teks atau ikon; kontras teks mengikuti WCAG 2.1 level AA (minimal 4,5:1).
+P689: NFR-U4 (Umpan balik): pesan kesalahan jelas dan penghapusan data memerlukan konfirmasi.
+P690: NFR-U5 (Kemudahan penggunaan): status sensor dan alarm dapat dilihat langsung pada dashboard; target skor UAT minimal 85%.
+P691: Reliability Requirements
+P692: NFR-R1 (Availability): ketersediaan sistem minimal 95% selama periode pengujian.
+P693: NFR-R2 (Fault tolerance): kegagalan satu permintaan API tidak memengaruhi data lain; respons error terstruktur agar ESP32 dapat mengirim ulang; pengiriman ganda untuk tanaman dan waktu pengukuran yang sama tidak disimpan dua kali.
+P694: NFR-R3 (Backup & recovery): pencadangan basis data berkala (minimal harian) dengan prosedur pemulihan yang terdokumentasi.
+P695: NFR-R4 (Integritas data): relasi antar tabel dijaga dengan foreign key dan transaksi basis data.
+P696: Maintainability Requirements
+P697: NFR-M1 (Coding standard): mengikuti PSR-12 dan konvensi Laravel; kode dikelola di GitHub.
+P698: NFR-M2 (Dokumentasi): tersedia SRS, SDD, spesifikasi API, dan User Guide.
+P699: NFR-M3 (Pengujian otomatis): pengujian PHPUnit/Pest untuk autentikasi, API, dan logika alarm.
+P700: NFR-M4 (Konfigurasi): batas parameter disimpan di basis data sehingga dapat diubah tanpa mengubah kode.
+P701: Portability Requirements
+P702: NFR-PO1 (Multi-platform): dapat diakses pada browser modern di Windows, macOS, Linux, Android, dan iOS.
+P703: NFR-PO2 (Deployment): dapat dipasang pada Railway, VPS, atau hosting kampus melalui konfigurasi lingkungan (.env) tanpa mengubah kode.
+P704: Data Requirements
+P705: Bagian ini menjabarkan struktur data sistem berupa ERD, kamus data, serta batas parameter dan aturan alarm.
+P706: Entity Relationship Diagram
+P707: Gambar berikut menunjukkan ERD sistem. Entitas berborder putus-putus (actuators dan actuator_logs) bersifat opsional, mengikuti keputusan tim Elektro. Notasi yang dipakai adalah crow's foot; PK = primary key, FK = foreign key, UK = unique key.
+P709: Gambar 4. Entity Relationship Diagram (ERD)
+P710: Tabel 14. Relasi antar entitas
+P711: Entitas A
+P712: Kardinalitas
+P713: Entitas B
+P714: Keterangan
+P715: devices
+P716: 1 : N
+P717: monitorings
+P718: Satu perangkat mengirim banyak data sensor.
+P719: plants
+P720: 1 : N
+P721: monitorings
+P722: Satu tanaman memiliki banyak data sensor.
+P723: plants
+P724: 1 : N
+P725: monitoring_summaries
+P726: Satu tanaman memiliki banyak ringkasan data.
+P727: plants
+P728: 1 : N
+P729: fruit_observations
+P730: Satu tanaman memiliki banyak pengamatan buah.
+P731: plants
+P732: 1 : N
+P733: alarms
+P734: Satu tanaman dapat memicu banyak alarm.
+P735: users
+P736: 1 : N
+P737: fruit_observations
+P738: Satu Admin mencatat banyak pengamatan.
+P739: users
+P740: 1 : N
+P741: alarms
+P742: Satu Admin dapat menutup banyak alarm (opsional).
+P743: users
+P744: 1 : N
+P745: parameter_thresholds
+P746: Satu Admin dapat mengubah banyak batas parameter.
+P747: monitorings
+P748: 1 : N
+P749: alarms
+P750: Satu data sensor dapat memicu alarm (opsional).
+P751: fruit_observations
+P752: 1 : N
+P753: alarms
+P754: Satu pengamatan dapat memicu alarm buah matang (opsional).
+P755: devices
+P756: 1 : N
+P757: actuators
+P758: Satu perangkat memiliki banyak aktuator (opsional).
+P759: actuators
+P760: 1 : N
+P761: actuator_logs
+P762: Satu aktuator memiliki banyak log (opsional).
+P764: Data Dictionary
+P765: Kamus data berikut memuat kolom pada tiap tabel. Tipe data bersifat usulan dan dapat disesuaikan pada tahap desain (SDD).
+P766: Tabel 15. Tabel users - Akun pengguna aplikasi.
+P767: Kolom
+P768: Tipe Data
+P769: Keterangan
+P770: id
+P771: BIGINT (PK)
+P772: Identitas akun
+P773: name
+P774: VARCHAR(100)
+P775: Nama pengguna
+P776: email
+P777: VARCHAR(150), unik
+P778: Email untuk login
+P779: password
+P780: VARCHAR(255)
+P781: Password ter-hash
+P782: role
+P783: ENUM(admin, user)
+P784: Role pengguna
+P785: is_active
+P786: BOOLEAN
+P787: Status akun; nonaktif tidak dapat login
+P788: created_at, updated_at
+P789: TIMESTAMP
+P790: Jejak waktu
+P792: Tabel 16. Tabel devices - Perangkat ESP32 yang berhak mengirim data.
+P793: Kolom
+P794: Tipe Data
+P795: Keterangan
+P796: id
+P797: BIGINT (PK)
+P798: Identitas perangkat
+P799: name
+P800: VARCHAR(100)
+P801: Nama/kode perangkat
+P802: api_token
+P803: VARCHAR(255)
+P804: Token API (disimpan ter-hash)
+P805: is_active
+P806: BOOLEAN
+P807: Status perangkat
+P808: last_seen_at
+P809: DATETIME
+P810: Waktu terakhir perangkat mengirim data
+P812: Tabel 17. Tabel plants - Data tanaman (blok/batch).
+P813: Kolom
+P814: Tipe Data
+P815: Keterangan
+P816: id
+P817: BIGINT (PK)
+P818: Identitas tanaman (plant_id)
+P819: name
+P820: VARCHAR(100)
+P821: Nama/kode blok atau batch
+P822: variety
+P823: VARCHAR(100)
+P824: Varietas melon
+P825: planting_date
+P826: DATE
+P827: Tanggal tanam
+P828: location
+P829: VARCHAR(150)
+P830: Lokasi di greenhouse
+P831: growth_phase
+P832: VARCHAR(50)
+P833: Fase tumbuh
+P835: Tabel 18. Tabel monitorings - Data sensor mentah dari ESP32.
+P836: Kolom
+P837: Tipe Data
+P838: Keterangan
+P839: id
+P840: BIGINT (PK)
+P841: Identitas data
+P842: plant_id
+P843: BIGINT (FK)
+P844: Tanaman terkait (plants.id)
+P845: device_id
+P846: BIGINT (FK)
+P847: Perangkat pengirim (devices.id)
+P848: monitored_at
+P849: DATETIME
+P850: Waktu pengukuran
+P851: temperature
+P852: DECIMAL(5,2)
+P853: Suhu udara (°C)
+P854: humidity
+P855: DECIMAL(5,2)
+P856: Kelembapan udara (%)
+P857: soil_moisture
+P858: DECIMAL(5,2)
+P859: Kelembapan media tanam (%)
+P860: light_intensity
+P861: DECIMAL(10,2)
+P862: Intensitas cahaya (lux)
+P863: nutrient_temperature
+P864: DECIMAL(5,2)
+P865: Suhu larutan nutrisi (°C)
+P866: water_tank_level
+P867: DECIMAL(5,2)
+P868: Level air tandon (%)
+P869: ph
+P870: DECIMAL(4,2), null
+P871: pH larutan (opsional)
+P872: ec_tds
+P873: DECIMAL(6,2), null
+P874: EC/TDS larutan (opsional)
+P875: condition
+P876: VARCHAR(50)
+P877: Status kondisi dari ESP32
+P879: Tabel 19. Tabel monitoring_summaries - Ringkasan rata-rata data sensor.
+P880: Kolom
+P881: Tipe Data
+P882: Keterangan
+P883: id
+P884: BIGINT (PK)
+P885: Identitas ringkasan
+P886: plant_id
+P887: BIGINT (FK)
+P888: Tanaman terkait
+P889: period_type
+P890: ENUM(minute, hour)
+P891: Jenis periode ringkasan
+P892: period_start
+P893: DATETIME
+P894: Awal periode
+P895: avg_* (per parameter)
+P896: DECIMAL
+P897: Rata-rata tiap parameter
+P898: sample_count
+P899: INT
+P900: Jumlah data yang diringkas
+P902: Tabel 20. Tabel fruit_observations - Pengamatan ukuran dan kematangan buah.
+P903: Kolom
+P904: Tipe Data
+P905: Keterangan
+P906: id
+P907: BIGINT (PK)
+P908: Identitas pengamatan
+P909: plant_id
+P910: BIGINT (FK)
+P911: Tanaman terkait
+P912: recorded_by
+P913: BIGINT (FK)
+P914: Admin pencatat (users.id)
+P915: fruit_code
+P916: VARCHAR(30)
+P917: Kode buah yang diamati
+P918: observed_at
+P919: DATE
+P920: Tanggal pengamatan
+P921: diameter, length
+P922: DECIMAL(5,2)
+P923: Diameter dan panjang (cm)
+P924: weight
+P925: DECIMAL(6,2)
+P926: Berat (kg)
+P927: fruit_age_days
+P928: SMALLINT
+P929: Umur buah (hari setelah polinasi)
+P930: ripeness_level
+P931: ENUM
+P932: Muda, Mendekati Matang, Matang, Lewat Matang
+P933: brix
+P934: DECIMAL(4,1), null
+P935: Kadar gula (opsional)
+P937: Tabel 21. Tabel alarms - Catatan alarm.
+P938: Kolom
+P939: Tipe Data
+P940: Keterangan
+P941: id
+P942: BIGINT (PK)
+P943: Identitas alarm
+P944: plant_id
+P945: BIGINT (FK)
+P946: Tanaman terkait
+P947: monitoring_id
+P948: BIGINT (FK), null
+P949: Data sensor pemicu
+P950: fruit_observation_id
+P951: BIGINT (FK), null
+P952: Pengamatan buah pemicu (alarm buah matang)
+P953: resolved_by
+P954: BIGINT (FK), null
+P955: Admin yang menutup alarm secara manual
+P956: type
+P957: VARCHAR(50)
+P958: Jenis alarm
+P959: parameter, value
+P960: VARCHAR / DECIMAL
+P961: Parameter dan nilai saat alarm
+P962: status
+P963: ENUM(aktif, selesai)
+P964: Status alarm
+P965: triggered_at, resolved_at
+P966: DATETIME
+P967: Waktu alarm muncul dan selesai
+P969: Tabel 22. Tabel parameter_thresholds - Batas parameter yang dapat diubah Admin.
+P970: Kolom
+P971: Tipe Data
+P972: Keterangan
+P973: id
+P974: BIGINT (PK)
+P975: Identitas batas
+P976: parameter_key
+P977: VARCHAR(50), unik
+P978: Kunci parameter (mis. temperature)
+P979: min_value, max_value
+P980: DECIMAL
+P981: Batas minimum dan maksimum normal
+P982: critical_min, critical_max
+P983: DECIMAL, null
+P984: Batas kritis
+P985: unit
+P986: VARCHAR(20)
+P987: Satuan
+P988: updated_by
+P989: BIGINT (FK)
+P990: Admin pengubah terakhir
+P992: Tabel 23. Tabel actuators (opsional) - Daftar aktuator.
+P993: Kolom
+P994: Tipe Data
+P995: Keterangan
+P996: id
+P997: BIGINT (PK)
+P998: Identitas aktuator
+P999: device_id
+P1000: BIGINT (FK)
+P1001: Perangkat terkait
+P1002: name, type
+P1003: VARCHAR
+P1004: Nama dan jenis (pompa, kipas, misting, lampu)
+P1005: current_state
+P1006: ENUM(on, off)
+P1007: Status terakhir
+P1008: mode
+P1009: ENUM(otomatis, manual)
+P1010: Mode kontrol
+P1012: Tabel 24. Tabel actuator_logs (opsional) - Log tindakan aktuator.
+P1013: Kolom
+P1014: Tipe Data
+P1015: Keterangan
+P1016: id
+P1017: BIGINT (PK)
+P1018: Identitas log
+P1019: actuator_id
+P1020: BIGINT (FK)
+P1021: Aktuator terkait
+P1022: plant_id, user_id
+P1023: BIGINT (FK), null
+P1024: Tanaman dan pengguna pelaku (bila override)
+P1025: action
+P1026: ENUM(on, off)
+P1027: Tindakan
+P1028: source
+P1029: ENUM(auto, manual, override)
+P1030: Sumber tindakan
+P1031: trigger_reason
+P1032: VARCHAR(150)
+P1033: Pemicu tindakan
+P1034: logged_at
+P1035: DATETIME
+P1036: Waktu tindakan
+P1038: Parameter Thresholds and Alarm Rules
+P1039: Nilai awal batas parameter berasal dari spesifikasi tim Elektro dan dapat diubah Admin (FR-56). Parameter pH dan EC/TDS bersifat opsional hingga sensornya siap.
+P1040: Tabel 25. Nilai awal batas parameter
+P1041: Parameter
+P1042: Kunci
+P1043: Rentang Normal
+P1044: Satuan
+P1045: Keterangan
+P1046: Suhu udara
+P1047: temperature
+P1048: 25 - 30
+P1049: °C
+P1050: Suhu tinggi menurunkan hasil dan merontokkan bunga
+P1051: Kelembapan udara
+P1052: humidity
+P1053: 50 - 70
+P1054: %
+P1055: Terlalu tinggi memicu jamur, terlalu rendah membuat tanaman stres
+P1056: Kelembapan media tanam
+P1057: soil_moisture
+P1058: 60 - 80
+P1059: % kapasitas lapang
+P1060: Terlalu kering menyebabkan layu, terlalu basah menyebabkan akar busuk
+P1061: Cahaya
+P1062: light_intensity
+P1063: 8 - 10
+P1064: jam terang / hari
+P1065: Durasi cahaya harian
+P1066: Suhu larutan nutrisi
+P1067: nutrient_temperature
+P1068: 20 - 25
+P1069: °C
+P1070: Akar melon sensitif terhadap suhu larutan
+P1071: Level tandon
+P1072: water_tank_level
+P1073: min. 20
+P1074: %
+P1075: Tandon hampir kosong
+P1076: pH (opsional)
+P1077: ph
+P1078: 6,0 - 6,8
+P1079: -
+P1080: Menyusul saat sensor siap
+P1081: EC/TDS (opsional)
+P1082: ec_tds
+P1083: 2,0 - 3,0
+P1084: mS/cm
+P1085: Menyusul saat sensor siap
+P1087: Status warna pada dashboard: dalam batas (di dalam rentang normal), rendah/tinggi (di luar rentang normal), dan kritis (melewati batas kritis). Nilai batas kritis ditetapkan bersama tim Elektro dan disimpan pada kolom critical_min dan critical_max.
+P1088: Tabel 26. Aturan pembuatan alarm
+P1089: Jenis Alarm
+P1090: Sumber Data
+P1091: Kondisi Pemicu
+P1092: Suhu tinggi
+P1093: temperature
+P1094: Suhu udara > batas maksimum
+P1095: Kelembapan udara di luar batas
+P1096: humidity
+P1097: Kelembapan udara < minimum atau > maksimum
+P1098: Media kering
+P1099: soil_moisture
+P1100: Kelembapan media < batas minimum
+P1101: Suhu larutan tinggi
+P1102: nutrient_temperature
+P1103: Suhu larutan > batas maksimum
+P1104: Tandon hampir kosong
+P1105: water_tank_level
+P1106: Level tandon < batas minimum (20%)
+P1107: Data sensor berhenti masuk
+P1108: devices.last_seen_at
+P1109: Tidak ada data masuk melebihi batas waktu yang ditetapkan
+P1110: Buah matang
+P1111: fruit_observations.ripeness_level
+P1112: Tingkat kematangan buah = Matang
+P1114: System Models
+P1115: Bagian ini memuat pemodelan proses dan interaksi sistem.
+P1116: Data Flow Diagram Level 1
+P1118: Gambar 5. Data Flow Diagram (DFD) Level 1
+P1119: Flowchart Proses Pengguna (TO-BE)
+P1120: Flowchart berikut menggambarkan alur pengguna dari login hingga logout, termasuk pembedaan hak akses Admin dan User.
+P1122: Gambar 6. Flowchart proses pengguna pada web monitoring greenhouse melon
+P1123: Flowchart Penerimaan Data dan Alarm
+P1124: Flowchart berikut menggambarkan alur penerimaan data sensor dari ESP32, evaluasi batas, dan pembuatan alarm. Proses terjadwal (scheduler) menangani alarm data berhenti masuk dan peringkasan data.
+P1126: Gambar 7. Flowchart penerimaan data sensor dan evaluasi alarm
+P1128: Gambar 8. Flowchart proses terjadwal (scheduler)
+P1129: Sequence Diagram
+P1131: Gambar 9. Sequence diagram pengiriman data sensor dari ESP32
+P1133: Gambar 10. Sequence diagram pengguna melihat dashboard dan grafik
+P1134: External Interface Requirements
+P1135: User Interface
+P1136: Antarmuka web dirancang responsif dengan Tailwind CSS. Setelah login, pengguna melihat menu navigasi sesuai role seperti pada Tabel berikut.
+P1137: Tabel 27. Menu dan hak akses per role
+P1138: Menu
+P1139: Admin
+P1140: User
+P1141: Dashboard
+P1142: Lihat
+P1143: Lihat
+P1144: Alarm
+P1145: Lihat, tutup alarm manual
+P1146: Lihat
+P1147: Grafik
+P1148: Lihat
+P1149: Lihat
+P1150: Pengamatan Buah
+P1151: Lihat, tambah, ubah, hapus
+P1152: Lihat
+P1153: Data Tanaman
+P1154: Lihat, tambah, ubah, hapus
+P1155: Lihat
+P1156: Riwayat
+P1157: Lihat
+P1158: Lihat
+P1159: Pengaturan Batas
+P1160: Lihat, ubah
+P1161: Tidak ada akses
+P1162: Manajemen Akun
+P1163: Lihat, tambah, ubah, aktif/nonaktifkan, hapus
+P1164: Tidak ada akses
+P1165: Aktuator (opsional)
+P1166: Lihat status dan log, override
+P1167: Lihat status dan log
+P1169: Wireframe berikut merupakan rancangan awal antarmuka dan akan disempurnakan pada tahap desain UI/UX. Halaman Data Tanaman, Riwayat, Pengaturan Batas, dan Manajemen Akun mengikuti pola yang sama dengan halaman Pengamatan Buah (tabel data, filter, dan form).
+P1170: Halaman Login
+P1172: Gambar 11. Wireframe halaman login
+P1173: Halaman Dashboard
+P1175: Gambar 12. Wireframe halaman dashboard
+P1176: Halaman Alarm dan Riwayat Alarm
+P1178: Gambar 13. Wireframe halaman alarm dan riwayat alarm
+P1179: Halaman Grafik
+P1181: Gambar 14. Wireframe halaman grafik tren
+P1182: Halaman Pengamatan Buah
+P1184: Gambar 15. Wireframe halaman ukuran dan kematangan buah
+P1185: Hardware Interface
+P1186: Aplikasi web tidak terhubung langsung ke sensor atau aktuator. Seluruh interaksi dengan perangkat keras berlangsung melalui ESP32 milik tim Elektro yang berkomunikasi dengan sistem lewat REST API (lihat Gambar 2 pada bagian Product Perspective). Spesifikasi sensor berikut mengacu pada dokumen tim Elektro.
+P1187: Tabel 28. Sensor dan parameter yang dikirim ke sistem
+P1188: Sensor
+P1189: Parameter
+P1190: Satuan
+P1191: Field API
+P1192: Sensor suhu udara
+P1193: Suhu udara
+P1194: °C
+P1195: temperature
+P1196: Sensor kelembapan udara
+P1197: Kelembapan udara
+P1198: %
+P1199: humidity
+P1200: Sensor kelembapan media tanam
+P1201: Kelembapan media tanam
+P1202: %
+P1203: soil_moisture
+P1204: Sensor intensitas cahaya
+P1205: Intensitas cahaya
+P1206: lux
+P1207: light_intensity
+P1208: Sensor suhu larutan nutrisi
+P1209: Suhu larutan nutrisi
+P1210: °C
+P1211: nutrient_temperature
+P1212: Sensor level air tandon
+P1213: Level air tandon
+P1214: %
+P1215: water_tank_level
+P1216: Sensor pH (menyusul)
+P1217: pH larutan
+P1218: -
+P1219: ph
+P1220: Sensor EC/TDS (menyusul)
+P1221: Kepekatan nutrisi
+P1222: mS/cm
+P1223: ec_tds
+P1225: Tabel 29. Aktuator pada greenhouse (opsional pada web)
+P1226: Aktuator
+P1227: Fungsi
+P1228: Peran Web
+P1229: Pompa siram
+P1230: Penyiraman media tanam
+P1231: Menampilkan status/log; override Admin (opsional)
+P1232: Kipas
+P1233: Pengaturan suhu dan sirkulasi udara
+P1234: Menampilkan status/log; override Admin (opsional)
+P1235: Misting
+P1236: Peningkatan kelembapan udara
+P1237: Menampilkan status/log
+P1238: Lampu tambahan
+P1239: Penambahan durasi cahaya
+P1240: Menampilkan status/log
+P1242: Tipe/model sensor, pin, dan interval pembacaan ditentukan sepenuhnya oleh tim Elektro; sistem hanya mensyaratkan format data sesuai bagian Communication Interface.
+P1243: Software Interface
+P1244: Tabel 30. Antarmuka perangkat lunak
+P1245: Komponen
+P1246: Teknologi
+P1247: Fungsi
+P1248: Framework aplikasi
+P1249: Laravel 11, PHP 8.2
+P1250: Routing, autentikasi, otorisasi, validasi, dan logika bisnis
+P1251: Database
+P1252: MySQL, Eloquent ORM
+P1253: Penyimpanan data sensor, tanaman, buah, alarm, batas, dan akun
+P1254: Frontend
+P1255: Laravel Blade, Tailwind CSS, Alpine.js
+P1256: Tampilan responsif dan interaksi sederhana
+P1257: Visualisasi
+P1258: Chart.js
+P1259: Grafik tren sensor dan pertumbuhan buah
+P1260: Penjadwalan
+P1261: Laravel Scheduler
+P1262: Peringkasan data dan deteksi data berhenti masuk
+P1263: Perangkat IoT
+P1264: ESP32 melalui REST API
+P1265: Pengirim data sensor
+P1266: Pengujian
+P1267: Postman, PHPUnit/Pest
+P1268: Pengujian API dan fungsional
+P1269: Version control
+P1270: Git, GitHub
+P1271: Pengelolaan kode sumber
+P1272: Hosting
+P1273: Railway / VPS / hosting kampus
+P1274: Lingkungan deployment
+P1276: Sistem tidak memakai layanan eksternal pihak ketiga seperti payment gateway atau model AI.
+P1277: Communication Interface
+P1278: Komunikasi antara ESP32 dan server memakai protokol HTTPS dengan arsitektur REST dan format data JSON. Perangkat menyertakan token pada header Authorization: Bearer <token>. Komunikasi antara browser dan server memakai HTTPS.
+P1279: Tabel 31. Endpoint REST API
+P1280: Method
+P1281: Endpoint
+P1282: Pemanggil
+P1283: Deskripsi
+P1284: Status
+P1285: POST
+P1286: /api/monitorings
+P1287: ESP32
+P1288: Mengirim data sensor
+P1289: Inti
+P1290: POST
+P1291: /api/actuator-logs
+P1292: ESP32
+P1293: Mengirim status dan log aktuator
+P1294: Opsional (usulan)
+P1295: GET
+P1296: /api/actuator-commands
+P1297: ESP32
+P1298: Mengambil perintah override dari Admin
+P1299: Opsional (usulan)
+P1301: Struktur data untuk endpoint POST /api/monitorings:
+P1302: Tabel 32. Parameter request POST /api/monitorings
+P1303: Field
+P1304: Tipe
+P1305: Wajib
+P1306: Satuan
+P1307: Rentang valid (usulan)
+P1308: Keterangan
+P1309: plant_id
+P1310: integer
+P1311: Ya
+P1312: -
+P1313: Terdaftar
+P1314: ID tanaman terdaftar
+P1315: monitored_at
+P1316: datetime (ISO 8601)
+P1317: Ya
+P1318: -
+P1319: Tidak di masa depan
+P1320: Waktu pengukuran
+P1321: temperature
+P1322: number
+P1323: Ya
+P1324: °C
+P1325: 0 - 60
+P1326: Suhu udara
+P1327: humidity
+P1328: number
+P1329: Ya
+P1330: %
+P1331: 0 - 100
+P1332: Kelembapan udara
+P1333: soil_moisture
+P1334: number
+P1335: Ya
+P1336: %
+P1337: 0 - 100
+P1338: Kelembapan media tanam
+P1339: light_intensity
+P1340: number
+P1341: Ya
+P1342: lux
+P1343: 0 - 100.000
+P1344: Intensitas cahaya
+P1345: nutrient_temperature
+P1346: number
+P1347: Ya
+P1348: °C
+P1349: 0 - 50
+P1350: Suhu larutan nutrisi
+P1351: water_tank_level
+P1352: number
+P1353: Ya
+P1354: %
+P1355: 0 - 100
+P1356: Level air tandon
+P1357: condition
+P1358: string
+P1359: Ya
+P1360: -
+P1361: Tidak kosong
+P1362: Status kondisi dari ESP32
+P1363: ph
+P1364: number
+P1365: Tidak
+P1366: -
+P1367: 0 - 14
+P1368: Dikirim saat sensor pH siap
+P1369: ec_tds
+P1370: number
+P1371: Tidak
+P1372: mS/cm
+P1373: 0 - 10
+P1374: Dikirim saat sensor EC/TDS siap
+P1376: Contoh request:
+P1377: POST /api/monitorings
+P1378: Authorization: Bearer <token>
+P1379: Content-Type: application/json
+P1381: {
+P1382:   "plant_id": 1,
+P1383:   "monitored_at": "2026-10-14T09:41:00+07:00",
+P1384:   "temperature": 27.4,
+P1385:   "humidity": 72.0,
+P1386:   "soil_moisture": 58.0,
+P1387:   "light_intensity": 18200,
+P1388:   "nutrient_temperature": 27.0,
+P1389:   "water_tank_level": 64.0,
+P1390:   "condition": "Normal",
+P1391:   "ph": 6.4,
+P1392:   "ec_tds": 2.4
+P1393: }
+P1395: Tabel 33. Respons API
+P1396: Kode
+P1397: Kondisi
+P1398: Contoh isi respons
+P1399: 201 Created
+P1400: Data valid dan tersimpan
+P1401: {"message":"Data berhasil disimpan","data":{"id":1024}}
+P1402: 401 Unauthorized
+P1403: Token tidak ada atau tidak valid
+P1404: {"message":"Unauthorized"}
+P1405: 422 Unprocessable
+P1406: Validasi gagal
+P1407: {"message":"Data tidak valid","errors":{"temperature":["Di luar rentang"]}}
+P1408: 429 Too Many Requests
+P1409: Melebihi batas laju permintaan
+P1410: {"message":"Too Many Requests"}
+P1412: Appendix
+P1413: Glosarium
+P1414: Tabel 34. Daftar istilah dan singkatan
+P1415: Istilah
+P1416: Definisi
+P1417: SRS
+P1418: Software Requirement Specification, dokumen kebutuhan perangkat lunak.
+P1419: BRS
+P1420: Business Requirement Specification, dokumen kebutuhan bisnis pada proposal proyek.
+P1421: ESP32
+P1422: Mikrokontroler dengan WiFi yang mengirim data sensor dan menjalankan logika kontrol greenhouse.
+P1423: IoT
+P1424: Internet of Things, jaringan perangkat yang terhubung ke internet.
+P1425: REST API
+P1426: Antarmuka pertukaran data antar sistem melalui protokol HTTP dengan format JSON.
+P1427: JSON
+P1428: JavaScript Object Notation, format pertukaran data.
+P1429: Token API
+P1430: Kunci rahasia yang diberikan kepada perangkat agar dapat mengirim data ke sistem.
+P1431: Greenhouse
+P1432: Rumah tanam tempat budidaya melon terlindung.
+P1433: Plant / Tanaman
+P1434: Dalam sistem ini mewakili satu blok atau batch tanaman melon.
+P1435: Pengamat Lapangan (User)
+P1436: Pengguna yang hanya melihat data tanpa hak mengubah.
+P1437: Admin
+P1438: Pengguna yang mengelola data tanaman, pengamatan buah, akun, dan batas parameter.
+P1439: EC/TDS
+P1440: Electrical Conductivity / Total Dissolved Solids, ukuran kepekatan nutrisi.
+P1441: pH
+P1442: Tingkat keasaman larutan nutrisi.
+P1443: HSP
+P1444: Hari Setelah Polinasi, ukuran umur buah.
+P1445: Brix
+P1446: Ukuran kadar gula pada buah.
+P1447: Alarm
+P1448: Peringatan yang dibuat sistem ketika kondisi abnormal terdeteksi.
+P1449: Override
+P1450: Perintah dari Admin yang mengambil alih kontrol aktuator secara manual.
+P1451: CRUD
+P1452: Create, Read, Update, Delete: operasi dasar pengelolaan data.
+P1453: UAT
+P1454: User Acceptance Testing, pengujian penerimaan oleh pengguna sasaran.
+P1456: Matriks Keterkaitan Kebutuhan Bisnis dan Kebutuhan Fungsional
+P1457: Matriks berikut menghubungkan High-Level Business Requirements pada proposal dengan kebutuhan fungsional dan nonfungsional dalam dokumen ini.
+P1458: Tabel 35. Matriks keterkaitan BRS dan SRS
+P1459: ID
+P1460: Kebutuhan Bisnis
+P1461: Kebutuhan SRS Terkait
+P1462: BR-01
+P1463: Sistem harus menyediakan login, logout, dan pembatasan akses berdasarkan role.
+P1464: FR-01, FR-02, FR-03, FR-04, FR-05
+P1465: BR-02
+P1466: Sistem harus menyediakan REST API untuk menerima data sensor dari ESP32.
+P1467: FR-15, FR-16, FR-17, FR-18, FR-19, FR-20
+P1468: BR-03
+P1469: Sistem harus menampilkan dashboard dengan status warna sensor, status kondisi, jumlah buah per kematangan, dan grafik tren.
+P1470: FR-23, FR-24, FR-25, FR-26, FR-28
+P1471: BR-04
+P1472: Sistem harus membuat dan mencatat alarm beserta riwayatnya.
+P1473: FR-31, FR-32, FR-33, FR-34, FR-37, FR-51
+P1474: BR-05
+P1475: Sistem harus menyediakan grafik dengan pilihan parameter, tanaman, dan rentang waktu.
+P1476: FR-39, FR-40
+P1477: BR-06
+P1478: Sistem harus menyediakan pengelolaan data tanaman dan pengamatan buah oleh Admin.
+P1479: FR-12, FR-13, FR-14, FR-45, FR-46, FR-47
+P1480: BR-07
+P1481: Sistem harus menyediakan riwayat data sensor, alarm, dan pengamatan buah yang dapat difilter berdasarkan tanggal dan tanaman.
+P1482: FR-50, FR-51, FR-52, FR-53
+P1483: BR-08
+P1484: Sistem harus menyediakan pengaturan batas parameter dan manajemen akun oleh Admin.
+P1485: FR-54, FR-55, FR-56, FR-06, FR-07, FR-08, FR-09, FR-10
+P1486: BR-09
+P1487: Sistem harus meringkas data sensor yang sering masuk agar grafik tetap ringan.
+P1488: FR-22, FR-41
+P1489: BR-10
+P1490: Sistem harus responsif di laptop, tablet, dan ponsel.
+P1491: NFR-U1
+P1492: BR-11
+P1493: Sistem harus menyediakan fitur aktuator yang modular sesuai keputusan tim Elektro.
+P1494: FR-57, FR-58, FR-59, FR-60, FR-61, FR-62
+P1496: Referensi Dokumen
+P1497: Tim Informatika. (2026). Proposal Computing Project: Rancang Bangun Aplikasi Web Monitoring Greenhouse Melon. Program Studi S-1 Informatika, Universitas Telkom Kampus Surabaya.
+P1498: Tim Elektro. (2026). Spesifikasi parameter sensor, aktuator, dan logika kontrol greenhouse melon [Dokumen internal tidak dipublikasikan]. Universitas Telkom.
+P1499: ISO/IEC/IEEE 29148:2018. Systems and software engineering - Life cycle processes - Requirements engineering.
+P1500: Undang-Undang Republik Indonesia Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi.
