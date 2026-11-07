@@ -47,11 +47,11 @@ class FuzzyPipelineService
         }
 
         try {
-            $ruleVersion = config('fuzzy.rule_version', 'v1.0-provisional');
+            $ruleVersion = config('fuzzy.rule_version', 'v2.0-three-input-PROVISIONAL');
 
             // 1. Tangani Data Inferensi Eksternal (Preservasi Tanpa Menimpa Diam-diam)
             if ($externalPayload !== null) {
-                return $this->storeExternalInference($monitoring, $externalPayload, $source, $ruleVersion);
+                return $this->storeExternalInference($monitoring, $externalPayload, $source, 'external-unverified');
             }
 
             // 2. Validasi Kelengkapan dan Validitas Input Sensor
@@ -65,7 +65,7 @@ class FuzzyPipelineService
                     status: 'INSUFFICIENT_DATA',
                     score: null,
                     category: null,
-                    conclusion: 'Data sensor lingkungan tidak lengkap untuk evaluasi fuzzy logic (diperlukan suhu, kelembapan, kelembapan tanah, dan pH).',
+                    conclusion: 'Data sensor lingkungan tidak lengkap untuk evaluasi fuzzy logic (diperlukan suhu udara, kelembapan tanah/media, dan pH air).',
                     recommendation: 'Pastikan seluruh sensor operasional aktif dan mengirimkan nilai dalam batas fisik yang valid.',
                     ruleVersion: $ruleVersion,
                     inputSnapshot: $inputSnapshot,
@@ -131,12 +131,11 @@ class FuzzyPipelineService
                     category: null,
                     conclusion: 'Terjadi kegagalan komputasi saat mengeksekusi mesin inferensi fuzzy: ' . $e->getMessage(),
                     recommendation: 'Periksa log sistem dan konfigurasi fungsi keanggotaan.',
-                    ruleVersion: config('fuzzy.rule_version', 'v1.0-provisional'),
+                    ruleVersion: config('fuzzy.rule_version', 'v2.0-three-input-PROVISIONAL'),
                     inputSnapshot: [
                         'temperature'   => $monitoring->temperature,
-                        'humidity'      => $monitoring->humidity,
                         'soil_moisture' => $monitoring->soil_moisture,
-                        'ph'            => $monitoring->ph,
+                        'water_ph'      => $monitoring->ph,
                     ],
                     membershipSnapshot: null,
                     ruleActivationSnapshot: null
@@ -148,26 +147,24 @@ class FuzzyPipelineService
     }
 
     /**
-     * Validasi 4 parameter input utama untuk inferensi fuzzy.
+     * Validasi 3 parameter input utama untuk inferensi fuzzy.
      *
      * @return array{is_valid: bool, inputs: array<string, float|null>, error: ?string}
      */
     public function validateInputs(Monitoring $monitoring): array
     {
         $temp = $monitoring->temperature;
-        $hum = $monitoring->humidity;
         $soil = $monitoring->soil_moisture;
         $ph = $monitoring->ph;
 
         $inputs = [
             'temperature'   => $temp !== null ? (float) $temp : null,
-            'humidity'      => $hum !== null ? (float) $hum : null,
             'soil_moisture' => $soil !== null ? (float) $soil : null,
-            'ph'            => $ph !== null ? (float) $ph : null,
+            'water_ph'      => $ph !== null ? (float) $ph : null,
         ];
 
         // 1. Periksa Null Values (Incomplete Data)
-        if ($temp === null || $hum === null || $soil === null || $ph === null) {
+        if ($temp === null || $soil === null || $ph === null) {
             return ['is_valid' => false, 'inputs' => $inputs, 'error' => 'Parameter sensor belum lengkap.'];
         }
 
@@ -178,9 +175,6 @@ class FuzzyPipelineService
             return ['is_valid' => false, 'inputs' => $inputs, 'error' => "Suhu ({$temp}°C) di luar rentang valid [{$tempMin}, {$tempMax}]."];
         }
 
-        if ($hum < 0.0 || $hum > 100.0) {
-            return ['is_valid' => false, 'inputs' => $inputs, 'error' => "Kelembapan udara ({$hum}%) di luar rentang valid [0, 100]."];
-        }
 
         if ($soil < 0.0 || $soil > 100.0) {
             return ['is_valid' => false, 'inputs' => $inputs, 'error' => "Kelembapan tanah ({$soil}%) di luar rentang valid [0, 100]."];
@@ -263,9 +257,8 @@ class FuzzyPipelineService
                 'recommendation'           => $recommendation,
                 'input_snapshot'           => $payload['input_vector'] ?? [
                     'temperature'   => $monitoring->temperature,
-                    'humidity'      => $monitoring->humidity,
                     'soil_moisture' => $monitoring->soil_moisture,
-                    'ph'            => $monitoring->ph,
+                    'water_ph'      => $monitoring->ph,
                 ],
                 'membership_snapshot'      => null,
                 'rule_activation_snapshot' => null,

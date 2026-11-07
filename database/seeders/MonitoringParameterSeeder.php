@@ -21,7 +21,7 @@ class MonitoringParameterSeeder extends Seeder
                 'description'    => 'Ambang batas suhu lingkungan greenhouse yang dikonfigurasi untuk monitoring tanaman melon.',
             ],
             [
-                'parameter_name' => 'pH Nutrisi/Media',
+                'parameter_name' => 'pH air',
                 'unit'           => 'pH',
                 'minimum_value'  => 5.80,
                 'maximum_value'  => 7.20,
@@ -86,6 +86,11 @@ class MonitoringParameterSeeder extends Seeder
         ];
 
         foreach ($parameters as $param) {
+            if ($param['parameter_name'] === 'pH air' && MonitoringParameter::where(function ($query) {
+                $query->where('parameter_key', 'ph')->orWhereIn('parameter_name', ['pH air', 'pH Nutrisi/Media']);
+            })->exists()) {
+                continue; // Preserve existing threshold values and registry identity.
+            }
             MonitoringParameter::firstOrCreate(
                 ['parameter_name' => $param['parameter_name']],
                 $param

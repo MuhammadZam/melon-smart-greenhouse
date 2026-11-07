@@ -35,6 +35,16 @@ class MonitoringParameter extends Model
      *
      * @return array<string, string>
      */
+    public function getParameterNameAttribute($value): ?string
+    {
+        return \App\Support\ActiveSensors::LABELS[$this->parameter_key] ?? $value;
+    }
+
+    public function getUnitAttribute($value): ?string
+    {
+        return $this->parameter_key === 'ph' ? '' : $value;
+    }
+
     protected function casts(): array
     {
         return [

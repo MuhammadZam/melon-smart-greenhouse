@@ -210,7 +210,7 @@ class MonitoringTest extends TestCase
             'plant_id'        => $plant->id,
             'temperature'     => 27.50,
             'ph'              => 6.50,
-            'humidity'        => 75.00,
+            'soil_moisture'        => 75.00,
             'plant_height'    => 45.0,
             'plant_density'   => 70.0,
             'plant_condition' => 'Subur & Baik',
@@ -241,7 +241,7 @@ class MonitoringTest extends TestCase
             'plant_id'        => $plant->id,
             'temperature'     => 28.20,
             'ph'              => 6.70,
-            'humidity'        => 70.00,
+            'soil_moisture'        => 70.00,
             'plant_height'    => 50.0,
             'plant_density'   => 75.0,
             'plant_condition' => 'Optimal',
@@ -273,7 +273,7 @@ class MonitoringTest extends TestCase
             'monitored_at',
             'temperature',
             'ph',
-            'humidity',
+            'soil_moisture',
             'plant_condition',
             'plant_color',
         ]);
@@ -289,12 +289,12 @@ class MonitoringTest extends TestCase
             'monitored_at'    => now()->format('Y-m-d H:i:s'),
             'temperature'     => 999.0, // di luar batas
             'ph'              => 25.0,  // di luar batas pH 0-14
-            'humidity'        => 150.0, // di luar batas 0-100%
+            'soil_moisture'        => 150.0, // di luar batas 0-100%
             'plant_condition' => 'Baik',
             'plant_color'     => 'Hijau',
         ]);
 
-        $response->assertSessionHasErrors(['temperature', 'ph', 'humidity']);
+        $response->assertSessionHasErrors(['temperature', 'ph', 'soil_moisture']);
     }
 
     // ========================================================
@@ -339,7 +339,7 @@ class MonitoringTest extends TestCase
             'plant_id'        => $plant->id,
             'temperature'     => 29.50,
             'ph'              => 6.85,
-            'humidity'        => 78.00,
+            'soil_moisture'        => 78.00,
             'plant_height'    => 55.0,
             'plant_density'   => 80.0,
             'plant_condition' => 'Subur & Baik',
@@ -374,7 +374,7 @@ class MonitoringTest extends TestCase
             'plant_id'        => $plant->id,
             'temperature'     => 30.00,
             'ph'              => 6.50,
-            'humidity'        => 70.00,
+            'soil_moisture'        => 70.00,
             'plant_condition' => 'Baik',
             'plant_color'     => 'Hijau',
             'monitored_at'    => now()->format('Y-m-d H:i:s'),

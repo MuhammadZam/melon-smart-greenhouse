@@ -27,7 +27,7 @@ class MonitoringIngestionTest extends TestCase
             'monitored_at'   => '2026-10-07 08:30:00',
             'temperature'    => 28.4,
             'ph'             => 6.35,
-            'humidity'       => 74.5,
+            'soil_moisture'       => 74.5,
             'plant_height'   => 82.0,
             'canopy_density' => 68.0,
             'condition'      => 'optimal',
@@ -44,8 +44,8 @@ class MonitoringIngestionTest extends TestCase
                 'data'    => [
                     'plant_id'       => $plant->id,
                     'temperature'    => 28.4,
-                    'ph'             => 6.35,
-                    'humidity'       => 74.5,
+                    'water_ph'             => 6.35,
+                    'soil_moisture'       => 74.5,
                     'plant_height'   => 82.0,
                     'canopy_density' => 68.0,
                     'condition'      => 'optimal',
@@ -58,7 +58,7 @@ class MonitoringIngestionTest extends TestCase
             'plant_id'        => $plant->id,
             'temperature'     => 28.4,
             'ph'              => 6.35,
-            'humidity'        => 74.5,
+            'soil_moisture'        => 74.5,
             'plant_height'    => 82.0,
             'plant_density'   => 68.0,
             'plant_condition' => 'optimal',
@@ -76,7 +76,7 @@ class MonitoringIngestionTest extends TestCase
             'monitored_at'   => '2026-10-07 09:00:00',
             'temperature'    => 27.5,
             'ph'             => 6.5,
-            'humidity'       => 70.0,
+            'soil_moisture'       => 70.0,
             'plant_height'   => 75.0,
             'canopy_density' => 65.0,
             'condition'      => 'optimal',
@@ -109,10 +109,7 @@ class MonitoringIngestionTest extends TestCase
                 'monitored_at',
                 'temperature',
                 'ph',
-                'humidity',
-                'plant_height',
-                'plant_density',
-                'plant_condition',
+                'soil_moisture',
             ]);
     }
 
@@ -128,7 +125,7 @@ class MonitoringIngestionTest extends TestCase
             'monitored_at'   => '2026-10-07 09:00:00',
             'temperature'    => 'bukan_angka',
             'ph'             => 'invalid_ph',
-            'humidity'       => 'seratus_persen',
+            'soil_moisture'       => 'seratus_persen',
             'plant_height'   => 'tinggi_sekali',
             'canopy_density' => 'rimbun',
             'condition'      => 'optimal',
@@ -141,7 +138,7 @@ class MonitoringIngestionTest extends TestCase
                 'success' => false,
                 'message' => 'Data tidak valid.',
             ])
-            ->assertJsonValidationErrors(['temperature', 'ph', 'humidity', 'plant_height', 'canopy_density']);
+            ->assertJsonValidationErrors(['temperature', 'ph', 'soil_moisture', 'plant_height', 'canopy_density']);
     }
 
     /**
@@ -156,7 +153,7 @@ class MonitoringIngestionTest extends TestCase
             'monitored_at'   => '2026-10-07 09:00:00',
             'temperature'    => 28.0,
             'ph'             => 6.5,
-            'humidity'       => 70.0,
+            'soil_moisture'       => 70.0,
             'plant_height'   => 75.0,
             'canopy_density' => 65.0,
             'condition'      => 'invalid-condition-category',
@@ -184,7 +181,7 @@ class MonitoringIngestionTest extends TestCase
             'monitored_at'   => '2026-10-07 10:15:00',
             'temperature'    => 29.1,
             'ph'             => 6.7,
-            'humidity'       => 78.0,
+            'soil_moisture'       => 78.0,
             'plant_height'   => 88.0,
             'canopy_density' => 72.0,
             'condition'      => 'optimal',
@@ -231,7 +228,7 @@ class MonitoringIngestionTest extends TestCase
             'monitored_at'   => now()->toDateTimeString(),
             'temperature'    => 28.5,
             'ph'             => 6.6,
-            'humidity'       => 75.0,
+            'soil_moisture'       => 75.0,
             'plant_height'   => 80.0,
             'canopy_density' => 70.0,
             'condition'      => 'optimal',

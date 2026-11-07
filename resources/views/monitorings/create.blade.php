@@ -125,7 +125,7 @@
                     <span class="w-2 h-2 rounded-[2px] bg-accent-soft"></span>
                     2. Parameter Mikroklimat Greenhouse
                 </h3>
-                <p class="text-xs text-muted">Pengukuran pembacaan suhu udara, pH larutan nutrisi, dan kelembapan relatif.</p>
+                <p class="text-xs text-muted">Pengukuran pembacaan suhu udara, pH air, dan kelembapan relatif.</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -150,7 +150,7 @@
                             °C
                         </span>
                     </div>
-                    <span class="text-xs text-muted mt-1 block">Optimal melon: 20°C &ndash; 32°C</span>
+                    <span class="text-xs text-muted mt-1 block">Referensi PROVISIONAL: lihat konfigurasi threshold.</span>
                     @error('temperature')
                         <p id="error-temperature" role="alert" class="text-danger text-xs mt-1">{{ $message }}</p>
                     @enderror
@@ -158,55 +158,32 @@
 
                 <!-- pH -->
                 <div>
-                    <label for="ph" class="block text-xs font-semibold text-ink mb-1.5">
-                        pH Nutrisi / Media <span class="text-danger">*</span>
+                    <label for="water_ph" class="block text-xs font-semibold text-ink mb-1.5">
+                        pH air <span class="text-danger">*</span>
                     </label>
                     <div class="relative">
                         <input
                             type="number"
-                            name="ph" aria-invalid="{{ $errors->has('ph') ? 'true' : 'false' }}" aria-describedby="{{ $errors->has('ph') ? 'error-ph' : '' }}"
-                            id="ph"
+                            name="water_ph" aria-invalid="{{ $errors->has('ph') ? 'true' : 'false' }}" aria-describedby="{{ $errors->has('ph') ? 'error-ph' : '' }}"
+                            id="water_ph"
                             step="0.01"
-                            value="{{ old('ph', 6.50) }}"
+                            value="{{ old('water_ph', 6.50) }}"
                             placeholder="Contoh: 6.50"
                             required
                             class="w-full px-3.5 py-2.5 pr-10 rounded-[2px] bg-canvas border {{ $errors->has('ph') ? 'border-danger/25 ring-1 ring-accent' : 'border-line' }} text-current text-xs focus:outline-none focus:ring-2 focus:ring-accent transition-colors tabular-nums"
                         >
                         <span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-muted text-xs">
-                            pH
+
                         </span>
                     </div>
-                    <span class="text-xs text-muted mt-1 block">Optimal melon: 5.80 &ndash; 7.20</span>
+                    <span class="text-xs text-muted mt-1 block">Referensi PROVISIONAL: lihat konfigurasi threshold.</span>
                     @error('ph')
                         <p id="error-ph" role="alert" class="text-danger text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <!-- Kelembapan (%) -->
-                <div>
-                    <label for="humidity" class="block text-xs font-semibold text-ink mb-1.5">
-                        Kelembapan Udara (%) <span class="text-danger">*</span>
-                    </label>
-                    <div class="relative">
-                        <input
-                            type="number"
-                            name="humidity" aria-invalid="{{ $errors->has('humidity') ? 'true' : 'false' }}" aria-describedby="{{ $errors->has('humidity') ? 'error-humidity' : '' }}"
-                            id="humidity"
-                            step="0.01"
-                            value="{{ old('humidity', 75.00) }}"
-                            placeholder="Contoh: 75.00"
-                            required
-                            class="w-full px-3.5 py-2.5 pr-10 rounded-[2px] bg-canvas border {{ $errors->has('humidity') ? 'border-danger/25 ring-1 ring-accent' : 'border-line' }} text-current text-xs focus:outline-none focus:ring-2 focus:ring-accent transition-colors tabular-nums"
-                        >
-                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-muted text-xs">
-                            %
-                        </span>
-                    </div>
-                    <span class="text-xs text-muted mt-1 block">Optimal melon: 60% &ndash; 85%</span>
-                    @error('humidity')
-                        <p id="error-humidity" role="alert" class="text-danger text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
+
 
             </div>
         </div>
@@ -216,62 +193,12 @@
             <div class="border-b border-line pb-2">
                 <h3 class="text-sm font-semibold text-muted flex items-center gap-2">
                     <span class="w-2 h-2 rounded-[2px] bg-surface"></span>
-                    3. Parameter Sensor IoT &amp; Fertigasi (Opsional)
+                    3. Kelembapan tanah/media (wajib)
                 </h3>
-                <p class="text-xs text-muted">Pengukuran sensor larutan nutrisi, media tanam, intensitas radiasi cahaya, dan cadangan tandon.</p>
+                <p class="text-xs text-muted">Parameter aktif bersama suhu udara dan pH air.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-
-                <!-- Suhu Nutrisi (°C) -->
-                <div>
-                    <label for="nutrient_temperature" class="block text-xs font-semibold text-ink mb-1.5">
-                        Suhu Nutrisi (°C)
-                    </label>
-                    <div class="relative">
-                        <input
-                            type="number"
-                            name="nutrient_temperature" aria-invalid="{{ $errors->has('nutrient_temperature') ? 'true' : 'false' }}" aria-describedby="{{ $errors->has('nutrient_temperature') ? 'error-nutrient_temperature' : '' }}"
-                            id="nutrient_temperature"
-                            step="0.01"
-                            value="{{ old('nutrient_temperature') }}"
-                            placeholder="Misal: 24.50"
-                            class="w-full px-3.5 py-2.5 pr-10 rounded-[2px] bg-canvas border {{ $errors->has('nutrient_temperature') ? 'border-danger/25 ring-1 ring-accent' : 'border-line' }} text-current text-xs focus:outline-none focus:ring-2 focus:ring-accent transition-colors tabular-nums"
-                        >
-                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-muted text-xs">
-                            °C
-                        </span>
-                    </div>
-                    <span class="text-xs text-muted mt-1 block">Acuan: 20°C &ndash; 26°C</span>
-                    @error('nutrient_temperature')
-                        <p id="error-nutrient_temperature" role="alert" class="text-danger text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <!-- EC Nutrisi (mS/cm) -->
-                <div>
-                    <label for="ec" class="block text-xs font-semibold text-ink mb-1.5">
-                        EC Nutrisi (mS/cm)
-                    </label>
-                    <div class="relative">
-                        <input
-                            type="number"
-                            name="ec" aria-invalid="{{ $errors->has('ec') ? 'true' : 'false' }}" aria-describedby="{{ $errors->has('ec') ? 'error-ec' : '' }}"
-                            id="ec"
-                            step="0.01"
-                            value="{{ old('ec') }}"
-                            placeholder="Misal: 2.20"
-                            class="w-full px-3.5 py-2.5 pr-12 rounded-[2px] bg-canvas border {{ $errors->has('ec') ? 'border-danger/25 ring-1 ring-accent' : 'border-line' }} text-current text-xs focus:outline-none focus:ring-2 focus:ring-accent transition-colors tabular-nums"
-                        >
-                        <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-muted text-xs">
-                            mS/cm
-                        </span>
-                    </div>
-                    <span class="text-xs text-muted mt-1 block">Acuan: 1.80 &ndash; 2.80</span>
-                    @error('ec')
-                        <p id="error-ec" role="alert" class="text-danger text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4">
 
                 <!-- Kelembapan Tanah (%) -->
                 <div>
@@ -281,7 +208,7 @@
                     <div class="relative">
                         <input
                             type="number"
-                            name="soil_moisture" aria-invalid="{{ $errors->has('soil_moisture') ? 'true' : 'false' }}" aria-describedby="{{ $errors->has('soil_moisture') ? 'error-soil_moisture' : '' }}"
+                            name="soil_moisture" required aria-invalid="{{ $errors->has('soil_moisture') ? 'true' : 'false' }}" aria-describedby="{{ $errors->has('soil_moisture') ? 'error-soil_moisture' : '' }}"
                             id="soil_moisture"
                             step="0.01"
                             value="{{ old('soil_moisture') }}"
@@ -292,59 +219,9 @@
                             %
                         </span>
                     </div>
-                    <span class="text-xs text-muted mt-1 block">Acuan: 60% &ndash; 80%</span>
+                    <span class="text-xs text-muted mt-1 block">Referensi PROVISIONAL: lihat konfigurasi threshold.</span>
                     @error('soil_moisture')
                         <p id="error-soil_moisture" role="alert" class="text-danger text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <!-- Intensitas Cahaya (lux) -->
-                <div>
-                    <label for="light_intensity" class="block text-xs font-semibold text-ink mb-1.5">
-                        Intensitas Cahaya (lux)
-                    </label>
-                    <div class="relative">
-                        <input
-                            type="number"
-                            name="light_intensity" aria-invalid="{{ $errors->has('light_intensity') ? 'true' : 'false' }}" aria-describedby="{{ $errors->has('light_intensity') ? 'error-light_intensity' : '' }}"
-                            id="light_intensity"
-                            step="0.1"
-                            value="{{ old('light_intensity') }}"
-                            placeholder="Misal: 35000"
-                            class="w-full px-3.5 py-2.5 pr-10 rounded-[2px] bg-canvas border {{ $errors->has('light_intensity') ? 'border-danger/25 ring-1 ring-accent' : 'border-line' }} text-current text-xs focus:outline-none focus:ring-2 focus:ring-accent transition-colors tabular-nums"
-                        >
-                        <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-muted text-xs">
-                            lux
-                        </span>
-                    </div>
-                    <span class="text-xs text-muted mt-1 block">Acuan: 15k &ndash; 50k lux</span>
-                    @error('light_intensity')
-                        <p id="error-light_intensity" role="alert" class="text-danger text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <!-- Level Tandon Nutrisi (%) -->
-                <div>
-                    <label for="tank_level" class="block text-xs font-semibold text-ink mb-1.5">
-                        Level Tandon (%)
-                    </label>
-                    <div class="relative">
-                        <input
-                            type="number"
-                            name="tank_level" aria-invalid="{{ $errors->has('tank_level') ? 'true' : 'false' }}" aria-describedby="{{ $errors->has('tank_level') ? 'error-tank_level' : '' }}"
-                            id="tank_level"
-                            step="0.01"
-                            value="{{ old('tank_level') }}"
-                            placeholder="Misal: 85.00"
-                            class="w-full px-3.5 py-2.5 pr-10 rounded-[2px] bg-canvas border {{ $errors->has('tank_level') ? 'border-danger/25 ring-1 ring-accent' : 'border-line' }} text-current text-xs focus:outline-none focus:ring-2 focus:ring-accent transition-colors tabular-nums"
-                        >
-                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-muted text-xs">
-                            %
-                        </span>
-                    </div>
-                    <span class="text-xs text-muted mt-1 block">Cadangan: &gt; 40%</span>
-                    @error('tank_level')
-                        <p id="error-tank_level" role="alert" class="text-danger text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 

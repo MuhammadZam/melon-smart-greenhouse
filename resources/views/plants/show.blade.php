@@ -186,14 +186,14 @@
 
                 <!-- pH -->
                 <div class="p-3 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs font-semibold text-muted block">pH Media</span>
+                    <span class="text-xs font-semibold text-muted block">pH air</span>
                     <span class="text-lg font-semibold tabular-nums text-accent">{{ number_format($latestMonitoring->ph, 2) }}</span>
                 </div>
 
                 <!-- Kelembapan -->
                 <div class="p-3 rounded-[2px] bg-canvas border border-line">
-                    <span class="text-xs font-semibold text-muted block">Kelembapan</span>
-                    <span class="text-lg font-semibold tabular-nums text-muted">{{ number_format($latestMonitoring->humidity, 0) }}%</span>
+                    <span class="text-xs font-semibold text-muted block">Kelembapan tanah/media</span>
+                    <span class="text-lg font-semibold tabular-nums text-muted"><x-sensor-reading :value="$latestMonitoring->soil_moisture" :precision="0" unit="%" /></span>
                 </div>
 
                 <!-- Tinggi -->
@@ -256,8 +256,8 @@
                         <th class="py-3 px-4 rounded-l-xl">ID</th>
                         <th class="py-3 px-4">Waktu Pengamatan</th>
                         <th class="py-3 px-4 text-center">Suhu (°C)</th>
-                        <th class="py-3 px-4 text-center">pH Media</th>
-                        <th class="py-3 px-4 text-center">Kelembapan</th>
+                        <th class="py-3 px-4 text-center">pH air</th>
+                        <th class="py-3 px-4 text-center">Kelembapan tanah/media</th>
                         <th class="py-3 px-4">Kondisi &amp; Daun</th>
                         <th class="py-3 px-4 text-center rounded-r-xl">Aksi</th>
                     </tr>
@@ -270,18 +270,18 @@
                                 {{ $item->monitored_at->format('d M Y, H:i') }} WIB
                             </td>
                             <td class="py-3 px-4 text-center tabular-nums">
-                                <span class="font-semibold {{ $item->temperature >= 20 && $item->temperature <= 32 ? 'text-accent' : 'text-warning' }}">
+                                <span class="font-semibold text-current">
                                     {{ number_format($item->temperature, 1) }}°C
                                 </span>
                             </td>
                             <td class="py-3 px-4 text-center tabular-nums">
-                                <span class="font-semibold {{ $item->ph >= 5.8 && $item->ph <= 7.2 ? 'text-accent' : 'text-danger' }}">
+                                <span class="font-semibold text-current">
                                     {{ number_format($item->ph, 2) }}
                                 </span>
                             </td>
                             <td class="py-3 px-4 text-center tabular-nums">
-                                <span class="font-semibold {{ $item->humidity >= 60 && $item->humidity <= 85 ? 'text-muted' : 'text-warning' }}">
-                                    {{ number_format($item->humidity, 0) }}%
+                                <span class="font-semibold text-current">
+                                    <x-sensor-reading :value="$item->soil_moisture" :precision="0" unit="%" />
                                 </span>
                             </td>
                             <td class="py-3 px-4">

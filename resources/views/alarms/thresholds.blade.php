@@ -76,8 +76,8 @@
             Panduan Operasional Ambang Batas &amp; Kebijakan Alarm (Phase 13):
         </p>
         <ul class="list-disc list-inside space-y-1 pl-1 text-xs leading-relaxed">
-            <li><strong>Parameter Alarm Aktif (4 Parameter):</strong> Sesuai spesifikasi Tim Elektro, hanya <code class="text-accent">temperature</code>, <code class="text-accent">humidity</code>, <code class="text-accent">soil_moisture</code>, dan <code class="text-accent">ph</code> yang dievaluasi untuk membuat alarm aktif.</li>
-            <li><strong>Parameter Monitoring Visual:</strong> Parameter lainnya (<code class="text-ink">ec</code>, <code class="text-ink">light_intensity</code>, <code class="text-ink">nutrient_temperature</code>, <code class="text-ink">tank_level</code>, <code class="text-ink">plant_height</code>, <code class="text-ink">plant_density</code>) tetap disimpan dan divisualisasikan dalam grafik, namun tidak memicu alarm. Ambang batasnya disimpan sebagai referensi batas wajar agronomis.</li>
+            <li><strong>Tiga parameter aktif:</strong> Suhu udara, kelembapan tanah/media, dan pH air. Nilai threshold database dipertahankan dan memerlukan validasi Tim Elektro (PROVISIONAL).</li>
+            <li>Parameter yang dinonaktifkan tetap tersimpan sebagai data historis dan tidak dievaluasi untuk alarm baru.</li>
             <li><strong>Nilai Normal &amp; Batas Kritis:</strong> Pada parameter alarm, nilai di luar rentang <code class="text-warning">Min</code> hingga <code class="text-warning">Max</code> mencatat alarm <strong>Warning</strong>. Melewati batas <code class="text-danger">Critical Min</code> atau <code class="text-danger">Critical Max</code> mencatat alarm <strong>Critical</strong>.</li>
             <li><strong>Integritas Historis:</strong> Histori alarm sebelumnya tetap tersimpan utuh dan tidak dihapus.</li>
         </ul>

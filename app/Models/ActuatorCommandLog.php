@@ -23,6 +23,7 @@ class ActuatorCommandLog extends Model
     public const SOURCE_SYSTEM_SIMULATION = 'system_simulation';
 
     protected $fillable = [
+        'previous_mode', 'resulting_mode', 'reason_code', 'monitoring_id', 'control_snapshot',
         'actuator_id',
         'user_id',
         'command',
@@ -37,6 +38,7 @@ class ActuatorCommandLog extends Model
     protected function casts(): array
     {
         return [
+            'control_snapshot' => 'array',
             'executed_at' => 'datetime',
         ];
     }

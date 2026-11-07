@@ -106,26 +106,10 @@ class ActuatorSimulationTest extends TestCase
     /**
      * 3. Admin mengontrol kipas exhaust (ON lalu OFF).
      */
-    public function test_admin_can_control_fan_simulation(): void
+    public function test_admin_cannot_control_retired_fan_simulation(): void
     {
-        // Turn ON
-        $resOn = $this->actingAs($this->admin)->post(route('actuators.control', $this->fan->id), [
-            'command' => 'TURN_ON',
-            'notes'   => 'Suhu ruangan terdeteksi hangat',
-        ]);
-        $resOn->assertRedirect(route('actuators.index'));
-
-        $this->fan->refresh();
-        $this->assertEquals(Actuator::STATE_ON, $this->fan->simulation_state);
-
-        // Turn OFF
-        $resOff = $this->actingAs($this->admin)->post(route('actuators.control', $this->fan->id), [
-            'command' => 'TURN_OFF',
-        ]);
-        $resOff->assertRedirect(route('actuators.index'));
-
-        $this->fan->refresh();
-        $this->assertEquals(Actuator::STATE_OFF, $this->fan->simulation_state);
+        $this->actingAs($this->admin)->postJson(route('actuators.control', $this->fan), ['command'=>'TURN_ON'])->assertUnprocessable();
+        $this->assertSame('OFF', $this->fan->fresh()->simulation_state);
     }
 
     /**
@@ -288,9 +272,9 @@ class ActuatorSimulationTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Status Perangkat Otomasi (Mode Simulasi)');
         $response->assertSee('Pompa Irigasi Utama (Greenhouse A)');
-        $response->assertSee('Kipas Exhaust Sirkulasi (Greenhouse A)');
+        $response->assertDontSee('Kipas Exhaust Sirkulasi (Greenhouse A)');
         $response->assertSee('AKTIF (ON)');
-        $response->assertSee('NON-AKTIF (OFF)');
+        $response->assertDontSee('Kipas Exhaust');
     }
 
     /**
@@ -304,7 +288,7 @@ class ActuatorSimulationTest extends TestCase
         $response->assertSee('Kontrol Perangkat Aktuator');
         $response->assertSee('Kontrol ini merupakan simulasi perangkat dan tidak mengaktifkan hardware fisik');
         $response->assertSee('PUMP-01');
-        $response->assertSee('FAN-01');
+        $response->assertDontSee('FAN-01');
     }
 
     /**
@@ -349,8 +333,7 @@ class ActuatorSimulationTest extends TestCase
         ]));
         $resFilterCommand->assertStatus(200);
         $logsCommand = $resFilterCommand->viewData('logs');
-        $this->assertEquals(1, $logsCommand->total());
-        $this->assertEquals('TURN_OFF', $logsCommand->first()->command);
+        $this->assertEquals(0, $logsCommand->total());
     }
 
     /**

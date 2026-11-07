@@ -258,12 +258,13 @@
                 <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                Batasan &amp; Kepatuhan Phase 14
+                Kontrak telemetri tiga sensor
             </h3>
+            <p class="text-xs text-muted">Layout kolom saat ini: <strong>{{ config('services.google_sheets.telemetry_layout', 'legacy') }}</strong>. Layout baru three_input: device_id, timestamp, plant_code, temperature, soil_moisture, water_ph, pump_status, fuzzy_score, fuzzy_label. Layout legacy tetap tersedia untuk lembar lama.</p>
             <ul class="text-xs text-muted space-y-2 list-disc list-inside">
                 <li><strong class="text-ink">ESP32 Fisik:</strong> Integrasi live Google Sheets berstatus <span class="text-warning font-semibold">PENDING</span> sampai kredensial Service Account diserahkan oleh Tim Elektro.</li>
                 <li><strong class="text-ink">Isolasi Status Aktuator:</strong> Status fisik <code class="text-ink">reported_pump_state</code> terpisah mutlak dari <code class="text-ink">simulation_state</code>.</li>
-                <li><strong class="text-ink">Aturan Alarm 4-Parameter:</strong> Data dari Google Sheets tetap mengikuti kebijakan ketat evaluasi hanya pada <code class="text-accent">suhu, kelembapan, kelembapan tanah, dan pH</code>.</li>
+                <li><strong class="text-ink">Aturan Alarm 3-Parameter:</strong> Data dari Google Sheets tetap mengikuti kebijakan ketat evaluasi hanya pada <code class="text-accent">suhu udara, kelembapan tanah/media, dan pH air</code>.</li>
                 <li><strong class="text-ink">Idempotensi:</strong> Duplikasi baris dicegah melalui identitas unik <code class="text-ink">source_identifier</code>.</li>
             </ul>
         </div>

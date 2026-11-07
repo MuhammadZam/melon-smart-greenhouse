@@ -115,4 +115,31 @@ Alpine.directive('focus-scope', (el, { expression }, { evaluateLater, effect, cl
     cleanup(() => { document.removeEventListener('keydown', trap); if (active) document.documentElement.style.overflow = overflow || ''; });
 });
 
+Alpine.data('pumpControlPanel', (initial, statusUrl) => ({
+    state: initial, busy: false, refreshing: false, connected: true, error: '', timer: null,
+    init() { this.timer = setInterval(() => this.refresh(), 5000); },
+    destroy() { clearInterval(this.timer); },
+    async refresh() {
+        if (this.refreshing || this.busy) return;
+        this.refreshing = true;
+        try {
+            const response = await fetch(statusUrl, {headers: {'Accept': 'application/json'}, cache: 'no-store'});
+            if (!response.ok) throw new Error('Status pompa tidak dapat diperbarui. Muat ulang halaman.');
+            this.state = await response.json(); this.connected = true;
+        } catch (error) { this.connected = false; this.error = error.message; }
+        finally { this.refreshing = false; }
+    },
+    async send(form) {
+        if (this.busy) return;
+        const data = new FormData(form); // Capture submit fields before disabling controls.
+        this.busy = true; this.error = '';
+        try {
+            const response = await fetch(form.action, {method: 'POST', body: data, headers: {'Accept': 'application/json'}});
+            const result = await response.json();
+            if (!response.ok) throw new Error(result.errors ? Object.values(result.errors).flat().join(' ') : result.message || 'Perintah tidak berhasil.');
+            window.location.reload();
+        } catch (error) { this.error = error.message; this.busy = false; await this.refresh(); }
+    },
+}));
+
 Alpine.start();

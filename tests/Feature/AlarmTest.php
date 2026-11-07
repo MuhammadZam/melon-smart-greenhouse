@@ -91,6 +91,7 @@ class AlarmTest extends TestCase
             'monitored_at'         => now(),
             'temperature'          => 25.0,  // range 20 - 32
             'humidity'             => 70.0,  // range 60 - 85
+            'soil_moisture' => 70.0,
             'ph'                   => 6.5,   // range 5.8 - 7.2
             'soil_moisture'        => 65.0,  // range 50 - 80
             'ec'                   => 2.0,   // range 1.5 - 2.8
@@ -121,6 +122,7 @@ class AlarmTest extends TestCase
             'monitored_at'         => now(),
             'temperature'          => 35.0,  // Max adalah 32.0, critical adalah 38.0 -> di atas maksimum (warning)
             'humidity'             => 70.0,
+            'soil_moisture' => 70.0,
             'ph'                   => 6.5,
             'plant_height'         => 80.0,
             'plant_density'        => 70.0,
@@ -149,6 +151,7 @@ class AlarmTest extends TestCase
             'monitored_at'         => now(),
             'temperature'          => 25.0,
             'humidity'             => 70.0,
+            'soil_moisture' => 70.0,
             'ph'                   => 4.5,   // Min adalah 5.8 -> di bawah minimum
             'plant_height'         => 80.0,
             'plant_density'        => 70.0,
@@ -179,6 +182,7 @@ class AlarmTest extends TestCase
             'monitored_at'    => now()->subMinutes(10),
             'temperature'     => 35.0,
             'humidity'        => 70.0,
+            'soil_moisture' => 70.0,
             'ph'              => 6.5,
             'plant_height'    => 80.0,
             'plant_density'   => 70.0,
@@ -201,6 +205,7 @@ class AlarmTest extends TestCase
             'monitored_at'    => now(),
             'temperature'     => 36.5,
             'humidity'        => 70.0,
+            'soil_moisture' => 70.0,
             'ph'              => 6.5,
             'plant_height'    => 80.0,
             'plant_density'   => 70.0,
@@ -234,6 +239,7 @@ class AlarmTest extends TestCase
             'monitored_at'    => now()->subMinutes(5),
             'temperature'     => 38.0,
             'humidity'        => 70.0,
+            'soil_moisture' => 70.0,
             'ph'              => 6.5,
             'plant_height'    => 80.0,
             'plant_density'   => 70.0,
@@ -254,6 +260,7 @@ class AlarmTest extends TestCase
             'monitored_at'    => now(),
             'temperature'     => 26.0, // Kembali normal (20 - 32)
             'humidity'        => 70.0,
+            'soil_moisture' => 70.0,
             'ph'              => 6.5,
             'plant_height'    => 80.0,
             'plant_density'   => 70.0,
@@ -279,6 +286,7 @@ class AlarmTest extends TestCase
         $m1 = Monitoring::create([
             'plant_id' => $this->plant->id, 'monitored_at' => now()->subMinutes(15),
             'temperature' => 37.0, 'humidity' => 70.0, 'ph' => 6.5,
+            'soil_moisture' => 70.0,
             'plant_height' => 80.0, 'plant_density' => 70.0, 'plant_condition' => 'abnormal', 'plant_color' => 'Kuning',
         ]);
         $service->evaluate($m1);
@@ -287,6 +295,7 @@ class AlarmTest extends TestCase
         $m2 = Monitoring::create([
             'plant_id' => $this->plant->id, 'monitored_at' => now()->subMinutes(10),
             'temperature' => 25.0, 'humidity' => 70.0, 'ph' => 6.5,
+            'soil_moisture' => 70.0,
             'plant_height' => 80.0, 'plant_density' => 70.0, 'plant_condition' => 'optimal', 'plant_color' => 'Hijau',
         ]);
         $service->evaluate($m2);
@@ -295,6 +304,7 @@ class AlarmTest extends TestCase
         $m3 = Monitoring::create([
             'plant_id' => $this->plant->id, 'monitored_at' => now(),
             'temperature' => 39.0, 'humidity' => 70.0, 'ph' => 6.5,
+            'soil_moisture' => 70.0,
             'plant_height' => 80.0, 'plant_density' => 70.0, 'plant_condition' => 'abnormal', 'plant_color' => 'Kuning',
         ]);
         $service->evaluate($m3);
@@ -319,6 +329,7 @@ class AlarmTest extends TestCase
             'monitored_at'         => now(),
             'temperature'          => 25.0,
             'humidity'             => 70.0,
+            'soil_moisture' => 70.0,
             'ph'                   => 6.5,
             'soil_moisture'        => null, // parameter bernilai null
             'ec'                   => null,
@@ -347,6 +358,7 @@ class AlarmTest extends TestCase
             'monitored_at'    => now(),
             'temperature'     => 27.0,
             'humidity'        => 72.0,
+            'soil_moisture' => 70.0,
             'ph'              => 6.2,
             'plant_height'    => 75.0,
             'plant_density'   => 65.0,
@@ -370,6 +382,7 @@ class AlarmTest extends TestCase
             'monitored_at'    => now(),
             'temperature'     => 35.0, // Abnormal
             'humidity'        => 72.0,
+            'soil_moisture' => 70.0,
             'ph'              => 6.2,
             'ec'              => 2.1,  // Sebagian diisi
             'plant_height'    => 75.0,
@@ -396,6 +409,7 @@ class AlarmTest extends TestCase
             'monitored_at'    => '2026-10-14 12:30:00',
             'temperature'     => 41.0, // Di atas ambang 32.0
             'humidity'        => 70.0,
+            'soil_moisture' => 70.0,
             'ph'              => 6.5,
             'plant_height'    => 80.0,
             'canopy_density'  => 70.0,
@@ -423,6 +437,7 @@ class AlarmTest extends TestCase
             'monitored_at'         => '2026-10-14T13:00',
             'temperature'          => 25.0,
             'humidity'             => 70.0,
+            'soil_moisture' => 70.0,
             'ph'                   => 3.8, // Di bawah minimum 5.8
             'plant_height'         => 80.0,
             'plant_density'        => 70.0,
@@ -537,6 +552,7 @@ class AlarmTest extends TestCase
             'monitored_at'    => now(),
             'temperature'     => 25.0,
             'humidity'        => 70.0,
+            'soil_moisture' => 70.0,
             'ph'              => 4.5, // Min normal 5.8, critical_min 5.0 -> kritis
             'plant_height'    => 80.0,
             'plant_density'   => 70.0,
@@ -566,6 +582,7 @@ class AlarmTest extends TestCase
             'monitored_at'    => now(),
             'temperature'     => 42.0, // Melebihi critical_max_value 40.0
             'humidity'        => 70.0,
+            'soil_moisture' => 70.0,
             'ph'              => 6.5,
             'plant_height'    => 80.0,
             'plant_density'   => 70.0,
@@ -596,6 +613,7 @@ class AlarmTest extends TestCase
             'monitored_at'    => '2026-10-14 12:00:00',
             'temperature'     => 38.0,
             'humidity'        => 70.0,
+            'soil_moisture' => 70.0,
             'ph'              => 6.5,
             'plant_height'    => 80.0,
             'plant_density'   => 70.0,
@@ -616,6 +634,7 @@ class AlarmTest extends TestCase
             'monitored_at'    => '2026-10-14 10:00:00',
             'temperature'     => 25.0,
             'humidity'        => 70.0,
+            'soil_moisture' => 70.0,
             'ph'              => 6.5,
             'plant_height'    => 80.0,
             'plant_density'   => 70.0,
@@ -651,7 +670,7 @@ class AlarmTest extends TestCase
         MonitoringAlarm::create([
             'plant_id'               => $this->plant->id,
             'parameter_key'          => 'ph',
-            'parameter_display_name' => 'pH Nutrisi/Media',
+            'parameter_display_name' => 'pH air',
             'unit'                   => 'pH',
             'violation_direction'    => 'below_minimum',
             'sensor_value'           => 4.5,
@@ -710,7 +729,7 @@ class AlarmTest extends TestCase
     /**
      * 18. Phase 13: Hanya 4 parameter yang diizinkan menghasilkan alarm (temperature, humidity, soil_moisture, ph).
      */
-    public function test_only_four_allowed_parameters_generate_alarms(): void
+    public function test_only_three_allowed_parameters_generate_alarms(): void
     {
         $service = app(MonitoringAlarmService::class);
 
@@ -730,7 +749,7 @@ class AlarmTest extends TestCase
 
         $service->evaluate($m);
 
-        $allowedParams = ['temperature', 'humidity', 'soil_moisture', 'ph'];
+        $allowedParams = ['temperature', 'soil_moisture', 'ph'];
         foreach ($allowedParams as $paramKey) {
             $alarm = MonitoringAlarm::where('plant_id', $this->plant->id)
                 ->where('parameter_key', $paramKey)

@@ -12,7 +12,7 @@ class GoogleSheetsTelemetryService
 {
     protected GoogleSheetsClientInterface $client;
 
-    public const EXPECTED_HEADERS = [
+    public const LEGACY_HEADERS = [
         'device_id',
         'timestamp',
         'plant_code',
@@ -29,6 +29,8 @@ class GoogleSheetsTelemetryService
         'fuzzy_score',
         'fuzzy_label',
     ];
+
+    public const EXPECTED_HEADERS = ['device_id', 'timestamp', 'plant_code', 'temperature', 'soil_moisture', 'water_ph', 'pump_status', 'fuzzy_score', 'fuzzy_label'];
 
     public function __construct(?GoogleSheetsClientInterface $client = null)
     {
@@ -120,23 +122,13 @@ class GoogleSheetsTelemetryService
             ];
         }
 
-        // 5. Validasi 4 Parameter Sensor Wajib
+        // 5. Validasi 3 Parameter Sensor Wajib
         $temp = $this->parseNumeric($row['temperature'] ?? null);
         if ($temp === null || $temp < 0.0 || $temp > 60.0) {
             return [
                 'valid' => false,
                 'data' => null,
                 'error' => "Baris #{$rowNumber}: temperature wajib numerik 0.00-60.00.",
-                'source_identifier' => null,
-            ];
-        }
-
-        $hum = $this->parseNumeric($row['humidity'] ?? null);
-        if ($hum === null || $hum < 0.0 || $hum > 100.0) {
-            return [
-                'valid' => false,
-                'data' => null,
-                'error' => "Baris #{$rowNumber}: humidity wajib numerik 0.00-100.00.",
                 'source_identifier' => null,
             ];
         }
@@ -151,7 +143,10 @@ class GoogleSheetsTelemetryService
             ];
         }
 
-        $ph = $this->parseNumeric($row['ph'] ?? null);
+        if (isset($row['water_ph'], $row['ph']) && (!is_numeric($row['water_ph']) || !is_numeric($row['ph']) || (float) $row['water_ph'] !== (float) $row['ph'])) {
+            return ['valid' => false, 'data' => null, 'error' => 'water_ph dan ph tidak sama.', 'source_identifier' => null];
+        }
+        $ph = $this->parseNumeric($row['water_ph'] ?? $row['ph'] ?? null);
         if ($ph === null || $ph < 0.0 || $ph > 14.0) {
             return [
                 'valid' => false,
@@ -161,50 +156,8 @@ class GoogleSheetsTelemetryService
             ];
         }
 
-        // 6. Validasi Parameter Opsional (EC, Light, Nutrient Temp, Tank Level)
-        $ec = $this->parseNumeric($row['ec'] ?? null);
-        if ($ec !== null && ($ec < 0.0 || $ec > 10.0)) {
-            return [
-                'valid' => false,
-                'data' => null,
-                'error' => "Baris #{$rowNumber}: ec berada di luar rentang valid 0.00-10.00.",
-                'source_identifier' => null,
-            ];
-        }
-
-        $light = $this->parseNumeric($row['light_intensity'] ?? null);
-        if ($light !== null && ($light < 0.0 || $light > 100000.0)) {
-            return [
-                'valid' => false,
-                'data' => null,
-                'error' => "Baris #{$rowNumber}: light_intensity berada di luar rentang valid 0.00-100000.00.",
-                'source_identifier' => null,
-            ];
-        }
-
-        $nutrientTemp = $this->parseNumeric($row['nutrient_temp'] ?? null);
-        if ($nutrientTemp !== null && ($nutrientTemp < 0.0 || $nutrientTemp > 60.0)) {
-            return [
-                'valid' => false,
-                'data' => null,
-                'error' => "Baris #{$rowNumber}: nutrient_temp berada di luar rentang valid 0.00-60.00.",
-                'source_identifier' => null,
-            ];
-        }
-
-        $tankLevel = $this->parseNumeric($row['tank_level'] ?? null);
-        if ($tankLevel !== null && ($tankLevel < 0.0 || $tankLevel > 100.0)) {
-            return [
-                'valid' => false,
-                'data' => null,
-                'error' => "Baris #{$rowNumber}: tank_level berada di luar rentang valid 0.00-100.00.",
-                'source_identifier' => null,
-            ];
-        }
-
         // 7. Status Aktuator Fisik yang Dilaporkan (Opsional, diisolasi dari simulation_state)
         $reportedPump = $this->parseStateString($row['pump_status'] ?? null);
-        $reportedFan = $this->parseStateString($row['fan_status'] ?? null);
 
         // 8. Draf Inferensi Fuzzy (Opsional)
         $rawScore = $row['fuzzy_score'] ?? null;
@@ -231,15 +184,9 @@ class GoogleSheetsTelemetryService
             'device_id'            => $deviceId,
             'monitored_at'         => $formattedTimestamp,
             'temperature'          => $temp,
-            'humidity'             => $hum,
             'soil_moisture'        => $soil,
             'ph'                   => $ph,
-            'ec'                   => $ec,
-            'light_intensity'      => $light,
-            'nutrient_temperature' => $nutrientTemp,
-            'tank_level'           => $tankLevel,
             'reported_pump_state'  => $reportedPump,
-            'reported_fan_state'   => $reportedFan,
             'fuzzy_score'          => $fuzzyScore,
             'fuzzy_label'          => $fuzzyLabel,
             'plant_height'         => 0.0,
@@ -273,7 +220,7 @@ class GoogleSheetsTelemetryService
         $indexed = array_values($rawRow);
         $result = [];
 
-        foreach (self::EXPECTED_HEADERS as $idx => $key) {
+        foreach ((config('services.google_sheets.telemetry_layout', 'legacy') === 'three_input' ? self::EXPECTED_HEADERS : self::LEGACY_HEADERS) as $idx => $key) {
             $result[$key] = $indexed[$idx] ?? null;
         }
 

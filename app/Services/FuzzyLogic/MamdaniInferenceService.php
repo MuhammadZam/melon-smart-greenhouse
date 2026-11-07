@@ -40,6 +40,10 @@ class MamdaniInferenceService
         ?float $customZMin = null,
         ?float $customZMax = null
     ): array {
+        if (!array_key_exists('water_ph', $inputs) && array_key_exists('ph', $inputs)) {
+            $inputs['water_ph'] = $inputs['ph'];
+        }
+        $inputs = array_intersect_key($inputs, $this->config['inputs'] ?? []);
         // 1. Fuzzifikasi
         $membershipSnapshot = $this->membershipService->fuzzify($inputs);
 

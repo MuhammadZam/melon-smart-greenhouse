@@ -37,7 +37,7 @@ except ImportError:
 def generate_sensor_payload(plant_id: int) -> dict:
     """
     Menghasilkan data pembacaan sensor tiruan (DATA SIMULASI) dalam rentang realistis melon.
-    
+
     PENTING / DISCLAIMER:
     Data ini adalah DATA SIMULASI perangkat lunak untuk keperluan pengujian dan verifikasi
     prototipe integrasi IoT/API, BUKAN hasil pembacaan sensor fisik aktual lapangan.
@@ -45,48 +45,14 @@ def generate_sensor_payload(plant_id: int) -> dict:
     """
     now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    # 1. Parameter Mikroklimat Greenhouse
-    temperature = round(random.uniform(25.0, 31.0), 1)          # °C
-    humidity = round(random.uniform(62.0, 78.0), 1)             # % RH
-    light_intensity = round(random.uniform(18000.0, 42000.0), 1) # lux (simulasi cahaya siang)
-
-    # 2. Parameter Fertigasi & Larutan Nutrisi
-    ph = round(random.uniform(6.0, 6.8), 2)                     # pH
-    ec = round(random.uniform(1.9, 2.6), 2)                     # mS/cm
-    nutrient_temperature = round(random.uniform(21.5, 25.0), 1) # °C
-    tank_level = round(random.uniform(70.0, 92.0), 1)           # %
-
-    # 3. Parameter Media Tanam & Morfologi
-    soil_moisture = round(random.uniform(65.0, 78.0), 1)        # %
-    plant_height = round(random.uniform(45.0, 110.0), 1)        # cm
-    canopy_density = round(random.uniform(55.0, 85.0), 1)       # %
-
-    condition = "optimal"
-    leaf_color = "Hijau Segar"
-
-    # Evaluasi sederhana status kondisi simulasi
-    if temperature > 31.5 or ph > 7.1 or ph < 5.8 or ec > 2.8 or ec < 1.6 or soil_moisture < 55.0:
-        condition = "warning"
-        leaf_color = "Hijau Kekuningan"
-
+    # Synthetic software fixtures; these ranges are not agronomic thresholds.
     return {
         "plant_id": plant_id,
         "monitored_at": now_str,
-        # 8 Parameter Sensor IoT:
-        "temperature": temperature,
-        "humidity": humidity,
-        "soil_moisture": soil_moisture,
-        "ph": ph,
-        "ec": ec,
-        "light_intensity": light_intensity,
-        "nutrient_temperature": nutrient_temperature,
-        "tank_level": tank_level,
-        # Parameter Morfologi & Observasi:
-        "plant_height": plant_height,
-        "canopy_density": canopy_density,
-        "condition": condition,
-        "leaf_color": leaf_color,
-        "notes": f"[DATA SIMULASI PROTOKOL UJI IOT] Pembacaan parameter sintetis untuk verifikasi sistem pada {now_str}",
+        "temperature": round(random.uniform(25.0, 31.0), 1),
+        "soil_moisture": round(random.uniform(65.0, 78.0), 1),
+        "water_ph": round(random.uniform(6.0, 6.8), 2),
+        "notes": f"[DATA SIMULASI] Tiga sensor sintetis pada {now_str}",
     }
 
 
@@ -172,7 +138,7 @@ def main():
         parser.error("DEVICE_TOKEN atau --device-token wajib diisi dengan token perangkat terdaftar.")
 
     print("================================================================")
-    print(" MELON MONITOR - SENSOR SIMULATOR (PHASE 11 IoT EXPANSION)")
+    print(" MELON MONITOR - SENSOR SIMULATOR (THREE SENSOR REVISION)")
     print(" PERINGATAN: Seluruh data yang dikirim adalah DATA SIMULASI,")
     print(" bukan pembacaan sensor fisik aktual lapangan ESP32.")
     print("================================================================")
@@ -195,20 +161,9 @@ def main():
 
             if success:
                 print(f"[{timestamp}] SUCCESS (HTTP {status_code})")
-                print("  [Mikroklimat Greenhouse]")
-                print(f"    - Suhu Udara         : {payload['temperature']} °C")
-                print(f"    - Kelembapan Udara   : {payload['humidity']} % RH")
-                print(f"    - Intensitas Cahaya  : {payload['light_intensity']} lux")
-                print("  [Larutan Nutrisi & Tandon]")
-                print(f"    - pH Larutan         : {payload['ph']}")
-                print(f"    - Konduktivitas (EC) : {payload['ec']} mS/cm")
-                print(f"    - Suhu Nutrisi       : {payload['nutrient_temperature']} °C")
-                print(f"    - Level Tandon       : {payload['tank_level']} %")
-                print("  [Media Tanam & Morfologi]")
-                print(f"    - Kelembapan Tanah   : {payload['soil_moisture']} %")
-                print(f"    - Tinggi Tajuk       : {payload['plant_height']} cm")
-                print(f"    - Kerapatan Kanopi   : {payload['canopy_density']} %")
-                print(f"    - Kondisi / Warna    : {payload['condition']} / {payload['leaf_color']}")
+                print(f"    - Suhu udara : {payload['temperature']} °C")
+                print(f"    - Kelembapan tanah/media : {payload['soil_moisture']} %")
+                print(f"    - pH air : {payload['water_ph']}")
             else:
                 if status_code > 0:
                     print(f"[{timestamp}] ERROR: Server returned HTTP {status_code}")

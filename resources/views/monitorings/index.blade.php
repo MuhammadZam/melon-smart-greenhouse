@@ -188,9 +188,9 @@
                         <th class="py-3 px-4">Tanaman &amp; Lokasi</th>
                         <th class="py-3 px-4">Waktu Pengamatan</th>
                         <th class="py-3 px-4 text-center">Suhu (°C)</th>
-                        <th class="py-3 px-4 text-center">pH Media</th>
-                        <th class="py-3 px-4 text-center">Kelembapan</th>
-                        <th class="py-3 px-4 text-center">Sensor IoT</th>
+                        <th class="py-3 px-4 text-center">pH air</th>
+                        <th class="py-3 px-4 text-center">Kelembapan tanah/media</th>
+
                         <th class="py-3 px-4 text-center">Morfologi</th>
                         <th class="py-3 px-4">Kondisi &amp; Daun</th>
                         <th class="py-3 px-4 text-center rounded-r-xl">Aksi</th>
@@ -228,35 +228,23 @@
 
                             <!-- Suhu -->
                             <td class="py-3 px-4 text-center tabular-nums">
-                                <span class="font-semibold px-2 py-0.5 rounded-[2px] text-xs {{ $item->temperature >= 20 && $item->temperature <= 32 ? 'text-accent bg-accent-soft border border-line' : 'text-warning bg-warning-soft border border-warning/25' }}">
+                                <span class="font-semibold px-2 py-0.5 rounded-[2px] text-xs text-current">
                                     {{ number_format($item->temperature, 1) }}°C
                                 </span>
                             </td>
 
                             <!-- pH -->
                             <td class="py-3 px-4 text-center tabular-nums">
-                                <span class="font-semibold px-2 py-0.5 rounded-[2px] text-xs {{ $item->ph >= 5.8 && $item->ph <= 7.2 ? 'text-accent bg-accent-soft border border-line' : 'text-danger bg-danger-soft border border-danger/25' }}">
+                                <span class="font-semibold px-2 py-0.5 rounded-[2px] text-xs text-current">
                                     {{ number_format($item->ph, 2) }}
                                 </span>
                             </td>
 
                             <!-- Kelembapan -->
                             <td class="py-3 px-4 text-center tabular-nums">
-                                <span class="font-semibold px-2 py-0.5 rounded-[2px] text-xs {{ $item->humidity >= 60 && $item->humidity <= 85 ? 'text-muted bg-surface border border-line' : 'text-warning bg-warning-soft border border-warning/25' }}">
-                                    {{ number_format($item->humidity, 0) }}%
+                                <span class="font-semibold px-2 py-0.5 rounded-[2px] text-xs text-current">
+                                    <x-sensor-reading :value="$item->soil_moisture" :precision="0" unit="%" />
                                 </span>
-                            </td>
-
-                            <!-- Sensor IoT (EC & Kelembapan Tanah) -->
-                            <td class="py-3 px-4 text-center tabular-nums text-xs text-ink">
-                                <div class="flex flex-col items-center gap-0.5">
-                                    <span class="text-xs {{ $item->ec !== null ? 'text-muted font-semibold' : 'text-muted' }}" title="EC Nutrisi">
-                                        EC: {{ $item->ec !== null ? number_format($item->ec, 2) . ' mS' : '-' }}
-                                    </span>
-                                    <span class="text-xs {{ $item->soil_moisture !== null ? 'text-muted' : 'text-muted' }}" title="Kelembapan Media/Tanah">
-                                        Tanah: {{ $item->soil_moisture !== null ? number_format($item->soil_moisture, 0) . '%' : '-' }}
-                                    </span>
-                                </div>
                             </td>
 
                             <!-- Morfologi (Tinggi & Kerapatan) -->

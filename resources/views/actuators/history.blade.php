@@ -55,6 +55,9 @@
                     <option value="all">Semua Perintah</option>
                     <option value="TURN_ON" {{ ($filters['command'] ?? '') === 'TURN_ON' ? 'selected' : '' }}>TURN_ON</option>
                     <option value="TURN_OFF" {{ ($filters['command'] ?? '') === 'TURN_OFF' ? 'selected' : '' }}>TURN_OFF</option>
+                    @foreach(['SET_MODE', 'CONFIGURE', 'EVALUATE'] as $command)
+                        <option value="{{ $command }}" @selected(($filters['command'] ?? '') === $command)>{{ $command }}</option>
+                    @endforeach
                     <option value="TOGGLE" {{ ($filters['command'] ?? '') === 'TOGGLE' ? 'selected' : '' }}>TOGGLE</option>
                 </select>
             </div>
@@ -123,6 +126,10 @@
                                 <td class="py-3 px-4 whitespace-nowrap">
                                     <span class="px-2 py-0.5 rounded-[2px] text-xs tabular-nums font-semibold bg-surface text-ink border border-line">
                                         {{ $log->command }}
+                                        @if($log->previous_mode)
+                                            <span class="block">{{ $log->previous_mode }} → {{ $log->resulting_mode }}</span>
+                                            <span class="block">{{ $log->reason_code }}</span>
+                                        @endif
                                     </span>
                                 </td>
                                 <td class="py-3 px-4 tabular-nums font-semibold text-muted whitespace-nowrap">

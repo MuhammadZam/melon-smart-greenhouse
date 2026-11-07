@@ -52,7 +52,7 @@
     </div>
 
     {{-- Summary KPI Cards --}}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {{-- Total Inferences --}}
         <div class="rounded-[2px] bg-canvas border border-line p-5 relative overflow-hidden">
             <div class="flex items-center justify-between">
@@ -243,12 +243,12 @@
                         <td class="py-3.5 px-4 whitespace-nowrap">
                             @php
                                 $inputs = $item->input_snapshot ?? [];
+            if (!isset($inputs['water_ph']) && isset($inputs['ph'])) $inputs['water_ph'] = $inputs['ph'];
                             @endphp
                             <div class="grid grid-cols-2 gap-x-3 gap-y-1 text-xs tabular-nums">
                                 <div><span class="text-muted">Suhu:</span> <strong class="text-current">{{ isset($inputs['temperature']) ? number_format($inputs['temperature'], 1) . '°C' : '-' }}</strong></div>
-                                <div><span class="text-muted">Lembap:</span> <strong class="text-current">{{ isset($inputs['humidity']) ? number_format($inputs['humidity'], 0) . '%' : '-' }}</strong></div>
                                 <div><span class="text-muted">Tanah:</span> <strong class="text-current">{{ isset($inputs['soil_moisture']) ? number_format($inputs['soil_moisture'], 0) . '%' : '-' }}</strong></div>
-                                <div><span class="text-muted">pH:</span> <strong class="text-current">{{ isset($inputs['ph']) ? number_format($inputs['ph'], 2) : '-' }}</strong></div>
+                                <div><span class="text-muted">pH:</span> <strong class="text-current">{{ isset($inputs['water_ph']) ? number_format($inputs['water_ph'], 2) : '-' }}</strong></div>
                             </div>
                         </td>
 

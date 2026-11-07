@@ -25,15 +25,15 @@
             <a href="{{ auth()->check() ? route('dashboard') : route('login') }}" class="inline-flex items-center gap-2 text-sm font-medium text-accent py-2">{{ auth()->check() ? 'Lihat pemantauan' : 'Masuk ke pemantauan' }} <span aria-hidden="true">&rarr;</span></a>
         </section>
         <section class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10" aria-label="Fungsi utama">
-            <div class="border-t border-line pt-5 space-y-2"><h2 class="text-base font-semibold">Pembacaan sensor</h2><p class="text-sm text-muted">Delapan parameter lingkungan, lengkap dengan waktu pengamatan dan keterangan data yang belum tersedia.</p></div>
+            <div class="border-t border-line pt-5 space-y-2"><h2 class="text-base font-semibold">Pembacaan sensor</h2><p class="text-sm text-muted">Tiga parameter lingkungan, lengkap dengan waktu pengamatan dan keterangan data yang belum tersedia.</p></div>
             <div class="border-t border-line pt-5 space-y-2"><h2 class="text-base font-semibold">Riwayat dan analisis</h2><p class="text-sm text-muted">Grafik tren, alarm parameter, dan hasil analisis fuzzy untuk membantu meninjau kondisi greenhouse.</p></div>
             <div class="border-t border-line pt-5 space-y-2"><h2 class="text-base font-semibold">Pencatatan dan laporan</h2><p class="text-sm text-muted">Kelola tanaman dan pengamatan, filter data yang dibutuhkan, lalu ekspor laporan CSV atau PDF.</p></div>
         </section>
         <section class="border-t border-line pt-6" aria-labelledby="sensor-list-title">
             <h2 id="sensor-list-title" class="text-lg font-semibold mb-4">Parameter yang dipantau</h2>
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-3 text-sm text-muted">
-                <li>Suhu udara <span class="text-ink">°C</span></li><li>Kelembapan udara <span class="text-ink">%</span></li><li>Kelembapan tanah <span class="text-ink">%</span></li><li>pH nutrisi/media</li>
-                <li>Konduktivitas listrik <span class="text-ink">mS/cm</span></li><li>Intensitas cahaya <span class="text-ink">lux</span></li><li>Suhu nutrisi <span class="text-ink">°C</span></li><li>Level tandon <span class="text-ink">%</span></li>
+                <li>Suhu udara <span class="text-ink">°C</span></li><li>Kelembapan tanah <span class="text-ink">%</span></li><li>pH air</li>
+
             </ul>
         </section>
     </main>

@@ -1,4 +1,7 @@
 # BUG FIX LOG & REGRESSION AUDIT
+
+> Pembaruan 7 November 2026: revisi sensor aktif menjadi suhu udara, kelembapan tanah/media, dan pH air; aktuator aktif hanya simulasi PUMP-01. Fuzzy tiga input berstatus PROVISIONAL. Suite akhir: SQLite 288 lulus; MySQL 287 lulus + 1 harness SQLite dilewati, digantikan uji 10 proses MySQL yang lulus. Database historis proyek tidak dimigrasikan atau dihapus. Lihat [spesifikasi revisi](SENSOR_REQUIREMENT_REVISION.md) dan [hasil pengujian](REVISION_TEST_RESULTS.md). Entri Phase 16.1 di bawah dipertahankan sebagai riwayat, bukan spesifikasi sensor aktif.
+
 ## Sistem Web Monitoring Tanaman Melon — Phase 16.1
 
 | Attribute | Details |

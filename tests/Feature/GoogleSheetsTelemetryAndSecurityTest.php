@@ -113,11 +113,11 @@ class GoogleSheetsTelemetryAndSecurityTest extends TestCase
         $this->assertNotNull($record);
         $this->assertEquals('google_sheets', $record->source);
         $this->assertEquals(28.5, $record->temperature);
-        $this->assertEquals(65.0, $record->humidity);
+        $this->assertNull($record->humidity);
         $this->assertEquals(70.0, $record->soil_moisture);
         $this->assertEquals(6.2, $record->ph);
         $this->assertEquals('ON', $record->reported_pump_state);
-        $this->assertEquals('OFF', $record->reported_fan_state);
+        $this->assertNull($record->reported_fan_state);
         $this->assertEquals(88.5, $record->fuzzy_score);
         $this->assertEquals('BAIK', $record->fuzzy_label);
     }
@@ -166,8 +166,8 @@ class GoogleSheetsTelemetryAndSecurityTest extends TestCase
                 '2026-10-16 10:11:00',
                 $this->plant->name,
                 27.0,
-                'invalid_num', // Non-numeric humidity
-                65.0, 6.5
+                60.0, // Retired humidity ignored
+                'invalid_num', 6.5
             ],
         ]);
 
@@ -358,6 +358,7 @@ class GoogleSheetsTelemetryAndSecurityTest extends TestCase
             'temperature'  => 28.5,
             'ph'           => 6.5,
             'humidity'     => 70.0,
+            'soil_moisture' => 70.0,
             'plant_height' => 55.0,
             'plant_density'=> 60.0,
             'condition'    => 'optimal',
@@ -382,6 +383,7 @@ class GoogleSheetsTelemetryAndSecurityTest extends TestCase
             'temperature'  => 28.5,
             'ph'           => 6.5,
             'humidity'     => 70.0,
+            'soil_moisture' => 70.0,
             'plant_height' => 55.0,
             'plant_density'=> 60.0,
         ], [
@@ -407,6 +409,7 @@ class GoogleSheetsTelemetryAndSecurityTest extends TestCase
             'temperature'  => 28.5,
             'ph'           => 6.5,
             'humidity'     => 70.0,
+            'soil_moisture' => 70.0,
             'plant_height' => 55.0,
             'plant_density'=> 60.0,
         ], [
@@ -431,6 +434,7 @@ class GoogleSheetsTelemetryAndSecurityTest extends TestCase
             'temperature'  => 28.5,
             'ph'           => 6.5,
             'humidity'     => 70.0,
+            'soil_moisture' => 70.0,
             'plant_height' => 55.0,
             'plant_density'=> 60.0,
         ]);
@@ -456,6 +460,7 @@ class GoogleSheetsTelemetryAndSecurityTest extends TestCase
             'temperature'     => 28.0,
             'ph'              => 6.2,
             'humidity'        => 68.0,
+            'soil_moisture' => 70.0,
             'plant_height'    => 50.0,
             'plant_density'   => 55.0,
             'condition'       => 'optimal',
@@ -571,7 +576,7 @@ class GoogleSheetsTelemetryAndSecurityTest extends TestCase
         // Test FuzzyInferenceResult DTO Serialization
         $fuzzyDto = new FuzzyInferenceResult(
             inferenceTimestamp: '2026-10-16 12:00:00',
-            inputValues: ['temperature' => 28.0, 'humidity' => 65.0],
+            inputValues: ['temperature' => 28.0, 'soil_moisture' => 70.0],
             method: 'Mamdani',
             score: 85.0,
             conditionCategory: 'OPTIMAL',

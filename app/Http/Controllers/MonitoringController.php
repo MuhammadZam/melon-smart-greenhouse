@@ -36,7 +36,7 @@ class MonitoringController extends Controller
             ->withQueryString();
 
         $plants = Plant::orderBy('name')->get();
-        $parameters = MonitoringParameter::all();
+        $parameters = MonitoringParameter::whereIn('parameter_key', \App\Support\ActiveSensors::STORAGE_KEYS)->get();
 
         $totalRecords = Monitoring::count();
         $filteredCount = $monitorings->total();
@@ -62,7 +62,7 @@ class MonitoringController extends Controller
     public function create(): View
     {
         $plants = Plant::orderBy('name')->get();
-        $parameters = MonitoringParameter::all();
+        $parameters = MonitoringParameter::whereIn('parameter_key', \App\Support\ActiveSensors::STORAGE_KEYS)->get();
         $defaultTime = now()->format('Y-m-d\TH:i');
 
         return view('monitorings.create', compact('plants', 'parameters', 'defaultTime'));
@@ -99,7 +99,7 @@ class MonitoringController extends Controller
     public function show(Monitoring $monitoring): View
     {
         $monitoring->load(['plant', 'latestFuzzyInference']);
-        $parameters = MonitoringParameter::all()->keyBy('parameter_name');
+        $parameters = MonitoringParameter::whereIn('parameter_key', \App\Support\ActiveSensors::STORAGE_KEYS)->get()->keyBy('parameter_name');
 
         return view('monitorings.show', compact('monitoring', 'parameters'));
     }
@@ -117,7 +117,7 @@ class MonitoringController extends Controller
 
         $monitoring->load('plant');
         $plants = Plant::orderBy('name')->get();
-        $parameters = MonitoringParameter::all();
+        $parameters = MonitoringParameter::whereIn('parameter_key', \App\Support\ActiveSensors::STORAGE_KEYS)->get();
 
         return view('monitorings.edit', compact('monitoring', 'plants', 'parameters'));
     }

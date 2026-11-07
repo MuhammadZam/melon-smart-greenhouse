@@ -20,6 +20,10 @@ class Actuator extends Model
     public const MODE_SIMULATION = 'simulation';
 
     protected $fillable = [
+        'control_mode', 'control_plant_id', 'auto_on_threshold', 'auto_off_threshold',
+        'max_runtime_seconds', 'min_rest_seconds', 'sensor_max_age_seconds',
+        'pump_started_at', 'pump_stopped_at', 'auto_armed_at', 'last_evaluated_at', 'last_scheduler_at', 'auto_after_monitoring_id',
+        'control_reason', 'control_version',
         'code',
         'name',
         'type',
@@ -35,6 +39,10 @@ class Actuator extends Model
     protected function casts(): array
     {
         return [
+            'auto_on_threshold' => 'float', 'auto_off_threshold' => 'float',
+            'max_runtime_seconds' => 'integer', 'min_rest_seconds' => 'integer', 'sensor_max_age_seconds' => 'integer',
+            'control_version' => 'integer', 'auto_after_monitoring_id' => 'integer',
+            'last_evaluated_at' => 'datetime', 'last_scheduler_at' => 'datetime', 'pump_started_at' => 'datetime', 'pump_stopped_at' => 'datetime', 'auto_armed_at' => 'datetime',
             'is_enabled'      => 'boolean',
             'last_changed_at' => 'datetime',
         ];

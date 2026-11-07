@@ -1,0 +1,36 @@
+{
+  "pdf_pages": 2,
+  "pdf_retired_labels": [],
+  "csv_retired_headers": [],
+  "csv_headers": [
+    "No",
+    "Waktu Monitoring",
+    "ID Tanaman",
+    "Nama Tanaman",
+    "Varietas",
+    "Lokasi",
+    "Sumber Data",
+    "ID Perangkat",
+    "Suhu Udara (\u00b0C)",
+    "Kelembapan Tanah (%)",
+    "pH air",
+    "Tinggi Tanaman (cm)",
+    "Kerapatan Kanopi (%)",
+    "Kondisi Tanaman",
+    "Warna Daun",
+    "Skor Fuzzy",
+    "Kategori Fuzzy",
+    "Versi Fuzzy",
+    "Validasi Fuzzy",
+    "Catatan Observasi"
+  ],
+  "csv_rows": 30,
+  "csv_column_counts": [
+    20
+  ],
+  "pdf_has_water_ph": true,
+  "pdf_has_provisional": true,
+  "pdf_correct_category_boundaries": true,
+  "csv_has_water_ph": true,
+  "passed": true
+}

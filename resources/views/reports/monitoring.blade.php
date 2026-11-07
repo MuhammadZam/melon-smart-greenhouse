@@ -19,7 +19,7 @@
                 Laporan Monitoring <span class="text-ink">Greenhouse Melon</span>
             </h2>
             <p class="text-xs sm:text-sm text-muted mt-0.5">
-                Penyajian statistik 8 parameter mikroklimat, ringkasan alarm, inferensi fuzzy, dan rekapitulasi data terverifikasi.
+                Statistik tiga sensor aktif, ringkasan alarm, inferensi fuzzy PROVISIONAL, dan riwayat observasi.
             </p>
         </div>
 
@@ -219,40 +219,15 @@
                         'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />',
                         'color' => 'emerald',
                     ],
-                    'humidity' => [
-                        'label' => 'Kelembapan Udara',
-                        'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />',
-                        'color' => 'teal',
-                    ],
                     'soil_moisture' => [
                         'label' => 'Kelembapan Tanah',
                         'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />',
                         'color' => 'sky',
                     ],
                     'ph' => [
-                        'label' => 'pH Nutrisi/Media',
+                        'label' => 'pH air',
                         'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />',
                         'color' => 'indigo',
-                    ],
-                    'ec' => [
-                        'label' => 'Konduktivitas Listrik (EC)',
-                        'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />',
-                        'color' => 'amber',
-                    ],
-                    'light_intensity' => [
-                        'label' => 'Intensitas Cahaya',
-                        'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />',
-                        'color' => 'yellow',
-                    ],
-                    'nutrient_temperature' => [
-                        'label' => 'Suhu Nutrisi',
-                        'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />',
-                        'color' => 'cyan',
-                    ],
-                    'tank_level' => [
-                        'label' => 'Level Tandon Nutrisi',
-                        'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />',
-                        'color' => 'blue',
                     ],
                 ];
             @endphp
@@ -297,7 +272,7 @@
 
     <!-- Alarm & Fuzzy Summary Cards (Periode Terpilih) -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <!-- Ringkasan Alarm 4 Parameter -->
+        <!-- Ringkasan Alarm 3 Parameter -->
         <div class="p-5 rounded-[2px] bg-canvas border border-line space-y-3">
             <div class="flex items-center justify-between border-b border-line pb-3">
                 <div class="flex items-center gap-2.5">
@@ -305,8 +280,8 @@
                         !
                     </div>
                     <div>
-                        <h4 class="text-xs sm:text-sm font-semibold text-current">Ringkasan Alarm 4 Parameter</h4>
-                        <p class="text-xs text-muted">Insiden batas Suhu, Kelembapan Udara, Kelembapan Tanah, dan pH</p>
+                        <h4 class="text-xs sm:text-sm font-semibold text-current">Ringkasan Alarm 3 Parameter</h4>
+                        <p class="text-xs text-muted">Insiden batas suhu udara, kelembapan tanah/media, dan pH air</p>
                     </div>
                 </div>
                 <span class="text-xs tabular-nums font-semibold px-2 py-0.5 rounded-[2px] bg-surface text-ink border border-line">
@@ -435,13 +410,10 @@
                             <th class="py-3 px-3.5 font-semibold">Tanaman</th>
                             <th class="py-3 px-3 font-semibold">Sumber</th>
                             <th class="py-3 px-3 font-semibold">Suhu (°C)</th>
-                            <th class="py-3 px-3 font-semibold">Lembap (%)</th>
+
                             <th class="py-3 px-3 font-semibold">Tanah (%)</th>
-                            <th class="py-3 px-3 font-semibold">pH</th>
-                            <th class="py-3 px-3 font-semibold">EC (mS)</th>
-                            <th class="py-3 px-3 font-semibold">Cahaya (lux)</th>
-                            <th class="py-3 px-3 font-semibold">Suhu Nutrisi</th>
-                            <th class="py-3 px-3 font-semibold">Tandon (%)</th>
+                            <th class="py-3 px-3 font-semibold">pH air</th>
+
                             <th class="py-3 px-3.5 font-semibold">Kondisi</th>
                             <th class="py-3 px-3.5 font-semibold">Fuzzy</th>
                             <th class="py-3 px-3.5 font-semibold text-right">Aksi</th>
@@ -480,27 +452,14 @@
                                 <td class="py-2.5 px-3 text-ink">
                                     {{ $m->temperature !== null ? number_format($m->temperature, 1) : '-' }}
                                 </td>
-                                <td class="py-2.5 px-3 text-ink">
-                                    {{ $m->humidity !== null ? number_format($m->humidity, 1) : '-' }}
-                                </td>
+
                                 <td class="py-2.5 px-3 text-ink">
                                     {{ $m->soil_moisture !== null ? number_format($m->soil_moisture, 1) : '-' }}
                                 </td>
                                 <td class="py-2.5 px-3 text-ink">
                                     {{ $m->ph !== null ? number_format($m->ph, 2) : '-' }}
                                 </td>
-                                <td class="py-2.5 px-3 text-ink text-xs">
-                                    {{ $m->ec !== null ? number_format($m->ec, 2) : '-' }}
-                                </td>
-                                <td class="py-2.5 px-3 text-ink text-xs">
-                                    {{ $m->light_intensity !== null ? number_format($m->light_intensity, 0) : '-' }}
-                                </td>
-                                <td class="py-2.5 px-3 text-ink text-xs">
-                                    {{ $m->nutrient_temperature !== null ? number_format($m->nutrient_temperature, 1) : '-' }}
-                                </td>
-                                <td class="py-2.5 px-3 text-ink text-xs">
-                                    {{ $m->tank_level !== null ? number_format($m->tank_level, 0) : '-' }}
-                                </td>
+
                                 <td class="py-2.5 px-3.5 font-sans whitespace-nowrap">
                                     <span class="text-xs text-ink">{{ $m->plant_condition ?? '-' }}</span>
                                 </td>

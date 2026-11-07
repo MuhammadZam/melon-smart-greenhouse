@@ -17,7 +17,7 @@ class AlarmParameterKeySeeder extends Seeder
             'Suhu Udara'                   => ['key' => 'temperature',          'crit_min' => null,   'crit_max' => 38.0],
             'Kelembapan Udara'             => ['key' => 'humidity',             'crit_min' => 40.0,  'crit_max' => 95.0],
             'Kelembapan Tanah'             => ['key' => 'soil_moisture',        'crit_min' => 30.0,  'crit_max' => null],
-            'pH Nutrisi/Media'             => ['key' => 'ph',                   'crit_min' => 4.5,   'crit_max' => 8.5],
+            'pH air'             => ['key' => 'ph',                   'crit_min' => 4.5,   'crit_max' => 8.5],
             'Konduktivitas Listrik (EC)'   => ['key' => 'ec',                   'crit_min' => 0.5,   'crit_max' => 4.0],
             'Intensitas Cahaya'            => ['key' => 'light_intensity',      'crit_min' => 5000,  'crit_max' => null],
             'Suhu Nutrisi'                 => ['key' => 'nutrient_temperature', 'crit_min' => 15.0,  'crit_max' => 32.0],

@@ -1,0 +1,377 @@
+LAPORAN DOKUMENTASI & ANALISIS MONITORING GREENHOUSE
+Sistem Web Monitoring Tanaman Melon (Smart Greenhouse IoT)
+Laboratorium Agroteknologi & Instrumentasi Cerdas • Universitas / Institusi Penelitian
+PROVISIONAL
+Dicetak: 07 Nov 2026, 21:53:53 WIB
+Periode Observasi:
+Semua Periode Terdata di Database
+Tanaman Terpilih:
+Semua Tanaman (Agregasi Seluruh Blok)
+Filter Sumber Data:
+Semua Sumber (Web, API, Google Sheets, Simulator)
+Operator / Pencetak:
+Administrator Melon (Admin)
+Total Data Tercatat:
+30 entri observasi
+Lingkup Agregasi:
+Gabungan akumulasi seluruh observasi tanaman melon yang memenuhi
+kriteria filter.
+1. RINGKASAN STATISTIK 3 PARAMETER SENSOR GREENHOUSE
+PARAMETER SENSOR LINGKUNGAN
+SATUAN
+RATA-RATA (AVG)
+MINIMUM (MIN)
+MAKSIMUM (MAX)
+STATUS
+Suhu Udara Greenhouse
+°C
+26.94
+25.06
+40.00
+TERDATA
+Kelembapan Media/Tanah
+%
+74.27
+70.00
+78.00
+TERDATA
+pH air
+6.61
+6.40
+6.80
+TERDATA
+2. RINGKASAN INSIDEN ALARM (3 PARAMETER UTAMA)
+KATEGORI ALARM
+JUMLAH KASUS
+KETERANGAN OPERASIONAL
+Total Insiden Terdeteksi
+1
+Insiden deviasi nilai ambang batas
+Tingkat Kritis (Critical)
+1
+Membutuhkan tindakan darurat
+Tingkat Peringatan (Warning)
+0
+Deviasi ringan di luar rentang optimal
+Status Selesai (Resolved)
+0
+Selesai sesuai catatan audit alarm
+3. RINGKASAN ANALISIS LOGIKA FUZZY MAMDANI
+METRIK FUZZY MAMDANI
+NILAI / JUMLAH
+STATUS KLASIFIKASI
+Rata-Rata Skor Kondisi
+70.59
+Rentang skor kontinu [0 – 100]
+Kondisi BAIK [65 – 100]
+1
+Kategori perangkat lunak PROVISIONAL
+Kondisi PERLU PERHATIAN [40 <= skor < 65]
+1
+Kategori perangkat lunak PROVISIONAL
+Kondisi BURUK [0 <= skor < 40]
+0
+Kategori perangkat lunak PROVISIONAL
+4. TABEL RINCIAN REKAMAN MONITORING
+NO
+WAKTU
+TANAMAN
+SUMBER
+SUHU (°C)
+TANAH (%)
+PH AIR
+KONDISI
+FUZZY
+1
+07/11/26 21:11
+Melon Natus Plot 16526
+web
+27.0
+70.0
+6.50
+optimal
+86.2
+2
+07/11/26 21:10
+Melon Natus Plot 16526
+api
+40.0
+70.0
+6.50
+optimal
+55.0
+3
+07/11/26 09:00
+Melon Sky Rocket - Greenhouse C
+api
+26.5
+72.0
+6.80
+Subur & Baik
+-
+4
+07/11/26 09:00
+Melon Rock Action - Greenhouse B
+api
+26.5
+72.0
+6.80
+Subur & Baik
+-
+5
+07/11/26 09:00
+Melon Golden Aroma - Greenhouse A
+api
+26.5
+72.0
+6.80
+Subur & Baik
+-
+6
+07/11/26 09:00
+Melon Natus Plot 16526
+api
+26.5
+72.0
+6.80
+Subur & Baik
+-
+7
+06/11/26 09:00
+Melon Sky Rocket - Greenhouse C
+api
+27.8
+75.0
+6.71
+Subur & Baik
+-
+8
+06/11/26 09:00
+Melon Rock Action - Greenhouse B
+api
+27.8
+75.0
+6.71
+Subur & Baik
+-
+
+NO
+WAKTU
+TANAMAN
+SUMBER
+SUHU (°C)
+TANAH (%)
+PH AIR
+KONDISI
+FUZZY
+9
+06/11/26 09:00
+Melon Golden Aroma - Greenhouse A
+api
+27.8
+75.0
+6.71
+Subur & Baik
+-
+10
+06/11/26 09:00
+Melon Natus Plot 16526
+api
+27.8
+75.0
+6.71
+Subur & Baik
+-
+11
+05/11/26 09:00
+Melon Sky Rocket - Greenhouse C
+api
+27.9
+78.0
+6.52
+Subur & Baik
+-
+12
+05/11/26 09:00
+Melon Rock Action - Greenhouse B
+api
+27.9
+78.0
+6.52
+Subur & Baik
+-
+13
+05/11/26 09:00
+Melon Golden Aroma - Greenhouse A
+api
+27.9
+78.0
+6.52
+Subur & Baik
+-
+14
+05/11/26 09:00
+Melon Natus Plot 16526
+api
+27.9
+78.0
+6.52
+Subur & Baik
+-
+15
+04/11/26 09:00
+Melon Sky Rocket - Greenhouse C
+api
+26.7
+72.0
+6.40
+Subur & Baik
+-
+16
+04/11/26 09:00
+Melon Rock Action - Greenhouse B
+api
+26.7
+72.0
+6.40
+Subur & Baik
+-
+17
+04/11/26 09:00
+Melon Golden Aroma - Greenhouse A
+api
+26.7
+72.0
+6.40
+Subur & Baik
+-
+18
+04/11/26 09:00
+Melon Natus Plot 16526
+api
+26.7
+72.0
+6.40
+Subur & Baik
+-
+19
+03/11/26 09:00
+Melon Sky Rocket - Greenhouse C
+api
+25.4
+75.0
+6.47
+Subur & Baik
+-
+20
+03/11/26 09:00
+Melon Rock Action - Greenhouse B
+api
+25.4
+75.0
+6.47
+Subur & Baik
+-
+21
+03/11/26 09:00
+Melon Golden Aroma - Greenhouse A
+api
+25.4
+75.0
+6.47
+Subur & Baik
+-
+22
+03/11/26 09:00
+Melon Natus Plot 16526
+api
+25.4
+75.0
+6.47
+Subur & Baik
+-
+23
+02/11/26 09:00
+Melon Sky Rocket - Greenhouse C
+api
+25.1
+78.0
+6.66
+Subur & Baik
+-
+24
+02/11/26 09:00
+Melon Rock Action - Greenhouse B
+api
+25.1
+78.0
+6.66
+Subur & Baik
+-
+25
+02/11/26 09:00
+Melon Golden Aroma - Greenhouse A
+api
+25.1
+78.0
+6.66
+Subur & Baik
+-
+26
+02/11/26 09:00
+Melon Natus Plot 16526
+api
+25.1
+78.0
+6.66
+Subur & Baik
+-
+27
+01/11/26 09:00
+Melon Sky Rocket - Greenhouse C
+api
+26.1
+72.0
+6.79
+Subur & Baik
+-
+28
+01/11/26 09:00
+Melon Rock Action - Greenhouse B
+api
+26.1
+72.0
+6.79
+Subur & Baik
+-
+29
+01/11/26 09:00
+Melon Golden Aroma - Greenhouse A
+api
+26.1
+72.0
+6.79
+Subur & Baik
+-
+30
+01/11/26 09:00
+Melon Natus Plot 16526
+api
+26.1
+72.0
+6.79
+Subur & Baik
+-
+Catatan Integritas Akademik & Batasan Sistem:
+1. Status Kontrol Aktuator: Seluruh modul aktuator (Pompa air PUMP-01) beroperasi dalam model Simulasi Database untuk tujuan validasi perangkat lunak akademik dan bukan merupakan saklar fisik tertutup (*closed-loop physical relay*).
+2. Logika Fuzzy Mamdani: Versi lokal v2.0-three-input-PROVISIONAL, 8 aturan, tiga input. PROVISIONAL: belum disahkan Tim Elektro/pembimbing; bukan diagnosis atau instruksi tindakan lapangan. Skor historis/eksternal dapat berasal
+dari model lain.
+3. Kebijakan Alarm 3 Parameter: Suhu udara, kelembapan tanah/media, dan pH air. Threshold dipertahankan dari konfigurasi database; PROVISIONAL sampai divalidasi Tim Elektro.
+Mengetahui,
+Penanggung Jawab Greenhouse / Dosen Pembimbing
+______________________________________
+NIP / Identitas Akademik
+Dibuat Oleh,
+Operator Pemantau / Tim Peneliti
+Administrator Melon (Admin)
+Sistem Web Monitoring Tanaman Melon

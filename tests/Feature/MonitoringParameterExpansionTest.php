@@ -2,422 +2,141 @@
 
 namespace Tests\Feature;
 
-use App\Models\Monitoring;
-use App\Models\Plant;
-use App\Models\User;
+use App\Models\{Monitoring, Plant, User, Actuator, MonitoringAlarm};
+use App\Services\GoogleSheets\GoogleSheetsTelemetryService;
+use App\Services\FuzzyLogic\FuzzyPipelineService;
 use Tests\TestCase;
 
+/** Final three-sensor contract supersedes the eight-sensor expansion contract. */
 class MonitoringParameterExpansionTest extends TestCase
 {
-    protected Plant $plant;
-    protected User $admin;
-    protected User $pengamat;
-
-    protected function setUp(): void
+    private function payload(): array
     {
-        parent::setUp();
+        return ['plant_id' => Plant::first()->id, 'monitored_at' => now()->toIso8601String(),
+            'temperature' => 27, 'soil_moisture' => 70, 'water_ph' => 6.5, 'event_id' => 'three-input-event'];
+    }
+
+    public function test_minimal_three_sensor_payload_replay_and_conflict(): void
+    {
+        $this->authenticateDevice(); $payload = $this->payload();
+        $before = Monitoring::count();
+        $first = $this->postJson('/api/monitorings', $payload)->assertCreated()->assertJsonPath('data.water_ph', 6.5);
+        foreach (['humidity', 'ec', 'light_intensity', 'nutrient_temperature', 'tank_level', 'ph'] as $key) {
+            $first->assertJsonMissingPath('data.'.$key);
+        }
+        $id = $first->json('data.id');
+        $this->postJson('/api/monitorings', $payload)->assertOk()->assertJsonPath('data.id', $id);
+        $this->postJson('/api/monitorings', array_replace($payload, ['water_ph' => 7]))->assertConflict();
+        $this->assertSame($before + 1, Monitoring::count());
+        $this->assertNull(Monitoring::find($id)->humidity);
+    }
+
+    public function test_old_alias_and_retired_garbage_are_compatible_but_not_saved(): void
+    {
+        $this->authenticateDevice(); $payload = $this->payload();
+        unset($payload['water_ph']); $payload['ph'] = 6.5;
+        foreach (['humidity', 'ec', 'light_intensity', 'nutrient_temperature', 'tank_level'] as $key) $payload[$key] = 'retired-invalid';
+        $id = $this->postJson('/api/monitorings', $payload)->assertCreated()->json('data.id');
+        $row = Monitoring::find($id);
+        foreach (['humidity', 'ec', 'light_intensity', 'nutrient_temperature', 'tank_level'] as $key) $this->assertNull($row->$key);
+        $this->assertEquals(6.5, $row->ph);
+    }
+
+    public function test_missing_soil_is_rejected_without_fabricating_a_reading(): void
+    {
+        $this->authenticateDevice(); $payload = $this->payload(); unset($payload['soil_moisture']);
+        $this->postJson('/api/monitorings', $payload)->assertUnprocessable()->assertJsonValidationErrors('soil_moisture');
+    }
+
+    public function test_conflicting_ph_aliases_are_rejected(): void
+    {
         $this->authenticateDevice();
-
-        $this->plant = Plant::first() ?? Plant::create([
-            'name' => 'Melon Golden Aroma Test',
-            'variety' => 'Golden Aroma',
-            'location' => 'Greenhouse Alpha',
-            'planted_at' => now()->subDays(30),
-            'status' => 'active',
-            'notes' => 'Tanaman uji test expansion',
-        ]);
-
-        $this->admin = User::firstWhere('email', 'admin@melon.com') ?? User::create([
-            'name' => 'Administrator Test',
-            'email' => 'admin@melon.com',
-            'password' => bcrypt('password123'),
-            'role' => 'admin',
-        ]);
-
-        $this->pengamat = User::firstWhere('email', 'pengamat@melon.com') ?? User::create([
-            'name' => 'Pengamat Test',
-            'email' => 'pengamat@melon.com',
-            'password' => bcrypt('password123'),
-            'role' => 'user',
-        ]);
+        $this->postJson('/api/monitorings', $this->payload() + ['ph' => 7])->assertUnprocessable()->assertJsonValidationErrors('water_ph');
     }
 
-    /**
-     * 1. Test Ingestion Payload Lengkap (8 Parameter Sensor)
-     */
-    public function test_can_ingest_complete_eight_parameter_payload(): void
+    public function test_active_sensor_physical_validation(): void
     {
-        $payload = [
-            'plant_id' => $this->plant->id,
-            'monitored_at' => '2026-10-14 11:00:00',
-            'temperature' => 28.5,
-            'humidity' => 72.0,
-            'soil_moisture' => 68.5,
-            'ph' => 6.45,
-            'ec' => 2.30,
-            'light_intensity' => 32000.0,
-            'nutrient_temperature' => 24.2,
-            'tank_level' => 88.0,
-            'plant_height' => 78.5,
-            'canopy_density' => 65.0,
-            'condition' => 'optimal',
-            'leaf_color' => 'Hijau Segar',
-            'notes' => 'Uji lengkap 8 sensor telemetri',
-        ];
-
-        $response = $this->postJson('/api/monitorings', $payload);
-
-        $response->assertStatus(201)
-            ->assertJson([
-                'success' => true,
-                'message' => 'Data monitoring berhasil disimpan.',
-                'data' => [
-                    'plant_id' => $this->plant->id,
-                    'temperature' => 28.5,
-                    'humidity' => 72.0,
-                    'soil_moisture' => 68.5,
-                    'ph' => 6.45,
-                    'ec' => 2.30,
-                    'light_intensity' => 32000.0,
-                    'nutrient_temperature' => 24.2,
-                    'tank_level' => 88.0,
-                    'plant_height' => 78.5,
-                    'canopy_density' => 65.0,
-                    'condition' => 'optimal',
-                    'leaf_color' => 'Hijau Segar',
-                ],
-            ]);
-
-        $this->assertDatabaseHas('monitorings', [
-            'plant_id' => $this->plant->id,
-            'ec' => 2.30,
-            'soil_moisture' => 68.5,
-            'light_intensity' => 32000.0,
-            'nutrient_temperature' => 24.2,
-            'tank_level' => 88.0,
-        ]);
-    }
-
-    /**
-     * 2. Test Ingestion Payload Legacy (Backward Compatibility Phase 1-10)
-     */
-    public function test_can_ingest_legacy_payload_without_new_parameters(): void
-    {
-        $payload = [
-            'plant_id' => $this->plant->id,
-            'monitored_at' => '2026-10-14 11:15:00',
-            'temperature' => 27.8,
-            'humidity' => 75.2,
-            'ph' => 6.20,
-            'plant_height' => 60.0,
-            'canopy_density' => 58.0,
-            'condition' => 'optimal',
-            'leaf_color' => 'Hijau Segar',
-            'notes' => 'Payload legacy lama tanpa parameter baru',
-        ];
-
-        $response = $this->postJson('/api/monitorings', $payload);
-
-        $response->assertStatus(201)
-            ->assertJson([
-                'success' => true,
-                'data' => [
-                    'plant_id' => $this->plant->id,
-                    'temperature' => 27.8,
-                    'humidity' => 75.2,
-                    'ph' => 6.20,
-                    'ec' => null,
-                    'soil_moisture' => null,
-                    'light_intensity' => null,
-                    'nutrient_temperature' => null,
-                    'tank_level' => null,
-                ],
-            ]);
-
-        // Verifikasi bahwa null TIDAK dikonversi menjadi 0
-        $data = $response->json('data');
-        $this->assertNull($data['ec']);
-        $this->assertNull($data['soil_moisture']);
-        $this->assertNull($data['light_intensity']);
-        $this->assertNull($data['nutrient_temperature']);
-        $this->assertNull($data['tank_level']);
-    }
-
-    /**
-     * 3. Test Ingestion Payload Parsial (Sebagian Sensor Saja)
-     */
-    public function test_can_ingest_partial_sensor_payload(): void
-    {
-        $payload = [
-            'plant_id' => $this->plant->id,
-            'monitored_at' => '2026-10-14 11:30:00',
-            'temperature' => 29.0,
-            'humidity' => 69.5,
-            'ph' => 6.30,
-            'plant_height' => 50.0,
-            'plant_density' => 55.0,
-            'plant_condition' => 'Subur & Baik',
-            // Hanya 2 dari 5 parameter baru yang dikirim (parsial)
-            'ec' => 2.15,
-            'soil_moisture' => 72.0,
-        ];
-
-        $response = $this->postJson('/api/monitorings', $payload);
-
-        $response->assertStatus(201)
-            ->assertJson([
-                'success' => true,
-                'data' => [
-                    'temperature' => 29.0,
-                    'humidity' => 69.5,
-                    'ph' => 6.30,
-                    'ec' => 2.15,
-                    'soil_moisture' => 72.0,
-                    'light_intensity' => null,
-                    'nutrient_temperature' => null,
-                    'tank_level' => null,
-                ],
-            ]);
-
-        $data = $response->json('data');
-        $this->assertEquals(2.15, $data['ec']);
-        $this->assertEquals(72.0, $data['soil_moisture']);
-        $this->assertNull($data['light_intensity']);
-        $this->assertNull($data['nutrient_temperature']);
-        $this->assertNull($data['tank_level']);
-    }
-
-    /**
-     * 4. Test Validasi Batas Fisik Parameter Sensor (Rejection HTTP 422)
-     */
-    public function test_validates_physical_boundaries_for_all_parameters(): void
-    {
-        // Uji nilai EC di luar batas fisik (> 20.0 mS/cm)
-        $response = $this->postJson('/api/monitorings', [
-            'plant_id' => $this->plant->id,
-            'ec' => 25.5,
-        ]);
-        $response->assertStatus(422)->assertJsonValidationErrors(['ec']);
-
-        // Uji nilai kelembapan tanah di luar batas fisik (> 100%)
-        $response = $this->postJson('/api/monitorings', [
-            'plant_id' => $this->plant->id,
-            'soil_moisture' => 120.0,
-        ]);
-        $response->assertStatus(422)->assertJsonValidationErrors(['soil_moisture']);
-
-        // Uji intensitas cahaya negatif
-        $response = $this->postJson('/api/monitorings', [
-            'plant_id' => $this->plant->id,
-            'light_intensity' => -100.0,
-        ]);
-        $response->assertStatus(422)->assertJsonValidationErrors(['light_intensity']);
-
-        // Uji suhu nutrisi di atas 60°C
-        $response = $this->postJson('/api/monitorings', [
-            'plant_id' => $this->plant->id,
-            'nutrient_temperature' => 75.0,
-        ]);
-        $response->assertStatus(422)->assertJsonValidationErrors(['nutrient_temperature']);
-
-        // Uji level tandon di luar 0-100%
-        $response = $this->postJson('/api/monitorings', [
-            'plant_id' => $this->plant->id,
-            'tank_level' => 105.0,
-        ]);
-        $response->assertStatus(422)->assertJsonValidationErrors(['tank_level']);
-    }
-
-    /**
-     * 5. Test Endpoint Statistik Mengagregasikan 8 Parameter Sensor
-     */
-    public function test_api_statistics_includes_all_eight_parameters(): void
-    {
-        $response = $this->actingAs($this->pengamat)->getJson('/api/monitorings/statistics?plant_id=' . $this->plant->id);
-
-        $response->assertStatus(200)
-            ->assertJson([
-                'success' => true,
-                'message' => 'Statistik monitoring berhasil diambil.',
-            ])
-            ->assertJsonStructure([
-                'data' => [
-                    'total_monitorings',
-                    'average_temperature',
-                    'minimum_temperature',
-                    'maximum_temperature',
-                    'average_nutrient_temperature',
-                    'minimum_nutrient_temperature',
-                    'maximum_nutrient_temperature',
-                    'average_ph',
-                    'minimum_ph',
-                    'maximum_ph',
-                    'average_ec',
-                    'minimum_ec',
-                    'maximum_ec',
-                    'average_humidity',
-                    'minimum_humidity',
-                    'maximum_humidity',
-                    'average_soil_moisture',
-                    'minimum_soil_moisture',
-                    'maximum_soil_moisture',
-                    'average_light_intensity',
-                    'minimum_light_intensity',
-                    'maximum_light_intensity',
-                    'average_tank_level',
-                    'minimum_tank_level',
-                    'maximum_tank_level',
-                    'average_plant_height',
-                    'minimum_plant_height',
-                    'maximum_plant_height',
-                    'average_canopy_density',
-                    'minimum_canopy_density',
-                    'maximum_canopy_density',
-                ],
-            ]);
-    }
-
-    /**
-     * 6. Test Endpoint Summary Dashboard Menyertakan Pembacaan Sensor Terbaru
-     */
-    public function test_api_dashboard_summary_includes_latest_sensor_readings(): void
-    {
-        $response = $this->actingAs($this->pengamat)->getJson('/api/dashboard/summary');
-
-        $response->assertStatus(200)
-            ->assertJsonStructure([
-                'data' => [
-                    'total_plants',
-                    'active_plants',
-                    'latest_monitoring',
-                    'latest_temperature',
-                    'latest_ph',
-                    'latest_humidity',
-                    'latest_ec',
-                    'latest_soil_moisture',
-                    'latest_light_intensity',
-                    'latest_nutrient_temperature',
-                    'latest_tank_level',
-                ],
-            ]);
-    }
-
-    /**
-     * 7. Test Admin Dapat Menyimpan dan Mengedit Parameter Baru via Web Form
-     */
-    public function test_admin_can_create_and_update_monitoring_with_new_parameters_via_web(): void
-    {
-        $createData = [
-            'plant_id' => $this->plant->id,
-            'monitored_at' => now()->format('Y-m-d\TH:i'),
-            'temperature' => 28.0,
-            'ph' => 6.5,
-            'humidity' => 75.0,
-            'nutrient_temperature' => 23.5,
-            'ec' => 2.1,
-            'soil_moisture' => 70.0,
-            'light_intensity' => 30000.0,
-            'tank_level' => 85.0,
-            'plant_height' => 50.0,
-            'plant_density' => 60.0,
-            'plant_condition' => 'Subur & Baik',
-            'plant_color' => 'Hijau Segar',
-            'notes' => 'Entri web form admin',
-        ];
-
-        $response = $this->actingAs($this->admin)->post(route('monitorings.store'), $createData);
-        $response->assertRedirect(route('monitorings.index'));
-
-        $monitoring = Monitoring::latest('id')->first();
-        $this->assertNotNull($monitoring);
-        $this->assertEquals(2.1, $monitoring->ec);
-        $this->assertEquals(70.0, $monitoring->soil_moisture);
-
-        // Update via web
-        $updateData = array_merge($createData, [
-            'ec' => 2.4,
-            'soil_moisture' => 73.0,
-            'notes' => 'Entri web form update',
-        ]);
-
-        $updateResponse = $this->actingAs($this->admin)->put(route('monitorings.update', $monitoring), $updateData);
-        $updateResponse->assertRedirect(route('monitorings.index'));
-
-        $monitoring->refresh();
-        $this->assertEquals(2.4, $monitoring->ec);
-        $this->assertEquals(73.0, $monitoring->soil_moisture);
-    }
-
-    /**
-     * 8. Test Otorisasi RBAC: Pengamat Dapat Input Data Baru, Namun Dilarang Mengedit/Menghapus
-     */
-    public function test_pengamat_access_control_for_monitoring_web_routes(): void
-    {
-        $monitoring = Monitoring::first();
-
-        // Pengamat diizinkan membuka formulir input pengamatan baru
-        $createResponse = $this->actingAs($this->pengamat)->get(route('monitorings.create'));
-        $createResponse->assertStatus(200);
-
-        // Pengamat DILARANG mengedit data observasi yang sudah tersimpan (Hanya Admin)
-        if ($monitoring) {
-            $editResponse = $this->actingAs($this->pengamat)->get(route('monitorings.edit', $monitoring));
-            $editResponse->assertStatus(403);
-
-            $deleteResponse = $this->actingAs($this->pengamat)->delete(route('monitorings.destroy', $monitoring));
-            $deleteResponse->assertStatus(403);
+        $this->authenticateDevice();
+        foreach (['temperature' => -1, 'soil_moisture' => 101, 'water_ph' => 15] as $key => $value) {
+            $this->postJson('/api/monitorings', array_replace($this->payload(), [$key => $value]))->assertUnprocessable();
         }
     }
 
-    /**
-     * 9. Test Halaman Dashboard Web Merender Seluruh Chart Baru dan Empty State
-     */
-    public function test_dashboard_web_view_renders_all_sensor_charts(): void
+    public function test_api_statistics_and_summary_only_publish_active_sensors(): void
     {
-        $response = $this->actingAs($this->pengamat)->get(route('dashboard'));
-
-        $response->assertStatus(200);
-        $response->assertSee('tempChart');
-        $response->assertSee('phChart');
-        $response->assertSee('humidityChart');
-        $response->assertSee('ecChart');
-        $response->assertSee('soilMoistureChart');
-        $response->assertSee('lightChart');
-        $response->assertSee('nutrientTempChart');
-        $response->assertSee('tankLevelChart');
+        $this->actingAs(User::first());
+        $this->getJson('/api/monitorings/statistics')->assertOk()->assertJsonStructure(['data' => ['temperature', 'soil_moisture', 'water_ph']])->assertJsonMissingPath('data.humidity')->assertJsonMissingPath('data.ec');
+        $this->getJson('/api/dashboard/summary')->assertOk()->assertJsonStructure(['data' => ['latest_temperature', 'latest_soil_moisture', 'latest_water_ph']])->assertJsonMissingPath('data.latest_humidity');
     }
 
-    /**
-     * 10. Test Halaman Detail Monitoring Menampilkan 8 Parameter Sensor
-     */
-    public function test_monitoring_show_view_displays_expanded_parameters(): void
+    public function test_historical_values_survive_web_update(): void
     {
-        $monitoring = Monitoring::create([
-            'plant_id' => $this->plant->id,
-            'monitored_at' => now(),
-            'temperature' => 28.0,
-            'ph' => 6.5,
-            'humidity' => 70.0,
-            'ec' => 2.2,
-            'soil_moisture' => 75.0,
-            'light_intensity' => 35000.0,
-            'nutrient_temperature' => 24.0,
-            'tank_level' => 90.0,
-            'plant_height' => 60.0,
-            'plant_density' => 65.0,
-            'plant_condition' => 'Subur & Baik',
-            'plant_color' => 'Hijau Segar',
-            'notes' => 'Observasi detail',
-        ]);
+        $row = Monitoring::factory()->create(['plant_id' => Plant::first()->id, 'humidity' => 75, 'ec' => 2.3]);
+        $this->actingAs(User::where('role', 'admin')->first());
+        $this->put(route('monitorings.update', $row), ['plant_id' => $row->plant_id, 'monitored_at' => now()->format('Y-m-d H:i:s'), 'temperature' => 28, 'water_ph' => 6.7, 'soil_moisture' => 72, 'plant_condition' => 'optimal', 'plant_color' => 'Hijau'])->assertRedirect();
+        $this->assertEquals(75, $row->fresh()->humidity); $this->assertEquals(2.3, $row->fresh()->ec);
+    }
 
-        $response = $this->actingAs($this->pengamat)->get(route('monitorings.show', $monitoring));
+    public function test_sheets_old_and_new_explicit_positional_layouts(): void
+    {
+        $parser = app(GoogleSheetsTelemetryService::class);
+        $old = ['SHEET-REV', now()->format('Y-m-d H:i:s'), Plant::first()->name, 27, 'retired', 70, 6.5, 'garbage'];
+        config(['services.google_sheets.telemetry_layout' => 'legacy']);
+        $this->assertTrue($parser->parseAndValidateRow($old, 2)['valid']);
+        config(['services.google_sheets.telemetry_layout' => 'three_input']);
+        $new = ['SHEET-REV', now()->format('Y-m-d H:i:s'), Plant::first()->name, 27, 70, 6.5];
+        $parsed = $parser->parseAndValidateRow($new, 2);
+        $this->assertTrue($parsed['valid']); $this->assertEquals(70, $parsed['data']['soil_moisture']);
+        $this->assertArrayNotHasKey('humidity', $parsed['data']);
+    }
 
-        $response->assertStatus(200);
-        $response->assertSee('2.20');
-        $response->assertSee('mS/cm');
-        $response->assertSee('75.0');
-        $response->assertSee('35,000');
-        $response->assertSee('24.0');
-        $response->assertSee('90.0');
+    public function test_fuzzy_does_not_need_humidity_and_preserves_old_inference(): void
+    {
+        $row = Monitoring::factory()->create(['plant_id' => Plant::first()->id, 'temperature' => 27, 'soil_moisture' => 70, 'ph' => 6.5, 'humidity' => null, 'monitored_at' => now()]);
+        $old = $row->fuzzyInferences()->create(['plant_id' => $row->plant_id, 'rule_version' => 'v1.0-provisional', 'inference_source' => 'web_form', 'inference_status' => 'AVAILABLE', 'fuzzy_score' => 50, 'inferred_at' => now()]);
+        $result = app(FuzzyPipelineService::class)->process($row, 'web_form');
+        $this->assertSame('AVAILABLE', $result->inference_status);
+        $this->assertSame(['temperature', 'soil_moisture', 'water_ph'], array_keys($result->input_snapshot));
+        $this->assertEquals(50, $old->fresh()->fuzzy_score);
+        $this->assertSame(2, $row->fuzzyInferences()->count());
+    }
+
+    public function test_old_fan_is_hidden_and_direct_control_is_rejected(): void
+    {
+        $fan = Actuator::create(['code' => 'FAN-01', 'name' => 'Retired fan', 'type' => Actuator::TYPE_EXHAUST_FAN, 'mode' => 'simulation', 'simulation_state' => 'OFF', 'is_enabled' => true]);
+        $this->actingAs(User::where('role', 'admin')->first());
+        $this->get(route('actuators.index'))->assertOk()->assertSee('PUMP-01')->assertDontSee('FAN-01');
+        $this->postJson(route('actuators.control', $fan), ['command' => 'TURN_ON'])->assertUnprocessable();
+        $this->assertSame('OFF', $fan->fresh()->simulation_state);
+    }
+
+    public function test_retired_alarm_is_excluded_but_remains_in_database(): void
+    {
+        $row = Monitoring::first();
+        $alarm = MonitoringAlarm::create(['plant_id' => $row->plant_id, 'triggered_by_monitoring_id' => $row->id, 'parameter_key' => 'humidity', 'parameter_display_name' => 'Legacy humidity', 'sensor_value' => 99, 'threshold_min' => 60, 'threshold_max' => 85, 'severity' => 'warning', 'status' => 'active', 'violation_direction' => 'above_maximum', 'first_detected_at' => now()]);
+        $this->assertFalse(MonitoringAlarm::active()->whereKey($alarm->id)->exists());
+        $this->assertTrue(MonitoringAlarm::whereKey($alarm->id)->exists());
+        $this->actingAs(User::first())->get(route('alarms.show', $alarm))->assertNotFound();
+    }
+
+    public function test_seeder_preserves_historical_ph_registry_and_thresholds(): void
+    {
+        $parameter = \App\Models\MonitoringParameter::where('parameter_key', 'ph')->firstOrFail();
+        $parameter->update(['parameter_name' => 'pH Nutrisi/Media', 'minimum_value' => 6.1, 'maximum_value' => 7.1]);
+        $before = \App\Models\MonitoringParameter::count();
+        $this->seed(\Database\Seeders\MonitoringParameterSeeder::class);
+        $this->assertSame($before, \App\Models\MonitoringParameter::count());
+        $this->assertEquals(6.1, $parameter->fresh()->minimum_value);
+        $this->assertEquals(7.1, $parameter->fresh()->maximum_value);
+        $this->assertSame('pH Nutrisi/Media', $parameter->fresh()->getRawOriginal('parameter_name'));
+    }
+
+    public function test_dashboard_forms_and_reports_hide_retired_sensor_features(): void
+    {
+        $this->actingAs(User::where('role', 'admin')->first());
+        foreach (['/dashboard', '/monitorings', '/monitorings/create', '/reports/monitoring', '/'] as $url) {
+            $response = $this->get($url)->assertOk();
+            foreach (['Kelembapan Udara', 'EC Nutrisi', 'Intensitas Cahaya', 'Suhu Nutrisi', 'Level Tandon', 'FAN-01'] as $label) $response->assertDontSee($label);
+        }
     }
 }

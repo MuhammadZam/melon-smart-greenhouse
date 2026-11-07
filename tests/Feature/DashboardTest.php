@@ -42,7 +42,7 @@ class DashboardTest extends TestCase
         $response->assertSee('Status Tanaman');
         $response->assertSee('tempChart');
         $response->assertSee('phChart');
-        $response->assertSee('humidityChart');
+        $response->assertSee('soilMoistureChart');
         $response->assertSee('Data Pengamatan Terkini');
     }
 
@@ -163,15 +163,15 @@ class DashboardTest extends TestCase
     /**
      * Test 10: Phase 7 — Dashboard merender seluruh grafik pertumbuhan dan distribusi status.
      */
-    public function test_dashboard_renders_growth_trends_and_distribution_charts(): void
+    public function test_dashboard_renders_three_sensors_and_distribution_charts(): void
     {
         $user = User::first();
 
         $response = $this->actingAs($user)->get('/dashboard');
 
         $response->assertStatus(200);
-        $response->assertSee('heightChart');
-        $response->assertSee('densityChart');
+        $response->assertDontSee('heightChart');
+        $response->assertDontSee('densityChart');
         $response->assertSee('conditionChart');
         $response->assertSee('statusChart');
         $response->assertSee('frequencyChart');
@@ -229,10 +229,10 @@ class DashboardTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Statistik Agregasi Parameter');
         $response->assertSee('Suhu Udara');
-        $response->assertSee('pH Nutrisi');
+        $response->assertSee('pH air');
         $response->assertSee('Kelembapan');
-        $response->assertSee('Tinggi Tanaman');
-        $response->assertSee('Kerapatan Tajuk');
+        $response->assertDontSee('Tinggi Tanaman');
+        $response->assertDontSee('Kerapatan Tajuk');
         $response->assertSee('Rata-rata:');
         $response->assertSee('Minimum:');
         $response->assertSee('Maksimum:');

@@ -116,7 +116,7 @@ class MonitoringReportTest extends TestCase
     /**
      * Test 06: Halaman laporan menampilkan 8 parameter sensor pada ringkasan statistik.
      */
-    public function test_06_report_page_renders_8_sensor_parameters_in_statistics(): void
+    public function test_06_report_page_renders_3_sensor_parameters_in_statistics(): void
     {
         $pengamat = $this->getPengamat();
 
@@ -124,13 +124,13 @@ class MonitoringReportTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('Suhu Udara');
-        $response->assertSee('Kelembapan Udara');
+        $response->assertDontSee('Kelembapan Udara');
         $response->assertSee('Kelembapan Tanah');
-        $response->assertSee('pH Nutrisi/Media');
-        $response->assertSee('Konduktivitas Listrik (EC)');
-        $response->assertSee('Intensitas Cahaya');
-        $response->assertSee('Suhu Nutrisi');
-        $response->assertSee('Level Tandon Nutrisi');
+        $response->assertSee('pH air');
+        $response->assertDontSee('Konduktivitas Listrik (EC)');
+        $response->assertDontSee('Intensitas Cahaya');
+        $response->assertDontSee('Suhu Nutrisi');
+        $response->assertDontSee('Level Tandon Nutrisi');
     }
 
     /**
@@ -143,7 +143,7 @@ class MonitoringReportTest extends TestCase
         $response = $this->actingAs($pengamat)->get('/reports/monitoring');
 
         $response->assertStatus(200);
-        $response->assertSee('Ringkasan Alarm 4 Parameter');
+        $response->assertSee('Ringkasan Alarm 3 Parameter');
         $response->assertSee('Ringkasan Analisis Logika Fuzzy');
         $response->assertSee('Kondisi BAIK');
         $response->assertSee('PERHATIAN');
@@ -164,7 +164,6 @@ class MonitoringReportTest extends TestCase
         $monitoringPast = Monitoring::create([
             'plant_id' => $plant->id,
             'temperature' => 25.5,
-            'humidity' => 65.0,
             'soil_moisture' => 70.0,
             'ph' => 6.2,
             'plant_condition' => $uniqueCondition,
@@ -205,7 +204,6 @@ class MonitoringReportTest extends TestCase
         $mA = Monitoring::create([
             'plant_id' => $plantA->id,
             'temperature' => 26.0,
-            'humidity' => 68.0,
             'soil_moisture' => 72.0,
             'ph' => 6.4,
             'plant_condition' => 'Subur A ' . uniqid(),
@@ -218,7 +216,6 @@ class MonitoringReportTest extends TestCase
         $mB = Monitoring::create([
             'plant_id' => $plantB->id,
             'temperature' => 27.0,
-            'humidity' => 70.0,
             'soil_moisture' => 75.0,
             'ph' => 6.5,
             'plant_condition' => 'Subur B ' . uniqid(),
@@ -249,7 +246,6 @@ class MonitoringReportTest extends TestCase
         $m = Monitoring::create([
             'plant_id' => $plant->id,
             'temperature' => 28.0,
-            'humidity' => 65.0,
             'soil_moisture' => 68.0,
             'ph' => 6.3,
             'plant_condition' => $uniqueCond,
@@ -278,7 +274,6 @@ class MonitoringReportTest extends TestCase
         $m = Monitoring::create([
             'plant_id' => $plant->id,
             'temperature' => 29.0,
-            'humidity' => 60.0,
             'soil_moisture' => 65.0,
             'ph' => 6.0,
             'plant_condition' => $uniqueCondition,
@@ -336,7 +331,7 @@ class MonitoringReportTest extends TestCase
         Monitoring::create([
             'plant_id' => $plant->id,
             'temperature' => 20.0,
-            'humidity' => 50.0,
+            'soil_moisture' => 50.0,
             'ph' => 6.0,
             'ec' => 2.0, // EC ada
             'light_intensity' => 10000.0,
@@ -349,7 +344,7 @@ class MonitoringReportTest extends TestCase
         Monitoring::create([
             'plant_id' => $plant->id,
             'temperature' => 30.0,
-            'humidity' => 70.0,
+            'soil_moisture' => null,
             'ph' => 7.0,
             'ec' => null, // EC null
             'light_intensity' => 20000.0,
@@ -368,9 +363,9 @@ class MonitoringReportTest extends TestCase
         $this->assertEquals(30.0, $stats['temperature']['max']);
 
         // EC hanya ada 1 nilai yaitu 2.0. Rata-rata harus 2.0, BUKAN (2.0 + 0) / 2 = 1.0!
-        $this->assertEquals(2.0, $stats['ec']['avg']);
-        $this->assertEquals(2.0, $stats['ec']['min']);
-        $this->assertEquals(2.0, $stats['ec']['max']);
+        $this->assertEquals(50.0, $stats['soil_moisture']['avg']);
+        $this->assertEquals(50.0, $stats['soil_moisture']['min']);
+        $this->assertEquals(50.0, $stats['soil_moisture']['max']);
     }
 
     /**
@@ -423,8 +418,8 @@ class MonitoringReportTest extends TestCase
         $this->assertStringContainsString('Waktu Monitoring', $content);
         $this->assertStringContainsString('Nama Tanaman', $content);
         $this->assertStringContainsString('Suhu Udara', $content);
-        $this->assertStringContainsString('Kelembapan Udara', $content);
-        $this->assertStringContainsString('pH Nutrisi/Media', $content);
+        $this->assertStringNotContainsString('Kelembapan Udara', $content);
+        $this->assertStringContainsString('pH air', $content);
         $this->assertStringContainsString('Skor Fuzzy', $content);
     }
 
@@ -465,7 +460,6 @@ class MonitoringReportTest extends TestCase
         Monitoring::create([
             'plant_id' => $plant->id,
             'temperature' => 27.5,
-            'humidity' => 68.0,
             'soil_moisture' => 72.0,
             'ph' => 6.5,
             'plant_condition' => 'Sehat Baik',
@@ -510,7 +504,6 @@ class MonitoringReportTest extends TestCase
         Monitoring::create([
             'plant_id' => $plant->id,
             'temperature' => 27.5,
-            'humidity' => 68.0,
             'soil_moisture' => 72.0,
             'ph' => 6.5,
             'ec' => 2.1,
@@ -563,13 +556,13 @@ class MonitoringReportTest extends TestCase
         $response->assertSee('Section B — Sensor Overview');
         $response->assertSee('Smart Greenhouse');
         $response->assertSee('Suhu Udara');
-        $response->assertSee('Kelembapan Udara');
+        $response->assertDontSee('Kelembapan Udara');
         $response->assertSee('Kelembapan Tanah');
-        $response->assertSee('pH Nutrisi/Media');
-        $response->assertSee('Konduktivitas Listrik (EC)');
-        $response->assertSee('Intensitas Cahaya');
-        $response->assertSee('Suhu Nutrisi');
-        $response->assertSee('Level Tandon Nutrisi');
+        $response->assertSee('pH air');
+        $response->assertDontSee('Konduktivitas Listrik (EC)');
+        $response->assertDontSee('Intensitas Cahaya');
+        $response->assertDontSee('Suhu Nutrisi');
+        $response->assertDontSee('Level Tandon Nutrisi');
 
         // Section C: Trends & Filter
         $response->assertSee('Filter Visualisasi &amp; Rentang Tanggal', false);

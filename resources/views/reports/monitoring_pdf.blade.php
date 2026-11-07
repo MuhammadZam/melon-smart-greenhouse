@@ -94,7 +94,7 @@
         table.data-table th,
         table.data-table td {
             border: 1px solid #cbd5e0;
-            padding: 4px 5px;
+            padding: 3px 5px;
             text-align: left;
         }
         table.data-table th {
@@ -140,7 +140,7 @@
         .signatures {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
+            margin-top: 8px;
             page-break-inside: avoid;
         }
         .signatures td {
@@ -150,7 +150,7 @@
             vertical-align: top;
         }
         .sig-space {
-            height: 45px;
+            height: 25px;
         }
 
         /* Footer Halaman */
@@ -183,7 +183,7 @@
                     </div>
                 </td>
                 <td style="text-align: right; vertical-align: bottom;">
-                    <div style="font-size: 8pt; font-weight: bold; color: #2d3748;">DOKUMEN RESMI</div>
+                    <div style="font-size: 8pt; font-weight: bold; color: #2d3748;">PROVISIONAL</div>
                     <div style="font-size: 7.5pt; color: #718096;">Dicetak: {{ $printedAt }}</div>
                 </td>
             </tr>
@@ -227,8 +227,8 @@
         </tr>
     </table>
 
-    <!-- Ringkasan Statistik 8 Parameter Sensor -->
-    <div class="section-title">1. Ringkasan Statistik 8 Parameter Sensor Greenhouse</div>
+    <!-- Ringkasan Statistik 3 Parameter Sensor -->
+    <div class="section-title">1. Ringkasan Statistik 3 Parameter Sensor Greenhouse</div>
     <table class="data-table">
         <thead>
             <tr>
@@ -244,13 +244,8 @@
             @php
                 $statRows = [
                     'temperature'          => 'Suhu Udara Greenhouse',
-                    'humidity'             => 'Kelembapan Relatif Udara',
                     'soil_moisture'        => 'Kelembapan Media/Tanah',
-                    'ph'                   => 'pH Nutrisi Fertigasi',
-                    'ec'                   => 'Konduktivitas Listrik (EC)',
-                    'light_intensity'      => 'Intensitas Cahaya Matahari',
-                    'nutrient_temperature' => 'Suhu Larutan Tandon Nutrisi',
-                    'tank_level'           => 'Level Volume Tandon Nutrisi',
+                    'ph'                   => 'pH air',
                 ];
             @endphp
             @foreach($statRows as $pKey => $pLabel)
@@ -279,7 +274,7 @@
     <table class="summary-grid">
         <tr>
             <td style="width: 50%; padding-right: 5px;">
-                <div class="section-title">2. Ringkasan Insiden Alarm (4 Parameter Utama)</div>
+                <div class="section-title">2. Ringkasan Insiden Alarm (3 Parameter Utama)</div>
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -307,7 +302,7 @@
                         <tr>
                             <td>Status Selesai (Resolved)</td>
                             <td class="text-center font-mono" style="color: #276749; font-weight: bold;">{{ $alarmSummary['resolved'] }}</td>
-                            <td>Nilai sensor telah kembali normal</td>
+                            <td>Selesai sesuai catatan audit alarm</td>
                         </tr>
                     </tbody>
                 </table>
@@ -335,21 +330,21 @@
                             <td class="text-center font-mono" style="color: #276749; font-weight: bold;">
                                 {{ $fuzzySummary['by_category']['BAIK'] }}
                             </td>
-                            <td>Lingkungan mikro optimal bagi melon</td>
+                            <td>Kategori perangkat lunak PROVISIONAL</td>
                         </tr>
                         <tr>
-                            <td>Kondisi PERLU PERHATIAN [40 – 70]</td>
+                            <td>Kondisi PERLU PERHATIAN [40 &lt;= skor &lt; 65]</td>
                             <td class="text-center font-mono">
                                 {{ $fuzzySummary['by_category']['PERLU_PERHATIAN'] }}
                             </td>
-                            <td>Terjadi deviasi ringan parameter</td>
+                            <td>Kategori perangkat lunak PROVISIONAL</td>
                         </tr>
                         <tr>
-                            <td>Kondisi BURUK [0 – 45]</td>
+                            <td>Kondisi BURUK [0 &lt;= skor &lt; 40]</td>
                             <td class="text-center font-mono" style="color: #c53030; font-weight: bold;">
                                 {{ $fuzzySummary['by_category']['BURUK'] }}
                             </td>
-                            <td>Stres mikroklimat atau media tanam</td>
+                            <td>Kategori perangkat lunak PROVISIONAL</td>
                         </tr>
                     </tbody>
                 </table>
@@ -358,7 +353,7 @@
     </table>
 
     <!-- Tabel Rincian Data Monitoring -->
-    <div class="section-title">4. Tabel Rincian Rekaman Monitoring Terverifikasi</div>
+    <div class="section-title">4. Tabel Rincian Rekaman Monitoring</div>
     <table class="data-table">
         <thead>
             <tr>
@@ -367,13 +362,10 @@
                 <th style="width: 12%;">Tanaman</th>
                 <th style="width: 6%;">Sumber</th>
                 <th style="width: 7%;" class="text-right">Suhu (°C)</th>
-                <th style="width: 7%;" class="text-right">Lembap (%)</th>
+
                 <th style="width: 7%;" class="text-right">Tanah (%)</th>
-                <th style="width: 6%;" class="text-right">pH</th>
-                <th style="width: 6%;" class="text-right">EC</th>
-                <th style="width: 7%;" class="text-right">Cahaya</th>
-                <th style="width: 7%;" class="text-right">Suhu Nut</th>
-                <th style="width: 6%;" class="text-right">Tandon</th>
+                <th style="width: 6%;" class="text-right">pH air</th>
+
                 <th style="width: 8%;">Kondisi</th>
                 <th style="width: 7%;" class="text-center">Fuzzy</th>
             </tr>
@@ -390,13 +382,10 @@
                     <td style="font-family: sans-serif; font-size: 7pt;">{{ $m->plant?->name ?? 'N/A' }}</td>
                     <td style="font-family: sans-serif; font-size: 6.5pt;">{{ $m->source ?? 'web' }}</td>
                     <td class="text-right">{{ $m->temperature !== null ? number_format($m->temperature, 1) : '-' }}</td>
-                    <td class="text-right">{{ $m->humidity !== null ? number_format($m->humidity, 1) : '-' }}</td>
+
                     <td class="text-right">{{ $m->soil_moisture !== null ? number_format($m->soil_moisture, 1) : '-' }}</td>
                     <td class="text-right">{{ $m->ph !== null ? number_format($m->ph, 2) : '-' }}</td>
-                    <td class="text-right">{{ $m->ec !== null ? number_format($m->ec, 2) : '-' }}</td>
-                    <td class="text-right">{{ $m->light_intensity !== null ? number_format($m->light_intensity, 0) : '-' }}</td>
-                    <td class="text-right">{{ $m->nutrient_temperature !== null ? number_format($m->nutrient_temperature, 1) : '-' }}</td>
-                    <td class="text-right">{{ $m->tank_level !== null ? number_format($m->tank_level, 0) : '-' }}</td>
+
                     <td style="font-family: sans-serif; font-size: 7pt;">{{ $m->plant_condition ?? '-' }}</td>
                     <td class="text-center font-bold">
                         {{ $fScore !== null ? number_format($fScore, 1) : '-' }}
@@ -404,7 +393,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="14" class="text-center" style="padding: 15px; color: #718096; font-family: sans-serif;">
+                    <td colspan="9" class="text-center" style="padding: 15px; color: #718096; font-family: sans-serif;">
                         Tidak ada rekaman data monitoring yang memenuhi kriteria filter yang ditentukan.
                     </td>
                 </tr>
@@ -416,11 +405,11 @@
     <div class="disclaimer-box">
         <strong>Catatan Integritas Akademik &amp; Batasan Sistem:</strong>
         <br>
-        1. <strong>Status Kontrol Aktuator:</strong> Seluruh modul aktuator (Pompa Irigasi PUMP-01 dan Kipas Exhaust FAN-01) beroperasi dalam model <em>Simulasi Database</em> untuk tujuan validasi perangkat lunak akademik dan <u>bukan</u> merupakan saklar fisik tertutup (*closed-loop physical relay*).
+        1. <strong>Status Kontrol Aktuator:</strong> Seluruh modul aktuator (Pompa air PUMP-01) beroperasi dalam model <em>Simulasi Database</em> untuk tujuan validasi perangkat lunak akademik dan <u>bukan</u> merupakan saklar fisik tertutup (*closed-loop physical relay*).
         <br>
-        2. <strong>Logika Fuzzy Mamdani:</strong> Aturan fuzzy menggunakan versi <code>PROVISIONAL_FOR_SOFTWARE_TESTING</code> (16 aturan) yang telah divalidasi deterministik secara matematis. Rekomendasi tindakan merupakan panduan awal dan membutuhkan supervisi agronomis sebelum diaplikasikan langsung ke lapangan.
+        2. <strong>Logika Fuzzy Mamdani:</strong> Versi lokal <code>{{ config('fuzzy.rule_version') }}</code>, {{ count(config('fuzzy.rules')) }} aturan, tiga input. PROVISIONAL: belum disahkan Tim Elektro/pembimbing; bukan diagnosis atau instruksi tindakan lapangan. Skor historis/eksternal dapat berasal dari model lain.
         <br>
-        3. <strong>Kebijakan Alarm 4 Parameter:</strong> Sistem peringatan aktif hanya berlaku untuk Suhu Udara, Kelembapan Udara, Kelembapan Tanah, dan pH sesuai tinjauan tim Teknik Elektro (Phase 13). Parameter EC, Cahaya, Suhu Nutrisi, dan Level Tandon dicatat sebagai monitoring visual.
+        3. <strong>Kebijakan Alarm 3 Parameter:</strong> Suhu udara, kelembapan tanah/media, dan pH air. Threshold dipertahankan dari konfigurasi database; PROVISIONAL sampai divalidasi Tim Elektro.
     </div>
 
     <!-- Blok Pengesahan -->

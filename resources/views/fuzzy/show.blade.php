@@ -134,10 +134,11 @@
 
         @php
             $inputs = $fuzzyInference->input_snapshot ?? [];
+            if (!isset($inputs['water_ph']) && isset($inputs['ph'])) $inputs['water_ph'] = $inputs['ph'];
             $memberships = $fuzzyInference->membership_snapshot ?? [];
         @endphp
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {{-- Temperature --}}
             <div class="p-4 rounded-[2px] bg-surface border border-line">
                 <div class="text-xs font-semibold text-muted">Suhu Udara</div>
@@ -146,22 +147,6 @@
                 </div>
                 <div class="mt-3 space-y-1.5 border-t border-line pt-2 text-xs">
                     @foreach($memberships['temperature'] ?? [] as $set => $mu)
-                        <div class="flex justify-between items-center text-xs">
-                            <span class="text-muted capitalize">&mu;({{ $set }}):</span>
-                            <span class="tabular-nums font-semibold {{ $mu > 0 ? 'text-muted' : 'text-muted' }}">{{ number_format($mu, 4) }}</span>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-
-            {{-- Humidity --}}
-            <div class="p-4 rounded-[2px] bg-surface border border-line">
-                <div class="text-xs font-semibold text-muted">Kelembapan Udara</div>
-                <div class="text-xl font-semibold text-current tabular-nums mt-1">
-                    {{ isset($inputs['humidity']) ? number_format($inputs['humidity'], 1) . ' %' : '-' }}
-                </div>
-                <div class="mt-3 space-y-1.5 border-t border-line pt-2 text-xs">
-                    @foreach($memberships['humidity'] ?? [] as $set => $mu)
                         <div class="flex justify-between items-center text-xs">
                             <span class="text-muted capitalize">&mu;({{ $set }}):</span>
                             <span class="tabular-nums font-semibold {{ $mu > 0 ? 'text-muted' : 'text-muted' }}">{{ number_format($mu, 4) }}</span>
@@ -188,12 +173,12 @@
 
             {{-- pH --}}
             <div class="p-4 rounded-[2px] bg-surface border border-line">
-                <div class="text-xs font-semibold text-muted">pH Nutrisi/Media</div>
+                <div class="text-xs font-semibold text-muted">pH air</div>
                 <div class="text-xl font-semibold text-current tabular-nums mt-1">
-                    {{ isset($inputs['ph']) ? number_format($inputs['ph'], 2) : '-' }}
+                    {{ isset($inputs['water_ph']) ? number_format($inputs['water_ph'], 2) : '-' }}
                 </div>
                 <div class="mt-3 space-y-1.5 border-t border-line pt-2 text-xs">
-                    @foreach($memberships['ph'] ?? [] as $set => $mu)
+                    @foreach($memberships['water_ph'] ?? [] as $set => $mu)
                         <div class="flex justify-between items-center text-xs">
                             <span class="text-muted capitalize">&mu;({{ $set }}):</span>
                             <span class="tabular-nums font-semibold {{ $mu > 0 ? 'text-muted' : 'text-muted' }}">{{ number_format($mu, 4) }}</span>

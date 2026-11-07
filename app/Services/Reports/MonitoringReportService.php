@@ -15,7 +15,7 @@ use Illuminate\Support\Collection;
  *
  * Bertanggung jawab atas query terpadu data monitoring greenhouse,
  * perhitungan ringkasan statistik (AVG, MIN, MAX tanpa menghitung null sebagai nol),
- * agregasi alarm 4 parameter, dan ringkasan inferensi logika fuzzy Mamdani.
+ * agregasi alarm 3 parameter, dan ringkasan inferensi logika fuzzy Mamdani.
  */
 class MonitoringReportService
 {
@@ -54,16 +54,12 @@ class MonitoringReportService
 
         // 5. Urutan Sorting
         $sortBy = $filters['sort_by'] ?? 'monitored_at';
+        if ($sortBy === 'water_ph') $sortBy = 'ph';
         $allowedSorts = [
             'monitored_at',
             'temperature',
-            'humidity',
             'soil_moisture',
             'ph',
-            'ec',
-            'light_intensity',
-            'nutrient_temperature',
-            'tank_level',
         ];
         if (!in_array($sortBy, $allowedSorts, true)) {
             $sortBy = 'monitored_at';
@@ -133,7 +129,7 @@ class MonitoringReportService
     }
 
     /**
-     * Menghitung statistik 8 parameter sensor + 2 metrik vegetatif tanpa menganggap null sebagai nol.
+     * Menghitung statistik 3 parameter sensor + 2 metrik vegetatif tanpa menganggap null sebagai nol.
      */
     public function calculateStatistics(Builder $query, array $filters): array
     {
@@ -146,9 +142,6 @@ class MonitoringReportService
             MIN(temperature) as min_temp,
             MAX(temperature) as max_temp,
 
-            AVG(humidity) as avg_humidity,
-            MIN(humidity) as min_humidity,
-            MAX(humidity) as max_humidity,
 
             AVG(soil_moisture) as avg_soil_moisture,
             MIN(soil_moisture) as min_soil_moisture,
@@ -157,22 +150,6 @@ class MonitoringReportService
             AVG(ph) as avg_ph,
             MIN(ph) as min_ph,
             MAX(ph) as max_ph,
-
-            AVG(ec) as avg_ec,
-            MIN(ec) as min_ec,
-            MAX(ec) as max_ec,
-
-            AVG(light_intensity) as avg_light,
-            MIN(light_intensity) as min_light,
-            MAX(light_intensity) as max_light,
-
-            AVG(nutrient_temperature) as avg_nutrient_temp,
-            MIN(nutrient_temperature) as min_nutrient_temp,
-            MAX(nutrient_temperature) as max_nutrient_temp,
-
-            AVG(tank_level) as avg_tank_level,
-            MIN(tank_level) as min_tank_level,
-            MAX(tank_level) as max_tank_level,
 
             AVG(plant_height) as avg_height,
             MIN(plant_height) as min_height,
@@ -211,13 +188,6 @@ class MonitoringReportService
                 'min'  => $statsRaw->min_temp !== null ? round((float) $statsRaw->min_temp, 2) : null,
                 'max'  => $statsRaw->max_temp !== null ? round((float) $statsRaw->max_temp, 2) : null,
             ],
-            'humidity' => [
-                'name' => 'Kelembapan Udara',
-                'unit' => '%',
-                'avg'  => $statsRaw->avg_humidity !== null ? round((float) $statsRaw->avg_humidity, 2) : null,
-                'min'  => $statsRaw->min_humidity !== null ? round((float) $statsRaw->min_humidity, 2) : null,
-                'max'  => $statsRaw->max_humidity !== null ? round((float) $statsRaw->max_humidity, 2) : null,
-            ],
             'soil_moisture' => [
                 'name' => 'Kelembapan Tanah',
                 'unit' => '%',
@@ -226,39 +196,11 @@ class MonitoringReportService
                 'max'  => $statsRaw->max_soil_moisture !== null ? round((float) $statsRaw->max_soil_moisture, 2) : null,
             ],
             'ph' => [
-                'name' => 'pH Nutrisi/Media',
-                'unit' => 'pH',
+                'name' => 'pH air',
+                'unit' => '',
                 'avg'  => $statsRaw->avg_ph !== null ? round((float) $statsRaw->avg_ph, 2) : null,
                 'min'  => $statsRaw->min_ph !== null ? round((float) $statsRaw->min_ph, 2) : null,
                 'max'  => $statsRaw->max_ph !== null ? round((float) $statsRaw->max_ph, 2) : null,
-            ],
-            'ec' => [
-                'name' => 'Konduktivitas Listrik (EC)',
-                'unit' => 'mS/cm',
-                'avg'  => $statsRaw->avg_ec !== null ? round((float) $statsRaw->avg_ec, 2) : null,
-                'min'  => $statsRaw->min_ec !== null ? round((float) $statsRaw->min_ec, 2) : null,
-                'max'  => $statsRaw->max_ec !== null ? round((float) $statsRaw->max_ec, 2) : null,
-            ],
-            'light_intensity' => [
-                'name' => 'Intensitas Cahaya',
-                'unit' => 'lux',
-                'avg'  => $statsRaw->avg_light !== null ? round((float) $statsRaw->avg_light, 1) : null,
-                'min'  => $statsRaw->min_light !== null ? round((float) $statsRaw->min_light, 1) : null,
-                'max'  => $statsRaw->max_light !== null ? round((float) $statsRaw->max_light, 1) : null,
-            ],
-            'nutrient_temperature' => [
-                'name' => 'Suhu Nutrisi',
-                'unit' => '°C',
-                'avg'  => $statsRaw->avg_nutrient_temp !== null ? round((float) $statsRaw->avg_nutrient_temp, 2) : null,
-                'min'  => $statsRaw->min_nutrient_temp !== null ? round((float) $statsRaw->min_nutrient_temp, 2) : null,
-                'max'  => $statsRaw->max_nutrient_temp !== null ? round((float) $statsRaw->max_nutrient_temp, 2) : null,
-            ],
-            'tank_level' => [
-                'name' => 'Level Tandon Nutrisi',
-                'unit' => '%',
-                'avg'  => $statsRaw->avg_tank_level !== null ? round((float) $statsRaw->avg_tank_level, 1) : null,
-                'min'  => $statsRaw->min_tank_level !== null ? round((float) $statsRaw->min_tank_level, 1) : null,
-                'max'  => $statsRaw->max_tank_level !== null ? round((float) $statsRaw->max_tank_level, 1) : null,
             ],
             'plant_height' => [
                 'name' => 'Tinggi Tanaman',
@@ -278,11 +220,11 @@ class MonitoringReportService
     }
 
     /**
-     * Menghitung ringkasan insiden alarm (4 parameter) pada filter yang sama.
+     * Menghitung ringkasan insiden alarm (3 parameter) pada filter yang sama.
      */
     public function calculateAlarmSummary(array $filters): array
     {
-        $alarmQuery = MonitoringAlarm::query();
+        $alarmQuery = MonitoringAlarm::whereIn('parameter_key', \App\Support\ActiveSensors::STORAGE_KEYS);
 
         $plantId = $filters['plant_id'] ?? 'all';
         if ($plantId !== 'all' && !empty($plantId) && is_numeric($plantId)) {

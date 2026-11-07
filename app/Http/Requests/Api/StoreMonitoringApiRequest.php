@@ -7,8 +7,11 @@ use Illuminate\Validation\Rule;
 
 class StoreMonitoringApiRequest extends FormRequest
 {
+    use \App\Http\Requests\NormalizesWaterPh;
+
     protected function prepareForValidation(): void
     {
+        $this->normalizeWaterPh();
         if ($this->headers->has('Idempotency-Key')) {
             $header = $this->header('Idempotency-Key');
             if ($this->has('idempotency_key') && $this->input('idempotency_key') !== $header) {
@@ -64,18 +67,13 @@ class StoreMonitoringApiRequest extends FormRequest
             'plant_id'             => ['required', 'integer', 'exists:plants,id'],
             'monitored_at'         => ['required', 'date'],
             'temperature'          => ['required', 'numeric', 'between:0,60'],
-            'nutrient_temperature' => ['nullable', 'numeric', 'between:0,60'],
             'ph'                   => ['required', 'numeric', 'between:0,14'],
-            'ec'                   => ['nullable', 'numeric', 'between:0,20'],
-            'humidity'             => ['required', 'numeric', 'between:0,100'],
-            'soil_moisture'        => ['nullable', 'numeric', 'between:0,100'],
-            'light_intensity'      => ['nullable', 'numeric', 'between:0,200000'],
-            'tank_level'           => ['nullable', 'numeric', 'between:0,100'],
-            'plant_height'         => ['required', 'numeric', 'min:0', 'max:500'],
+            'soil_moisture'        => ['required', 'numeric', 'between:0,100'],
+            'plant_height'         => ['nullable', 'numeric', 'min:0', 'max:500'],
             'canopy_density'       => ['nullable', 'numeric', 'between:0,100'],
-            'plant_density'        => ['required_without:canopy_density', 'numeric', 'between:0,100'],
+            'plant_density'        => ['nullable', 'numeric', 'between:0,100'],
             'condition'            => ['nullable', 'string', 'max:100', Rule::in($allowedConditions)],
-            'plant_condition'      => ['required_without:condition', 'string', 'max:100', Rule::in($allowedConditions)],
+            'plant_condition'      => ['nullable', 'string', 'max:100', Rule::in($allowedConditions)],
             'leaf_color'           => ['nullable', 'string', 'max:100'],
             'plant_color'          => ['nullable', 'string', 'max:100'],
             'notes'                => ['nullable', 'string', 'max:2000'],
@@ -97,13 +95,8 @@ class StoreMonitoringApiRequest extends FormRequest
             'plant_id'             => 'ID Tanaman',
             'monitored_at'         => 'Waktu Monitoring',
             'temperature'          => 'Suhu Lingkungan',
-            'nutrient_temperature' => 'Suhu Larutan Nutrisi',
             'ph'                   => 'Derajat Keasaman pH',
-            'ec'                   => 'Konduktivitas Listrik (EC)',
-            'humidity'             => 'Kelembapan Udara',
             'soil_moisture'        => 'Kelembapan Media Tanam',
-            'light_intensity'      => 'Intensitas Cahaya',
-            'tank_level'           => 'Level Tandon Nutrisi',
             'plant_height'         => 'Tinggi Tanaman',
             'canopy_density'       => 'Kerapatan Kanopi',
             'plant_density'        => 'Kerapatan Tanaman',

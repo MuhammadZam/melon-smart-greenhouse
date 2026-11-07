@@ -84,7 +84,7 @@ class Phase16_2FuzzyZeroTest extends TestCase
     public function test_sheet_zero_import_replay_and_different_device_are_safe(): void
     {
         $plant = Plant::first();
-        $row = ['device_id' => 'SHEET-1','timestamp' => '2026-10-22 10:00:00','plant_code' => $plant->name,'temperature' => 27,'humidity' => 70,'soil_moisture' => 70,'ph' => 6.5,'fuzzy_score' => '0','fuzzy_label' => 'BAIK'];
+        $row = ['device_id' => 'SHEET-1','timestamp' => '2026-10-22 10:00:00','plant_code' => $plant->name,'temperature' => 27,'soil_moisture' => 70,'ph' => 6.5,'fuzzy_score' => '0','fuzzy_label' => 'BAIK'];
         $client = new MockGoogleSheetsClient([$row,$row,array_merge($row,['device_id' => 'SHEET-2'])]);
         $sync = app(GoogleSheetsSyncService::class); $sync->getTelemetryService()->setClient($client);
         $config = $sync->getOrCreateDefaultConfig();
@@ -113,6 +113,6 @@ class Phase16_2FuzzyZeroTest extends TestCase
 
     private function payload(): array
     {
-        return ['plant_id' => Plant::first()->id, 'monitored_at' => '2026-10-22 10:00:00', 'temperature' => 27, 'humidity' => 70, 'soil_moisture' => 70, 'ph' => 6.5, 'plant_height' => 40, 'plant_density' => 60, 'condition' => 'optimal'];
+        return ['plant_id' => Plant::first()->id, 'monitored_at' => '2026-10-22 10:00:00', 'temperature' => 27, 'soil_moisture' => 70, 'ph' => 6.5, 'plant_height' => 40, 'plant_density' => 60, 'condition' => 'optimal'];
     }
 }

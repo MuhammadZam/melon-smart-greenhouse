@@ -1,0 +1,259 @@
+[
+    {
+        "temperature": 18,
+        "soil_moisture": 30,
+        "water_ph": 4.5,
+        "status": "AVAILABLE",
+        "score": 17.72,
+        "rules": [
+            "T3-R05"
+        ]
+    },
+    {
+        "temperature": 18,
+        "soil_moisture": 30,
+        "water_ph": 6.5,
+        "status": "INSUFFICIENT_RULE_COVERAGE",
+        "score": null,
+        "rules": []
+    },
+    {
+        "temperature": 18,
+        "soil_moisture": 30,
+        "water_ph": 8.5,
+        "status": "INSUFFICIENT_RULE_COVERAGE",
+        "score": null,
+        "rules": []
+    },
+    {
+        "temperature": 18,
+        "soil_moisture": 70,
+        "water_ph": 4.5,
+        "status": "AVAILABLE",
+        "score": 55,
+        "rules": [
+            "T3-R11"
+        ]
+    },
+    {
+        "temperature": 18,
+        "soil_moisture": 70,
+        "water_ph": 6.5,
+        "status": "AVAILABLE",
+        "score": 55,
+        "rules": [
+            "T3-R11"
+        ]
+    },
+    {
+        "temperature": 18,
+        "soil_moisture": 70,
+        "water_ph": 8.5,
+        "status": "AVAILABLE",
+        "score": 55,
+        "rules": [
+            "T3-R11"
+        ]
+    },
+    {
+        "temperature": 18,
+        "soil_moisture": 90,
+        "water_ph": 4.5,
+        "status": "INSUFFICIENT_RULE_COVERAGE",
+        "score": null,
+        "rules": []
+    },
+    {
+        "temperature": 18,
+        "soil_moisture": 90,
+        "water_ph": 6.5,
+        "status": "INSUFFICIENT_RULE_COVERAGE",
+        "score": null,
+        "rules": []
+    },
+    {
+        "temperature": 18,
+        "soil_moisture": 90,
+        "water_ph": 8.5,
+        "status": "AVAILABLE",
+        "score": 17.72,
+        "rules": [
+            "T3-R06"
+        ]
+    },
+    {
+        "temperature": 27,
+        "soil_moisture": 30,
+        "water_ph": 4.5,
+        "status": "AVAILABLE",
+        "score": 30.95,
+        "rules": [
+            "T3-R05",
+            "T3-R12"
+        ]
+    },
+    {
+        "temperature": 27,
+        "soil_moisture": 30,
+        "water_ph": 6.5,
+        "status": "INSUFFICIENT_RULE_COVERAGE",
+        "score": null,
+        "rules": []
+    },
+    {
+        "temperature": 27,
+        "soil_moisture": 30,
+        "water_ph": 8.5,
+        "status": "AVAILABLE",
+        "score": 55,
+        "rules": [
+            "T3-R13"
+        ]
+    },
+    {
+        "temperature": 27,
+        "soil_moisture": 70,
+        "water_ph": 4.5,
+        "status": "AVAILABLE",
+        "score": 55,
+        "rules": [
+            "T3-R12"
+        ]
+    },
+    {
+        "temperature": 27,
+        "soil_moisture": 70,
+        "water_ph": 6.5,
+        "status": "AVAILABLE",
+        "score": 86.17,
+        "rules": [
+            "T3-R01"
+        ]
+    },
+    {
+        "temperature": 27,
+        "soil_moisture": 70,
+        "water_ph": 8.5,
+        "status": "AVAILABLE",
+        "score": 55,
+        "rules": [
+            "T3-R13"
+        ]
+    },
+    {
+        "temperature": 27,
+        "soil_moisture": 90,
+        "water_ph": 4.5,
+        "status": "AVAILABLE",
+        "score": 55,
+        "rules": [
+            "T3-R12"
+        ]
+    },
+    {
+        "temperature": 27,
+        "soil_moisture": 90,
+        "water_ph": 6.5,
+        "status": "INSUFFICIENT_RULE_COVERAGE",
+        "score": null,
+        "rules": []
+    },
+    {
+        "temperature": 27,
+        "soil_moisture": 90,
+        "water_ph": 8.5,
+        "status": "AVAILABLE",
+        "score": 30.95,
+        "rules": [
+            "T3-R06",
+            "T3-R13"
+        ]
+    },
+    {
+        "temperature": 36,
+        "soil_moisture": 30,
+        "water_ph": 4.5,
+        "status": "AVAILABLE",
+        "score": 17.72,
+        "rules": [
+            "T3-R02",
+            "T3-R05"
+        ]
+    },
+    {
+        "temperature": 36,
+        "soil_moisture": 30,
+        "water_ph": 6.5,
+        "status": "AVAILABLE",
+        "score": 17.72,
+        "rules": [
+            "T3-R02"
+        ]
+    },
+    {
+        "temperature": 36,
+        "soil_moisture": 30,
+        "water_ph": 8.5,
+        "status": "AVAILABLE",
+        "score": 17.72,
+        "rules": [
+            "T3-R02"
+        ]
+    },
+    {
+        "temperature": 36,
+        "soil_moisture": 70,
+        "water_ph": 4.5,
+        "status": "AVAILABLE",
+        "score": 55,
+        "rules": [
+            "T3-R10"
+        ]
+    },
+    {
+        "temperature": 36,
+        "soil_moisture": 70,
+        "water_ph": 6.5,
+        "status": "AVAILABLE",
+        "score": 55,
+        "rules": [
+            "T3-R10"
+        ]
+    },
+    {
+        "temperature": 36,
+        "soil_moisture": 70,
+        "water_ph": 8.5,
+        "status": "AVAILABLE",
+        "score": 55,
+        "rules": [
+            "T3-R10"
+        ]
+    },
+    {
+        "temperature": 36,
+        "soil_moisture": 90,
+        "water_ph": 4.5,
+        "status": "INSUFFICIENT_RULE_COVERAGE",
+        "score": null,
+        "rules": []
+    },
+    {
+        "temperature": 36,
+        "soil_moisture": 90,
+        "water_ph": 6.5,
+        "status": "INSUFFICIENT_RULE_COVERAGE",
+        "score": null,
+        "rules": []
+    },
+    {
+        "temperature": 36,
+        "soil_moisture": 90,
+        "water_ph": 8.5,
+        "status": "AVAILABLE",
+        "score": 17.72,
+        "rules": [
+            "T3-R06"
+        ]
+    }
+]

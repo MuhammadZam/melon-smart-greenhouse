@@ -73,9 +73,12 @@ Route::middleware('auth')->group(function () {
 
     // Phase 13: Simulated Actuator Control Routes
     Route::get('/actuators', [ActuatorController::class, 'index'])->name('actuators.index');
+    Route::get('/actuators/{actuator}/status', [ActuatorController::class, 'status'])->name('actuators.status');
     Route::get('/actuators/history', [ActuatorController::class, 'history'])->name('actuators.history');
 
     Route::middleware('role:admin')->group(function () {
+        Route::patch('/actuators/{actuator}/mode', [ActuatorController::class, 'mode'])->name('actuators.mode');
+        Route::patch('/actuators/{actuator}/settings', [ActuatorController::class, 'settings'])->name('actuators.settings');
         Route::post('/actuators/{actuator}/control', [ActuatorController::class, 'control'])->name('actuators.control');
     });
 

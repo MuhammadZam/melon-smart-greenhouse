@@ -2,6 +2,8 @@
 
 Tanggal audit: **22 Oktober 2026 (Asia/Jakarta)**. Project: `D:\Compro`. Audit read-only terhadap kode aplikasi dan database utama; artefak audit disimpan di `docs/audit`.
 
+Panduan operasional lokal tersedia di [Panduan Menjalankan Project](../PANDUAN_MENJALANKAN_PROJECT.md). Panduan ditambahkan pada 29 Oktober 2026; tidak mengubah hasil audit di bawah ini.
+
 ## A. Executive Summary
 
 **Keputusan: NOT READY** untuk demonstrasi yang menyatakan kelengkapan SRS, deployment production, atau integrasi fisik. Project dapat di-boot lokal dengan dependensi yang sudah ada, tetapi tampilan hasil build rusak pada seluruh viewport dan ditemukan kesalahan analisis/akses data. Dasar keputusan bukan jumlah file atau klaim fase lama.

@@ -19,7 +19,7 @@
                 Ringkasan Pemantauan
             </h2>
             <p class="text-xs sm:text-sm text-muted mt-0.5">
-                Visualisasi komprehensif mikroklimat greenhouse, dinamika nutrisi, dan perkembangan vegetatif melon.
+                Pemantauan suhu udara, kelembapan tanah/media, dan pH air.
             </p>
         </div>
 
@@ -57,7 +57,7 @@
             </span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <!-- Card 1: Total & Aktif Tanaman -->
             <x-summary-card
                 title="Total Tanaman"
@@ -171,7 +171,7 @@
                         Pembacaan terbaru
                     </span>
                     <span class="px-2 py-0.5 rounded-[2px] text-xs tabular-nums font-semibold bg-surface text-ink border border-line">
-                        8 parameter sensor
+                        3 parameter sensor
                     </span>
                 </div>
                 <h3 class="text-base sm:text-lg font-semibold text-current tracking-tight">
@@ -199,8 +199,8 @@
             </div>
         </div>
 
-        <!-- 8 Sensor Parameters Grid -->
-        <div class="ui-sensor-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- 3 Sensor Parameters Grid -->
+        <div class="ui-sensor-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <!-- 1. Suhu Udara -->
             <div class="p-4 rounded-[2px] bg-canvas border border-line hover:border-line transition-colors">
                 <div class="flex items-center gap-2 text-muted mb-2">
@@ -212,21 +212,6 @@
                 <x-sensor-reading :value="$latestMonitoring?->temperature" :precision="1" unit="°C" />
                 <div class="text-xs text-muted tabular-nums mt-1">
                     Ambang: {{ $thresholds['temperature']['min'] }}°C - {{ $thresholds['temperature']['max'] }}°C
-                </div>
-                @if($latestMonitoring)<time datetime="{{ $latestMonitoring->monitored_at->toIso8601String() }}">{{ $latestMonitoring->monitored_at->format('d M Y, H:i') }} WIB</time>@endif
-            </div>
-
-            <!-- 2. Kelembapan Udara -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line hover:border-line transition-colors">
-                <div class="flex items-center gap-2 text-muted mb-2">
-                    <svg class="w-4 h-4 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-                    </svg>
-                    <span class="text-xs font-semibold">Kelembapan Udara</span>
-                </div>
-                <x-sensor-reading :value="$latestMonitoring?->humidity" :precision="0" unit="%" />
-                <div class="text-xs text-muted tabular-nums mt-1">
-                    Ambang: {{ $thresholds['humidity']['min'] }}% - {{ $thresholds['humidity']['max'] }}%
                 </div>
                 @if($latestMonitoring)<time datetime="{{ $latestMonitoring->monitored_at->toIso8601String() }}">{{ $latestMonitoring->monitored_at->format('d M Y, H:i') }} WIB</time>@endif
             </div>
@@ -246,13 +231,13 @@
                 @if($latestMonitoring)<time datetime="{{ $latestMonitoring->monitored_at->toIso8601String() }}">{{ $latestMonitoring->monitored_at->format('d M Y, H:i') }} WIB</time>@endif
             </div>
 
-            <!-- 4. pH Nutrisi/Media -->
+            <!-- 4. pH air -->
             <div class="p-4 rounded-[2px] bg-canvas border border-line hover:border-line transition-colors">
                 <div class="flex items-center gap-2 text-muted mb-2">
                     <svg class="w-4 h-4 text-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
                     </svg>
-                    <span class="text-xs font-semibold">pH Nutrisi/Media</span>
+                    <span class="text-xs font-semibold">pH air</span>
                 </div>
                 <x-sensor-reading :value="$latestMonitoring?->ph" :precision="1" unit="" />
                 <div class="text-xs text-muted tabular-nums mt-1">
@@ -261,65 +246,6 @@
                 @if($latestMonitoring)<time datetime="{{ $latestMonitoring->monitored_at->toIso8601String() }}">{{ $latestMonitoring->monitored_at->format('d M Y, H:i') }} WIB</time>@endif
             </div>
 
-            <!-- 5. Konduktivitas Listrik (EC) -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line hover:border-warning/25 transition-colors">
-                <div class="flex items-center gap-2 text-muted mb-2">
-                    <svg class="w-4 h-4 text-warning shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                    <span class="text-xs font-semibold">Konduktivitas Listrik (EC)</span>
-                </div>
-                <x-sensor-reading :value="$latestMonitoring?->ec" :precision="2" unit="mS/cm" />
-                <div class="text-xs text-muted tabular-nums mt-1">
-                    Ambang: {{ $thresholds['ec']['min'] }} - {{ $thresholds['ec']['max'] }} mS/cm
-                </div>
-                @if($latestMonitoring)<time datetime="{{ $latestMonitoring->monitored_at->toIso8601String() }}">{{ $latestMonitoring->monitored_at->format('d M Y, H:i') }} WIB</time>@endif
-            </div>
-
-            <!-- 6. Intensitas Cahaya -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line hover:border-warning/25 transition-colors">
-                <div class="flex items-center gap-2 text-muted mb-2">
-                    <svg class="w-4 h-4 text-warning shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
-                    <span class="text-xs font-semibold">Intensitas Cahaya</span>
-                </div>
-                <x-sensor-reading :value="$latestMonitoring?->light_intensity" :precision="0" unit="lux" />
-                <div class="text-xs text-muted tabular-nums mt-1">
-                    Ambang: {{ number_format($thresholds['light_intensity']['min'], 0, ',', '.') }} - {{ number_format($thresholds['light_intensity']['max'], 0, ',', '.') }} lux
-                </div>
-                @if($latestMonitoring)<time datetime="{{ $latestMonitoring->monitored_at->toIso8601String() }}">{{ $latestMonitoring->monitored_at->format('d M Y, H:i') }} WIB</time>@endif
-            </div>
-
-            <!-- 7. Suhu Nutrisi -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line hover:border-line transition-colors">
-                <div class="flex items-center gap-2 text-muted mb-2">
-                    <svg class="w-4 h-4 text-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <span class="text-xs font-semibold">Suhu Nutrisi</span>
-                </div>
-                <x-sensor-reading :value="$latestMonitoring?->nutrient_temperature" :precision="1" unit="°C" />
-                <div class="text-xs text-muted tabular-nums mt-1">
-                    Ambang: {{ $thresholds['nutrient_temperature']['min'] }}°C - {{ $thresholds['nutrient_temperature']['max'] }}°C
-                </div>
-                @if($latestMonitoring)<time datetime="{{ $latestMonitoring->monitored_at->toIso8601String() }}">{{ $latestMonitoring->monitored_at->format('d M Y, H:i') }} WIB</time>@endif
-            </div>
-
-            <!-- 8. Level Tandon Nutrisi -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line hover:border-line transition-colors">
-                <div class="flex items-center gap-2 text-muted mb-2">
-                    <svg class="w-4 h-4 text-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                    </svg>
-                    <span class="text-xs font-semibold">Level Tandon Nutrisi</span>
-                </div>
-                <x-sensor-reading :value="$latestMonitoring?->tank_level" :precision="0" unit="%" />
-                <div class="text-xs text-muted tabular-nums mt-1">
-                    Ambang: {{ $thresholds['tank_level']['min'] }}% - {{ $thresholds['tank_level']['max'] }}%
-                </div>
-                @if($latestMonitoring)<time datetime="{{ $latestMonitoring->monitored_at->toIso8601String() }}">{{ $latestMonitoring->monitored_at->format('d M Y, H:i') }} WIB</time>@endif
-            </div>
         </div>
     </div>
 
@@ -349,7 +275,7 @@
                             </span>
                         @endif
                     </div>
-                    <p class="text-xs text-muted mt-0.5">Pemantauan deviasi ambang batas sensor mikroklimat dan level tandon secara otomatis.</p>
+                    <p class="text-xs text-muted mt-0.5">Pemantauan deviasi threshold tiga sensor aktif.</p>
                 </div>
             </div>
 
@@ -549,30 +475,6 @@
                 </div>
             </div>
 
-            {{-- Kipas Exhaust --}}
-            @php
-                $fan = $actuatorSummary['fan'] ?? null;
-                $fanOn = $fan && $fan->isOn();
-            @endphp
-            <div class="p-4 rounded-[2px] bg-canvas border border-line flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-[2px] {{ $fanOn ? 'bg-accent-soft text-accent border border-line' : 'bg-surface text-muted border border-line' }} flex items-center justify-center shrink-0">
-                        <svg class="w-5 h-5 {{ $fanOn ? '' : '' }}" style="animation-duration: 3s;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l2-1m-2 1l2 1m-2 1v-2.5M18 18l-2 1m2-1l-2-1m2 1v-2.5"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="text-xs font-semibold text-current">{{ $fan ? $fan->name : 'Kipas Exhaust Sirkulasi' }}</div>
-                        <div class="text-xs text-muted tabular-nums mt-0.5">
-                            Status: <span class="font-semibold {{ $fanOn ? 'text-accent' : 'text-muted' }}">{{ $fanOn ? 'AKTIF (ON)' : 'NON-AKTIF (OFF)' }}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-right text-xs text-muted">
-                    <span class="block text-xs font-semibold text-muted">Pembaruan</span>
-                    <span class="tabular-nums text-ink">{{ $fan?->last_changed_at ? $fan->last_changed_at->diffForHumans() : '-' }}</span>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -981,11 +883,11 @@
                 </div>
             </div>
 
-            <!-- Parameter 2: pH Media / Nutrisi -->
+            <!-- Parameter 2: pH air -->
             <div class="p-4 rounded-[2px] bg-canvas border border-line">
                 <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-accent text-xs">pH Nutrisi</span>
-                    <span class="tabular-nums text-xs bg-accent-soft text-accent px-1.5 py-0.5 rounded-[2px] border border-line">pH</span>
+                    <span class="font-semibold text-accent text-xs">pH air</span>
+                    <span class="tabular-nums text-xs bg-accent-soft text-accent px-1.5 py-0.5 rounded-[2px] border border-line"></span>
                 </div>
                 <div class="space-y-1 text-xs">
                     <div class="flex justify-between items-center text-ink">
@@ -999,116 +901,6 @@
                     <div class="flex justify-between items-center text-ink">
                         <span class="text-muted">Maksimum:</span>
                         <span class="tabular-nums text-danger">{{ $aggregations && $aggregations->max_ph ? number_format($aggregations->max_ph, 2) : '-' }}</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Parameter 3: Kelembapan Udara -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line">
-                <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-muted text-xs">Kelembapan</span>
-                    <span class="tabular-nums text-xs bg-surface text-muted px-1.5 py-0.5 rounded-[2px] border border-line">% RH</span>
-                </div>
-                <div class="space-y-1 text-xs">
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Rata-rata:</span>
-                        <span class="font-semibold tabular-nums text-current">{{ $aggregations && $aggregations->avg_humidity ? number_format($aggregations->avg_humidity, 1) . '%' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Minimum:</span>
-                        <span class="tabular-nums text-muted">{{ $aggregations && $aggregations->min_humidity ? number_format($aggregations->min_humidity, 1) . '%' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Maksimum:</span>
-                        <span class="tabular-nums text-warning">{{ $aggregations && $aggregations->max_humidity ? number_format($aggregations->max_humidity, 1) . '%' : '-' }}</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Parameter 4: Tinggi Tanaman -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line">
-                <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-muted text-xs">Tinggi Tanaman</span>
-                    <span class="tabular-nums text-xs bg-surface text-muted px-1.5 py-0.5 rounded-[2px] border border-line">cm</span>
-                </div>
-                <div class="space-y-1 text-xs">
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Rata-rata:</span>
-                        <span class="font-semibold tabular-nums text-current">{{ $aggregations && $aggregations->avg_height ? number_format($aggregations->avg_height, 1) . ' cm' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Minimum:</span>
-                        <span class="tabular-nums text-muted">{{ $aggregations && $aggregations->min_height ? number_format($aggregations->min_height, 1) . ' cm' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Maksimum:</span>
-                        <span class="tabular-nums text-muted">{{ $aggregations && $aggregations->max_height ? number_format($aggregations->max_height, 1) . ' cm' : '-' }}</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Parameter 5: Kerapatan Kanopi -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line">
-                <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-warning text-xs">Kerapatan Tajuk</span>
-                    <span class="tabular-nums text-xs bg-warning-soft text-warning px-1.5 py-0.5 rounded-[2px] border border-warning/25">%</span>
-                </div>
-                <div class="space-y-1 text-xs">
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Rata-rata:</span>
-                        <span class="font-semibold tabular-nums text-current">{{ $aggregations && $aggregations->avg_density ? number_format($aggregations->avg_density, 1) . '%' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Minimum:</span>
-                        <span class="tabular-nums text-warning">{{ $aggregations && $aggregations->min_density ? number_format($aggregations->min_density, 1) . '%' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Maksimum:</span>
-                        <span class="tabular-nums text-accent">{{ $aggregations && $aggregations->max_density ? number_format($aggregations->max_density, 1) . '%' : '-' }}</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Parameter 6: Suhu Nutrisi -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line">
-                <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-danger text-xs">Suhu Nutrisi</span>
-                    <span class="tabular-nums text-xs bg-danger-soft text-danger px-1.5 py-0.5 rounded-[2px] border border-danger/25">°C</span>
-                </div>
-                <div class="space-y-1 text-xs">
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Rata-rata:</span>
-                        <span class="font-semibold tabular-nums text-current">{{ $aggregations && $aggregations->avg_nutrient_temp !== null ? number_format($aggregations->avg_nutrient_temp, 1) . ' °C' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Minimum:</span>
-                        <span class="tabular-nums text-accent">{{ $aggregations && $aggregations->min_nutrient_temp !== null ? number_format($aggregations->min_nutrient_temp, 1) . ' °C' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Maksimum:</span>
-                        <span class="tabular-nums text-danger">{{ $aggregations && $aggregations->max_nutrient_temp !== null ? number_format($aggregations->max_nutrient_temp, 1) . ' °C' : '-' }}</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Parameter 7: EC Nutrisi -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line">
-                <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-muted text-xs">EC Nutrisi</span>
-                    <span class="tabular-nums text-xs bg-surface text-muted px-1.5 py-0.5 rounded-[2px] border border-line">mS/cm</span>
-                </div>
-                <div class="space-y-1 text-xs">
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Rata-rata:</span>
-                        <span class="font-semibold tabular-nums text-current">{{ $aggregations && $aggregations->avg_ec !== null ? number_format($aggregations->avg_ec, 2) . ' mS' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Minimum:</span>
-                        <span class="tabular-nums text-muted">{{ $aggregations && $aggregations->min_ec !== null ? number_format($aggregations->min_ec, 2) . ' mS' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Maksimum:</span>
-                        <span class="tabular-nums text-warning">{{ $aggregations && $aggregations->max_ec !== null ? number_format($aggregations->max_ec, 2) . ' mS' : '-' }}</span>
                     </div>
                 </div>
             </div>
@@ -1131,50 +923,6 @@
                     <div class="flex justify-between items-center text-ink">
                         <span class="text-muted">Maksimum:</span>
                         <span class="tabular-nums text-warning">{{ $aggregations && $aggregations->max_soil_moisture !== null ? number_format($aggregations->max_soil_moisture, 1) . '%' : '-' }}</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Parameter 9: Intensitas Cahaya -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line">
-                <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-warning text-xs">Intensitas Cahaya</span>
-                    <span class="tabular-nums text-xs bg-warning-soft text-warning px-1.5 py-0.5 rounded-[2px] border border-warning/25">lux</span>
-                </div>
-                <div class="space-y-1 text-xs">
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Rata-rata:</span>
-                        <span class="font-semibold tabular-nums text-current">{{ $aggregations && $aggregations->avg_light !== null ? number_format($aggregations->avg_light, 0) . ' lx' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Minimum:</span>
-                        <span class="tabular-nums text-warning">{{ $aggregations && $aggregations->min_light !== null ? number_format($aggregations->min_light, 0) . ' lx' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Maksimum:</span>
-                        <span class="tabular-nums text-warning">{{ $aggregations && $aggregations->max_light !== null ? number_format($aggregations->max_light, 0) . ' lx' : '-' }}</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Parameter 10: Level Tandon Nutrisi -->
-            <div class="p-4 rounded-[2px] bg-canvas border border-line">
-                <div class="flex items-center justify-between text-xs mb-2">
-                    <span class="font-semibold text-muted text-xs">Level Tandon</span>
-                    <span class="tabular-nums text-xs bg-surface text-muted px-1.5 py-0.5 rounded-[2px] border border-line">%</span>
-                </div>
-                <div class="space-y-1 text-xs">
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Rata-rata:</span>
-                        <span class="font-semibold tabular-nums text-current">{{ $aggregations && $aggregations->avg_tank_level !== null ? number_format($aggregations->avg_tank_level, 1) . '%' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Minimum:</span>
-                        <span class="tabular-nums text-danger">{{ $aggregations && $aggregations->min_tank_level !== null ? number_format($aggregations->min_tank_level, 1) . '%' : '-' }}</span>
-                    </div>
-                    <div class="flex justify-between items-center text-ink">
-                        <span class="text-muted">Maksimum:</span>
-                        <span class="tabular-nums text-muted">{{ $aggregations && $aggregations->max_tank_level !== null ? number_format($aggregations->max_tank_level, 1) . '%' : '-' }}</span>
                     </div>
                 </div>
             </div>
@@ -1226,10 +974,10 @@
             </div>
         @endif
 
-        <!-- A. MAIN MONITORING TRENDS (Suhu, pH, Kelembapan) -->
+        <!-- A. MAIN MONITORING TRENDS (Suhu udara dan pH air) -->
         <div class="space-y-3 {{ $filteredCount === 0 ? 'hidden' : '' }}">
             <div class="flex items-center justify-between">
-                <h4 class="text-xs font-semibold text-muted">1. Tren Parameter Lingkungan &amp; Nutrisi</h4>
+                <h4 class="text-xs font-semibold text-muted">Tren tiga sensor aktif</h4>
                 <span class="text-xs text-muted italic">*Garis putus-putus = Configured Monitoring Threshold</span>
             </div>
 
@@ -1243,7 +991,7 @@
                             <span class="text-xs tabular-nums bg-accent-soft text-accent px-2 py-0.5 rounded-[2px] border border-line">°C</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
-                            Configured Monitoring Threshold: {{ $thresholds['temperature']['min'] }}°C &ndash; {{ $thresholds['temperature']['max'] }}°C
+                            Threshold PROVISIONAL: {{ $thresholds['temperature']['min'] }}°C &ndash; {{ $thresholds['temperature']['max'] }}°C
                         </p>
                     </div>
                     <div class="relative h-60 w-full">
@@ -1251,82 +999,28 @@
                     </div>
                 </div>
 
-                <!-- Chart 2: pH Nutrisi -->
+                <!-- Chart 2: pH air -->
                 <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-accent">Tren pH</span>
-                            <span class="text-xs tabular-nums bg-accent-soft text-accent px-2 py-0.5 rounded-[2px] border border-line">pH</span>
+                            <span class="text-xs font-semibold text-accent">Tren pH air</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
-                            Configured Monitoring Threshold: {{ $thresholds['ph']['min'] }} &ndash; {{ $thresholds['ph']['max'] }}
+                            Threshold PROVISIONAL: {{ $thresholds['ph']['min'] }} &ndash; {{ $thresholds['ph']['max'] }}
                         </p>
                     </div>
                     <div class="relative h-60 w-full">
-                        <canvas id="phChart" role="img" aria-label="Grafik pH nutrisi; nilai pengamatan tersedia di tabel riwayat di bawah">Grafik pH nutrisi. Lihat tabel riwayat monitoring untuk data pengamatan.</canvas>
+                        <canvas id="phChart" role="img" aria-label="Grafik pH air; nilai pengamatan tersedia di tabel riwayat di bawah">Grafik pH air. Lihat tabel riwayat monitoring untuk data pengamatan.</canvas>
                     </div>
                 </div>
-
-                <!-- Chart 3: Kelembapan (%) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-muted">Tren Kelembapan Udara</span>
-                            <span class="text-xs tabular-nums bg-surface text-muted px-2 py-0.5 rounded-[2px] border border-line">% RH</span>
-                        </div>
-                        <p class="text-xs text-muted mb-3">
-                            Configured Monitoring Threshold: {{ $thresholds['humidity']['min'] }}% &ndash; {{ $thresholds['humidity']['max'] }}%
-                        </p>
-                    </div>
-                    <div class="relative h-60 w-full">
-                        <canvas id="humidityChart" role="img" aria-label="Grafik Kelembapan udara; nilai pengamatan tersedia di tabel riwayat di bawah">Grafik Kelembapan udara. Lihat tabel riwayat monitoring untuk data pengamatan.</canvas>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- B. EXPANDED IOT SENSOR TRENDS (Nutrisi, Media & Tandon) -->
-        <div class="space-y-3 {{ $filteredCount === 0 ? 'hidden' : '' }}">
-            <div class="flex items-center justify-between">
-                <h4 class="text-xs font-semibold text-muted">2. Tren Nutrisi, Media Tanam &amp; Tandon (IoT Expansion)</h4>
-                <span class="text-xs text-muted italic">*Nilai kosong ditampilkan empty-state (tidak diperlakukan nol)</span>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-
-                <!-- Chart: EC Nutrisi (mS/cm) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between" id="card-ecChart">
-                    <div>
-                        <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-muted">Tren EC Nutrisi</span>
-                            <span class="text-xs tabular-nums bg-surface text-muted px-2 py-0.5 rounded-[2px] border border-line">mS/cm</span>
-                        </div>
-                        <p class="text-xs text-muted mb-3">
-                            Configured Threshold: {{ $thresholds['ec']['min'] }} &ndash; {{ $thresholds['ec']['max'] }} mS/cm
-                        </p>
-                    </div>
-                    <div class="relative h-60 w-full flex items-center justify-center">
-                        <canvas id="ecChart" role="img" aria-label="Grafik Konduktivitas listrik; nilai pengamatan tersedia di tabel riwayat di bawah">Grafik Konduktivitas listrik. Lihat tabel riwayat monitoring untuk data pengamatan.</canvas>
-                        <div id="empty-ecChart" class="hidden text-center py-8">
-                            <svg class="w-8 h-8 mx-auto text-muted mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
-                            <p class="text-xs text-muted">Belum ada data sensor EC.</p>
-                            <span class="inline-block mt-1 text-xs text-muted tabular-nums">Siap menerima telemetri ESP32</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Chart: Kelembapan Tanah (%) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between" id="card-soilMoistureChart">
+<div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between" id="card-soilMoistureChart">
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
                             <span class="text-xs font-semibold text-muted">Tren Kelembapan Tanah</span>
                             <span class="text-xs tabular-nums bg-surface text-muted px-2 py-0.5 rounded-[2px] border border-line">%</span>
                         </div>
                         <p class="text-xs text-muted mb-3">
-                            Configured Threshold: {{ $thresholds['soil_moisture']['min'] }}% &ndash; {{ $thresholds['soil_moisture']['max'] }}%
+                            Threshold PROVISIONAL: {{ $thresholds['soil_moisture']['min'] }}% &ndash; {{ $thresholds['soil_moisture']['max'] }}%
                         </p>
                     </div>
                     <div class="relative h-60 w-full flex items-center justify-center">
@@ -1341,122 +1035,12 @@
                     </div>
                 </div>
 
-                <!-- Chart: Intensitas Cahaya (lux) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between" id="card-lightChart">
-                    <div>
-                        <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-warning">Tren Intensitas Cahaya</span>
-                            <span class="text-xs tabular-nums bg-warning-soft text-warning px-2 py-0.5 rounded-[2px] border border-warning/25">lux</span>
-                        </div>
-                        <p class="text-xs text-muted mb-3">
-                            Configured Threshold: {{ number_format($thresholds['light_intensity']['min'], 0) }} &ndash; {{ number_format($thresholds['light_intensity']['max'], 0) }} lux
-                        </p>
-                    </div>
-                    <div class="relative h-60 w-full flex items-center justify-center">
-                        <canvas id="lightChart" role="img" aria-label="Grafik Intensitas cahaya; nilai pengamatan tersedia di tabel riwayat di bawah">Grafik Intensitas cahaya. Lihat tabel riwayat monitoring untuk data pengamatan.</canvas>
-                        <div id="empty-lightChart" class="hidden text-center py-8">
-                            <svg class="w-8 h-8 mx-auto text-muted mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                            </svg>
-                            <p class="text-xs text-muted">Belum ada data intensitas cahaya.</p>
-                            <span class="inline-block mt-1 text-xs text-warning tabular-nums">Siap menerima telemetri ESP32</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Chart: Suhu Larutan Nutrisi (°C) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between" id="card-nutrientTempChart">
-                    <div>
-                        <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-danger">Tren Suhu Nutrisi</span>
-                            <span class="text-xs tabular-nums bg-danger-soft text-danger px-2 py-0.5 rounded-[2px] border border-danger/25">°C</span>
-                        </div>
-                        <p class="text-xs text-muted mb-3">
-                            Configured Threshold: {{ $thresholds['nutrient_temperature']['min'] }}°C &ndash; {{ $thresholds['nutrient_temperature']['max'] }}°C
-                        </p>
-                    </div>
-                    <div class="relative h-60 w-full flex items-center justify-center">
-                        <canvas id="nutrientTempChart" role="img" aria-label="Grafik Suhu nutrisi; nilai pengamatan tersedia di tabel riwayat di bawah">Grafik Suhu nutrisi. Lihat tabel riwayat monitoring untuk data pengamatan.</canvas>
-                        <div id="empty-nutrientTempChart" class="hidden text-center py-8">
-                            <svg class="w-8 h-8 mx-auto text-muted mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                            </svg>
-                            <p class="text-xs text-muted">Belum ada data suhu nutrisi.</p>
-                            <span class="inline-block mt-1 text-xs text-danger tabular-nums">Siap menerima telemetri ESP32</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Chart: Level Tandon Nutrisi (%) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between" id="card-tankLevelChart">
-                    <div>
-                        <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-muted">Level Cadangan Tandon</span>
-                            <span class="text-xs tabular-nums bg-surface text-muted px-2 py-0.5 rounded-[2px] border border-line">%</span>
-                        </div>
-                        <p class="text-xs text-muted mb-3">
-                            Configured Threshold: {{ $thresholds['tank_level']['min'] }}% &ndash; {{ $thresholds['tank_level']['max'] }}%
-                        </p>
-                    </div>
-                    <div class="relative h-60 w-full flex items-center justify-center">
-                        <canvas id="tankLevelChart" role="img" aria-label="Grafik Level tandon; nilai pengamatan tersedia di tabel riwayat di bawah">Grafik Level tandon. Lihat tabel riwayat monitoring untuk data pengamatan.</canvas>
-                        <div id="empty-tankLevelChart" class="hidden text-center py-8">
-                            <svg class="w-8 h-8 mx-auto text-muted mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                            </svg>
-                            <p class="text-xs text-muted">Belum ada data level tandon.</p>
-                            <span class="inline-block mt-1 text-xs text-muted tabular-nums">Siap menerima telemetri ESP32</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- C. GROWTH TRENDS (Tinggi Tanaman & Kerapatan Kanopi) -->
-        <div class="space-y-3 {{ $filteredCount === 0 ? 'hidden' : '' }}">
-            <h4 class="text-xs font-semibold text-muted">3. Tren Indikator Pertumbuhan Tanaman</h4>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-
-                <!-- Chart 4: Tinggi Tanaman (cm) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-muted">Perkembangan Tinggi Tanaman</span>
-                            <span class="text-xs tabular-nums bg-surface text-muted px-2 py-0.5 rounded-[2px] border border-line">cm</span>
-                        </div>
-                        <p class="text-xs text-muted mb-3">
-                            Perubahan tinggi batang tanaman melon berdasarkan kronologis waktu observasi.
-                        </p>
-                    </div>
-                    <div class="relative h-64 w-full">
-                        <canvas id="heightChart" role="img" aria-label="Grafik Tinggi tanaman; nilai pengamatan tersedia di tabel riwayat di bawah">Grafik Tinggi tanaman. Lihat tabel riwayat monitoring untuk data pengamatan.</canvas>
-                    </div>
-                </div>
-
-                <!-- Chart 5: Kerapatan Kanopi (%) -->
-                <div class="p-5 rounded-[2px] bg-canvas border border-line flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-1.5">
-                            <span class="text-xs font-semibold text-warning">Perkembangan Kerapatan Kanopi</span>
-                            <span class="text-xs tabular-nums bg-warning-soft text-warning px-2 py-0.5 rounded-[2px] border border-warning/25">%</span>
-                        </div>
-                        <p class="text-xs text-muted mb-3">
-                            Perkembangan tutupan tajuk daun tanaman melon dari waktu ke waktu.
-                        </p>
-                    </div>
-                    <div class="relative h-64 w-full">
-                        <canvas id="densityChart" role="img" aria-label="Grafik Kerapatan tanaman; nilai pengamatan tersedia di tabel riwayat di bawah">Grafik Kerapatan tanaman. Lihat tabel riwayat monitoring untuk data pengamatan.</canvas>
-                    </div>
-                </div>
-
             </div>
         </div>
 
         <!-- C. DISTRIBUTION & FREQUENCY CHARTS (Status Tanaman, Kondisi, Frekuensi Monitoring) -->
         <div class="space-y-3">
-            <h4 class="text-xs font-semibold text-muted">3. Distribusi Status &amp; Frekuensi Monitoring</h4>
+            <h4 class="text-xs font-semibold text-muted">Distribusi Status &amp; Frekuensi Monitoring</h4>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
@@ -1586,22 +1170,22 @@
 
                             <!-- Kolom Suhu -->
                             <td class="py-3 px-4 text-center tabular-nums">
-                                <span class="font-semibold {{ $item->temperature >= 20 && $item->temperature <= 32 ? 'text-accent' : 'text-warning' }}">
+                                <span class="font-semibold text-current">
                                     {{ number_format($item->temperature, 1) }}°C
                                 </span>
                             </td>
 
                             <!-- Kolom pH -->
                             <td class="py-3 px-4 text-center tabular-nums">
-                                <span class="font-semibold {{ $item->ph >= 5.8 && $item->ph <= 7.2 ? 'text-accent' : 'text-danger' }}">
+                                <span class="font-semibold text-current">
                                     {{ number_format($item->ph, 2) }}
                                 </span>
                             </td>
 
                             <!-- Kolom Kelembapan -->
                             <td class="py-3 px-4 text-center tabular-nums">
-                                <span class="font-semibold {{ $item->humidity >= 60 && $item->humidity <= 85 ? 'text-muted' : 'text-warning' }}">
-                                    {{ number_format($item->humidity, 0) }}%
+                                <span class="font-semibold text-current">
+                                    <x-sensor-reading :value="$item->soil_moisture" :precision="0" unit="%" />
                                 </span>
                             </td>
 
@@ -1701,14 +1285,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const labels = @json($chartLabels);
     const temperatures = @json($chartTemps);
     const phValues = @json($chartPh);
-    const humidities = @json($chartHumidities);
-    const nutrientTemps = @json($chartNutrientTemps);
-    const ecValues = @json($chartEc);
     const soilMoistures = @json($chartSoilMoistures);
-    const lightValues = @json($chartLights);
-    const tankLevels = @json($chartTankLevels);
-    const heights = @json($chartHeights);
-    const densities = @json($chartDensities);
     const thresholds = @json($thresholds);
 
     const conditionLabels = @json($conditionLabels);
@@ -1825,7 +1402,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     labels: labels,
                     datasets: [
                         {
-                            label: 'pH Observasi',
+                            label: 'pH air',
                             data: phValues,
                             borderColor: '#14b8a6', // teal-500
                             backgroundColor: 'rgba(20, 184, 166, 0.12)',
@@ -1866,7 +1443,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             suggestedMax: 8.5,
                             ticks: {
                                 ...commonLineOptions.scales.y.ticks,
-                                callback: (val) => val + ' pH'
+                                callback: (val) => val
                             }
                         }
                     }
@@ -1875,136 +1452,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Chart 3: Kelembapan (%) dengan Configured Monitoring Threshold
-        const ctxHumidity = document.getElementById('humidityChart');
-        if (ctxHumidity) {
-            new Chart(ctxHumidity, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [
-                        {
-                            label: 'Kelembapan Observasi (%)',
-                            data: humidities,
-                            borderColor: '#0ea5e9', // sky-500
-                            backgroundColor: 'rgba(14, 165, 233, 0.12)',
-                            fill: true,
-                            tension: 0.35,
-                            borderWidth: 2,
-                            pointBackgroundColor: '#0ea5e9',
-                            pointRadius: 3,
-                            pointHoverRadius: 5,
-                        },
-                        {
-                            label: 'Configured Max (' + thresholds.humidity.max + '%)',
-                            data: labels.map(() => thresholds.humidity.max),
-                            borderColor: 'rgba(239, 68, 68, 0.85)',
-                            borderDash: [6, 4],
-                            borderWidth: 1.5,
-                            pointRadius: 0,
-                            fill: false,
-                        },
-                        {
-                            label: 'Configured Min (' + thresholds.humidity.min + '%)',
-                            data: labels.map(() => thresholds.humidity.min),
-                            borderColor: 'rgba(245, 158, 11, 0.85)',
-                            borderDash: [6, 4],
-                            borderWidth: 1.5,
-                            pointRadius: 0,
-                            fill: false,
-                        }
-                    ]
-                },
-                options: {
-                    ...commonLineOptions,
-                    scales: {
-                        ...commonLineOptions.scales,
-                        y: {
-                            ...commonLineOptions.scales.y,
-                            suggestedMin: 40,
-                            suggestedMax: 95,
-                            ticks: {
-                                ...commonLineOptions.scales.y.ticks,
-                                callback: (val) => val + '%'
-                            }
-                        }
-                    }
-                }
-            });
-        }
 
-        // Chart 4: Perkembangan Tinggi Tanaman (cm)
-        const ctxHeight = document.getElementById('heightChart');
-        if (ctxHeight) {
-            new Chart(ctxHeight, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Tinggi Tanaman (cm)',
-                        data: heights,
-                        borderColor: '#8b5cf6', // violet-500
-                        backgroundColor: 'rgba(139, 92, 246, 0.12)',
-                        fill: true,
-                        tension: 0.35,
-                        borderWidth: 2,
-                        pointBackgroundColor: '#8b5cf6',
-                        pointRadius: 3,
-                        pointHoverRadius: 5,
-                    }]
-                },
-                options: {
-                    ...commonLineOptions,
-                    scales: {
-                        ...commonLineOptions.scales,
-                        y: {
-                            ...commonLineOptions.scales.y,
-                            ticks: {
-                                ...commonLineOptions.scales.y.ticks,
-                                callback: (val) => val + ' cm'
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Chart 5: Perkembangan Kerapatan Kanopi (%)
-        const ctxDensity = document.getElementById('densityChart');
-        if (ctxDensity) {
-            new Chart(ctxDensity, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Kerapatan Kanopi (%)',
-                        data: densities,
-                        borderColor: '#f59e0b', // amber-500
-                        backgroundColor: 'rgba(245, 158, 11, 0.12)',
-                        fill: true,
-                        tension: 0.35,
-                        borderWidth: 2,
-                        pointBackgroundColor: '#f59e0b',
-                        pointRadius: 3,
-                        pointHoverRadius: 5,
-                    }]
-                },
-                options: {
-                    ...commonLineOptions,
-                    scales: {
-                        ...commonLineOptions.scales,
-                        y: {
-                            ...commonLineOptions.scales.y,
-                            ticks: {
-                                ...commonLineOptions.scales.y.ticks,
-                                callback: (val) => val + '%'
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Helper untuk inisialisasi sensor chart dengan penanganan null yang aman dan empty-state
         const initSensorChart = (canvasId, emptyId, label, dataValues, unit, color, minThreshold, maxThreshold, suggestedMin, suggestedMax) => {
             const canvas = document.getElementById(canvasId);
             const emptyEl = document.getElementById(emptyId);
@@ -2096,11 +1544,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Inisialisasi 5 Grafik Parameter IoT Baru
-        initSensorChart('ecChart', 'empty-ecChart', 'EC Nutrisi', ecValues, 'mS/cm', 'rgb(6, 182, 212)', thresholds.ec?.min, thresholds.ec?.max, 1.0, 3.5);
         initSensorChart('soilMoistureChart', 'empty-soilMoistureChart', 'Kelembapan Tanah', soilMoistures, '%', 'rgb(132, 204, 22)', thresholds.soil_moisture?.min, thresholds.soil_moisture?.max, 40, 100);
-        initSensorChart('lightChart', 'empty-lightChart', 'Intensitas Cahaya', lightValues, 'lux', 'rgb(234, 179, 8)', thresholds.light_intensity?.min, thresholds.light_intensity?.max, 0, 60000);
-        initSensorChart('nutrientTempChart', 'empty-nutrientTempChart', 'Suhu Larutan Nutrisi', nutrientTemps, '°C', 'rgb(244, 63, 94)', thresholds.nutrient_temperature?.min, thresholds.nutrient_temperature?.max, 15, 35);
-        initSensorChart('tankLevelChart', 'empty-tankLevelChart', 'Level Tandon Nutrisi', tankLevels, '%', 'rgb(99, 102, 241)', thresholds.tank_level?.min, thresholds.tank_level?.max, 0, 100);
     }
 
     // Chart 6: Distribusi Kondisi Tanaman (Doughnut Chart)

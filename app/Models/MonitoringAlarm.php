@@ -18,18 +18,7 @@ class MonitoringAlarm extends Model
      *
      * @var array<string, string>
      */
-    public const PARAMETER_LABELS = [
-        'temperature'          => 'Suhu Udara',
-        'humidity'             => 'Kelembapan Udara',
-        'soil_moisture'        => 'Kelembapan Tanah',
-        'ph'                   => 'pH Nutrisi/Media',
-        'ec'                   => 'Konduktivitas Listrik (EC)',
-        'light_intensity'      => 'Intensitas Cahaya',
-        'nutrient_temperature' => 'Suhu Nutrisi',
-        'tank_level'           => 'Level Tandon Nutrisi',
-        'plant_height'         => 'Tinggi Tanaman',
-        'plant_density'        => 'Kerapatan Kanopi',
-    ];
+    public const PARAMETER_LABELS = \App\Support\ActiveSensors::LABELS;
 
     /**
      * Parameter yang dikategorikan sebagai kritis jika melanggar arah tertentu.
@@ -61,6 +50,16 @@ class MonitoringAlarm extends Model
         'notes',
     ];
 
+    public function getParameterDisplayNameAttribute($value): ?string
+    {
+        return \App\Support\ActiveSensors::LABELS[$this->parameter_key] ?? $value;
+    }
+
+    public function getUnitAttribute($value): ?string
+    {
+        return $this->parameter_key === 'ph' ? '' : $value;
+    }
+
     protected function casts(): array
     {
         return [
@@ -91,7 +90,7 @@ class MonitoringAlarm extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('status', 'active');
+        return $query->whereIn('parameter_key', \App\Support\ActiveSensors::STORAGE_KEYS)->where('status', 'active');
     }
 
     public function scopeResolved($query)

@@ -89,27 +89,12 @@ class DashboardController extends Controller
             AVG(temperature) as avg_temp,
             MIN(temperature) as min_temp,
             MAX(temperature) as max_temp,
-            AVG(nutrient_temperature) as avg_nutrient_temp,
-            MIN(nutrient_temperature) as min_nutrient_temp,
-            MAX(nutrient_temperature) as max_nutrient_temp,
             AVG(ph) as avg_ph,
             MIN(ph) as min_ph,
             MAX(ph) as max_ph,
-            AVG(ec) as avg_ec,
-            MIN(ec) as min_ec,
-            MAX(ec) as max_ec,
-            AVG(humidity) as avg_humidity,
-            MIN(humidity) as min_humidity,
-            MAX(humidity) as max_humidity,
             AVG(soil_moisture) as avg_soil_moisture,
             MIN(soil_moisture) as min_soil_moisture,
             MAX(soil_moisture) as max_soil_moisture,
-            AVG(light_intensity) as avg_light,
-            MIN(light_intensity) as min_light,
-            MAX(light_intensity) as max_light,
-            AVG(tank_level) as avg_tank_level,
-            MIN(tank_level) as min_tank_level,
-            MAX(tank_level) as max_tank_level,
             AVG(plant_height) as avg_height,
             MIN(plant_height) as min_height,
             MAX(plant_height) as max_height,
@@ -126,13 +111,8 @@ class DashboardController extends Controller
 
         $chartLabels        = $chartDataQuery->map(fn($m) => $m->monitored_at->format('d M H:i'))->values()->all();
         $chartTemps         = $chartDataQuery->pluck('temperature')->values()->all();
-        $chartNutrientTemps = $chartDataQuery->pluck('nutrient_temperature')->values()->all();
         $chartPh            = $chartDataQuery->pluck('ph')->values()->all();
-        $chartEc            = $chartDataQuery->pluck('ec')->values()->all();
-        $chartHumidities    = $chartDataQuery->pluck('humidity')->values()->all();
         $chartSoilMoistures = $chartDataQuery->pluck('soil_moisture')->values()->all();
-        $chartLights        = $chartDataQuery->pluck('light_intensity')->values()->all();
-        $chartTankLevels    = $chartDataQuery->pluck('tank_level')->values()->all();
         $chartHeights       = $chartDataQuery->pluck('plant_height')->values()->all();
         $chartDensities     = $chartDataQuery->pluck('plant_density')->values()->all();
 
@@ -171,61 +151,16 @@ class DashboardController extends Controller
         ];
 
         // 10. Nilai Ambang Batas Terkonfigurasi (Configured Monitoring Thresholds)
-        $parameters = MonitoringParameter::all();
+        $parameters = MonitoringParameter::whereIn('parameter_key', \App\Support\ActiveSensors::STORAGE_KEYS)->get();
         $paramKeyed = $parameters->keyBy('parameter_name');
+        $waterPhThreshold = $parameters->firstWhere('parameter_key', 'ph');
 
-        $thresholds = [
-            'temperature' => [
-                'min'  => (float) ($paramKeyed['Suhu Udara']->minimum_value ?? 20.0),
-                'max'  => (float) ($paramKeyed['Suhu Udara']->maximum_value ?? 32.0),
-                'unit' => '°C',
-            ],
-            'ph' => [
-                'min'  => (float) ($paramKeyed['pH Nutrisi/Media']->minimum_value ?? 5.8),
-                'max'  => (float) ($paramKeyed['pH Nutrisi/Media']->maximum_value ?? 7.2),
-                'unit' => 'pH',
-            ],
-            'humidity' => [
-                'min'  => (float) ($paramKeyed['Kelembapan Udara']->minimum_value ?? 60.0),
-                'max'  => (float) ($paramKeyed['Kelembapan Udara']->maximum_value ?? 85.0),
-                'unit' => '%',
-            ],
-            'height' => [
-                'min'  => (float) ($paramKeyed['Tinggi Tanaman']->minimum_value ?? 10.0),
-                'max'  => (float) ($paramKeyed['Tinggi Tanaman']->maximum_value ?? 150.0),
-                'unit' => 'cm',
-            ],
-            'density' => [
-                'min'  => (float) ($paramKeyed['Kerapatan Kanopi']->minimum_value ?? 40.0),
-                'max'  => (float) ($paramKeyed['Kerapatan Kanopi']->maximum_value ?? 90.0),
-                'unit' => '%',
-            ],
-            'soil_moisture' => [
-                'min'  => (float) ($paramKeyed['Kelembapan Tanah']->minimum_value ?? 60.0),
-                'max'  => (float) ($paramKeyed['Kelembapan Tanah']->maximum_value ?? 80.0),
-                'unit' => '%',
-            ],
-            'ec' => [
-                'min'  => (float) ($paramKeyed['Konduktivitas Listrik (EC)']->minimum_value ?? 1.8),
-                'max'  => (float) ($paramKeyed['Konduktivitas Listrik (EC)']->maximum_value ?? 2.8),
-                'unit' => 'mS/cm',
-            ],
-            'light_intensity' => [
-                'min'  => (float) ($paramKeyed['Intensitas Cahaya']->minimum_value ?? 15000.0),
-                'max'  => (float) ($paramKeyed['Intensitas Cahaya']->maximum_value ?? 50000.0),
-                'unit' => 'lux',
-            ],
-            'nutrient_temperature' => [
-                'min'  => (float) ($paramKeyed['Suhu Nutrisi']->minimum_value ?? 20.0),
-                'max'  => (float) ($paramKeyed['Suhu Nutrisi']->maximum_value ?? 26.0),
-                'unit' => '°C',
-            ],
-            'tank_level' => [
-                'min'  => (float) ($paramKeyed['Level Tandon Nutrisi']->minimum_value ?? 40.0),
-                'max'  => (float) ($paramKeyed['Level Tandon Nutrisi']->maximum_value ?? 95.0),
-                'unit' => '%',
-            ],
-        ];
+        $thresholds = [];
+        foreach (\App\Support\ActiveSensors::STORAGE_KEYS as $key) {
+            $parameter = $parameters->firstWhere('parameter_key', $key);
+            $thresholds[$key] = ['min' => $parameter?->minimum_value, 'max' => $parameter?->maximum_value,
+                'unit' => \App\Support\ActiveSensors::UNITS[$key]];
+        }
 
         // 11. Tabel Monitoring Terkini (Maksimal 8 rekaman terakhir dari query filter)
         $recentMonitorings = (clone $monitoringQuery)
@@ -248,7 +183,7 @@ class DashboardController extends Controller
         $actuatorSummary = $actuatorService->getDashboardSummary();
 
         // 14. Phase 15: Ringkasan Analisis Kondisi Greenhouse (Fuzzy Logic Mamdani)
-        $latestFuzzyQuery = \App\Models\FuzzyInferenceResult::with(['plant', 'monitoring'])
+        $latestFuzzyQuery = \App\Models\FuzzyInferenceResult::whereIn('rule_version', [config('fuzzy.rule_version'), 'external-unverified'])->with(['plant', 'monitoring'])
             ->when($selectedPlantId !== 'all' && is_numeric($selectedPlantId), function ($q) use ($selectedPlantId) {
                 return $q->where('plant_id', $selectedPlantId);
             })
@@ -283,13 +218,8 @@ class DashboardController extends Controller
             'thresholds',
             'chartLabels',
             'chartTemps',
-            'chartNutrientTemps',
             'chartPh',
-            'chartEc',
-            'chartHumidities',
             'chartSoilMoistures',
-            'chartLights',
-            'chartTankLevels',
             'chartHeights',
             'chartDensities',
             'conditionLabels',

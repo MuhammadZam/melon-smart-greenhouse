@@ -28,7 +28,6 @@ class MonitoringAlarmService
 {
     public const ALARM_ALLOWED_PARAMETERS = [
         'temperature',
-        'humidity',
         'soil_moisture',
         'ph',
     ];
@@ -54,7 +53,7 @@ class MonitoringAlarmService
         'temperature'          => 'Suhu Udara',
         'humidity'             => 'Kelembapan Udara',
         'soil_moisture'        => 'Kelembapan Tanah',
-        'ph'                   => 'pH Nutrisi/Media',
+        'ph'                   => 'pH air',
         'ec'                   => 'Konduktivitas Listrik (EC)',
         'light_intensity'      => 'Intensitas Cahaya',
         'nutrient_temperature' => 'Suhu Nutrisi',
@@ -95,14 +94,14 @@ class MonitoringAlarmService
 
     /**
      * Kebijakan Transisi Phase 13:
-     * Menyelesaikan alarm aktif lama yang berada di luar 4 parameter yang diizinkan.
+     * Menyelesaikan alarm aktif lama yang berada di luar 3 parameter yang diizinkan.
      * Histori alarm tidak dihapus, snapshot nilai tetap terjaga, dan catatan audit ditambahkan.
      *
      * @return int Jumlah alarm yang diselesaikan
      */
     public function reconcileLegacyAlarms(): int
     {
-        $legacyAlarms = MonitoringAlarm::active()
+        $legacyAlarms = MonitoringAlarm::where('status', 'active')
             ->whereNotIn('parameter_key', self::ALARM_ALLOWED_PARAMETERS)
             ->get();
 
@@ -112,7 +111,7 @@ class MonitoringAlarmService
                 'status'         => 'resolved',
                 'resolved_value' => $alarm->last_abnormal_value ?? $alarm->sensor_value,
                 'resolved_at'    => now(),
-                'notes'          => '[Phase 13 Transition Policy] Diselesaikan otomatis: parameter ini dialihkan menjadi mode monitoring visual saja (non-alarm). Histori dipertahankan.',
+                'notes'          => '[Phase 13 Transition Policy] Diselesaikan otomatis: parameter ini dinonaktifkan berdasarkan revisi sensor tiga input 2026-11-07. Histori dipertahankan.',
             ]);
             $resolvedCount++;
         }
@@ -133,7 +132,7 @@ class MonitoringAlarmService
         $thresholds = $this->loadThresholds();
 
         foreach (self::FIELD_TO_PARAM_NAME_FALLBACK as $field => $displayNameFallback) {
-            // [Phase 13 Rule]: Hanya 4 parameter yang diizinkan memicu alarm baru
+            // [Phase 13 Rule]: Hanya 3 parameter yang diizinkan memicu alarm baru
             if (!self::isAlarmEligible($field)) {
                 continue;
             }
@@ -344,6 +343,7 @@ class MonitoringAlarmService
 
         // Buat reverse map: parameter_name → field
         $nameToField = array_flip(self::FIELD_TO_PARAM_NAME_FALLBACK);
+        $nameToField['pH Nutrisi/Media'] = 'ph'; // Historical display-name alias, no threshold change.
 
         foreach ($parameters as $param) {
             // Prioritas 1: gunakan parameter_key jika tersedia
@@ -371,7 +371,7 @@ class MonitoringAlarmService
     {
         $active       = MonitoringAlarm::active()->whereIn('parameter_key', self::ALARM_ALLOWED_PARAMETERS)->count();
         $critical     = MonitoringAlarm::active()->critical()->whereIn('parameter_key', self::ALARM_ALLOWED_PARAMETERS)->count();
-        $resolvedToday = MonitoringAlarm::resolved()
+        $resolvedToday = MonitoringAlarm::whereIn('parameter_key', self::ALARM_ALLOWED_PARAMETERS)->resolved()
             ->whereDate('resolved_at', today())
             ->count();
 

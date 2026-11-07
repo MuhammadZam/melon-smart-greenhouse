@@ -26,6 +26,14 @@ class FuzzyInferenceResult extends Model
         'inferred_at',
     ];
 
+    public function getRecommendationAttribute($value): ?string
+    {
+        if ($this->rule_version !== config('fuzzy.rule_version') || in_array($this->inference_source, ['api_payload', 'external_esp32', 'google_sheets_payload'], true)) {
+            return 'Hasil historis/eksternal belum divalidasi untuk tiga sensor. Konsultasikan tindakan kepada Tim Elektro.';
+        }
+        return $value;
+    }
+
     protected function casts(): array
     {
         return [

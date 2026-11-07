@@ -1,0 +1,212 @@
+{
+  "responsive": [
+    {
+      "width": 360,
+      "route": "/dashboard",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 360,
+      "route": "/monitorings",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 360,
+      "route": "/monitorings/create",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 360,
+      "route": "/reports/monitoring",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 360,
+      "route": "/actuators",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 390,
+      "route": "/dashboard",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 390,
+      "route": "/monitorings",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 390,
+      "route": "/monitorings/create",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 390,
+      "route": "/reports/monitoring",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 390,
+      "route": "/actuators",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 768,
+      "route": "/dashboard",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 768,
+      "route": "/monitorings",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 768,
+      "route": "/monitorings/create",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 768,
+      "route": "/reports/monitoring",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 768,
+      "route": "/actuators",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 1024,
+      "route": "/dashboard",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 1024,
+      "route": "/monitorings",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 1024,
+      "route": "/monitorings/create",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 1024,
+      "route": "/reports/monitoring",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 1024,
+      "route": "/actuators",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 1440,
+      "route": "/dashboard",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 1440,
+      "route": "/monitorings",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 1440,
+      "route": "/monitorings/create",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 1440,
+      "route": "/reports/monitoring",
+      "overflow": false,
+      "retiredLabels": []
+    },
+    {
+      "width": 1440,
+      "route": "/actuators",
+      "overflow": false,
+      "retiredLabels": []
+    }
+  ],
+  "routes": [
+    {
+      "route": "/alarms",
+      "status": 200
+    },
+    {
+      "route": "/admin/thresholds",
+      "status": 200
+    },
+    {
+      "route": "/fuzzy/history",
+      "status": 200
+    },
+    {
+      "route": "/admin/fuzzy/config",
+      "status": 200
+    },
+    {
+      "route": "/admin/integrations/google-sheets",
+      "status": 200
+    },
+    {
+      "route": "/plants",
+      "status": 200
+    }
+  ],
+  "javascriptErrors": [],
+  "reportTableColumns": [
+    {
+      "headers": 9,
+      "body": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ]
+    }
+  ],
+  "csv": {
+    "status": 200,
+    "bytes": 8818
+  },
+  "pdf": {
+    "status": 200,
+    "bytes": 15443
+  },
+  "passed": true
+}

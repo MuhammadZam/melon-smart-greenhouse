@@ -16,6 +16,7 @@ class Monitoring extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'water_ph',
         'plant_id',
         'temperature',
         'nutrient_temperature',
@@ -66,6 +67,16 @@ class Monitoring extends Model
     /**
      * Relasi ke tanaman: Setiap record monitoring dimiliki oleh 1 tanaman.
      */
+    public function getWaterPhAttribute(): ?float
+    {
+        return $this->ph;
+    }
+
+    public function setWaterPhAttribute($value): void
+    {
+        $this->attributes['ph'] = $value;
+    }
+
     public function plant(): BelongsTo
     {
         return $this->belongsTo(Plant::class);

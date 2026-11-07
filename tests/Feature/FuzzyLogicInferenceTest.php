@@ -120,7 +120,7 @@ class FuzzyLogicInferenceTest extends TestCase
                 'operator'    => 'and',
                 'antecedents' => [
                     'temperature' => 'optimal',
-                    'humidity'    => 'optimal',
+                    'soil_moisture'    => 'optimal',
                 ],
                 'consequent'  => 'baik',
                 'weight'      => 1.0,
@@ -130,7 +130,7 @@ class FuzzyLogicInferenceTest extends TestCase
 
         $snapshot = [
             'temperature' => ['optimal' => 0.8],
-            'humidity'    => ['optimal' => 0.4],
+            'soil_moisture'    => ['optimal' => 0.4],
         ];
 
         $eval = $ruleService->evaluateRules($snapshot);
@@ -149,7 +149,7 @@ class FuzzyLogicInferenceTest extends TestCase
                 'operator'    => 'or',
                 'antecedents' => [
                     'temperature' => 'panas',
-                    'humidity'    => 'kering',
+                    'soil_moisture'    => 'kering',
                 ],
                 'consequent'  => 'buruk',
                 'weight'      => 1.0,
@@ -159,7 +159,7 @@ class FuzzyLogicInferenceTest extends TestCase
 
         $snapshot = [
             'temperature' => ['panas' => 0.3],
-            'humidity'    => ['kering' => 0.9],
+            'soil_moisture'    => ['kering' => 0.9],
         ];
 
         $eval = $ruleService->evaluateRules($snapshot);
@@ -173,9 +173,8 @@ class FuzzyLogicInferenceTest extends TestCase
         $membershipService = app(FuzzyMembershipService::class);
         $snapshot = $membershipService->fuzzify([
             'temperature'   => 27.0, // Optimal peak
-            'humidity'      => 70.0, // Optimal peak
             'soil_moisture' => 70.0, // Ideal peak
-            'ph'            => 6.5,  // Optimal peak
+            'water_ph'            => 6.5,  // Optimal peak
         ]);
 
         $ruleService = app(FuzzyRuleEvaluationService::class);
@@ -191,7 +190,6 @@ class FuzzyLogicInferenceTest extends TestCase
         $inferenceService = app(MamdaniInferenceService::class);
         $result = $inferenceService->infer([
             'temperature'   => 27.0,
-            'humidity'      => 70.0,
             'soil_moisture' => 70.0,
             'ph'            => 6.5,
         ]);
@@ -211,7 +209,6 @@ class FuzzyLogicInferenceTest extends TestCase
         $inferenceService = app(MamdaniInferenceService::class);
         $result = $inferenceService->infer([
             'temperature'   => 33.0, // Panas moderat
-            'humidity'      => 60.0,
             'soil_moisture' => 60.0,
             'ph'            => 6.5,
         ]);
@@ -226,7 +223,6 @@ class FuzzyLogicInferenceTest extends TestCase
         $inferenceService = app(MamdaniInferenceService::class);
         $result = $inferenceService->infer([
             'temperature'   => 27.0,
-            'humidity'      => 70.0,
             'soil_moisture' => 70.0,
             'ph'            => 6.5,
         ]);
@@ -244,7 +240,6 @@ class FuzzyLogicInferenceTest extends TestCase
         $inferenceService = app(MamdaniInferenceService::class);
         $inputs = [
             'temperature'   => 28.5,
-            'humidity'      => 68.0,
             'soil_moisture' => 72.0,
             'ph'            => 6.4,
         ];
@@ -263,7 +258,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now(),
             'temperature'          => 27.0,
-            'humidity'             => 70.0,
             'soil_moisture'        => 70.0,
             'ph'                   => 6.5,
             'plant_condition'      => 'optimal',
@@ -290,7 +284,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now(),
             'temperature'          => 27.0,
-            'humidity'             => 70.0,
             'soil_moisture'        => null, // Missing sensor (soil_moisture is nullable in DB)
             'ph'                   => 6.5,
             'plant_condition'      => 'optimal',
@@ -316,7 +309,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now(),
             'temperature'          => 95.0, // Outside valid physics range!
-            'humidity'             => 70.0,
             'soil_moisture'        => 70.0,
             'ph'                   => 6.5,
             'plant_condition'      => 'optimal',
@@ -342,7 +334,6 @@ class FuzzyLogicInferenceTest extends TestCase
 
         $output = $inferenceService->infer([
             'temperature'   => 27.0,
-            'humidity'      => 70.0,
             'soil_moisture' => 70.0,
             'ph'            => 6.5,
         ]);
@@ -358,7 +349,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now(),
             'temperature'          => 28.0,
-            'humidity'             => 70.0,
             'soil_moisture'        => 65.0,
             'ph'                   => 6.2,
             'plant_condition'      => 'optimal',
@@ -387,7 +377,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now(),
             'temperature'          => 28.0,
-            'humidity'             => 70.0,
             'soil_moisture'        => 65.0,
             'ph'                   => 6.2,
             'plant_condition'      => 'optimal',
@@ -419,7 +408,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now(),
             'temperature'          => 34.0,
-            'humidity'             => 55.0,
             'soil_moisture'        => 50.0,
             'ph'                   => 6.0,
             'plant_condition'      => 'optimal',
@@ -453,7 +441,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now()->toDateTimeString(),
             'temperature'          => 26.5,
-            'humidity'             => 68.0,
             'soil_moisture'        => 72.0,
             'ph'                   => 6.4,
             'plant_condition'      => 'optimal',
@@ -477,7 +464,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now()->toDateTimeString(),
             'temperature'          => 28.0,
-            'humidity'             => 70.0,
             'soil_moisture'        => 75.0,
             'ph'                   => 6.5,
             'plant_condition'      => 'optimal',
@@ -504,7 +490,6 @@ class FuzzyLogicInferenceTest extends TestCase
                 'timestamp'       => '2026-10-16 11:00:00',
                 'plant_code'      => $this->plant->name,
                 'temperature'     => 27.5,
-                'humidity'        => 70.0,
                 'soil_moisture'   => 75.0,
                 'ph'              => 6.5,
                 'ec'              => 2.1,
@@ -537,7 +522,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now()->toDateTimeString(),
             'temperature'          => 29.5,
-            'humidity'             => 65.0,
             'soil_moisture'        => 68.0,
             'ph'                   => 6.3,
             'plant_condition'      => 'optimal',
@@ -562,7 +546,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now(),
             'temperature'          => 27.0,
-            'humidity'             => 70.0,
             'soil_moisture'        => 70.0,
             'ph'                   => 6.5,
             'plant_condition'      => 'optimal',
@@ -623,7 +606,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now()->subDays(3), // 72 hours ago
             'temperature'          => 27.0,
-            'humidity'             => 70.0,
             'soil_moisture'        => 70.0,
             'ph'                   => 6.5,
             'plant_condition'      => 'optimal',
@@ -646,7 +628,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now(),
             'temperature'          => 27.0,
-            'humidity'             => 70.0,
             'soil_moisture'        => 70.0,
             'ph'                   => 6.5,
             'plant_condition'      => 'optimal',
@@ -662,7 +643,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now()->subHours(5),
             'temperature'          => 35.0,
-            'humidity'             => 50.0,
             'soil_moisture'        => 45.0,
             'ph'                   => 5.5,
             'plant_condition'      => 'warning',
@@ -690,7 +670,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now(),
             'temperature'          => 27.0,
-            'humidity'             => 70.0,
             'soil_moisture'        => 70.0,
             'ph'                   => 6.5,
             'plant_condition'      => 'optimal',
@@ -709,11 +688,11 @@ class FuzzyLogicInferenceTest extends TestCase
     }
 
     // 29. Four Parameter Alarm Policy Compatibility
-    public function test_29_four_parameter_alarm_compatibility(): void
+    public function test_29_three_parameter_alarm_compatibility(): void
     {
         // Pastikan hanya 4 parameter yang eligible untuk alarm
         $this->assertTrue(MonitoringAlarmService::isAlarmEligible('temperature'));
-        $this->assertTrue(MonitoringAlarmService::isAlarmEligible('humidity'));
+        $this->assertFalse(MonitoringAlarmService::isAlarmEligible('humidity'));
         $this->assertTrue(MonitoringAlarmService::isAlarmEligible('soil_moisture'));
         $this->assertTrue(MonitoringAlarmService::isAlarmEligible('ph'));
 
@@ -742,7 +721,6 @@ class FuzzyLogicInferenceTest extends TestCase
             'plant_id'             => $this->plant->id,
             'monitored_at'         => now(),
             'temperature'          => 40.0, // Sangat panas
-            'humidity'             => 35.0, // Sangat kering
             'soil_moisture'        => 30.0, // Sangat kering
             'ph'                   => 5.0,  // Asam
             'plant_condition'      => 'critical',

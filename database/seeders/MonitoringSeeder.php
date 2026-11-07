@@ -31,7 +31,7 @@ class MonitoringSeeder extends Seeder
 
                 $temperature = round(26.5 + $tempVariation, 2);
                 $ph          = round(6.6 + $phVariation, 2);
-                $humidity    = round(72.0 + ($i % 3) * 3.0, 2);
+                $soilMoisture    = round(72.0 + ($i % 3) * 3.0, 2);
                 $height      = round(35.0 + (6 - $i) * 6.5, 1);
                 $density     = round(65.0 + (6 - $i) * 3.0, 1);
 
@@ -47,7 +47,7 @@ class MonitoringSeeder extends Seeder
                     'plant_id'        => $plant->id,
                     'temperature'     => $temperature,
                     'ph'              => $ph,
-                    'humidity'        => $humidity,
+                    'soil_moisture'        => $soilMoisture,
                     'plant_height'    => $height,
                     'plant_density'   => $density,
                     'plant_condition' => $condition,

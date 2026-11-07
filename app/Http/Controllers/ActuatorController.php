@@ -32,12 +32,18 @@ class ActuatorController extends Controller
     public function index(): View
     {
         $actuators = $this->actuatorService->getAllActuators();
-        $recentLogs = ActuatorCommandLog::with(['actuator', 'user'])
+        $recentLogs = ActuatorCommandLog::whereHas('actuator', fn ($q) => $q->where('code', 'PUMP-01'))->with(['actuator', 'user'])
             ->orderByDesc('executed_at')
             ->limit(5)
             ->get();
 
-        return view('actuators.index', compact('actuators', 'recentLogs'));
+        $pumpControl = app(\App\Services\Pump\PumpControlService::class);
+        $controlReady = $pumpControl->ready();
+        $pump = $actuators->first();
+        $latestSoil = $controlReady && $pump ? $pumpControl->latestReading($pump) : null;
+        $pumpState = $controlReady && $pump ? $pumpControl->statusData($pump) : null;
+        $plants = \App\Models\Plant::orderBy('name')->get();
+        return view('actuators.index', compact('actuators', 'recentLogs', 'controlReady', 'pump', 'latestSoil', 'plants', 'pumpState'));
     }
 
     /**
@@ -51,18 +57,17 @@ class ActuatorController extends Controller
         $request->validate([
             'command' => ['required', 'string', 'in:TURN_ON,TURN_OFF,TOGGLE,turn_on,turn_off,toggle'],
             'notes'   => ['nullable', 'string', 'max:255'],
+            'expected_version' => ['nullable', 'integer', 'min:0'],
         ]);
 
         $command = strtoupper($request->input('command'));
         $notes = $request->input('notes');
 
-        $result = $this->actuatorService->executeCommand(
-            actuator: $actuator,
-            command: $command,
-            user: Auth::user(),
-            source: ActuatorCommandLog::SOURCE_WEB_SIMULATION,
-            notes: $notes
+        $result = app(\App\Services\Pump\PumpControlService::class)->manualCommand(
+            $actuator, $command, Auth::user(), ActuatorCommandLog::SOURCE_WEB_SIMULATION, $notes,
+            $request->filled('expected_version') ? (int) $request->input('expected_version') : null
         );
+        if (!$result['success']) abort(422, $result['message']);
 
         if ($request->wantsJson() || $request->ajax()) {
             return response()->json($result);
@@ -70,6 +75,28 @@ class ActuatorController extends Controller
 
         return redirect()->route('actuators.index')
             ->with('success', $result['message']);
+    }
+
+    public function status(Actuator $actuator): JsonResponse
+    {
+        abort_unless($actuator->code === 'PUMP-01', 404);
+        $control = app(\App\Services\Pump\PumpControlService::class);
+        abort_unless($control->ready(), 503, 'Migration kontrol pompa belum diterapkan.');
+        return response()->json($control->statusData($actuator))->header('Cache-Control', 'no-store');
+    }
+
+    public function mode(Request $request, Actuator $actuator): RedirectResponse|JsonResponse
+    {
+        $data = $request->validate(['control_mode' => ['required', 'in:MANUAL,AUTO'], 'expected_version' => ['required', 'integer', 'min:0']]);
+        $result = app(\App\Services\Pump\PumpControlService::class)->changeMode($actuator, $data['control_mode'], Auth::user(), (int) $data['expected_version']);
+        return $request->expectsJson() ? response()->json($result) : redirect()->route('actuators.index')->with('success', $result['message']);
+    }
+
+    public function settings(Request $request, Actuator $actuator): RedirectResponse|JsonResponse
+    {
+        $version = $request->validate(['expected_version' => ['required', 'integer', 'min:0']]);
+        $result = app(\App\Services\Pump\PumpControlService::class)->configure($actuator, $request->only(['control_plant_id', 'auto_on_threshold', 'auto_off_threshold', 'max_runtime_seconds', 'min_rest_seconds', 'sensor_max_age_seconds']), Auth::user(), (int) $version['expected_version']);
+        return $request->expectsJson() ? response()->json($result) : redirect()->route('actuators.index')->with('success', $result['message']);
     }
 
     /**
@@ -95,7 +122,7 @@ class ActuatorController extends Controller
         ];
 
         $logs = $this->actuatorService->getHistory($filters, 15);
-        $actuators = Actuator::orderBy('name')->get();
+        $actuators = Actuator::where('code', 'PUMP-01')->orderBy('name')->get();
 
         return view('actuators.history', compact('logs', 'actuators', 'filters'));
     }

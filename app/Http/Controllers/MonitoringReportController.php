@@ -82,7 +82,7 @@ class MonitoringReportController extends Controller
             }],
             'source'         => ['nullable', 'string', 'in:all,web,api,google_sheets,simulator'],
             'condition'      => ['nullable', 'string', 'max:100'],
-            'sort_by'        => ['nullable', 'string', 'in:monitored_at,temperature,humidity,soil_moisture,ph,ec,light_intensity,nutrient_temperature,tank_level'],
+            'sort_by'        => ['nullable', 'string', 'in:monitored_at,temperature,soil_moisture,ph,water_ph'],
             'sort_direction' => ['nullable', 'string', 'in:asc,desc'],
             'range'          => ['nullable', 'string', 'in:today,7d,30d,all'],
         ]);

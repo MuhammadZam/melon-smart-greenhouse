@@ -1,0 +1,54 @@
+{
+    "passed": true,
+    "driver": "mysql",
+    "version": "8.0.46",
+    "workers": 10,
+    "results": [
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 201,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        },
+        {
+            "status": 200,
+            "id": 1
+        }
+    ],
+    "counts": {
+        "observations": 1,
+        "inferences": 1,
+        "alarms": 1,
+        "receipts": 1
+    }
+}

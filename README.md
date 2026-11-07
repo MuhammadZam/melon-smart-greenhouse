@@ -1,5 +1,9 @@
 # Sistem Web Monitoring Tanaman Melon
 
+Panduan instalasi dan menjalankan aplikasi: [Panduan Menjalankan Project](docs/PANDUAN_MENJALANKAN_PROJECT.md) (Windows/PowerShell, SQLite lokal, dan alternatif Docker/MySQL).
+
+Panduan instalasi dan menjalankan aplikasi: [Panduan Menjalankan Project](docs/PANDUAN_MENJALANKAN_PROJECT.md) (Windows/PowerShell, SQLite lokal, dan alternatif Docker/MySQL).
+
 Sistem Web Monitoring Tanaman Melon adalah platform berbasis web untuk pemantauan kondisi lingkungan greenhouse, mikroklimat (suhu, pH media/nutrisi, kelembapan), dan pertumbuhan tanaman melon secara terstruktur.
 
 ---

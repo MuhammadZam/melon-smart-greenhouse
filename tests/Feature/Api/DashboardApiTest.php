@@ -32,8 +32,8 @@ class DashboardApiTest extends TestCase
                     'today_monitorings',
                     'latest_monitoring',
                     'latest_temperature',
-                    'latest_ph',
-                    'latest_humidity',
+                    'latest_water_ph',
+                    'latest_soil_moisture',
                     'plant_condition_summary',
                 ],
             ]);

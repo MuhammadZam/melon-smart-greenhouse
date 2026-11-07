@@ -9,11 +9,22 @@ abstract class TestCase extends BaseTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        if (!app()->environment('testing') || config('database.default') !== 'sqlite' || config('database.connections.sqlite.database') !== ':memory:') {
-            throw new \RuntimeException('Tests require isolated SQLite :memory:. Refusing to modify another database.');
+        $mysql = getenv('COMPRO_REVISION_MYSQL') === '1';
+        $safe = $mysql
+            ? config('database.default') === 'mysql' && config('database.connections.mysql.database') === 'compro_revision_test' && (string) config('database.connections.mysql.port') === '3327'
+            : config('database.default') === 'sqlite' && config('database.connections.sqlite.database') === ':memory:';
+        if (!app()->environment('testing') || !$safe) {
+            throw new \RuntimeException('Tests require isolated revision MySQL or SQLite :memory:.');
         }
-        // A new application and in-memory connection per test; no destructive refresh.
-        \Illuminate\Support\Facades\Artisan::call('migrate', ['--database' => 'sqlite', '--force' => true]);
+        if (!\Illuminate\Support\Facades\Schema::hasTable('users')) {
+            foreach (glob(database_path('migrations/*.php')) as $file) {
+                (require $file)->up();
+            }
+        }
+        \Illuminate\Support\Facades\DB::beginTransaction();
+        $this->beforeApplicationDestroyed(function () {
+            \Illuminate\Support\Facades\DB::rollBack();
+        });
         $this->seed([
             \Database\Seeders\UserSeeder::class,
             \Database\Seeders\PlantSeeder::class,

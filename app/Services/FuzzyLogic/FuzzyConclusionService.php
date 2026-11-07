@@ -17,8 +17,8 @@ class FuzzyConclusionService
 
         if ($status === 'INSUFFICIENT_DATA') {
             return [
-                'conclusion'     => 'Data sensor lingkungan tidak lengkap untuk evaluasi fuzzy logic (diperlukan suhu, kelembapan, kelembapan tanah, dan pH).',
-                'recommendation' => 'Pastikan seluruh sensor IoT (suhu, kelembapan udara, kelembapan media, dan probe pH) aktif dan terhubung.',
+                'conclusion'     => 'Data sensor lingkungan tidak lengkap untuk evaluasi fuzzy logic (diperlukan suhu udara, kelembapan tanah/media, dan pH air).',
+                'recommendation' => 'Pastikan seluruh sensor IoT (suhu udara, kelembapan media, dan probe pH air) aktif dan terhubung.',
             ];
         }
 

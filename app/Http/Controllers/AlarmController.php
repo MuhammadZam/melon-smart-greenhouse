@@ -44,7 +44,7 @@ class AlarmController extends Controller
             'date_to'       => $request->query('date_to'),
         ];
 
-        $alarms = MonitoringAlarm::with('plant')
+        $alarms = MonitoringAlarm::whereIn('parameter_key', \App\Support\ActiveSensors::STORAGE_KEYS)->with('plant')
             ->filter($filters)
             ->orderByRaw("CASE WHEN status = 'active' THEN 0 ELSE 1 END")
             ->orderByDesc('first_detected_at')
@@ -57,7 +57,7 @@ class AlarmController extends Controller
         // Summary counts for header cards
         $totalActive   = MonitoringAlarm::active()->count();
         $totalCritical = MonitoringAlarm::active()->critical()->count();
-        $totalResolved = MonitoringAlarm::resolved()->count();
+        $totalResolved = MonitoringAlarm::whereIn('parameter_key', \App\Support\ActiveSensors::STORAGE_KEYS)->resolved()->count();
 
         return view('alarms.index', compact(
             'alarms',
@@ -75,6 +75,7 @@ class AlarmController extends Controller
      */
     public function show(MonitoringAlarm $alarm): View
     {
+        abort_unless(in_array($alarm->parameter_key, \App\Support\ActiveSensors::STORAGE_KEYS, true), 404);
         $alarm->load(['plant', 'triggeringMonitoring.plant']);
 
         return view('alarms.show', compact('alarm'));
@@ -90,7 +91,7 @@ class AlarmController extends Controller
         $activeCount   = MonitoringAlarm::active()->count();
         $criticalCount = MonitoringAlarm::active()->critical()->count();
 
-        $latest = MonitoringAlarm::with('plant')
+        $latest = MonitoringAlarm::whereIn('parameter_key', \App\Support\ActiveSensors::STORAGE_KEYS)->with('plant')
             ->active()
             ->orderByDesc('first_detected_at')
             ->limit(5)
@@ -124,7 +125,7 @@ class AlarmController extends Controller
      */
     public function thresholds(): View
     {
-        $parameters = MonitoringParameter::orderBy('parameter_name')->get();
+        $parameters = MonitoringParameter::whereIn('parameter_key', \App\Support\ActiveSensors::STORAGE_KEYS)->orderBy('parameter_name')->get();
 
         return view('alarms.thresholds', compact('parameters'));
     }
@@ -135,6 +136,8 @@ class AlarmController extends Controller
      */
     public function updateThreshold(Request $request, MonitoringParameter $parameter): \Illuminate\Http\RedirectResponse
     {
+        abort_unless(in_array($parameter->parameter_key, \App\Support\ActiveSensors::STORAGE_KEYS, true), 422);
+        $before = $parameter->getAttributes();
         $validated = $request->validate([
             'minimum_value'     => ['required', 'numeric', 'min:-9999', 'max:9999'],
             'maximum_value'     => ['required', 'numeric', 'min:-9999', 'max:9999',
@@ -154,11 +157,12 @@ class AlarmController extends Controller
                     }
                 },
             ],
-            'parameter_key'     => ['nullable', 'string', 'max:60'],
+
             'description'       => ['nullable', 'string', 'max:500'],
         ]);
 
         $parameter->update($validated);
+        \Illuminate\Support\Facades\Log::notice('Sensor threshold updated', ['user_id' => auth()->id(), 'parameter_id' => $parameter->id, 'before' => $before, 'after' => $parameter->getAttributes()]);
 
         return redirect()
             ->route('alarms.thresholds')

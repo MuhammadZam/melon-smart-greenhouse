@@ -27,6 +27,8 @@ class Phase16_2ApiSecurityTest extends TestCase
     /** @dataProvider privateReads */
     public function test_authorized_observer_can_read_internal_data(string $url): void
     {
+        if ($url === '/api/plants/1') $url = '/api/plants/'.Plant::first()->id;
+        if ($url === '/api/monitorings/1') $url = '/api/monitorings/'.Monitoring::first()->id;
         $this->actingAs(User::where('role', 'user')->first())->getJson($url)->assertOk();
     }
 
@@ -122,6 +124,6 @@ class Phase16_2ApiSecurityTest extends TestCase
 
     private function payload(): array
     {
-        return ['plant_id' => Plant::first()->id, 'monitored_at' => now()->toDateTimeString(), 'temperature' => 27, 'humidity' => 70, 'soil_moisture' => 70, 'ph' => 6.5, 'plant_height' => 40, 'plant_density' => 60, 'condition' => 'optimal'];
+        return ['plant_id' => Plant::first()->id, 'monitored_at' => now()->toDateTimeString(), 'temperature' => 27, 'soil_moisture' => 70, 'ph' => 6.5, 'plant_height' => 40, 'plant_density' => 60, 'condition' => 'optimal'];
     }
 }
