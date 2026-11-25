@@ -406,7 +406,7 @@ class AlarmTest extends TestCase
     {
         $response = $this->postJson(route('api.monitorings.store'), [
             'plant_id'        => $this->plant->id,
-            'monitored_at'    => '2026-10-14 12:30:00',
+            'monitored_at'    => now()->toDateTimeString(),
             'temperature'     => 41.0, // Di atas ambang 32.0
             'humidity'        => 70.0,
             'soil_moisture' => 70.0,
@@ -434,7 +434,7 @@ class AlarmTest extends TestCase
     {
         $response = $this->actingAs($this->admin)->post(route('monitorings.store'), [
             'plant_id'             => $this->plant->id,
-            'monitored_at'         => '2026-10-14T13:00',
+            'monitored_at'         => now()->format('Y-m-d\TH:i'),
             'temperature'          => 25.0,
             'humidity'             => 70.0,
             'soil_moisture' => 70.0,
@@ -606,11 +606,12 @@ class AlarmTest extends TestCase
     public function test_out_of_order_monitoring_data_handling(): void
     {
         $service = app(MonitoringAlarmService::class);
+        $newer = now()->addDay();
 
         // Data baru: Suhu abnormal 38.0 pada jam 12:00
         $mNewer = Monitoring::create([
             'plant_id'        => $this->plant->id,
-            'monitored_at'    => '2026-10-14 12:00:00',
+            'monitored_at'    => $newer,
             'temperature'     => 38.0,
             'humidity'        => 70.0,
             'soil_moisture' => 70.0,
@@ -631,7 +632,7 @@ class AlarmTest extends TestCase
         // Data lama yang terlambat: Suhu normal 25.0 pada jam 10:00 (out-of-order)
         $mOlder = Monitoring::create([
             'plant_id'        => $this->plant->id,
-            'monitored_at'    => '2026-10-14 10:00:00',
+            'monitored_at'    => $newer->copy()->subHours(2),
             'temperature'     => 25.0,
             'humidity'        => 70.0,
             'soil_moisture' => 70.0,
@@ -643,8 +644,7 @@ class AlarmTest extends TestCase
         ]);
         $service->evaluate($mOlder);
 
-        // Sistem tetap aman dan stabil tanpa unhandled exception
-        $this->assertTrue(true, 'Data out of order berhasil diproses secara aman.');
+        $this->assertTrue($activeAlarm->fresh()->isActive());
     }
 
     /**
@@ -691,6 +691,7 @@ class AlarmTest extends TestCase
 
         // 2. Halaman riwayat alarm dengan filter
         $historyResponse = $this->actingAs($this->pengamat)->get(route('alarms.index', [
+            'plant_id' => 'all',
             'status'   => 'active',
             'severity' => 'warning',
         ]));
@@ -706,6 +707,16 @@ class AlarmTest extends TestCase
             'latest',
         ]);
         $this->assertGreaterThanOrEqual(1, $pollResponse->json('active_count'));
+
+        $alarm = MonitoringAlarm::active()->where('plant_id', $this->plant->id)->firstOrFail();
+        $acknowledge = route('alarms.acknowledge', $alarm);
+        $this->actingAs($this->pengamat)->post($acknowledge)->assertForbidden();
+        $this->actingAs($this->admin)->post($acknowledge)->assertRedirect(route('alarms.show', $alarm));
+        $this->assertEquals($this->admin->id, $alarm->fresh()->acknowledged_by);
+        $this->assertTrue($alarm->fresh()->isActive());
+        $this->getJson(route('notifications.status'))
+            ->assertJsonPath('active_count', $pollResponse->json('active_count'))
+            ->assertJsonPath('unread_count', $pollResponse->json('unread_count') - 1);
     }
 
     /**

@@ -1,0 +1,36 @@
+INTEGRASI POMPA PUMP-01 - KONTRAK USULAN
+
+Aplikasi saat ini menggunakan transport simulasi. Perintah sukses
+memperbarui simulation_state dan audit log. Status fisik tetap tidak
+diketahui. Jangan menyamakan desired state, simulation_state, ACK
+fisik terakhir, status pengiriman, dan status konektivitas.
+
+Usulan kontrak untuk disetujui Tim Elektro
+- Perintah bertanda command_id unik, target, desired_state ON/OFF,
+  waktu terbit, kedaluwarsa, dan revisi konfigurasi.
+- Status pengiriman terpisah dari status fisik: pending, dikirim,
+  dikonfirmasi, gagal, atau kedaluwarsa.
+- ACK mengembalikan command_id, kondisi fisik aktual, waktu, dan kode
+  kesalahan. ACK ganda untuk command_id yang sama bersifat idempoten.
+  ACK terlambat tidak mengesahkan perintah yang sudah kedaluwarsa.
+- Heartbeat perangkat terautentikasi memuat identitas, uptime atau
+  boot ID, dan keadaan fisik terakhir. Jika heartbeat kedaluwarsa,
+  status koneksi putus dan kondisi fisik ditampilkan tidak diketahui.
+- Autentikasi, autentisitas perintah, otorisasi perangkat target dan
+  transport disepakati sebelum perangkat diberi akses kendali.
+- Pada restart atau kehilangan komunikasi, perangkat masuk kondisi
+  aman yang disepakati (default OFF untuk rancangan uji), menolak
+  perintah kedaluwarsa, dan tidak menyalakan ulang dari replay.
+- Terapkan durasi maksimal, minimum waktu istirahat, watchdog lokal,
+  serta penghentian darurat independen dan uji semuanya pada bench.
+
+Kendali otomatis simulasi menggunakan soil_moisture, hysteresis,
+usia data, minimum rest dan runtime. Batas ambang hanya untuk uji.
+Fuzzy Mamdani tidak mengirim perintah. Scheduler perangkat lunak
+memantau batas durasi tanpa telemetri baru; watchdog perangkat tetap
+wajib untuk rancangan fisik.
+
+STATUS: transport simulasi dan scheduler diuji, termasuk konflik revisi
+dan pencegahan perintah ganda. Kontrak fisik masih usulan; transport,
+ACK, heartbeat fisik, wiring, dan watchdog menunggu uji perangkat di
+bawah pengawasan Tim Elektro.

@@ -23,7 +23,7 @@ class MonitoringSeeder extends Seeder
         // Buat data monitoring berkala selama 7 hari terakhir
         foreach ($plants as $plant) {
             for ($i = 6; $i >= 0; $i--) {
-                $monitoredTime = Carbon::now()->subDays($i)->setHour(9)->setMinute(0)->setSecond(0);
+                $monitoredTime = Carbon::yesterday()->subDays($i)->setTime(9, 0);
 
                 // Variasi nilai konfigurasi simulasi monitoring untuk tanaman melon
                 $tempVariation = sin($i) * 1.5;
@@ -54,6 +54,7 @@ class MonitoringSeeder extends Seeder
                     'plant_color'     => $color,
                     'notes'           => "Pencatatan harian hari ke-" . (7 - $i) . " untuk plot {$plant->name}.",
                     'monitored_at'    => $monitoredTime,
+                    'source'          => 'simulator',
                 ]);
             }
         }

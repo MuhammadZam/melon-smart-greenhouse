@@ -26,6 +26,7 @@ class GoogleSheetsIntegrationController extends Controller
     public function index(): View
     {
         $config = $this->syncService->getOrCreateDefaultConfig();
+        $telemetryRange = $this->syncService->telemetryRange();
         $logs = GoogleSheetsSyncLog::orderByDesc('created_at')->paginate(10);
         $devices = IotDevice::orderByDesc('is_active')->orderBy('device_id')->get();
 
@@ -43,6 +44,7 @@ class GoogleSheetsIntegrationController extends Controller
 
         return view('admin.integrations.google_sheets', compact(
             'config',
+            'telemetryRange',
             'logs',
             'devices',
             'totalImported',
@@ -62,12 +64,9 @@ class GoogleSheetsIntegrationController extends Controller
     public function syncNow(Request $request): RedirectResponse
     {
         $config = $this->syncService->getOrCreateDefaultConfig();
-        if ($request->boolean('reset_cursor')) {
-            $config->update(['last_synced_row' => 1]);
-        }
         $batchLimit = (int) $request->input('batch_limit', 100);
 
-        $log = $this->syncService->sync($config, 'manual_admin', $batchLimit);
+        $log = $this->syncService->sync($config, 'manual_admin', $batchLimit, $request->boolean('reset_cursor'));
 
         if ($log->status === GoogleSheetsSyncConfig::STATUS_SUCCESS) {
             return redirect()->route('admin.integrations.google-sheets.index')

@@ -211,7 +211,7 @@
                 <div class="space-y-1">
                     <span class="text-muted block">Sheet &amp; Data Range:</span>
                     <span class="tabular-nums text-ink bg-canvas px-2 py-1 rounded-[2px] block">
-                        {{ $config->sheet_name }}!{{ $config->data_range }}
+                        {{ $config->sheet_name }}!{{ $telemetryRange }}
                     </span>
                 </div>
 
@@ -260,7 +260,7 @@
                 </svg>
                 Kontrak telemetri tiga sensor
             </h3>
-            <p class="text-xs text-muted">Layout kolom saat ini: <strong>{{ config('services.google_sheets.telemetry_layout', 'legacy') }}</strong>. Layout baru three_input: device_id, timestamp, plant_code, temperature, soil_moisture, water_ph, pump_status, fuzzy_score, fuzzy_label. Layout legacy tetap tersedia untuk lembar lama.</p>
+            <p class="text-xs text-muted">Layout saat ini <strong>{{ config('services.google_sheets.telemetry_layout', 'legacy') }}</strong>. Kolom three_input: device_id, timestamp, plant_code, temperature, soil_moisture, water_ph, pump_status, fuzzy_score, fuzzy_label, observation_id. Dengan observation_id, isi plant_code dengan ID tanaman dan gunakan timestamp ISO 8601 berzona waktu.</p>
             <ul class="text-xs text-muted space-y-2 list-disc list-inside">
                 <li><strong class="text-ink">ESP32 Fisik:</strong> Integrasi live Google Sheets berstatus <span class="text-warning font-semibold">PENDING</span> sampai kredensial Service Account diserahkan oleh Tim Elektro.</li>
                 <li><strong class="text-ink">Isolasi Status Aktuator:</strong> Status fisik <code class="text-ink">reported_pump_state</code> terpisah mutlak dari <code class="text-ink">simulation_state</code>.</li>

@@ -81,7 +81,7 @@ class MonitoringAlarmService
     public function evaluate(Monitoring $monitoring): void
     {
         try {
-            $this->processMonitoring($monitoring);
+            DB::transaction(fn () => $this->processMonitoring($monitoring));
         } catch (\Throwable $e) {
             Log::error('[MonitoringAlarmService] Evaluasi alarm gagal', [
                 'monitoring_id' => $monitoring->id,
@@ -128,6 +128,12 @@ class MonitoringAlarmService
      */
     protected function processMonitoring(Monitoring $monitoring): void
     {
+        // Historical imports must not change the current alarm state.
+        if (Monitoring::where('plant_id', $monitoring->plant_id)
+            ->where('monitored_at', '>', $monitoring->monitored_at)->exists()) {
+            return;
+        }
+
         // Ambil semua konfigurasi threshold sekaligus, index by parameter_key
         $thresholds = $this->loadThresholds();
 
@@ -163,6 +169,8 @@ class MonitoringAlarmService
                 $violation = 'above_maximum';
             }
 
+            $this->resolveIfActive($monitoring, $field, $sensorValue, $violation);
+
             if ($violation !== null) {
                 // Ada pelanggaran → buat atau update alarm aktif
                 $this->handleViolation(
@@ -174,13 +182,6 @@ class MonitoringAlarmService
                     maxVal: $maxVal,
                     violation: $violation,
                     displayNameFallback: $displayNameFallback,
-                );
-            } else {
-                // Nilai normal → resolve alarm aktif jika ada
-                $this->resolveIfActive(
-                    monitoring: $monitoring,
-                    field: $field,
-                    sensorValue: $sensorValue,
                 );
             }
         }
@@ -263,12 +264,13 @@ class MonitoringAlarmService
     /**
      * Resolve alarm aktif jika nilai sensor kembali dalam rentang normal.
      */
-    protected function resolveIfActive(Monitoring $monitoring, string $field, float $sensorValue): void
+    protected function resolveIfActive(Monitoring $monitoring, string $field, float $sensorValue, ?string $currentViolation): void
     {
-        DB::transaction(function () use ($monitoring, $field, $sensorValue) {
+        DB::transaction(function () use ($monitoring, $field, $sensorValue, $currentViolation) {
             $activeAlarms = MonitoringAlarm::where('plant_id', $monitoring->plant_id)
                 ->where('parameter_key', $field)
                 ->where('status', 'active')
+                ->when($currentViolation !== null, fn ($query) => $query->where('violation_direction', '!=', $currentViolation))
                 ->lockForUpdate()
                 ->get();
 
@@ -277,7 +279,9 @@ class MonitoringAlarmService
                     'status'        => 'resolved',
                     'resolved_value' => $sensorValue,
                     'resolved_at'   => $monitoring->monitored_at ?? now(),
-                    'notes'         => 'Diselesaikan otomatis: nilai sensor kembali normal.',
+                    'notes'         => $currentViolation === null
+                        ? 'Diselesaikan otomatis: nilai sensor kembali normal.'
+                        : 'Diselesaikan otomatis: nilai sensor melampaui batas pada arah sebaliknya.',
                 ]);
 
                 Log::info('[MonitoringAlarmService] Alarm diselesaikan otomatis', [

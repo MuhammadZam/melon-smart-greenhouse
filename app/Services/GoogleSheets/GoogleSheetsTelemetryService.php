@@ -4,6 +4,7 @@ namespace App\Services\GoogleSheets;
 
 use App\Contracts\GoogleSheetsClientInterface;
 use App\Models\Plant;
+use App\Services\MonitoringIngestionService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
@@ -30,7 +31,7 @@ class GoogleSheetsTelemetryService
         'fuzzy_label',
     ];
 
-    public const EXPECTED_HEADERS = ['device_id', 'timestamp', 'plant_code', 'temperature', 'soil_moisture', 'water_ph', 'pump_status', 'fuzzy_score', 'fuzzy_label'];
+    public const EXPECTED_HEADERS = ['device_id', 'timestamp', 'plant_code', 'temperature', 'soil_moisture', 'water_ph', 'pump_status', 'fuzzy_score', 'fuzzy_label', 'observation_id'];
 
     public function __construct(?GoogleSheetsClientInterface $client = null)
     {
@@ -77,10 +78,15 @@ class GoogleSheetsTelemetryService
     {
         // 1. Normalisasi baris ke array terasosiasi
         $row = $this->normalizeRow($rawRow);
+        $observationId = $row['observation_id'] ?? '';
+        if ($observationId !== '' && (!is_string($observationId) || !preg_match(MonitoringIngestionService::OBSERVATION_ID_PATTERN, $observationId))) {
+            return ['valid' => false, 'data' => null, 'error' => "Baris #{$rowNumber}: observation_id tidak valid.", 'source_identifier' => null];
+        }
+        $shared = $observationId !== '';
 
         // 2. Validasi field wajib keberadaan
         $deviceId = trim((string) ($row['device_id'] ?? ''));
-        if (empty($deviceId)) {
+        if ($deviceId === '' || ($shared && strlen($deviceId) > 100)) {
             return [
                 'valid' => false,
                 'data' => null,
@@ -100,7 +106,7 @@ class GoogleSheetsTelemetryService
             ];
         }
 
-        $monitoredAt = $this->parseTimestamp($rawTimestamp);
+        $monitoredAt = $shared ? $this->parseObservationTimestamp($rawTimestamp) : $this->parseTimestamp($rawTimestamp);
         if (!$monitoredAt) {
             return [
                 'valid' => false,
@@ -112,18 +118,20 @@ class GoogleSheetsTelemetryService
 
         // 4. Resolusi Plant
         $plantCode = trim((string) ($row['plant_code'] ?? ''));
-        $plantId = $this->resolvePlantId($plantCode);
+        $plantId = $this->resolvePlantId($plantCode, $shared);
         if (!$plantId) {
             return [
                 'valid' => false,
                 'data' => null,
-                'error' => "Baris #{$rowNumber}: tidak ada tanaman melon aktif yang ditemukan di database.",
+                'error' => $shared
+                    ? "Baris #{$rowNumber}: plant_code harus berisi ID tanaman yang terdaftar."
+                    : "Baris #{$rowNumber}: tidak ada tanaman melon aktif yang ditemukan di database.",
                 'source_identifier' => null,
             ];
         }
 
         // 5. Validasi 3 Parameter Sensor Wajib
-        $temp = $this->parseNumeric($row['temperature'] ?? null);
+        $temp = $this->parseNumeric($row['temperature'] ?? null, $shared);
         if ($temp === null || $temp < 0.0 || $temp > 60.0) {
             return [
                 'valid' => false,
@@ -133,7 +141,7 @@ class GoogleSheetsTelemetryService
             ];
         }
 
-        $soil = $this->parseNumeric($row['soil_moisture'] ?? null);
+        $soil = $this->parseNumeric($row['soil_moisture'] ?? null, $shared);
         if ($soil === null || $soil < 0.0 || $soil > 100.0) {
             return [
                 'valid' => false,
@@ -146,7 +154,7 @@ class GoogleSheetsTelemetryService
         if (isset($row['water_ph'], $row['ph']) && (!is_numeric($row['water_ph']) || !is_numeric($row['ph']) || (float) $row['water_ph'] !== (float) $row['ph'])) {
             return ['valid' => false, 'data' => null, 'error' => 'water_ph dan ph tidak sama.', 'source_identifier' => null];
         }
-        $ph = $this->parseNumeric($row['water_ph'] ?? $row['ph'] ?? null);
+        $ph = $this->parseNumeric($row['water_ph'] ?? $row['ph'] ?? null, $shared);
         if ($ph === null || $ph < 0.0 || $ph > 14.0) {
             return [
                 'valid' => false,
@@ -176,7 +184,9 @@ class GoogleSheetsTelemetryService
         }
 
         // 9. Identifier Unik Idempotensi
-        $formattedTimestamp = $monitoredAt->format($monitoredAt->micro === 0 ? 'Y-m-d H:i:s' : 'Y-m-d H:i:s.u');
+        $formattedTimestamp = $shared
+            ? $monitoredAt->format('Y-m-d\TH:i:s.uP')
+            : $monitoredAt->format($monitoredAt->micro === 0 ? 'Y-m-d H:i:s' : 'Y-m-d H:i:s.u');
         $sourceIdentifier = hash('sha256', "{$deviceId}|{$formattedTimestamp}|{$plantId}");
 
         $validatedData = [
@@ -200,6 +210,7 @@ class GoogleSheetsTelemetryService
 
         return [
             'valid' => true,
+            'observation_id' => $shared ? $observationId : null,
             'data' => $validatedData,
             'error' => null,
             'source_identifier' => $sourceIdentifier,
@@ -230,7 +241,7 @@ class GoogleSheetsTelemetryService
     /**
      * Parse string angka yang mungkin memuat koma desimal atau spasi.
      */
-    protected function parseNumeric(mixed $value): ?float
+    protected function parseNumeric(mixed $value, bool $preservePrecision = false): ?float
     {
         if ($value === null) {
             return null;
@@ -248,11 +259,23 @@ class GoogleSheetsTelemetryService
             return null;
         }
 
-        return round((float) $normalized, 2);
+        return $preservePrecision ? (float) $normalized : round((float) $normalized, 2);
+    }
+
+    private function parseObservationTimestamp(string $value): ?Carbon
+    {
+        if (!preg_match(MonitoringIngestionService::OBSERVATION_TIME_PATTERN, $value)) {
+            return null;
+        }
+
+        $parsed = date_parse($value);
+        return $parsed['warning_count'] === 0 && $parsed['error_count'] === 0
+            ? Carbon::parse($value)->utc()
+            : null;
     }
 
     /**
-     * Parsing berbagai variasi format timestamp.
+     * Parsing berbagai variasi format timestamp lama.
      */
     protected function parseTimestamp(string $raw): ?Carbon
     {
@@ -290,8 +313,12 @@ class GoogleSheetsTelemetryService
     /**
      * Resolusi kode tanaman ke plant_id database.
      */
-    protected function resolvePlantId(?string $plantCode): ?int
+    protected function resolvePlantId(?string $plantCode, bool $shared = false): ?int
     {
+        if ($shared) {
+            return ctype_digit($plantCode ?? '') ? Plant::find((int) $plantCode)?->id : null;
+        }
+
         if (!empty($plantCode)) {
             $plant = Plant::where('name', $plantCode)
                 ->orWhere('location', $plantCode)

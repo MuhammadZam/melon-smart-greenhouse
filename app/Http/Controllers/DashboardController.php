@@ -105,9 +105,11 @@ class DashboardController extends Controller
 
         // 6. Query data untuk grafik tren Chart.js (Data aktual dari database, diurutkan kronologis)
         $chartDataQuery = (clone $monitoringQuery)
-            ->orderBy('monitored_at', 'asc')
+            ->latest('monitored_at')
+            ->latest('id')
             ->take(30)
-            ->get();
+            ->get()
+            ->reverse();
 
         $chartLabels        = $chartDataQuery->map(fn($m) => $m->monitored_at->format('d M H:i'))->values()->all();
         $chartTemps         = $chartDataQuery->pluck('temperature')->values()->all();

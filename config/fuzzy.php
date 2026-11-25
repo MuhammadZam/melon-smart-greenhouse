@@ -164,7 +164,7 @@ return [
     | Rule Base (IF-THEN Rules) - Versi 2.0 PROVISIONAL
     |--------------------------------------------------------------------------
     | Catatan: Menggunakan 8 aturan terkurasi untuk skenario pengujian software.
-    | Cakupan 27 kombinasi belum lengkap; lihat FUZZY_THREE_INPUT_REDESIGN.md.
+    | Kombinasi tanpa aktivasi aturan menghasilkan evaluasi tidak tersedia.
     */
     'rules' => [
         [

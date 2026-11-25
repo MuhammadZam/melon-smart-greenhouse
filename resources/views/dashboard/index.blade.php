@@ -488,7 +488,7 @@
                     </svg>
                 </div>
                 <div>
-                    <div class="flex items-center gap-2">
+                    <div class="flex flex-wrap items-center gap-2">
                         <h3 class="text-sm sm:text-base font-semibold text-current">Analisis Kondisi Greenhouse — Fuzzy Logic</h3>
                         @if($latestFuzzy)
                             @php
@@ -502,7 +502,7 @@
                                 };
                             @endphp
                             <span class="px-2 py-0.5 rounded-[2px] text-xs tabular-nums font-semibold border {{ $statusBadge }}">
-                                {{ $latestFuzzy->inference_status }}
+                                {{ $latestFuzzy->inference_status === 'INSUFFICIENT_RULE_COVERAGE' ? 'CAKUPAN TIDAK CUKUP' : $latestFuzzy->inference_status }}
                             </span>
                         @else
                             <span class="px-2 py-0.5 rounded-[2px] text-xs tabular-nums font-semibold bg-surface text-muted border border-line">
@@ -603,8 +603,14 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
                 </div>
-                <p class="text-xs font-semibold text-current">Belum Ada Analisis Logika Fuzzy</p>
-                <p class="text-xs text-muted mt-0.5">Analisis kondisi greenhouse akan dievaluasi secara otomatis saat data observasi baru tercatat.</p>
+                @if ($latestFuzzy?->inference_status === 'INSUFFICIENT_RULE_COVERAGE')
+                    <p class="text-xs font-semibold text-current">Skor fuzzy belum tersedia untuk kombinasi ini.</p>
+                    <p class="text-xs text-muted mt-0.5">Cakupan aturan belum cukup dan menunggu validasi.</p>
+                    <a class="inline-block mt-2 text-xs text-accent" href="{{ route('fuzzy.show', $latestFuzzy->id) }}">Lihat detail evaluasi</a>
+                @else
+                    <p class="text-xs font-semibold text-current">Belum Ada Analisis Logika Fuzzy</p>
+                    <p class="text-xs text-muted mt-0.5">Analisis kondisi greenhouse akan dievaluasi secara otomatis saat data observasi baru tercatat.</p>
+                @endif
             </div>
         @endif
     </div>

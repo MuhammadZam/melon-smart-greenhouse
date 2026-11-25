@@ -138,6 +138,7 @@
             </button>
         </form>
 
+        @if($demoAdminEmail || $demoObserverEmail)
         <!-- Divider -->
         <div class="relative my-7">
             <div class="absolute inset-0 flex items-center">
@@ -150,9 +151,10 @@
 
         <!-- Quick Demo Accounts -->
         <div class="space-y-2.5">
+            @if($demoAdminEmail)
             <button
                 type="button"
-                @click="fillCredentials('admin@melon.com', 'password123')"
+                @click="fillCredentials(@js($demoAdminEmail), 'password123')"
                 class="w-full p-3 rounded-[2px] bg-canvas hover:bg-surface border border-line hover:border-line text-left flex items-center justify-between group transition-all"
             >
                 <div class="flex items-center gap-3">
@@ -161,7 +163,7 @@
                     </div>
                     <div>
                         <div class="text-xs font-semibold text-current group-hover:text-accent transition-colors">Role: Administrator</div>
-                        <div class="text-xs text-muted tabular-nums">admin@melon.com</div>
+                        <div class="text-xs text-muted tabular-nums">{{ $demoAdminEmail }}</div>
                     </div>
                 </div>
                 <span class="text-xs text-accent group-hover:text-accent font-medium flex items-center gap-1">
@@ -171,10 +173,12 @@
                     </svg>
                 </span>
             </button>
+            @endif
 
+            @if($demoObserverEmail)
             <button
                 type="button"
-                @click="fillCredentials('pengamat@melon.com', 'password123')"
+                @click="fillCredentials(@js($demoObserverEmail), 'password123')"
                 class="w-full p-3 rounded-[2px] bg-canvas hover:bg-surface border border-line hover:border-line text-left flex items-center justify-between group transition-all"
             >
                 <div class="flex items-center gap-3">
@@ -183,7 +187,7 @@
                     </div>
                     <div>
                         <div class="text-xs font-semibold text-current group-hover:text-accent transition-colors">Role: User / Pengamat</div>
-                        <div class="text-xs text-muted tabular-nums">pengamat@melon.com</div>
+                        <div class="text-xs text-muted tabular-nums">{{ $demoObserverEmail }}</div>
                     </div>
                 </div>
                 <span class="text-xs text-accent group-hover:text-accent font-medium flex items-center gap-1">
@@ -193,7 +197,9 @@
                     </svg>
                 </span>
             </button>
+            @endif
         </div>
+        @endif
     </div>
 </div>
 @endsection

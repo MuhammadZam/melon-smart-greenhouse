@@ -11,19 +11,31 @@ use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class MonitoringIngestionService
 {
+    public const OBSERVATION_ID_PATTERN = '/\A[A-Za-z0-9][A-Za-z0-9._:-]{0,127}\z/';
+    public const OBSERVATION_TIME_PATTERN = '/\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?(?:Z|[+-](?:0\d|1[0-4]):[0-5]\d)\z/';
+
     /** @return array{monitoring: Monitoring, created: bool} */
-    public function ingest(array $attributes, ?string $eventKey = null, ?array $externalFuzzy = null): array
+    public function ingest(array $attributes, ?string $eventKey = null, ?array $externalFuzzy = null, ?string $observationId = null): array
     {
         $observedAt = Carbon::parse($attributes['monitored_at'], config('app.timezone'))->setTimezone(config('app.timezone'));
-        $canonicalTime = $observedAt->format('Y-m-d H:i:s.u');
-        $legacyEligible = $eventKey === null && $observedAt->micro === 0;
+        $identityTime = $observationId === null ? $observedAt : $observedAt->copy()->utc();
+        $canonicalTime = $identityTime->format('Y-m-d H:i:s.u');
+        $legacyEligible = $observationId === null && $eventKey === null && $observedAt->micro === 0;
         $attributes['monitored_at'] = $observedAt->format('Y-m-d H:i:s');
-        $identity = hash('sha256', json_encode([
+        $identity = hash('sha256', json_encode($observationId !== null ? [
+            'v2', $attributes['device_id'], $observationId,
+        ] : [
             'v1', $attributes['source'], $attributes['device_id'], (int) $attributes['plant_id'],
             $eventKey === null ? 'timestamp' : 'event', $eventKey ?? $canonicalTime,
         ], JSON_THROW_ON_ERROR));
         unset($attributes['source_identifier']);
-        $payloadHash = $this->fingerprint($attributes + ['observed_at' => $canonicalTime]);
+        // Channel-specific metadata belongs to the first accepted copy. Compare
+        // the observation itself, including plant and the exact normalized instant.
+        $payload = $observationId === null ? $attributes : array_intersect_key(
+            $attributes,
+            array_flip(['plant_id', 'temperature', 'soil_moisture', 'ph'])
+        );
+        $payloadHash = $this->fingerprint($payload + ['observed_at' => $canonicalTime]);
 
         try {
             return DB::transaction(function () use ($attributes, $identity, $payloadHash, $legacyEligible, $canonicalTime, $externalFuzzy) {

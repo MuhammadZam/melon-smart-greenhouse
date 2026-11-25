@@ -1,0 +1,97 @@
+KONTRAK INGEST ESP32 - COMPRO
+
+Gunakan URL aplikasi dari pemilik deployment. Contoh lokal untuk
+simulator http://127.0.0.1:8000. Gunakan HTTPS di luar localhost.
+Endpoint POST /api/monitorings. Set Content-Type dan Accept menjadi
+application/json. Gunakan X-Device-Token berisi token perangkat
+terdaftar. Bearer token juga diterima. X-Device-Id serta device_id
+opsional di API dan, bila disertakan, harus sesuai ID token untuk
+observasi baru. Salin ID perangkat persis, termasuk kapitalisasi, ke
+Google Sheets. Simpan token di konfigurasi perangkat yang terlindungi.
+
+Contoh JSON dengan nilai simulasi
+
+{
+  "device_id": "ESP32-CONTOH-01",
+  "observation_id": "07d43678ef804cd79df66dc359241be67",
+  "plant_id": 1,
+  "monitored_at": "2026-11-24T06:30:00.123Z",
+  "temperature": 27.5,
+  "soil_moisture": 68.25,
+  "water_ph": 6.4
+}
+
+Suhu udara 0-60 derajat Celsius, tanah 0-100 persen, pH air 0-14.
+Waktu observasi ISO 8601 dengan offset eksplisit, maksimal enam digit
+pecahan detik. UTC (Z) disarankan. Offset berbeda pada saat yang sama
+dicocokkan oleh backend; kolom histori ditampilkan dalam waktu aplikasi.
+
+Buat observation_id satu kali ketika mengukur, simpan bersama payload
+dan teruskan persis sama ke API dan Sheets. ID adalah 1-128 karakter,
+diawali huruf/angka, dilanjutkan huruf/angka atau titik, garis bawah,
+titik dua, dan tanda hubung. UUID dapat digunakan per perangkat.
+Hindari counter yang kembali ke nol setelah reboot. Gunakan ID baru
+untuk pengukuran baru walaupun nilai ketiga sensor sama.
+
+API baru menggunakan observation_id tanpa event_id atau Idempotency-Key.
+Klien lama boleh tetap memakai event_id/Idempotency-Key atau fallback
+timestamp dengan identitas per sumber. Alias ph lama diterima; saat
+keduanya diisi, nilainya harus sama.
+
+HTTP 201 berarti rekaman baru, HTTP 200 berarti replay identik. Respons
+JSON memuat success, message, data (termasuk id, source, water_ph) dan
+meta.created serta meta.replayed. Channel pertama menentukan source dan
+metadata sekunder yang disimpan. Konflik waktu, tanaman, atau sensor
+untuk kombinasi device_id/observation_id yang sama memberi HTTP 409.
+401/403 berarti token hilang, salah, nonaktif atau dicabut; 422 berarti
+data atau format tidak valid; 429 menandai batas permintaan tercapai.
+Untuk timeout, HTTP 429 (ikuti Retry-After jika ada), atau 5xx, ulangi
+dengan backoff dan jitter, menggunakan ID dan payload yang sama. Pada
+409, simpan ke antrean peninjauan dan periksa identitas sumber.
+
+Simulator Python menghasilkan UUID dan UTC, serta sumber simulator jika
+tipe perangkat yang didaftarkan python_simulator. Untuk uji --once,
+gunakan DEVICE_TOKEN dari environment dan --api-url, --device-id,
+serta --plant-id yang merujuk lingkungan uji.
+
+STATUS: kontrak API dan simulator teruji. Pengujian ESP32 fisik menunggu
+perangkat, akses jaringan uji, dan hasil kalibrasi Tim Elektro.
+
+CHECKLIST SERAH TERIMA TIM ELEKTRO
+
+[ ] ESP32 | API dan deduplikasi teruji dengan simulator
+    Gunakan POST /api/monitorings, Content-Type dan Accept application/json,
+    serta X-Device-Token dari penyimpanan privat. Ikuti contoh JSON di atas.
+    Cocokkan device_id dengan identitas token; buat observation_id satu
+    kali per pembacaan. Gunakan ISO 8601 berzona waktu. Kirim temperature
+    dalam Celsius, soil_moisture dalam persen, dan water_ph dalam skala pH.
+    201 berarti tersimpan, 200 replay identik, 409 konflik; periksa 401/403
+    untuk autentikasi dan 422 untuk validasi. Pada timeout, 429 atau 5xx,
+    ulangi dengan jeda dan payload/ID yang sama. Tim Elektro mengonfirmasi
+    model sensor, kalibrasi, sumber waktu, interval dan koneksi bench.
+
+[ ] Google Sheets | Mock teruji, live menunggu akses
+    Layout three_input A:J: device_id, timestamp, plant_code, temperature,
+    soil_moisture, water_ph, pump_status, fuzzy_score, fuzzy_label,
+    observation_id. Untuk ID bersama, plant_code berisi ID numerik tanaman.
+    Salin device_id/observation_id dan isi pengukuran dari payload API.
+    Sediakan Spreadsheet ID, nama tab, dan service account dengan akses
+    Viewer. Simpan JSON kredensial pada path privat yang bisa dibaca
+    container. Uji di database terisolasi dengan perintah
+    php artisan telemetry:sync-google-sheets --batch=20 sebelum menjadwalkan.
+    Lihat PANDUAN_GOOGLE_SHEETS_COMPRO.txt untuk variabel dan kursor.
+
+[ ] PUMP-01 | Simulasi teruji, protokol fisik masih usulan
+    Simulasi memakai MANUAL/AUTO berdasarkan kelembapan tanah, dan log
+    audit. Sahihkan protokol, autentikasi, command_id, kedaluwarsa, ACK,
+    umpan balik state fisik, serta heartbeat pada bench Elektro. Sepakati
+    kondisi aman saat koneksi putus atau reboot, durasi maksimal, minimum
+    rest, watchdog lokal, dan penghentian darurat independen. Verifikasi
+    tiap pengaman sebelum menyambungkan beban. Lihat PANDUAN_INTEGRASI_POMPA.txt.
+
+[ ] Fuzzy | Review pembimbing atau ahli budidaya
+    Gunakan VALIDASI_FUZZY_MAMDANI.txt. Telaah fungsi keanggotaan tiga
+    sensor, ambang, delapan aturan provisional, dan delapan titik yang
+    belum tercakup. Saat ini 19 dari 27 titik menghasilkan skor. Tim
+    Elektro memberikan bukti kalibrasi; reviewer mengesahkan kategori
+    dan aturan. Fuzzy tetap terpisah dari kendali pompa.

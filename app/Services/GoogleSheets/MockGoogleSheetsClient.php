@@ -90,18 +90,12 @@ class MockGoogleSheetsClient implements GoogleSheetsClientInterface
             throw GoogleSheetsException::general($this->simulateApiError, 500);
         }
 
-        // Parse range if simple row slicing is needed e.g. "Telemetry!A2:O50"
-        if (preg_match('/[A-Z]+(\d+):[A-Z]+(\d*)/i', $range, $matches)) {
-            $startRow = (int) $matches[1];
-            $endRow = !empty($matches[2]) ? (int) $matches[2] : null;
+        if (preg_match('/(?:\A|!)[A-Z]+(\d+):[A-Z]+(\d*)\z/i', $range, $matches)) {
+            // The fixtures begin at worksheet row 2, after the header.
+            $startRow = max(2, (int) $matches[1]);
+            $length = $matches[2] === '' ? null : max(0, (int) $matches[2] - $startRow + 1);
 
-            // In A1 notation, row numbers are 1-indexed.
-            // If rows array represents data starting from row 2 (header in row 1):
-            // We can return corresponding slice if setMockRows was keyed or 0-indexed list
-            if (!empty($this->rows)) {
-                // If caller requested range starting at row 2 and we have rows:
-                return $this->rows;
-            }
+            return array_slice($this->rows, $startRow - 2, $length);
         }
 
         return $this->rows;

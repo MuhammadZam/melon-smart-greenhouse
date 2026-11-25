@@ -1,0 +1,59 @@
+GOOGLE SHEETS - TELEMETRI COMPRO
+
+Urutan kolom worksheet three_input (baris 1 header, data dari baris 2)
+
+A device_id       ID perangkat persis seperti terdaftar
+B timestamp       ISO 8601 dengan offset, sebaiknya UTC/Z
+C plant_code      ID numerik tanaman untuk observasi dengan ID bersama
+D temperature     suhu udara Celsius
+E soil_moisture   persen
+F water_ph        pH air
+G pump_status     opsional, data laporan perangkat
+H fuzzy_score     opsional, 0-100
+I fuzzy_label     opsional
+J observation_id ID teks yang sama persis dengan payload API
+
+Contoh baris CSV untuk data simulasi
+ESP32-CONTOH-01,2026-11-24T06:30:00.123Z,1,27.5,68.25,6.4,,,,07d43678ef804cd79df66dc359241be67
+
+Format kolom ID dan timestamp sebagai teks agar nilainya tidak diubah
+oleh Sheets. Biarkan J kosong hanya untuk kompatibilitas lama. Pada
+layout legacy (A:P), identitas tetap per sumber sehingga replay
+lintas API dan Sheets tidak dapat dideduplikasi secara aman.
+
+Aktifkan Google Sheets API pada proyek Google Cloud, buat service
+account, dan bagikan spreadsheet uji kepada identitas service account
+dengan akses Viewer. Simpan JSON kredensial di lokasi privat yang
+dapat dibaca proses backend dan dapat diakses di container.
+Gunakan placeholder berikut untuk konfigurasi lokal .env.
+
+GOOGLE_SHEETS_TELEMETRY_LAYOUT=three_input
+GOOGLE_SHEETS_AUTH_MODE=service_account
+GOOGLE_SHEETS_SPREADSHEET_ID=<ID_SPREADSHEET_UJI>
+GOOGLE_SHEETS_SHEET_NAME=<NAMA_WORKSHEET>
+GOOGLE_SHEETS_CREDENTIALS_PATH=<PATH_JSON_DI_CONTAINER>
+GOOGLE_SHEETS_POLLING_INTERVAL=5
+GOOGLE_SHEETS_SCHEDULE_ENABLED=false
+
+Bila konfigurasi sinkronisasi sudah pernah dibuat, nilai worksheet,
+spreadsheet, mode, path dan interval tersimpan di google_sheets_sync_configs.
+Operator perlu menyelaraskan baris konfigurasi menggunakan akses
+administrasi deployment sebelum menjalankan sinkronisasi. Pertahankan
+kursor bila worksheet sama. Saat berpindah worksheet, rencanakan reset
+kursor, pastikan semua ID observasi tetap stabil, dan gunakan database uji
+untuk menilai potensi duplikasi histori lama terlebih dahulu.
+
+Uji manual dengan php artisan telemetry:sync-google-sheets --batch=20.
+Periksa riwayat Admin, jumlah impor, replay, konflik, serta kursor.
+Aktifkan GOOGLE_SHEETS_SCHEDULE_ENABLED=true sesudah uji live. Jalankan
+satu service scheduler Docker. Scheduler memeriksa konfigurasi live,
+akses file, status aktif, dan interval sebelum menjalankan sinkronisasi.
+Konflik observasi tercatat sebagai baris gagal; kursor lanjut agar batch
+berikutnya tetap berjalan. Perbaiki data asal dan lakukan replay terkontrol.
+Jika 401/403, periksa service account, token, sharing dan akses file.
+Jika 404, periksa ID dan nama tab. Untuk 429, tunggu interval berikutnya.
+Untuk duplikat lintas kanal, bandingkan perangkat, ID, tanaman, waktu
+dan tiga sensor. Gunakan data simulasi di lingkungan uji.
+
+STATUS: mock teruji. Live BLOCKED sampai pemilik menyediakan worksheet
+uji yang disetujui dan service account dengan akses baca.

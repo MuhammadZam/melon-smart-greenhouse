@@ -1,0 +1,41 @@
+DEMONSTRASI COMPRO - DATA DAN POMPA SIMULASI
+
+Persiapan
+Gunakan aplikasi uji dengan skema terbaru, satu scheduler, akun Admin,
+akun Pengamat, tanaman uji, dan perangkat python_simulator terdaftar.
+Gunakan mode mock untuk Sheets kecuali worksheet uji resmi siap.
+Tampilkan label simulasi pada awal demo dan saat memeriksa pompa.
+Periksa nama database sebelum langkah yang menulis data. Gunakan URL
+dan token perangkat uji yang disediakan operator, lalu jalankan:
+
+  python iot-simulator/simulator.py --api-url http://127.0.0.1:<PORT_UJI>/api/monitorings --plant-id <ID_TANAMAN_UJI> --device-id <ID_SIMULATOR> --once
+
+Masukkan DEVICE_TOKEN melalui environment privat. Langkah yang membuat
+alarm, mengirim pembacaan atau mengubah pompa dilakukan di database
+demo. Database utama digunakan untuk penelusuran data yang sudah ada.
+
+1. Masuk sebagai Admin dan cek tiga kartu suhu, kelembapan tanah, pH.
+2. Jalankan simulator Python --once dengan token dari environment.
+   Tunjukkan HTTP 201 dan sumber simulator di dashboard.
+3. Buka grafik histori. Bandingkan cap waktu observasi dan usia data.
+4. Kirim simulasi melampaui ambang Warning, lalu Critical, dengan ID
+   berbeda untuk masing-masing observasi. Buka lonceng dan riwayat.
+5. Tandai alarm ditinjau sebagai Admin. Catat penurunan hitungan belum
+   ditinjau. Kirim pembacaan normal untuk mengakhiri alarm aktif.
+6. Lihat fuzzy dari pembacaan 27 C, 70%, pH 6.5. Lalu kirim 18 C,
+   30%, pH 6.5 untuk menampilkan status cakupan tidak cukup.
+7. Uji PUMP-01 manual ON/OFF. Tunjukkan state simulasi dan audit log.
+8. Uji mode AUTO pada tanaman uji. Dengan contoh ambang 40/60,
+   kirim nilai di bawah 40, antara 40-60, dan di atas 60. Perhatikan
+   hysteresis, usia data, serta waktu istirahat di konfigurasi uji.
+9. Pada setup uji dengan runtime pendek, nyalakan pompa dan hentikan
+   pengiriman. Tunjukkan scheduler mencatat OFF dengan MAX_RUNTIME.
+10. Kirim observasi dengan observation_id ke API. Impor salinan data
+    yang sama dari fixture Sheets mock dengan ID perangkat dan waktu
+    sama. Tunjukkan replay/skip dan hanya satu baris serta satu inferensi.
+11. Keluar dan masuk sebagai Pengamat. Periksa dashboard dan laporan;
+    tunjukkan tindakan kendali Admin ditolak.
+12. Ekspor CSV dan PDF dan periksa satuan serta tiga sensor.
+
+Google Sheets live, ESP32 fisik, pompa fisik, dan validasi kategori
+agronomi merupakan checkpoint terpisah dari demo simulasi.

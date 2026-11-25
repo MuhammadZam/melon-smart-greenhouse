@@ -1,0 +1,255 @@
+LAPORAN FINAL COMPRO - TAHAP 3
+24 November 2026 WIB
+
+A. Status proyek
+
+azolla_app berjalan di port 8000 dan azolla_mysql healthy di port 3308.
+Scheduler disediakan oleh compose.yaml. Status penerapan terakhir
+tercatat pada bagian B dan log verifikasi di akhir laporan.
+Transport PUMP-01 masih simulasi dan state utama yang terbaca OFF.
+source_identifier dan ledger tetap mendukung identitas lintas kanal
+melalui device_id dan observation_id. Klien legacy tetap per kanal.
+Working tree sudah memuat perubahan Tahap 1 dan 2 saat audit dimulai.
+Tahap 3 menerapkan empat migrasi yang disetujui, memperbaiki target
+database scheduler, dan memperbarui dokumentasi serah terima.
+
+B. Penerapan MySQL utama - VERIFIED untuk migrasi dan integritas data
+
+Target: db_monitoring_azolla, MySQL 8.0.46, container azolla_mysql,
+volume compro_azolla_mysql_data. Pemeriksaan baca-saja melihat 2 akun,
+3 tanaman, 21 monitoring, 2 aktuator, serta 0 alarm, log perintah,
+perangkat dan inferensi. Isi rekaman historis cocok dengan Tahap 2.
+
+Backup privat:
+C:\Users\fadli\AppData\Local\COMPRO\backups\compro-20261124-135529.sql
+Waktu backup: 24 November 2026 13:55:29 WIB. Ukuran: 32805 byte.
+SHA-256: 0ec5cc402d5d552a4bd422395cf1a82aa89665262485f6ee7ecab5679a6da966
+
+Checksum cocok dengan bukti Tahap 2. mysqldump --single-transaction
+ulang dibaca ke memori dan cocok sepenuhnya dengan backup setelah
+baris waktu selesai dump dikecualikan. Bukti restore Tahap 2 berlaku
+untuk snapshot ini. Backup itu berhasil diimpor ke MySQL 8.0.46
+terisolasi dan empat migrasi lulus dengan isi histori utuh dan nol relasi
+monitoring tanpa tanaman. Backup baru diperlukan bila isi berubah
+sebelum jendela penerapan. Simpan secara privat dan uji restore di
+instance terisolasi sebelum melanjutkan.
+
+Empat migrasi yang memperoleh persetujuan eksplisit dan berstatus Ran
+1. 2026_10_22_000001_create_monitoring_ingestion_keys_table.php
+   Membuat ledger unik dengan FK monitoring dan ON DELETE SET NULL.
+2. 2026_11_07_000001_allow_retired_humidity_to_be_null.php
+   Menjadikan humidity historis nullable.
+3. 2026_11_07_000002_add_dual_mode_pump_control.php
+   Menambah konfigurasi/state pompa dan kolom audit. Default MANUAL.
+4. 2026_11_24_000001_add_alarm_acknowledgment.php
+   Menambah waktu dan FK pengguna yang meninjau alarm.
+
+Kode up bersifat aditif atau melonggarkan constraint. DDL dapat
+mengunci tabel, memerlukan ruang, dan menyelesaikan sebagian perubahan
+sebelum terjadi gagal. Ukur gangguan dari jeda penulis sampai smoke test.
+Perkiraan untuk data saat ini beberapa menit, bukan garansi. Akses publik
+menerima halaman pemeliharaan selama jeda.
+
+Prosedur penerapan yang digunakan setelah persetujuan eksplisit
+1. Jadwalkan jendela, catat baseline, verifikasi kembali backup dan
+   status Pending. Koordinasikan jeda simulator, ESP32, sinkronisasi
+   manual/CLI, worker terkait dan penulis langsung yang mungkin aktif.
+   Pastikan state simulasi PUMP-01 OFF dan transport tetap simulasi.
+2. Aktifkan maintenance dan jeda scheduler bila berjalan:
+
+   docker compose exec -T app php artisan down
+   docker compose stop scheduler
+
+3. Recheck snapshot/backup setelah jeda penulis. Jalankan hanya file yang
+   ditinjau berikut dan hentikan langkah deployment jika perintah gagal:
+
+   docker compose exec -T app php artisan migrate --force --path=database/migrations/2026_10_22_000001_create_monitoring_ingestion_keys_table.php --path=database/migrations/2026_11_07_000001_allow_retired_humidity_to_be_null.php --path=database/migrations/2026_11_07_000002_add_dual_mode_pump_control.php --path=database/migrations/2026_11_24_000001_add_alarm_acknowledgment.php
+
+   Hasil eksekusi: keempat migrasi DONE dan tercatat Ran pada batch 6.
+   Perbandingan daftar sebelum/sesudah menunjukkan hanya empat
+   migrasi disetujui yang ditambahkan.
+
+4. Verifikasi 4 migrasi Ran, cocokkan jumlah dan isi histori, periksa
+   PK ledger serta FK, humidity nullable, MANUAL/OFF dan kolom review:
+
+   docker compose exec -T app php artisan migrate:status
+   docker compose exec -T app php artisan db:show --counts
+
+   Pemeriksaan schema builder mengonfirmasi identity_hash sebagai
+   primary key unik, FK ledger ke monitorings.id dengan SET NULL,
+   humidity nullable, penyimpanan pH di ph, kolom dual-mode dan audit,
+   FK control_plant_id ke plants, serta FK acknowledged_by ke users.
+   Ledger baru kosong. Seluruh baris dua pengguna, tiga tanaman, dan
+   21 monitoring cocok berdasarkan hash. Kedua aktuator cocok untuk
+   seluruh kolom lama. Tidak ada monitoring tanpa tanaman.
+
+5. Smoke test akun yang diotorisasi pada dashboard, histori sensor,
+   halaman tanaman, alarm, fuzzy dan konfigurasi pompa SIM. Lakukan
+   autentikasi serta cek izin Admin/Pengamat. Verifikasi metode API tanpa
+   penulisan, atau lakukan satu ingest berlabel simulasi jika dataset
+   uji di database utama disetujui. Verifikasi ekspor jika diperlukan.
+
+   Smoke dijalankan setelah verifikasi skema dan sebelum akses umum
+   dibuka kembali. Login melalui HTTP kernel Laravel mengembalikan
+   302 ke dashboard untuk Admin dan Pengamat. Rehash otomatis hanya
+   dinonaktifkan dalam proses CLI uji agar hash akun tidak berubah.
+   Sesi keduanya digunakan untuk memeriksa 20 kunjungan halaman di
+   browser pada MySQL utama. Dashboard/grafik tiga sensor, tanaman,
+   monitoring/detail historis, alarm, fuzzy, pompa, audit dan laporan
+   semuanya terbuka. Kedua peran memperoleh PDF dan CSV HTTP 200.
+   API mengembalikan 21 rekaman dengan field water_ph. Akses API tamu
+   dan ingest tanpa token ditolak 401. Endpoint Admin memberi 200
+   untuk Admin dan 403 untuk Pengamat. Status pompa menunjukkan
+   MANUAL/OFF, simulation dan hardware_dispatched=false.
+   Acknowledgment alarm, perintah manual, AUTO, dan konfigurasi
+   keselamatan diuji di suite terisolasi. Snapshot data bisnis utama
+   tetap cocok setelah smoke dan pembukaan akses.
+
+6. Akhiri maintenance setelah validasi skema dan smoke. Jalankan satu
+   scheduler dan cek log serta last_scheduler_at.
+
+   docker compose exec -T app php artisan up
+   docker compose up -d --no-build --no-deps scheduler
+   docker compose ps
+   docker compose logs --tail 8 scheduler
+
+   Startup pertama menggunakan DB_DATABASE dari host yang menunjuk file
+   SQLite. MySQL menolak koneksi scheduler. Compose dan .env.example
+   sekarang menggunakan COMPRO_MYSQL_DATABASE sebagai nama skema
+   Docker tersendiri, dengan default db_monitoring_azolla. Target Compose
+   app, mysql dan scheduler diperiksa. Hanya container scheduler dibuat
+   ulang menggunakan image runtime yang sama dengan azolla_app.
+   Mutex pump:evaluate yang tertinggal dibersihkan dengan
+   docker compose exec -T app php artisan schedule:clear-cache
+   saat scheduler dihentikan, lalu scheduler dijalankan kembali.
+   Hasil akhir: satu scheduler berjalan. Log pump:evaluate mencatat
+   tiga eksekusi DONE berturut-turut. Heartbeat MySQL maju dari
+   14:47:11 ke 14:47:17 WIB. PUMP-01 tetap MANUAL/OFF dan belum arming
+   AUTO. Jumlah log perintah tetap nol. Health endpoint /up memberi
+   HTTP 200 dan maintenance nonaktif. MySQL berstatus healthy.
+   Google Sheets live dan jadwal sinkronisasinya tetap nonaktif.
+
+Pemulihan jika gagal
+Pertahankan jeda penulis dan maintenance. Simpan error, status migration,
+dan skema parsial. Jangan ulangi DDL tanpa memeriksa sisi yang sudah
+berhasil. Jangan gunakan rollback ledger sebagai cara memulihkan data.
+Pulihkan SQL ke instance/skema kosong yang terpisah, verifikasi hash,
+relasi dan smoke test, lalu minta persetujuan perubahan target koneksi
+atau perbaikan maju. Pertahankan database lama dan kedua volume.
+
+C. Google Sheets - PENDING CREDENTIALS
+
+Runtime utama mode mock dan jadwal live nonaktif. Pemeriksaan konfigurasi
+menunjukkan belum ada konfigurasi service account siap. Uji live BLOCKED.
+Pemilik menyiapkan Spreadsheet ID, nama tab uji, share Viewer ke service
+account dan file JSON privat dengan path yang dapat dibaca container.
+Jangan kirim file atau token di chat. Detail variabel, layout A:J,
+observation_id bersama, dan perintah sinkronisasi lihat
+PANDUAN_GOOGLE_SHEETS_COMPRO.txt. Setelah akses tersedia, uji auth,
+imporkan sampel berlabel uji di salinan database, cek zona waktu dan
+dashboard, replay baris, replay lewat API, uji satu konflik, lalu
+jalankan scheduler dan cek hitungan impor/skip/fail dan pergerakan kursor.
+
+D. ESP32 - PENDING HARDWARE
+
+Kontrak REST, simulasi dan pengujian autentikasi tersedia pada Tahap 2.
+Belum ada perangkat terdaftar di database utama. Tidak ada perangkat
+fisik yang tersedia untuk verifikasi Tahap 3.
+Serah terima Elektro: catat model sensor dan kalibrasi tiga satuan,
+ID perangkat dan sumber UTC, interval kirim, jaringan dan protokol.
+Daftarkan token uji secara lokal. Ikuti PANDUAN_INTEGRASI_ESP32.txt,
+bandingkan nilai sensor terhadap acuan, lalu uji replay, offline/reconnect,
+urutan terbalik, dashboard, alarm, fuzzy dan ekspor. Pisahkan pembacaan
+perangkat fisik dari data simulator. Perangkat dan kalibrasi menunggu Elektro.
+
+E. Fuzzy Mamdani - PENDING AGRONOMIC VALIDATION
+
+8 aturan provisional, 19/27 titik representatif menghasilkan skor,
+8 tanpa cakupan memiliki skor null. Ini ukuran cakupan titik uji dan
+bukan estimasi akurasi atau cakupan seluruh domain kontinu. Usulan Tahap
+2 belum diaktifkan. Lembar persetujuan ada di VALIDASI_FUZZY_MAMDANI.txt.
+Elektro memverifikasi reliabilitas input, pembimbing atau ahli budidaya
+memberi referensi dan persetujuan tertulis, lalu Informatika memperbarui
+konfigurasi, menguji boundary/overlap/invalid/zero activation/centroid,
+dan mengulang uji dashboard dan regresi. Fuzzy tetap terpisah dari pompa.
+
+F. Pompa - PENDING HARDWARE
+
+Tahap 2 memverifikasi simulasi, audit, 409 konkurensi, hysteresis dan
+scheduler yang mematikan pompa tanpa telemetri. Di utama PUMP-01 OFF
+pada saat pemeriksaan. Protokol fisik, ACK, heartbeat/unknown state,
+expiration, emergency shutdown, runtime, rest, dan watchdog masih
+menunggu perangkat, persetujuan dan pengawasan Elektro. Jalankan
+bench test manual ON/OFF, transisi mode, hysteresis, kegagalan sensor,
+loss/restart, ACK dan emergency shutdown setelah izin keselamatan.
+Status sukses aplikasi tidak mengonfirmasi operasi pompa fisik.
+
+G. Bukti pengujian
+
+Tahap 3 menggunakan mysqldump snapshot baca-saja, checksum SHA-256,
+docker compose ps, docker compose exec -T app php artisan migrate:status,
+docker compose config --quiet, dan npm run build.
+Build produksi, validasi Compose dan git diff --check lulus.
+php artisan test --compact pada SQLite in-memory menghasilkan 319
+tes lulus, 2.138 assertion, 0 gagal dan 0 dilewati dalam 29,83 detik.
+Regresi setelah deployment menggunakan SQLite in-memory. Run awal
+beririsan dengan maintenance karena folder storage dibagi dan
+menghasilkan 148 gagal, 171 lulus, 1.611 assertion. Percobaan ulang
+dengan APP_MAINTENANCE_DRIVER=cache dan APP_MAINTENANCE_STORE=array
+menjalankan php artisan test --compact tanpa maintenance utama,
+dan lulus 319 tes, 2.138 assertion, 0 gagal, 0 dilewati dalam 39,85 detik.
+Build produksi npm run build juga lulus ulang.
+Hasil Tahap 2 yang tetap menjadi baseline MySQL/simulasi: restore 4
+migrasi, 10 worker ingest menghasilkan satu rekaman/alarm/fuzzy,
+scheduler OFF/MAX_RUNTIME dan restart, browser Admin/Pengamat,
+ekspor PDF/CSV, serta simulator HTTP 201. Rujuk bukti JSON Tahap 2.
+Skenario fisik A-F belum bisa diterima. Jalur monitoring, alarm,
+fuzzy teknis, pompa manual/auto, dan kegagalan perangkat lunak
+tercakup simulasi/regresi. Physical ACK, heartbeat, expiry, kehilangan
+jaringan dan E-stop memerlukan bench test; Sheets live memerlukan akses.
+
+H-I. Checklist dan tanggung jawab
+
+VERIFIED: backup, restore, histori, ingest deduplikasi, fuzzy teknis,
+simulasi pompa/scheduler dan panduan demo.
+VERIFIED: pemilik menyetujui empat migrasi dan jeda akses. Keempat migrasi
+diterapkan dan data historis terverifikasi setelah penerapan.
+PENDING CREDENTIALS: pemilik Google memberikan akses aman worksheet uji.
+PENDING HARDWARE: Elektro menyediakan bench, kalibrasi, ACK dan pengaman.
+PENDING AGRONOMIC VALIDATION: pembimbing atau ahli menandatangani matriks.
+BLOCKED: penerimaan penuh menunggu verifikasi live/fisik dan validasi
+agronomi. Informatika bertanggung jawab atas perekaman bukti live.
+
+J. Klasifikasi kesiapan
+
+Demo software: VERIFIED pada simulasi.
+Deployment database utama: VERIFIED.
+Scheduler utama dan transport pompa simulasi: VERIFIED.
+Google Sheets live: PENDING CREDENTIALS.
+IoT dan pompa fisik: PENDING HARDWARE.
+Agronomi: PENDING AGRONOMIC VALIDATION.
+Operasional penuh: BLOCKED.
+
+K. Recheck operasional dan software freeze
+
+24 November 2026 WIB. Pemeriksaan baca-saja melihat azolla_app aktif,
+azolla_mysql healthy, satu scheduler, /up HTTP 200, dan empat migrasi
+Ran pada batch 6. Dua akun, tiga tanaman dan 21 monitoring masih cocok
+berdasarkan hash dengan snapshot sebelum migrasi. Checksum backup
+sesuai dengan bagian B; bukti restore tetap dirujuk dari Tahap 2.
+Heartbeat maju dari 15:00:32 ke 15:00:44 WIB dan worker_recent=true.
+PUMP-01 tetap MANUAL/OFF dengan SimulationPumpTransport. Google Sheets
+live dan penjadwalannya nonaktif. Alarm, log perintah dan hasil fuzzy
+utama tetap kosong; recheck ini tidak membuat data demo di utama.
+
+Verifikasi login, izin, dashboard tiga sensor, histori, halaman alarm
+dan fuzzy, serta PDF/CSV menggunakan bukti smoke utama di bagian B.
+Alarm acknowledgment, fuzzy, MANUAL/AUTO dan pengaman pompa merujuk
+regresi terisolasi serta uji simulasi sebelumnya. Suite dan demo yang
+menulis data tidak diulang pada recheck. Kode aplikasi dan skema tidak
+berubah. Gunakan PANDUAN_DEMONSTRASI_COMPRO.txt untuk demo terisolasi dan
+checklist di PANDUAN_INTEGRASI_ESP32.txt untuk serah terima Elektro.
+Live Sheets: PENDING CREDENTIALS. ESP32, pompa fisik, dan pengujian
+end-to-end fisik: PENDING HARDWARE. Fuzzy dan ambang: PENDING AGRONOMIC
+VALIDATION. Status penuh: BLOCKED. Pertahankan freeze sampai sumber
+daya tersebut tersedia atau ditemukan cacat yang dapat direproduksi.

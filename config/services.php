@@ -33,6 +33,7 @@ return [
 
     'google_sheets' => [
         'telemetry_layout' => env('GOOGLE_SHEETS_TELEMETRY_LAYOUT', 'legacy'),
+        'schedule_enabled' => env('GOOGLE_SHEETS_SCHEDULE_ENABLED', false),
         'mode' => env('GOOGLE_SHEETS_AUTH_MODE', 'mock'),
         'spreadsheet_id' => env('GOOGLE_SHEETS_SPREADSHEET_ID'),
         'sheet_name' => env('GOOGLE_SHEETS_SHEET_NAME', 'Telemetry'),

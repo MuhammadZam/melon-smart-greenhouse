@@ -6,6 +6,7 @@ use App\Models\Monitoring;
 use App\Models\Plant;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class MonitoringTest extends TestCase
@@ -184,6 +185,20 @@ class MonitoringTest extends TestCase
         $response->assertSee('Detail Pengamatan');
         $response->assertSee('Edit Data');
         $response->assertSee('Hapus');
+    }
+
+    public function test_historical_monitoring_detail_without_audit_timestamps(): void
+    {
+        $monitoring = Monitoring::factory()->create(['plant_id' => $this->getPlant()->id]);
+        DB::table('monitorings')->where('id', $monitoring->id)->update([
+            'created_at' => null,
+            'updated_at' => null,
+        ]);
+
+        $this->actingAs($this->getUser('user'))
+            ->get(route('monitorings.show', $monitoring))
+            ->assertOk()
+            ->assertSee('Tidak tercatat');
     }
 
     // ========================================================

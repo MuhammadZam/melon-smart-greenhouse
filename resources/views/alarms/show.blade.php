@@ -16,6 +16,15 @@
         </a>
     </div>
 
+    @if($alarm->acknowledged_at)
+        <p class="text-sm text-muted">Ditinjau pada {{ $alarm->acknowledged_at->format('d M Y, H:i:s') }}</p>
+    @elseif($canAcknowledge && $alarm->isActive() && auth()->user()->role === 'admin')
+        <form method="POST" action="{{ route('alarms.acknowledge', $alarm) }}">
+            @csrf
+            <button type="submit" class="rounded-[2px] border border-line px-3 py-2 text-sm font-semibold">Tandai sudah ditinjau</button>
+        </form>
+    @endif
+
     {{-- Alarm Header Card --}}
     <div class="relative overflow-hidden rounded-[2px] border p-6
  {{ $alarm->severity === 'critical' ? 'bg-danger-soft border-danger/25' : ($alarm->status === 'active' ? 'bg-danger-soft border-danger/25' : 'bg-canvas border-line') }}">

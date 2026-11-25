@@ -19,7 +19,19 @@ class AuthController extends Controller
             return redirect()->route('dashboard');
         }
 
-        return view('auth.login');
+        $demoEmails = collect();
+        if (app()->environment('local')) {
+            $demoEmails = \App\Models\User::whereIn('email', [
+                'admin@melon.com', 'admin@azolla.com',
+                'pengamat@melon.com', 'pengamat@azolla.com',
+            ])->get()->filter(fn ($user) => \Illuminate\Support\Facades\Hash::check('password123', $user->password))
+                ->pluck('email', 'role');
+        }
+
+        return view('auth.login', [
+            'demoAdminEmail' => $demoEmails->get('admin'),
+            'demoObserverEmail' => $demoEmails->get('user'),
+        ]);
     }
 
     /**

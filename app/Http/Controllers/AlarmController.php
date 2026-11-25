@@ -6,7 +6,7 @@ use App\Models\MonitoringAlarm;
 use App\Models\MonitoringParameter;
 use App\Models\Plant;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
 
 /**
@@ -27,7 +27,7 @@ class AlarmController extends Controller
     public function index(Request $request): View
     {
         $request->validate([
-            'plant_id'      => ['nullable', 'integer'],
+            'plant_id'      => $request->query('plant_id') === 'all' ? ['in:all'] : ['nullable', 'integer'],
             'parameter_key' => ['nullable', 'string', 'max:60'],
             'severity'      => ['nullable', 'string', 'in:all,warning,critical'],
             'status'        => ['nullable', 'string', 'in:all,active,resolved'],
@@ -78,7 +78,22 @@ class AlarmController extends Controller
         abort_unless(in_array($alarm->parameter_key, \App\Support\ActiveSensors::STORAGE_KEYS, true), 404);
         $alarm->load(['plant', 'triggeringMonitoring.plant']);
 
-        return view('alarms.show', compact('alarm'));
+        $canAcknowledge = Schema::hasColumn('monitoring_alarms', 'acknowledged_at');
+
+        return view('alarms.show', compact('alarm', 'canAcknowledge'));
+    }
+
+    public function acknowledge(Request $request, MonitoringAlarm $alarm): \Illuminate\Http\RedirectResponse
+    {
+        abort_unless(in_array($alarm->parameter_key, \App\Support\ActiveSensors::STORAGE_KEYS, true), 404);
+        abort_unless(Schema::hasColumn('monitoring_alarms', 'acknowledged_at'), 503);
+
+        MonitoringAlarm::active()->whereKey($alarm->id)->whereNull('acknowledged_at')->update([
+            'acknowledged_at' => now(),
+            'acknowledged_by' => $request->user()->id,
+        ]);
+
+        return redirect()->route('alarms.show', $alarm);
     }
 
     /**
@@ -90,6 +105,10 @@ class AlarmController extends Controller
     {
         $activeCount   = MonitoringAlarm::active()->count();
         $criticalCount = MonitoringAlarm::active()->critical()->count();
+        $unread = MonitoringAlarm::active();
+        if (Schema::hasColumn('monitoring_alarms', 'acknowledged_at')) {
+            $unread->whereNull('acknowledged_at');
+        }
 
         $latest = MonitoringAlarm::whereIn('parameter_key', \App\Support\ActiveSensors::STORAGE_KEYS)->with('plant')
             ->active()
@@ -101,7 +120,7 @@ class AlarmController extends Controller
                 'plant_name'       => $a->plant?->name ?? 'N/A',
                 'parameter'        => $a->parameter_display_name,
                 'severity'         => $a->severity,
-                'sensor_value'     => $a->sensor_value,
+                'sensor_value'     => $a->last_abnormal_value ?? $a->sensor_value,
                 'unit'             => $a->unit,
                 'violation'        => $a->violation_direction === 'below_minimum' ? 'Di Bawah Min' : 'Di Atas Maks',
                 'first_detected'   => $a->first_detected_at?->diffForHumans() ?? '-',
@@ -111,6 +130,7 @@ class AlarmController extends Controller
         return response()->json([
             'active_count'   => $activeCount,
             'critical_count' => $criticalCount,
+            'unread_count'   => $unread->count(),
             'latest'         => $latest,
         ]);
     }

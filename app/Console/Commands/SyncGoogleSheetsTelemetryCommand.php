@@ -16,6 +16,7 @@ class SyncGoogleSheetsTelemetryCommand extends Command
     protected $signature = 'telemetry:sync-google-sheets
                             {--batch=100 : Maximum rows to synchronize in this execution}
                             {--force : Force sync even if config is marked inactive}
+                            {--scheduled : Run only when an existing live configuration is due}
                             {--reset-cursor : Reset last synced row cursor back to 1}';
 
     /**
@@ -30,6 +31,22 @@ class SyncGoogleSheetsTelemetryCommand extends Command
      */
     public function handle(GoogleSheetsSyncService $syncService): int
     {
+        if ($this->option('scheduled')) {
+            if (config('services.google_sheets.mode') !== GoogleSheetsSyncConfig::MODE_SERVICE_ACCOUNT) {
+                return self::SUCCESS;
+            }
+
+            $config = GoogleSheetsSyncConfig::active()->first();
+            if (!$config?->isLive() || !$config->isConfigured()
+                || $config->last_synced_at?->gt(now()->subMinutes(max(1, $config->polling_interval_minutes)))) {
+                return self::SUCCESS;
+            }
+
+            $log = $syncService->sync($config, 'schedule');
+
+            return $log->status === GoogleSheetsSyncConfig::STATUS_FAILED ? self::FAILURE : self::SUCCESS;
+        }
+
         $this->info('========================================================');
         $this->info('  GOOGLE SHEETS TELEMETRY SYNCHRONIZATION (PHASE 14)    ');
         $this->info('========================================================');
@@ -42,20 +59,19 @@ class SyncGoogleSheetsTelemetryCommand extends Command
         }
 
         if ($this->option('reset-cursor')) {
-            $config->update(['last_synced_row' => 1]);
-            $this->warn('Kursor sinkronisasi berhasil di-reset kembali ke baris 1 (A2:O).');
+            $this->warn('Sinkronisasi akan dimulai kembali dari baris data pertama jika lock tersedia.');
         }
 
         $batchLimit = (int) $this->option('batch');
         $this->line("Mode Autentikasi : <comment>{$config->auth_mode}</comment>");
         $this->line("Spreadsheet ID    : <comment>" . ($config->spreadsheet_id ?: '(Mock Default)') . "</comment>");
-        $this->line("Sheet Name Range  : <comment>{$config->sheet_name}!{$config->data_range}</comment>");
+        $this->line("Sheet Name Range  : <comment>{$config->sheet_name}!{$syncService->telemetryRange()}</comment>");
         $this->line("Kursor Sebelum    : <comment>Row #{$config->last_synced_row}</comment>");
         $this->line("Batch Limit       : <comment>{$batchLimit} rows</comment>");
         $this->newLine();
 
         $this->info('Menghubungkan ke Google Sheets Connector...');
-        $log = $syncService->sync($config, 'cli', $batchLimit);
+        $log = $syncService->sync($config, 'cli', $batchLimit, (bool) $this->option('reset-cursor'));
 
         $this->table(
             ['Metrik', 'Nilai'],

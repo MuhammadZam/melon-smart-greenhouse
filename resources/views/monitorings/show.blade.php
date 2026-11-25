@@ -229,8 +229,8 @@
         </div>
 
         <div class="flex flex-wrap items-center justify-between text-xs text-muted pt-2 border-t border-line">
-            <div>Dibuat pada: <span class="tabular-nums text-ink">{{ $monitoring->created_at->format('d M Y H:i:s') }}</span></div>
-            <div>Terakhir Diperbarui: <span class="tabular-nums text-ink">{{ $monitoring->updated_at->format('d M Y H:i:s') }}</span></div>
+            <div>Dibuat pada: <span class="tabular-nums text-ink">{{ $monitoring->created_at?->format('d M Y H:i:s') ?? 'Tidak tercatat' }}</span></div>
+            <div>Terakhir Diperbarui: <span class="tabular-nums text-ink">{{ $monitoring->updated_at?->format('d M Y H:i:s') ?? 'Tidak tercatat' }}</span></div>
         </div>
     </div>
 

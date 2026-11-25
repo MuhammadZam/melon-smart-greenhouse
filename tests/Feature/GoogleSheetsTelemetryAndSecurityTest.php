@@ -90,6 +90,70 @@ class GoogleSheetsTelemetryAndSecurityTest extends TestCase
         parent::tearDown();
     }
 
+    public function test_shared_observation_replays_in_both_directions_and_preserves_first_source(): void
+    {
+        config(['services.google_sheets.telemetry_layout' => 'three_input']);
+        $device = $this->authenticateDevice();
+        $payload = [
+            'plant_id' => $this->plant->id, 'monitored_at' => '2026-11-24T06:00:00.123Z',
+            'temperature' => 27, 'soil_moisture' => 70, 'water_ph' => 6.5,
+            'observation_id' => 'observation-1',
+        ];
+        $row = [$device->device_id, '2026-11-24T13:00:00.123+07:00', $this->plant->id, '27.00', '70', '6,5', null, null, null, 'observation-1'];
+        $config = $this->syncService->getOrCreateDefaultConfig();
+        $first = $this->postJson('/api/monitorings', $payload)->assertCreated()->json('data.id');
+        $this->postJson('/api/monitorings', $payload)->assertOk()->assertJsonPath('data.id', $first);
+        $this->mockClient->setMockRows([$row]);
+        $staleConfig = $config->fresh();
+        $log = $this->syncService->sync($config);
+        $this->assertSame(1, $log->records_skipped);
+        $log = $this->syncService->sync($staleConfig);
+        $this->assertSame(0, $log->records_skipped);
+        $this->assertSame(2, (int) $log->cursor_before);
+
+        $row[9] = 'observation-2';
+        $this->mockClient->setMockRows([$row]);
+        $this->assertSame(1, $this->syncService->sync($config, resetCursor: true)->records_imported);
+        $second = $this->postJson('/api/monitorings', array_replace($payload, ['observation_id' => 'observation-2']))
+            ->assertOk()->assertJsonPath('data.source', 'google_sheets')->json('data.id');
+        $config->update(['last_synced_row' => 1]);
+        $this->assertSame(1, $this->syncService->sync($config)->records_skipped);
+        $this->assertNotSame($first, $second);
+        $this->assertSame(2, Monitoring::where('device_id', $device->device_id)->count());
+        $this->assertSame(2, \App\Models\FuzzyInferenceResult::whereIn('monitoring_id', [$first, $second])->count());
+    }
+
+    public function test_shared_observation_conflict_advances_sheet_cursor_and_keeps_original(): void
+    {
+        config(['services.google_sheets.telemetry_layout' => 'three_input']);
+        $device = $this->authenticateDevice();
+        $payload = [
+            'plant_id' => $this->plant->id, 'monitored_at' => '2026-11-24T06:00:00Z',
+            'temperature' => 27, 'soil_moisture' => 70, 'water_ph' => 6.5,
+            'observation_id' => 'observation-same-id',
+        ];
+        $first = $this->postJson('/api/monitorings', $payload)->assertCreated()->json('data.id');
+        $this->postJson('/api/monitorings', array_replace($payload, ['water_ph' => 6.51]))->assertConflict();
+        $this->postJson('/api/monitorings', array_replace($payload, ['monitored_at' => '2026-11-24T05:59:00Z']))->assertConflict();
+        $this->mockClient->setMockRows([
+            [$device->device_id, $payload['monitored_at'], $this->plant->id, 27.1, 70, 6.5, null, null, null, $payload['observation_id']],
+            [$device->device_id, '2026-11-24T05:58:00Z', $this->plant->id, 27, 70, 6.5, null, null, null, 'older-distinct'],
+        ]);
+        $config = $this->syncService->getOrCreateDefaultConfig();
+        $log = $this->syncService->sync($config);
+        $this->assertSame('PARTIAL', $log->status);
+        $this->assertSame(1, $log->records_failed);
+        $this->assertSame(1, $log->records_imported);
+        $this->assertSame(3, (int) $config->fresh()->last_synced_row);
+        $this->assertStringContainsString('konflik identitas', $log->error_details);
+        $this->assertEquals(27, Monitoring::findOrFail($first)->temperature);
+
+        $this->authenticateDevice();
+        $this->postJson('/api/monitorings', $payload)->assertCreated();
+        $this->postJson('/api/monitorings', array_replace($payload, ['monitored_at' => '2026-11-24 06:00:00']))
+            ->assertUnprocessable()->assertJsonValidationErrors('monitored_at');
+    }
+
     // 1. Valid Google Sheets Rows Ingestion
     public function test_1_valid_google_sheets_rows_ingestion(): void
     {
@@ -473,13 +537,12 @@ class GoogleSheetsTelemetryAndSecurityTest extends TestCase
         $response->assertHeaderMissing('X-Device-Auth-Warning');
     }
 
-    // 17. Four-Parameter Alarm Policy Continuity
-    public function test_17_four_parameter_alarm_policy(): void
+    public function test_17_three_parameter_alarm_policy(): void
     {
         $this->mockClient->setMockRows([
             [
                 'TEST-ESP32-17',
-                '2026-10-16 12:00:00',
+                now()->toDateTimeString(),
                 $this->plant->name,
                 38.5, // Suhu ekstrem (> maximum threshold) -> memicu alarm
                 65.0, 70.0, 6.2,
@@ -500,7 +563,7 @@ class GoogleSheetsTelemetryAndSecurityTest extends TestCase
 
         $this->assertNotNull($tempAlarm);
 
-        // Parameter di luar 4-parameter allowlist TIDAK boleh memiliki alarm aktif
+        // Parameter di luar tiga sensor aktif tidak memicu alarm.
         $tankAlarm = MonitoringAlarm::where('plant_id', $this->plant->id)
             ->where('parameter_key', 'tank_level')
             ->where('status', 'active')

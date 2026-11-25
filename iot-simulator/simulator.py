@@ -43,7 +43,7 @@ def generate_sensor_payload(plant_id: int) -> dict:
     prototipe integrasi IoT/API, BUKAN hasil pembacaan sensor fisik aktual lapangan.
     Validasi batas toleransi dan kalibrasi sensor fisik sebenarnya dikembangkan bersama Tim Elektro.
     """
-    now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now_str = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
 
     # Synthetic software fixtures; these ranges are not agronomic thresholds.
     return {
@@ -65,7 +65,7 @@ def send_reading(api_url: str, payload: dict, token: str = None, device_id: str 
     if device_id and "device_id" not in payload:
         payload["device_id"] = device_id
     # Retrying this payload reuses the event ID; a fresh measurement gets a fresh ID.
-    payload.setdefault("event_id", uuid.uuid4().hex)
+    payload.setdefault("observation_id", uuid.uuid4().hex)
 
     data_bytes = json.dumps(payload).encode("utf-8")
     headers = {
@@ -183,7 +183,6 @@ def main():
 
             if args.once:
                 print("Simulation completed (--once mode). Exiting.")
-                sys.exit(0 if success else 1)
                 sys.exit(0 if success else 1)
 
             time.sleep(args.interval)

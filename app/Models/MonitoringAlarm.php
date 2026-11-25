@@ -71,6 +71,7 @@ class MonitoringAlarm extends Model
             'first_detected_at'   => 'datetime',
             'last_abnormal_at'    => 'datetime',
             'resolved_at'         => 'datetime',
+            'acknowledged_at'     => 'datetime',
         ];
     }
 

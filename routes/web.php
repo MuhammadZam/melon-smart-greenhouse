@@ -4,6 +4,7 @@ use App\Http\Controllers\ActuatorController;
 use App\Http\Controllers\AlarmController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LogisticsForecastController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\PlantController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,8 @@ Route::get('/api/notifications/status', [AlarmController::class, 'notificationSt
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/prakiraan-logistik', [LogisticsForecastController::class, 'index'])->name('logistics.forecast');
+    Route::post('/prakiraan-logistik', [LogisticsForecastController::class, 'upload'])->name('logistics.forecast.upload');
 
     // Phase 5: Monitoring CRUD & Authorization
     Route::resource('monitorings', MonitoringController::class);
@@ -67,6 +70,7 @@ Route::middleware('auth')->group(function () {
 
     // Manajemen threshold parameter (Admin only)
     Route::middleware('role:admin')->group(function () {
+        Route::post('/alarms/{alarm}/acknowledge', [AlarmController::class, 'acknowledge'])->name('alarms.acknowledge');
         Route::get('/admin/thresholds', [AlarmController::class, 'thresholds'])->name('alarms.thresholds');
         Route::patch('/admin/thresholds/{parameter}', [AlarmController::class, 'updateThreshold'])->name('alarms.thresholds.update');
     });

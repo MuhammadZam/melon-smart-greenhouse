@@ -1,0 +1,258 @@
+COMPRO — Melon Smart Greenhouse Monitoring System
+
+Instalasi dan operasi
+
+Laravel 11 melayani antarmuka Blade dan API. MySQL menyimpan pembacaan,
+alarm, analisis fuzzy, dan log perintah. Vite membangun aset frontend.
+Siapkan .env dari .env.example, gunakan kredensial milik lingkungan
+sendiri, jalankan composer install, npm ci, npm run build, dan
+php artisan key:generate untuk instalasi baru. Dengan Docker gunakan
+docker compose up -d --build dan periksa docker compose ps. Layanan
+scheduler menjalankan schedule:work. Untuk instalasi non-Docker, jalankan
+satu worker scheduler di bawah pengawas proses.
+
+Serah terima Tahap 3
+
+Selama persetujuan migrasi tertunda, jalankan layanan harian dengan
+docker compose up -d mysql app dan periksa docker compose ps. Untuk
+menghentikan tanpa membuang container atau volume gunakan
+docker compose stop scheduler app mysql. Setelah skema disetujui dan
+diverifikasi, gunakan docker compose up -d scheduler dan cek log serta
+heartbeat. Gunakan satu scheduler. Jika heartbeat berhenti, periksa
+docker compose logs --tail 30 scheduler dan migrate:status sebelum restart.
+
+Akun Admin mengelola konfigurasi, perangkat dan tindakan pompa simulasi.
+Akun Pengamat membaca dashboard dan laporan serta menambah observasi
+sesuai kebijakan yang ada. Kredensial akun dan simulator disediakan secara
+privat oleh pemilik aplikasi. Untuk demo dan integrasi lihat panduan TXT
+demonstrasi, Google Sheets, ESP32, pompa, dan validasi fuzzy.
+LAPORAN_FINAL_COMPRO.txt menjadi acuan status deployment, metode
+backup, langkah saat gagal dan checklist penerimaan.
+
+Migrasi dan pemulihan
+
+Pada basis data utama, periksa php artisan migrate:status dan ambil
+backup konsisten sebelum meminta persetujuan penerapan. Gunakan akun
+backup dengan hak baca yang sesuai dan masukkan kata sandi melalui prompt.
+
+  mysqldump --host=HOST --port=PORT --user=USER --password --single-transaction --no-tablespaces --result-file=PATH_BACKUP DATABASE
+
+Uji pemulihan backup ke basis data terisolasi menggunakan mysql dan perintah
+SOURCE PATH_BACKUP dari klien interaktif. Simpan backup di luar repo.
+Setelah persetujuan, gunakan php artisan migrate --force (atau docker
+compose exec app php artisan migrate --force jika konfigurasi utama ada
+di container). Lanjutkan dengan php artisan migrate:status, periksa
+jumlah akun dan pembacaan terhadap backup, dan uji ingest serta panel
+pompa. Migrasi penambahan kolom saat ini mempertahankan struktur melalui
+down() untuk menjaga histori. Jika penerapan gagal, hentikan penulisan,
+periksa migrasi yang tercatat serta kolom yang sudah terbentuk, lalu uji
+perbaikan pada salinan. Pulihkan backup ke basis data baru jika diperlukan.
+
+Kontrak telemetri ESP32 dan simulator
+
+POST /api/monitorings dengan Content-Type dan Accept application/json.
+Kirim token perangkat terdaftar melalui X-Device-Token. Jika menyertakan
+X-Device-Id atau device_id, gunakan ID yang sesuai dengan token.
+Payload minimal berisi plant_id (ID tanaman valid), monitored_at (ISO 8601
+dengan offset), temperature (0–60 °C), soil_moisture (0–100%), dan
+water_ph (0–14). Alias lama ph diterima. Jika keduanya dikirim, gunakan
+nilai yang sama. Backend menyimpan pH pada kolom historis ph dan
+menggunakan water_ph pada kontrak baru. Tanggal dengan offset dinormalisasi
+ke zona waktu aplikasi. Untuk perangkat baru, simpan observation_id
+yang sama pada setiap retry dan pada kedua kanal. Untuk klien lama,
+event_id dan Idempotency-Key tetap tersedia dan harus cocok bila keduanya
+diisi. Tanpa kunci, identitas menggunakan perangkat, tanaman, jalur
+ingest, dan waktu observasi.
+
+HTTP 201 berarti observasi dibuat, 200 berarti pengulangan payload yang
+sama, 409 berarti konflik identitas, 422 berarti payload gagal validasi,
+401/403 berarti perangkat atau otorisasi ditolak, dan 429 berarti batas
+permintaan tercapai. Aplikasi membatasi ingest hingga 60 permintaan per
+menit. Pada timeout, 429 atau 5xx, ulangi dengan jeda bertambah dan kunci
+yang sama. Gunakan HTTPS untuk koneksi di luar localhost. Pembacaan yang
+tiba terlambat dapat disimpan sebagai histori. Firmware dan kalibrasi
+sensor perlu diuji bersama Tim Elektro.
+
+Jalankan simulator menggunakan iot-simulator/simulator.py --once dengan
+API_URL melalui --api-url, ID tanaman melalui --plant-id, ID perangkat
+melalui --device-id, serta DEVICE_TOKEN dalam environment. Gunakan tipe
+perangkat python_simulator agar respons dan data tersimpan bertanda
+simulator. Pasang dependensi dari iot-simulator/requirements.txt.
+
+Google Sheets
+
+Untuk sheet baru, gunakan GOOGLE_SHEETS_TELEMETRY_LAYOUT=three_input.
+Urutan kolom adalah device_id, timestamp, plant_code, temperature,
+soil_moisture, water_ph, pump_status, fuzzy_score, fuzzy_label, observation_id. Layout
+legacy tetap tersedia untuk worksheet dengan urutan lama. Aktifkan Sheets
+API di proyek Google Cloud, gunakan service account, bagikan worksheet
+dengan akses baca, dan simpan file kredensial di luar source control.
+Isi mode service_account, spreadsheet ID, nama worksheet, dan path
+kredensial. Periksa konfigurasi tersimpan, mode, range, dan kursor di
+halaman integrasi Admin. GOOGLE_SHEETS_SCHEDULE_ENABLED mengaktifkan
+polling periodik sesuai konfigurasi tersimpan. Sinkronisasi manual/CLI
+tersedia melalui php artisan telemetry:sync-google-sheets.
+Gunakan observation_id yang sama persis di API dan Sheets untuk
+deduplikasi lintas kanal. Telemetri tanpa observation_id tetap dideduplikasi
+per sumber. Lihat PANDUAN_INTEGRASI_ESP32.txt dan
+PANDUAN_GOOGLE_SHEETS_COMPRO.txt untuk kontrak dan konfigurasi Tahap 2.
+
+Alarm, fuzzy, dan pompa
+
+Alarm otomatis merekam perubahan pembacaan terhadap ambang normal dan
+kritis. Admin dapat menandai alarm ditinjau. Tanda tinjauan menurunkan
+jumlah belum ditinjau pada lonceng dan mempertahankan status aktif sampai
+kondisi pulih. Pengamat dapat membuka riwayat dan detail.
+
+Analisis Mamdani menerima tiga sensor dan memakai delapan aturan sementara.
+Bukti pengujian 27 kombinasi ada di revision/evidence/fuzzy-27-combinations.json.
+Matriks di bawah mengusulkan konsekuen untuk review saja. Angka menjadi
+titik uji representatif suhu °C, kelembapan %, dan pH air.
+
+  Suhu   Tanah     pH    Usulan kategori
+    18      30    6.5    PERLU_PERHATIAN
+    18      30    8.5    BURUK
+    18      90    4.5    BURUK
+    18      90    6.5    PERLU_PERHATIAN
+    27      30    6.5    PERLU_PERHATIAN
+    27      90    6.5    PERLU_PERHATIAN
+    36      90    4.5    BURUK
+    36      90    6.5    PERLU_PERHATIAN
+
+Konfirmasikan kategori dan batas keanggotaan dengan data budidaya, Tim
+Elektro dan pembimbing sebelum diaktifkan. Selama review, kedelapan
+kombinasi menghasilkan INSUFFICIENT_RULE_COVERAGE tanpa skor. Tiga titik
+uji mengaktifkan dua aturan. Dua di antaranya mengagregasi konsekuen
+berbeda, yaitu (27, 30, 4.5) dan (27, 90, 8.5), masing-masing dengan
+skor 30.95. Skor fuzzy berdiri sendiri dari kendali pompa.
+
+PUMP-01 memakai transport simulasi. Mode otomatis membaca kelembapan
+tanah, menerapkan hysteresis, umur maksimum pembacaan, waktu istirahat,
+dan batas durasi. Worker mengevaluasi pompa setiap lima detik. Untuk
+integrasi fisik, sepakati protokol dengan Tim Elektro. Usulan kontrak
+memuat ID perintah unik, perangkat tujuan, keadaan yang diinginkan,
+waktu kedaluwarsa, serta ACK yang mengembalikan ID dan keadaan aktual.
+Catat heartbeat dan kesalahan perangkat secara terpisah. Jika ACK atau
+heartbeat usang, tampilkan keadaan fisik sebagai tidak diketahui.
+Perangkat perlu mengabaikan perintah duplikat/kedaluwarsa, berhenti saat
+komunikasi atau sensor gagal, dan memiliki watchdog serta penghentian
+darurat yang independen. Uji reboot dan pemadaman sebelum menghubungkan
+beban fisik. Protokol ini masih berupa usulan.
+
+Skenario demo pada basis data uji
+
+1. Siapkan Admin dan Pengamat, tanaman, serta perangkat simulator.
+2. Masuk sebagai Admin, kirim tiga sensor, dan buka dashboard dan grafik.
+3. Kirim contoh Warning lalu Critical memakai ambang uji yang tampak di
+   halaman konfigurasi. Tinjau alarm via Admin, lalu kirim nilai normal.
+4. Buka hasil fuzzy. Bandingkan satu kombinasi dengan aturan aktif dan
+   satu kombinasi yang menampilkan cakupan tidak cukup.
+5. Jalankan pompa simulasi di mode manual dan periksa state beserta log.
+6. Atur mode otomatis, pilih tanaman dan ambang uji 40/60, lalu kirim
+   kelembapan di bawah 40, di antara 40–60, dan di atas 60. Perhatikan
+   interval istirahat dan waktu data. Uji stop oleh scheduler tanpa
+   telemetri tambahan memakai batas durasi yang sesuai lingkungan uji.
+7. Masuk sebagai Pengamat. Periksa dashboard, grafik, alarm dan laporan.
+   Verifikasi bahwa kontrol pompa dan konfigurasi Admin dibatasi.
+8. Ekspor CSV dan PDF. Periksa tanggal, tanaman, satuan, dan tiga sensor.
+
+Catatan audit dan stabilisasi — 24 November 2026
+
+DB-01 | Tinggi | VERIFIED terisolasi, PENDING persetujuan utama
+Dua migrasi lama masih tertunda di MySQL Docker utama, bersama migrasi
+acknowledgment yang baru. Urutan upgrade dari skema lama diuji dengan
+MySQL 8.0.42. Dua akun, tiga pembacaan historis, dan jumlah kelembapan
+legacy 216.00 tetap utuh. Kolom humidity menjadi nullable, control_mode
+memiliki default MANUAL, dan acknowledged_at tersedia. Setelah upgrade,
+simulator mengirim HTTP 201 dan tersimpan dengan humidity NULL. Status
+volume dan rekaman utama tidak diubah oleh migrasi. Backup utama masih
+perlu diambil serta diuji pulih oleh pemilik sebelum penerapan.
+Pemeriksaan baca-saja pada MySQL utama 8.0.46 melihat dua akun dan 21
+pembacaan, kolom ph legacy, humidity NOT NULL, serta belum adanya
+control_mode dan acknowledged_at.
+
+PUMP-01 | Tinggi | FIXED konfigurasi, VERIFIED simulasi
+compose.yaml menambahkan service scheduler. routes/console.php memuat
+interval evaluasi lima detik. Dengan pompa simulasi ON melewati durasi,
+php artisan pump:evaluate mengubahnya ke OFF dengan alasan MAX_RUNTIME.
+Dua proses MySQL yang mengirim perintah dengan expected_version sama
+menghasilkan satu sukses, satu 409, dan satu log eksekusi. Persetujuan
+deployment serta pengujian firmware dan watchdog fisik masih diperlukan.
+
+ALARM-01 | Tinggi | FIXED dan VERIFIED pada lingkungan uji
+MonitoringAlarmService membatasi perubahan kondisi oleh data lama dan
+menutup pelanggaran arah sebelumnya saat nilai pindah ke arah lain.
+AlarmController menerima filter Semua Tanaman, menampilkan pembacaan
+abnormal terakhir, dan memisahkan jumlah aktif dari yang belum ditinjau.
+Rute POST acknowledgment memerlukan Admin. Model, migrasi dan Blade
+detail menyimpan serta menampilkan waktu tinjauan. AlarmTest memverifikasi
+larangan untuk Pengamat, penurunan hitungan belum ditinjau, serta status
+aktif setelah tinjauan. Pemakaian fitur utama memerlukan migrasi disetujui.
+
+UI-01 | Sedang | FIXED
+Detail monitoring dan tanaman menampilkan status Tidak tercatat saat
+timestamp audit kosong. MonitoringTest memakai rekaman historis dengan
+timestamp kosong untuk menangkap kembali HTTP 500 pada detail monitoring.
+DashboardController mengambil 30 pembacaan terakhir lalu mengurutkannya
+kronologis. MonitoringSeeder memberi label simulator dan menghindari
+timestamp masa depan. Penanda Vite lokal yang usang dihapus setelah
+dipastikan server pengembangan pada alamat tersebut berhenti.
+
+SHEET-01 | Sedang | IMPLEMENTED dan teruji dengan mock
+GoogleSheetsSyncService memakai lebar rentang sesuai layout dan
+menghindari detail pengecualian mentah di log sinkronisasi. .env.example,
+config/services.php, command dan jadwal menyediakan polling opsional.
+Polling mensyaratkan konfigurasi live yang aktif, siap dan sudah jatuh
+tempo. Live sync menunggu worksheet serta service account berizin.
+Pada Tahap 2, observation_id menutup celah deduplikasi lintas kanal
+untuk perangkat dengan identitas bersama.
+
+FUZZY-01 | Sedang | VERIFIED teknis, PENDING validasi agronomi
+Delapan aturan aktif sementara menghasilkan 19 evaluasi tersedia dari
+27 titik uji. Delapan titik kekurangan cakupan. Usulan tercatat di atas
+untuk review Tim Elektro dan pembimbing. Aturan aktif tetap provisional.
+
+IOT-01 | PENDING VALIDATION
+Pembacaan tiga sensor, sumber simulator, deduplikasi, dan validasi token
+diuji melalui kontrak API. Uji konkurensi MySQL dengan 10 worker memberi
+satu HTTP 201 dan sembilan HTTP 200, satu observasi, satu hasil fuzzy,
+satu alarm dan satu receipt. Tim Elektro perlu menguji ESP32, kalibrasi,
+protokol pengakuan perintah, dan pengaman perangkat di bangku uji.
+Simulator memakai ISO 8601 UTC. Uji --once menerima HTTP 201 dan MySQL
+menyimpan waktu yang sesuai zona aplikasi dengan sumber simulator.
+
+REPORT-01 | VERIFIED dengan data uji
+CSV berisi 25 baris data dan 20 kolom konsisten. PDF dua halaman dirender
+dan dibaca. Kedua ekspor memuat suhu udara, kelembapan tanah, serta pH air.
+Uji ini melengkapi regression suite untuk filter, izin, serta format.
+
+Hasil browser dan pemeriksaan operasional
+
+Playwright dengan Edge menguji login dan 19 rute Admin serta 13 rute
+Pengamat pada 375, 768, 1024, dan 1440 px. Total 128 pemeriksaan layout
+tanpa overflow halaman atau kesalahan JavaScript yang terdeteksi.
+Lonceng dan kedua format ekspor berhasil pada kedua peran. Pengamat
+ditolak pada enam rute konfigurasi atau edit yang dibatasi. Pengamat
+masih diizinkan menambah observasi sesuai kebijakan yang ada.
+Uji alur alarm terpisah menjalankan Warning, Critical, acknowledgment,
+penurunan indikator belum ditinjau, dan pemulihan lewat pembacaan normal.
+Rekaman lama tanpa timestamp juga dibuka ulang setelah perbaikan.
+
+php artisan schedule:run --verbose benar-benar menjalankan tick pompa
+berulang dan menghentikan pompa uji dengan alasan MAX_RUNTIME. Hasil
+npm run build, docker compose config --quiet, dan git diff --check lulus.
+
+Regresi yang dijalankan
+
+SQLite in-memory, baseline php artisan test --compact, 316 lulus,
+0 gagal, 0 dilewati, 2.103 assertion.
+SQLite in-memory, final php artisan test --compact, 317 lulus,
+0 gagal, 0 dilewati, 2.112 assertion.
+MySQL 8.0.46 terisolasi, php artisan test --compact --filter
+'PumpDualModeTest|AlarmTest|GoogleSheetsTelemetryAndSecurityTest',
+70 lulus, 0 gagal, 0 dilewati, 252 assertion.
+MySQL 8.0.46 terisolasi, php artisan test --compact --filter
+'historical_monitoring_detail_without_audit_timestamps',
+1 lulus, 0 gagal, 0 dilewati, 2 assertion.
+MySQL 8.0.46 terisolasi, php tests/Support/revision_mysql_concurrency.php,
+10 worker dan seluruh pemeriksaan konkuren lulus.

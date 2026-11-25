@@ -41,7 +41,7 @@ class GoogleSheetsSyncService
                 'name'                     => 'Greenhouse Melon Primary Telemetry',
                 'spreadsheet_id'           => config('services.google_sheets.spreadsheet_id'),
                 'sheet_name'               => config('services.google_sheets.sheet_name', 'Telemetry'),
-                'data_range'               => 'A2:O',
+                'data_range'               => $this->telemetryRange(),
                 'is_active'                => true,
                 'polling_interval_minutes' => config('services.google_sheets.polling_interval', 5),
                 'auth_mode'                => config('services.google_sheets.mode', 'mock'),
@@ -62,7 +62,7 @@ class GoogleSheetsSyncService
      * @param int $batchLimit Maksimum baris per batch pembacaan
      * @return GoogleSheetsSyncLog
      */
-    public function sync(?GoogleSheetsSyncConfig $config = null, string $triggeredBy = 'cli', int $batchLimit = 100): GoogleSheetsSyncLog
+    public function sync(?GoogleSheetsSyncConfig $config = null, string $triggeredBy = 'cli', int $batchLimit = 100, bool $resetCursor = false): GoogleSheetsSyncLog
     {
         $config = $config ?? $this->getOrCreateDefaultConfig();
 
@@ -96,10 +96,18 @@ class GoogleSheetsSyncService
         $errorMessages = [];
 
         try {
+            $config->refresh();
+            if ($resetCursor) {
+                $config->update(['last_synced_row' => 1]);
+            }
+            $cursorBefore = (string) $config->last_synced_row;
+            $highestProcessedRow = $config->last_synced_row;
+
             // 2. Hitung rentang inkremental (High-water mark cursor)
             $startRow = $config->last_synced_row >= 2 ? ($config->last_synced_row + 1) : 2;
             $endRow = $startRow + $batchLimit - 1;
-            $range = "{$config->sheet_name}!A{$startRow}:O{$endRow}";
+            $sheetName = str_replace("'", "''", $config->sheet_name);
+            $range = "'{$sheetName}'!A{$startRow}:{$this->lastTelemetryColumn()}{$endRow}";
 
             $spreadsheetId = $config->spreadsheet_id ?: 'mock_spreadsheet_id';
 
@@ -122,8 +130,6 @@ class GoogleSheetsSyncService
                     }
 
                     $data = $parsed['data'];
-                    // The shared ledger scopes identity by source, device, plant and event.
-                    // It prevents races without suppressing a different device/source event.
                     $externalPayload = null;
                     if (isset($data['fuzzy_score'])) {
                         $externalPayload = [
@@ -132,7 +138,14 @@ class GoogleSheetsSyncService
                             'conclusion' => 'Data inferensi fuzzy eksternal disinkronkan dari Google Sheets telemetri.',
                         ];
                     }
-                    $result = app(\App\Services\MonitoringIngestionService::class)->ingest($data, null, $externalPayload);
+                    try {
+                        $result = app(\App\Services\MonitoringIngestionService::class)->ingest($data, null, $externalPayload, $parsed['observation_id']);
+                    } catch (\Symfony\Component\HttpKernel\Exception\ConflictHttpException) {
+                        $failed++;
+                        $errorMessages[] = "Baris #{$currentRowNumber}: konflik identitas observasi.";
+                        $highestProcessedRow = $currentRowNumber;
+                        continue;
+                    }
                     if (!empty($data['device_id'])) {
                         $device = IotDevice::where('device_id', $data['device_id'])->first();
                         if ($device) $device->recordHeartbeat('google_sheets_sync');
@@ -144,7 +157,7 @@ class GoogleSheetsSyncService
             }
 
             // 6. Evaluasi Status Akhir Sinkronisasi
-            if ($failed > 0 && $imported > 0) {
+            if ($failed > 0 && ($imported > 0 || $skipped > 0)) {
                 $status = GoogleSheetsSyncConfig::STATUS_PARTIAL;
             } elseif ($failed > 0 && $imported === 0 && $skipped === 0) {
                 $status = GoogleSheetsSyncConfig::STATUS_FAILED;
@@ -183,7 +196,14 @@ class GoogleSheetsSyncService
 
         } catch (\Throwable $e) {
             $status = GoogleSheetsSyncConfig::STATUS_FAILED;
-            $errorMessage = $e->getMessage();
+            $errorType = $e instanceof GoogleSheetsException ? $e->getErrorType() : null;
+            $errorMessage = match ($errorType) {
+                'NOT_FOUND' => 'Google Sheets spreadsheet or range not found.',
+                'TIMEOUT' => 'Google Sheets connection timed out.',
+                'RATE_LIMIT' => 'Google Sheets API rate limit reached.',
+                'UNAUTHENTICATED' => 'Otorisasi Google Sheets gagal. Periksa service account dan akses worksheet.',
+                default => 'Sinkronisasi Google Sheets gagal. Periksa konfigurasi dan log aplikasi.',
+            };
 
             $config->update([
                 'last_synced_at' => now(),
@@ -206,9 +226,10 @@ class GoogleSheetsSyncService
                 'triggered_by'     => $triggeredBy,
             ]);
 
-            Log::error("[GoogleSheetsSyncService] Gagal sinkronisasi Google Sheets: " . $errorMessage, [
+            Log::error('[GoogleSheetsSyncService] Gagal sinkronisasi Google Sheets', [
                 'config_id' => $config->id,
-                'exception' => $e,
+                'error_type' => $errorType,
+                'exception_class' => $e::class,
             ]);
 
             return $log;
@@ -216,5 +237,15 @@ class GoogleSheetsSyncService
         } finally {
             $lock->release();
         }
+    }
+
+    private function lastTelemetryColumn(): string
+    {
+        return config('services.google_sheets.telemetry_layout') === 'three_input' ? 'J' : 'P';
+    }
+
+    public function telemetryRange(): string
+    {
+        return 'A2:'.$this->lastTelemetryColumn();
     }
 }

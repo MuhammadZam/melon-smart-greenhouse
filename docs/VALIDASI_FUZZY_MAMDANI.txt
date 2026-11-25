@@ -1,0 +1,90 @@
+VALIDASI FUZZY MAMDANI - COMPRO
+
+Lembar persetujuan Tahap 3
+
+Parameter (unit)      Kategori        Bentuk       Batas
+Suhu udara (C)        dingin          trapesium    10,10,20,24
+Suhu udara (C)        optimal         segitiga     22,27,32
+Suhu udara (C)        panas           trapesium    29,34,50,50
+Kelembapan tanah (%)  kering          trapesium    0,0,50,65
+Kelembapan tanah (%)  ideal           segitiga     58,70,82
+Kelembapan tanah (%)  jenuh           trapesium    75,85,100,100
+pH air (skala pH)     asam            trapesium    0,0,5.5,6.0
+pH air (skala pH)     optimal         segitiga     5.8,6.5,7.2
+pH air (skala pH)     basa            trapesium    6.8,7.5,14,14
+Indeks (0-100)        buruk           trapesium    0,0,25,45
+Indeks (0-100)        perlu_perhatian segitiga     35,55,75
+Indeks (0-100)        baik            trapesium    65,80,100,100
+
+Aturan   Kondisi input saat ini                Konsekuen sementara
+T3-R01   suhu optimal, tanah ideal, pH optimal baik
+T3-R02   suhu panas, tanah kering               buruk
+T3-R05   pH asam, tanah kering                  buruk
+T3-R06   pH basa, tanah jenuh                   buruk
+T3-R10   suhu panas, tanah ideal                perlu_perhatian
+T3-R11   suhu dingin, tanah ideal               perlu_perhatian
+T3-R12   pH asam, suhu optimal                  perlu_perhatian
+T3-R13   pH basa, suhu optimal                  perlu_perhatian
+
+Status seluruh fungsi dan aturan PENDING AGRONOMIC VALIDATION.
+Delapan baris usulan di matriks bawah adalah bahan review Tahap 2.
+Skor dan kategori usulan belum disahkan. Reviewer dapat memilih aturan
+tambahan atau generalisasi setelah memeriksa dampaknya pada daerah overlap,
+konflik konsekuen, zero activation, dan domain kontinu.
+
+Lengkapi per kategori/aturan atau kelompok aturan yang ditinjau:
+  Varietas, fase budidaya, media, konfigurasi greenhouse:
+  Model sensor, metode kalibrasi dan ketidakpastian (Tim Elektro):
+  ID kategori/aturan atau kombinasi:
+  Referensi agronomi primer dan kondisi penelitian:
+  Batas/aturan usulan yang didukung serta kategori keluaran:
+  Keputusan (setuju/revisi/tolak), nama reviewer, tanggal:
+
+Referensi yang secara spesifik mendukung batas konfigurasi dan persetujuan
+reviewer belum diserahkan. Serahkan metode kalibrasi dan sumber agronomi
+sebelum menerapkan perubahan di config/fuzzy.php. Verifikasi kembali
+centroid dan stabilitas kategori pada batas serta area overlap.
+
+Status aturan dan titik batas: PROVISIONAL_FOR_SOFTWARE_TESTING.
+Domain fuzzy: suhu 10-50 C, tanah 0-100%, pH 0-14. Domain validasi
+telemetri suhu lebih luas (0-60 C); di luar domain fuzzy bukan diagnosis.
+Fungsi input trapesium/segitiga; operator AND dan implikasi min,
+OR dan agregasi max, lalu centroid pada domain 0-100 (langkah 1).
+Kategori: BURUK <40, PERLU_PERHATIAN >=40 dan <65, BAIK >=65.
+Pada cakupan nol, kategori dan skor null. Pipeline menandai input
+sensor wajib yang hilang dan memisahkan inferensi dari kontrol pompa.
+Status review seluruh baris PENDING VALIDATION. Usulan hanya untuk
+baris tanpa aturan dan belum dimuat ke rule base. Tim Elektro/pembimbing
+meninjau domain, konflik konsekuen dan kategori dengan data budidaya.
+
+Suhu / kategori | Tanah / kategori | pH / kategori | Aturan aktif | Skor dan kategori | Usulan
+18 dingin | 30 kering | 4.5 asam | T3-R05 | 17.72 BURUK | -
+18 dingin | 30 kering | 6.5 optimal | - | CAKUPAN TIDAK CUKUP | PERLU_PERHATIAN
+18 dingin | 30 kering | 8.5 basa | - | CAKUPAN TIDAK CUKUP | BURUK
+18 dingin | 70 ideal | 4.5 asam | T3-R11 | 55 PERLU_PERHATIAN | -
+18 dingin | 70 ideal | 6.5 optimal | T3-R11 | 55 PERLU_PERHATIAN | -
+18 dingin | 70 ideal | 8.5 basa | T3-R11 | 55 PERLU_PERHATIAN | -
+18 dingin | 90 jenuh | 4.5 asam | - | CAKUPAN TIDAK CUKUP | BURUK
+18 dingin | 90 jenuh | 6.5 optimal | - | CAKUPAN TIDAK CUKUP | PERLU_PERHATIAN
+18 dingin | 90 jenuh | 8.5 basa | T3-R06 | 17.72 BURUK | -
+27 optimal | 30 kering | 4.5 asam | T3-R05, T3-R12 | 30.95 BURUK | -
+27 optimal | 30 kering | 6.5 optimal | - | CAKUPAN TIDAK CUKUP | PERLU_PERHATIAN
+27 optimal | 30 kering | 8.5 basa | T3-R13 | 55 PERLU_PERHATIAN | -
+27 optimal | 70 ideal | 4.5 asam | T3-R12 | 55 PERLU_PERHATIAN | -
+27 optimal | 70 ideal | 6.5 optimal | T3-R01 | 86.17 BAIK | -
+27 optimal | 70 ideal | 8.5 basa | T3-R13 | 55 PERLU_PERHATIAN | -
+27 optimal | 90 jenuh | 4.5 asam | T3-R12 | 55 PERLU_PERHATIAN | -
+27 optimal | 90 jenuh | 6.5 optimal | - | CAKUPAN TIDAK CUKUP | PERLU_PERHATIAN
+27 optimal | 90 jenuh | 8.5 basa | T3-R06, T3-R13 | 30.95 BURUK | -
+36 panas | 30 kering | 4.5 asam | T3-R02, T3-R05 | 17.72 BURUK | -
+36 panas | 30 kering | 6.5 optimal | T3-R02 | 17.72 BURUK | -
+36 panas | 30 kering | 8.5 basa | T3-R02 | 17.72 BURUK | -
+36 panas | 70 ideal | 4.5 asam | T3-R10 | 55 PERLU_PERHATIAN | -
+36 panas | 70 ideal | 6.5 optimal | T3-R10 | 55 PERLU_PERHATIAN | -
+36 panas | 70 ideal | 8.5 basa | T3-R10 | 55 PERLU_PERHATIAN | -
+36 panas | 90 jenuh | 4.5 asam | - | CAKUPAN TIDAK CUKUP | BURUK
+36 panas | 90 jenuh | 6.5 optimal | - | CAKUPAN TIDAK CUKUP | PERLU_PERHATIAN
+36 panas | 90 jenuh | 8.5 basa | T3-R06 | 17.72 BURUK | -
+
+Catatan teknis per kombinasi dan identitas aturan tersedia pada
+revision/evidence/phase2-fuzzy-review.json.

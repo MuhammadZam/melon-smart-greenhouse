@@ -36,7 +36,7 @@
                 </svg>
                 <span>Lokasi: <strong class="text-ink">{{ $plant->location }}</strong></span>
                 <span>&bull;</span>
-                <span>Terdaftar sejak: <span class="tabular-nums text-ink">{{ $plant->created_at->format('d M Y') }}</span></span>
+                <span>Terdaftar sejak: <span class="tabular-nums text-ink">{{ $plant->created_at?->format('d M Y') ?? 'Tidak tercatat' }}</span></span>
             </p>
         </div>
 

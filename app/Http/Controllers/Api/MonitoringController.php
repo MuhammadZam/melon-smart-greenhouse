@@ -77,7 +77,7 @@ class MonitoringController extends Controller
             $external = ['score' => $score, 'category' => $category];
         }
         $result = app(\App\Services\MonitoringIngestionService::class)->ingest(
-            $attributes, $validated['idempotency_key'] ?? $validated['event_id'] ?? null, $external
+            $attributes, $validated['idempotency_key'] ?? $validated['event_id'] ?? null, $external, $validated['observation_id'] ?? null
         );
         $monitoring = $result['monitoring']->load('plant');
 

@@ -1,0 +1,166 @@
+LAPORAN STABILISASI COMPRO TAHAP 2
+24 November 2026, Asia/Jakarta
+
+A. Kondisi awal
+
+Repo D:/Compro masih memuat perubahan Tahap 1, panduan TXT, bukti fuzzy,
+dan dua tangkapan layar dashboard. Docker utama menjalankan azolla_app
+dan azolla_mysql, sedangkan scheduler baru tercantum di Compose.
+Pemeriksaan migrate:status menemukan empat migrasi tertunda, termasuk
+tabel ledger ingest yang luput dari laporan tiga migrasi sebelumnya.
+Ledger versi lama memasukkan kanal dalam identitas, sehingga pengukuran
+yang sama dari API dan Sheets bisa tercatat dua kali.
+
+B. Perbaikan
+
+FIXED. MonitoringIngestionService, request/controller API, telemetry dan
+sync service Sheets, serta simulator memakai observation_id untuk
+identitas bersama. Ledger lama dipakai ulang tanpa DDL tambahan. Uji
+dua arah, replay, konflik, perangkat berbeda, dan konkurensi ada di
+GoogleSheetsTelemetryAndSecurityTest serta revision_mysql_concurrency.php.
+
+FIXED. Sync service menyegarkan dan mereset kursor di dalam lock. Konflik
+baris dicatat dan batch lanjut. Controller, command dan halaman Admin
+menampilkan rentang efektif A2:J ketika layout three_input dipilih.
+Browser memverifikasi kolom dan rentang serta pembatasan akses Pengamat.
+Mock meniru rentang baris worksheet setelah tes menemukan payload mock
+selalu dikembalikan utuh walaupun kursor sudah maju.
+
+VERIFIED. Scheduler Docker berjalan dari image aplikasi dengan skema
+hasil restore. Simulasi melewati runtime dan berubah OFF/MAX_RUNTIME
+tanpa ingest baru. Layanan kembali berjalan setelah restart.
+
+C. Database dan persetujuan
+
+Utama db_monitoring_azolla, azolla_mysql, MySQL 8.0, volume
+compro_azolla_mysql_data. Backup logis konsisten di luar direktori
+publik dan repo, pada Windows LocalAppData dengan ACL pengguna, SYSTEM
+dan Administrators.
+
+Lokasi: C:\Users\fadli\AppData\Local\COMPRO\backups\compro-20261124-135529.sql
+Waktu: 24 November 2026 pukul 13:55:29 WIB
+Ukuran: 32805 byte
+SHA-256: 0ec5cc402d5d552a4bd422395cf1a82aa89665262485f6ee7ecab5679a6da966
+
+Backup dibuat dengan mysqldump --single-transaction --quick
+--no-tablespaces --set-gtid-purged=OFF. SQL berhasil diimpor dengan
+mysql ke compro_phase2_restore di instance MySQL 8.0.46 terpisah.
+Sebelum migrasi, perbandingan hitungan dan hash isi baris dengan
+utama identik untuk dua akun, tiga tanaman, 21 monitoring, dua
+aktuator (id/kode/state) serta hitungan alarm, log, perangkat dan
+inferensi. Pemeriksaan hubungan monitoring ke tanaman menghasilkan nol
+orphan. Snapshot sebelum/sesudah migrasi terisolasi juga identik untuk
+data tersebut. Sesudah verifikasi, fixture simulasi ditambahkan hanya
+untuk menjalankan uji integrasi.
+
+Empat migrasi dari database/migrations dan dampaknya
+1. 2026_10_22_000001_create_monitoring_ingestion_keys_table.php
+   Membuat ledger unik, FK ke monitoring dengan ON DELETE SET NULL.
+2. 2026_11_07_000001_allow_retired_humidity_to_be_null.php
+   Mengizinkan NULL pada kolom humidity historis.
+3. 2026_11_07_000002_add_dual_mode_pump_control.php
+   Menambah konfigurasi dan status pompa serta metadata audit. FK
+   control_plant_id menunjuk plants; default mode MANUAL.
+4. 2026_11_24_000001_add_alarm_acknowledgment.php
+   Menambah timestamp dan FK pengguna yang mengakui alarm.
+
+Semua lulus di hasil restore, semua tetap Pending di utama. Langkah
+produksi PENDING APPROVAL. Risiko adalah lock DDL sementara, kebutuhan
+ruang, dan pernyataan DDL MySQL yang tidak seluruhnya bisa di-rollback.
+Ambil backup konsisten terbaru jika data berubah. Pada jendela
+pemeliharaan yang disetujui, jeda penulisan dan jalankan:
+
+  docker compose exec -T app php artisan migrate --force
+  docker compose exec -T app php artisan migrate:status
+  docker compose exec -T app php artisan db:show --counts
+  docker compose up -d scheduler
+  docker compose ps
+  docker compose logs --tail 30 scheduler
+
+Periksa jumlah akun dan monitoring, buka rekaman lama, kirim satu
+observasi simulator terdaftar, lalu verifikasi heartbeat scheduler dan
+status pompa SIM. Jika gagal, hentikan penulisan, catat schema/status
+yang sudah berubah, dan pulihkan dump ke skema baru. Periksa hubungan,
+jumlah/hashes serta aplikasi pada skema pemulihan sebelum mengganti
+target koneksi. Pertahankan database lama untuk investigasi. Jangan
+mengandalkan rollback ledger karena receipt dan kemampuan replay hilang.
+
+D. Deduplikasi
+
+SHA-256 dari namespace v2 + device_id + observation_id adalah PK
+identity_hash ledger. Fingerprint membandingkan tanaman, instan waktu
+yang dinormalisasi ke UTC hingga mikrodetik, dan tiga sensor kanonik.
+Transaksi membuat receipt sebelum menulis monitoring, alarm atau
+inferensi. Klien replay mendapatkan ID rekaman pertama; kanal pertama
+menentukan source dan metadata. Konflik memberi 409 di API dan baris
+gagal di Sheets. Klien legacy memakai identitas versi lama per kanal.
+Uji MySQL dengan sembilan worker API dan satu worker Sheets mock
+menghasilkan satu rekaman, satu receipt, satu alarm dan satu inferensi.
+
+E. Fuzzy Mamdani
+
+VERIFIED teknis: 8 aturan, 19 kombinasi tersedia dan 8 tanpa cakupan
+dari 27 titik uji. Skor null saat cakupan kosong. Semua hasil dan
+usulan kategori ada di VALIDASI_FUZZY_MAMDANI.txt dan JSON bukti.
+Dashboard memberi pesan cakupan tidak cukup serta tautan detail saat
+hasil tanpa skor. Uji browser menjalankan kasus ini pada lebar 375 px.
+PENDING VALIDATION oleh Tim Elektro, pembimbing atau ahli budidaya.
+
+F. IoT
+
+VERIFIED: API, identitas bersama, simulator UTC dan label sumber.
+VERIFIED: Google Sheets mock dan log sinkronisasi.
+BLOCKED: live Sheets, membutuhkan worksheet uji dan service account.
+PENDING PHYSICAL VERIFICATION: ESP32, relay/pompa, ACK, heartbeat,
+watchdog, dan penghentian independen. Kontrak tersedia di panduan TXT.
+
+G. Bukti pengujian
+
+Lihat ringkasan hasil di bagian akhir dan JSON bukti pada
+revision/evidence. Browser menggunakan localhost dan database restore.
+Uji browser kedua peran memuat halaman terdampak pada 375 dan 1440 px.
+Ekspor PDF dan CSV memberikan HTTP 200 untuk kedua peran.
+
+H. Blocker tersisa
+
+Pemilik proyek: setujui penerapan empat migrasi pada MySQL utama setelah
+memeriksa backup dan jendela pemeliharaan.
+Pemilik Google Cloud/worksheet: sediakan worksheet uji serta service
+account Viewer melalui kanal aman, kemudian operator uji sync manual.
+Tim Elektro: verifikasi ESP32, kalibrasi, protokol ACK, watchdog serta
+penghentian darurat sebelum mengaktifkan transport fisik.
+Pembimbing/ahli budidaya: tinjau delapan usulan aturan dan titik batas.
+
+I. Status akhir
+
+Backup dan restore VERIFIED. Migrasi utama PENDING APPROVAL.
+Ingest dan scheduler simulasi VERIFIED. Sheets live BLOCKED.
+Agronomi PENDING VALIDATION. ESP32 dan pompa fisik
+PENDING PHYSICAL VERIFICATION.
+
+J. Langkah berikutnya
+
+Selesaikan persetujuan migrasi, uji integrasi Sheets live pada worksheet
+resmi, dan jadwalkan bench test serta review agronomi.
+
+Ringkasan eksekusi
+
+- php artisan test --compact, SQLite in-memory, 319 lulus, 0 gagal,
+  0 dilewati, 2.138 assertion. Termasuk mock Sheets, deduplikasi
+  API, fuzzy, pump, RBAC, histori, PDF dan CSV.
+- php artisan migrate --force pada MySQL 8.0.46 hasil restore,
+  4 lulus. Diperiksa ulang PK identity_hash, FK ON DELETE SET NULL,
+  humidity nullable, mode pompa, dan FK pengguna untuk alarm.
+- php tests/Support/revision_mysql_concurrency.php --phase2-restore,
+  10 worker: satu ingest baru, sembilan replay, ID hasil sama.
+- Dua proses MySQL mengirim TURN_ON dengan versi yang sama, hasil
+  200 dan 409, satu log perintah.
+- docker run pada image compro-app dengan php artisan schedule:work
+  dan koneksi restore. OFF/MAX_RUNTIME teramati. docker restart
+  diikuti kenaikan last_scheduler_at dari 13:59:43 ke 13:59:56 WIB.
+- Playwright Edge pada restore, Admin 5 rute, Pengamat 4 rute,
+  18 pemeriksaan layout, nol overflow dan kesalahan JavaScript.
+  Uji tambahan fuzzy tanpa cakupan pada 375 px dan detail HTTP 200.
+- python iot-simulator/simulator.py --once, HTTP 201 pada restore.
+- npm run build, docker compose config --quiet dan git diff --check
+  lulus. Pemeriksaan ekstensi tidak menemukan Markdown proyek.

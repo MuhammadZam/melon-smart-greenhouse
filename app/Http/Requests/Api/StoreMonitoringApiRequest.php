@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests\Api;
 
+use App\Services\MonitoringIngestionService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 
 class StoreMonitoringApiRequest extends FormRequest
 {
@@ -12,6 +14,12 @@ class StoreMonitoringApiRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->normalizeWaterPh();
+        if ($this->has('observation_id')) {
+            $deviceId = $this->attributes->get('iot_device')?->device_id;
+            if ($deviceId !== $this->input('device_id') || ($this->headers->has('X-Device-Id') && $deviceId !== $this->header('X-Device-Id'))) {
+                throw ValidationException::withMessages(['device_id' => 'Identitas perangkat harus cocok dengan token.']);
+            }
+        }
         if ($this->headers->has('Idempotency-Key')) {
             $header = $this->header('Idempotency-Key');
             if ($this->has('idempotency_key') && $this->input('idempotency_key') !== $header) {
@@ -65,7 +73,7 @@ class StoreMonitoringApiRequest extends FormRequest
 
         return [
             'plant_id'             => ['required', 'integer', 'exists:plants,id'],
-            'monitored_at'         => ['required', 'date'],
+            'monitored_at'         => ['required', 'date', Rule::when($this->has('observation_id'), ['regex:'.MonitoringIngestionService::OBSERVATION_TIME_PATTERN])],
             'temperature'          => ['required', 'numeric', 'between:0,60'],
             'ph'                   => ['required', 'numeric', 'between:0,14'],
             'soil_moisture'        => ['required', 'numeric', 'between:0,100'],
@@ -79,6 +87,7 @@ class StoreMonitoringApiRequest extends FormRequest
             'notes'                => ['nullable', 'string', 'max:2000'],
             'device_id'            => ['nullable', 'string', 'max:100'],
             'event_id'             => ['sometimes', 'required', 'string', 'max:128', 'regex:/\A[A-Za-z0-9][A-Za-z0-9._:-]*\z/'],
+            'observation_id'       => ['sometimes', 'required', 'string', 'prohibits:event_id,idempotency_key', 'regex:'.MonitoringIngestionService::OBSERVATION_ID_PATTERN],
             'idempotency_key'      => ['sometimes', 'required', 'string', 'max:128', 'regex:/\A[A-Za-z0-9][A-Za-z0-9._:-]*\z/'],
             'fuzzy_score'          => ['nullable', 'numeric', 'between:0,100'],
         ];
